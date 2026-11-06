@@ -1,0 +1,40 @@
+# qx_cas_fit.yaml started from the best known solution (output/squadra_test3/qx_cas/fit of the code before
+# the code review, chi^2 1293.72 -> 89.5782 (reduced 0.9844; priors 3.406); errors of the minima scaled by sqrt(max(chi^2_red, 1)) = 1): the fit from the published start values ends in another local
+# minimum (offset primary / secondary minima). Same data, free parameters and settings; anchor off.
+topology: custom
+hierarchy:
+  out: [inner, m3]
+  inner: [m1, m2]
+masses: {m1: 5.5, m2: 6.5, m3: 6.6291009615532515}
+orbits:
+  inner: {P: 6.003756285111741, e: 0.21938499773428866, i: 81.91138810665325, Omega: 356.3833067276, omega: 94.4380553051,
+    M0: 328.5054710417}
+  out: {P: 299.18481400267353, e: 0.2, i: 80.22592547860907, Omega: 2.44, omega: 0.0, M0: 0.0}
+stars:
+  m1: {R: 3.5, Teff: 24000}
+  m2: {R: 5.1, Teff: 18000}
+  m3: {R: 2.0, Teff: 12000}
+stellar_model: {kind: mist, age_myr: 60.0, feh: 0.0, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 30, n_output: 3001, extremes_every_orbits: 20}
+fit:
+  minima: ../../data/observed/qx_cas/minima_varastro.csv
+  time_system: BJD_TDB
+  inclination:
+  - {file: ../../data/observed/qx_cas/inclination_lit.csv, pair: inner, label: Bonaro2009}
+  stage2:
+    bjd_t0: 2444500.0
+    anchor: false
+    free: [orbits.inner.P, orbits.inner.M0, orbits.inner.ecosw, orbits.inner.esinw, orbits.inner.i, orbits.inner.Omega,
+      orbits.out.P, orbits.out.i, orbits.out.Omega, masses.m3]
+    error_scale: per_source
+    error_model: jitter
+    clip_sigma: 4.0
+    priors:
+      masses.m3: [3.0, 2.0]
+      orbits.out.P: [400.0, 300.0]
+    max_iterations: 40
+    processes: 0
+  output:
+    dir: ../../output/squadra_test3/qx_cas/fit_best
+    predict: {years: 50, samples: 100}

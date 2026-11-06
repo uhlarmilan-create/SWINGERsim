@@ -1,0 +1,52 @@
+# ASASSN-V J075203.23-323102.7, 2+2 with a fast inclination change of pair B:
+# Zasche et al. (2025), arXiv:2504.17298, Table 2 and the section on this system.
+#   pair A: P = 8.8691638 d, e = 0.21, i = 80.74 +- 0.09 deg (constant), q = 1,
+#           R/a = 0.128, 0.137, fast apsidal motion "of the order of only about 3.5 yr"
+#   pair B: P = 2.6817062 d, e = 0.069, q = 1, R/a = 0.136, 0.182,
+#           di/dt ~ 1.03 deg/yr; its eclipses disappeared in TESS sector 61
+#   the authors estimate an upper limit of ~590 d for the mutual period from the rate
+# ESTIMATES made here, not from the paper: masses (T = 6000 K, q = 1), radii from R/a with
+# these masses, inclination of B at t = 0 (just inside the eclipse limit), the errors of the
+# rates and of the apsidal period of A.
+# Validation question (test 7): does the conditioned posterior of the mutual period agree with
+# the authors' estimate, and does the fast apsidal motion of A follow from the same orbit?
+topology: "2+2"
+masses: {m1: 1.2, m2: 1.2, m3: 1.2, m4: 1.2}
+orbits:
+  A:   {P: 8.8691638, e: 0.21,  i: 80.74, Omega: 0.0}
+  B:   {P: 2.6817062, e: 0.069, i: 73.0}
+  out: {P: 300.0,     e: 0.3,   i: 90.0}
+stars:
+  m1: {R: 3.0}
+  m2: {R: 3.2}
+  m3: {R: 1.48}
+  m4: {R: 1.98}
+physics: {gr: true, tides: true}
+run: {t_max_yr: 300, n_output: 1201, backend: secular}
+ensemble:
+  n: 20000
+  seed: 752
+  directions: [forward, backward]
+  require: [stable_v22]
+  vary:
+    orbits.A.i: {normal: [80.74, 0.09], max: 90.0}
+    orbits.A.omega: angle
+    orbits.B.i: {normal: [73.0, 1.0], mirror: true}
+    orbits.B.Omega: angle
+    orbits.B.omega: angle
+    orbits.out.P: {loguniform: [40.0, 3000.0]}
+    orbits.out.e: {uniform: [0.0, 0.7]}
+    orbits.out.i: isotropic
+    orbits.out.Omega: angle
+    orbits.out.omega: angle
+  observed:
+    # the eclipses of B became shallower and vanished: B turns away from edge-on
+    B_dtiltdt0_deg_yr: {value: 1.03, sigma: 0.2}
+    # A keeps its inclination (assumed: within 0.3 deg/yr)
+    A_dtiltdt0_deg_yr: {value: 0.0, sigma: 0.3}
+    # fast apsidal motion of A (order of magnitude 3.5 yr; generous error)
+    A_U_measured_yr: {value: 3.5, sigma: 1.5}
+    backward:m1_roche_fill_max: {max: 1.0}
+    backward:m2_roche_fill_max: {max: 1.0}
+    backward:m3_roche_fill_max: {max: 1.0}
+    backward:m4_roche_fill_max: {max: 1.0}

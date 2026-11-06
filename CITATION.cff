@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use SWINGERsim, please cite it as below, and cite the external codes and data it used (see the Methods document)."
+title: "SWINGERsim: a simulator of hierarchical multiple stars"
+type: software
+authors:
+  - family-names: Uhlár
+    given-names: Milan
+version: 1.0.0
+date-released: 2026-11-03
+repository-code: "https://github.com/uhlarmilan-create/SWINGERsim"
+keywords:
+  - hierarchical multiple stars
+  - quadruple stars
+  - N-body
+  - secular dynamics
+  - eclipsing binaries
+  - stellar evolution
+license: MIT

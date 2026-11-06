@@ -1,0 +1,20 @@
+# Stage-1 fit of times of minima (swingersim fit): a 2+2 whose pairs share one outer orbit.
+# The minima are synthetic (example_fit_minima.csv, made with swingersim.ocfit.synthetic_minima),
+# so the result can be compared with the values used to make them (see its header).
+topology: "2+2"
+masses: {m1: 2.4, m2: 2.1, m3: 2.3, m4: 2.3}
+orbits:
+  A:   {P: 6.7391, e: 0.25, i: 88.0}
+  B:   {P: 0.9193, i: 63.4}
+  out: {P: 2000.0, e: 0.3}
+fit:
+  minima: example_fit_minima.csv
+  time_system: BJD_TDB
+  stage1:
+    pairs: {A: [lite, apsidal], B: [lite]}
+    shared_outer: true
+  output:
+    dir: ../../output/example_fit
+    tables: [csv, latex]
+    plots: [oc, oc_components]
+    predict: {years: 2, pairs: [A, B]}

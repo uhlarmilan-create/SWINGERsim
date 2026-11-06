@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+/build/
+/dist/
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# results and job folders (made by runs, the worker and the web application)
+/output/
+/output_*/
+/jobs/
+/mesa/
+
+# third-party code downloaded by the user (see the User Guide, Installation)
+/data/quadruple-stability/
+
+# documentation: only the current manual is published
+/docs/*
+!/docs/en/
+!/docs/cs/
+!/docs/figures/
+!/docs/pdf/
+!/docs/STYLE.md
+/docs/en/*.md
+/docs/cs/*.md
+/docs/pdf/*
+!/docs/pdf/SWINGERsim-*.pdf

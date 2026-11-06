@@ -1,0 +1,56 @@
+# QZ Car = HD 93206, 2+2 quadruple of O stars: nominal N-body model of Brož et al. (2022),
+# A&A 666, A24, Table 2 (osculating at T0 = JD 2453738.8191; Ac1+Ac2 eclipsing, P = 6.0 d).
+#   A   = Ac1 (m1) + Ac2 (m2), B = Aa1 (m3) + Aa2 (m4), out = B around A (as in Brož: (1+2)+(3+4)).
+# Elements converted from Table 2: e = 10^log e, omega = varpi - Omega, M0 from the true
+# longitude lambda (f = lambda - varpi). Masses are present-day masses; radii from Table 2
+# log g, R = sqrt(G M / g); spins from v_rot sin i ~ v_rot (i ~ 93 deg); k2 and I/(MR^2) from
+# Claret (2004) at that log g (Claret 2023 for Aa2). Brož et al. assume coplanar orbits.
+# Over centuries the stars do not change: constant masses and radii (no stellar evolution).
+# ENSEMBLE: the orientation of the eclipsing binary Ac in the sky (Omega_1) and the inclination
+# and node of Aa (i_2, Omega_2) are not constrained by the data (Brož et al. assumed coplanar
+# orbits); they are drawn isotropically, masses and the outer orbit within the Table 2
+# uncertainties. Conditions: Ac has eclipsed since at least 1955 (the minima of Mayer et al.
+# 2022 start at JD ~2435000) and the system survives +-100 yr. Result: allowed mutual
+# inclinations and predictions of the eclipses of Ac.
+#   swingersim ensemble configs/benchmarks/qzcar_ensemble.yaml -o output/benchmarks/qzcar_ensemble --n 2000
+topology: "2+2"
+masses: {m1: 25.5, m2: 33.2, m3: 69.8, m4: 8.85}
+orbits:
+  A:   {P: 5.998599,  e: 0.00133, i: 93.0, Omega: 326.5, omega: 16.9,  M0: 283.15}
+  B:   {P: 20.734367, e: 0.41495, i: 93.0, Omega: 326.0, omega: 117.8, M0: 263.38}
+  out: {P: 14728.0,   e: 0.53951, i: 92.1, Omega: 326.7, omega: 329.0, M0: 53.42}
+stars:
+  m1: {R: 16.68, apsidal_k2: 0.00200, rg2: 0.0283, P_rot: 6.98}
+  m2: {R: 12.01, apsidal_k2: 0.00526, rg2: 0.0487, P_rot: 1.48}
+  m3: {R: 28.57, apsidal_k2: 0.00067, rg2: 0.0199, P_rot: 13.27}
+  m4: {R: 4.39,  apsidal_k2: 0.00822, rg2: 0.0599, P_rot: 2.22}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 100, n_output: 2001, extremes_every_orbits: 20, max_wall_s: 1800}
+ensemble:
+  n: 2000
+  seed: 93206
+  directions: [forward, backward]
+  require: [stable_v22]
+  vary:
+    masses.m1: {normal: [25.5, 2.0], min: 15.0}
+    masses.m2: {normal: [33.2, 2.0], min: 15.0}
+    masses.m3: {normal: [69.8, 5.0], min: 40.0}
+    masses.m4: {normal: [8.85, 2.0], min: 3.0}
+    orbits.A.i: {normal: [93.0, 1.0]}
+    orbits.A.Omega: angle
+    orbits.B.i: isotropic
+    orbits.B.Omega: angle
+    orbits.B.omega: {normal: [117.8, 10.0]}
+    orbits.out.P: {normal: [14728.0, 100.0]}
+    orbits.out.e: {normal: [0.54, 0.12], min: 0.0, max: 0.9}
+    orbits.out.i: {normal: [92.1, 1.0]}
+    orbits.out.Omega: {normal: [326.7, 1.0]}
+  observed:
+    # Ac has eclipsed at least since 1955 (65 yr before T0 = 2006) and still does
+    backward:A_eclipse_change_yr: {max: -65.0, missing_ok: true}
+    backward:m1_roche_fill_max: {max: 1.0}
+    backward:m2_roche_fill_max: {max: 1.0}
+    backward:m3_roche_fill_max: {max: 1.0}
+    backward:m4_roche_fill_max: {max: 1.0}
+    backward:fate: {equals: intact}
+    forward:fate: {equals: intact}

@@ -1,0 +1,23 @@
+# Pejcha et al. (2013), Sect. 3.1: the triple equivalent of set F6 - binary B replaced by a
+# point mass of 2 Msun (3+1 topology with a negligible, distant 4th body). Published: about 7 %
+# of the triples reach 1 - e < 1e-3 within 300 Kozai times (N-body). SWINGERsim: 6 +- 2 %.
+topology: "3+1"
+masses: {m1: 1.0, m2: 1.0, m3: 2.0, m4: 1.0e-9}
+orbits:
+  inner: {a: 0.573, e: 0.3}
+  mid:   {a: 6.0, e: 0.3}
+  out:   {a: 3000.0, e: 0.0}
+stars: {m1: {R: 0.001}, m2: {R: 0.001}, m3: {R: 0.001}, m4: {R: 0.001}}
+physics: {gr: false}
+run: {t_max_yr: 19470, n_output: 500, collisions: false, extremes_every_orbits: 1.0,
+      stop_when_e_reached: {inner: 0.999}, max_energy_error: 1.0e-3, max_wall_s: 1500}
+ensemble:
+  n: 100
+  seed: 13
+  vary:
+    orbits.inner.i: isotropic
+    orbits.inner.Omega: angle
+    orbits.inner.omega: angle
+    orbits.mid.omega: angle
+    orbits.inner.M0: angle
+    orbits.mid.M0: angle

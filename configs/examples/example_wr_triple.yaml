@@ -1,0 +1,20 @@
+# Example: a massive triple whose tertiary becomes a Wolf-Rayet star (illustrative values).
+# A 60 Msun tertiary orbits a 20 + 15 Msun eclipsing binary (P = 5 d) on a 100-yr orbit; all
+# stars are born together (the run starts at 0.1 Myr). The tertiary burns its hydrogen in ~4 Myr, loses its
+# hydrogen envelope in strong winds and ends as a Wolf-Rayet star of a few tens of Msun
+# (MIST tracks, v/v_crit = 0.4, winds after Nugis & Lamers 2000 in the WR phase). The mass it
+# loses widens the outer orbit (a M = const) and weakens the perturbation of the inner pair.
+#   swingersim run configs/examples/example_wr_triple.yaml -o output/wr_triple.h5
+topology: custom
+hierarchy: {out: [A, m3], A: [m1, m2]}
+masses: {m1: 20.0, m2: 15.0, m3: 60.0}
+orbits:
+  A:   {P: 5.0, e: 0.02, i: 87.0}
+  out: {P: 36525.0, e: 0.3, i: 70.0, Omega: 30.0}
+stellar_model: {kind: mist, age_myr: 0.1, feh: 0.0, vvcrit: 0.4}
+physics:
+  gr: true
+  tides: true
+  evolution: true
+  mass_loss: {source: track}
+run: {backend: secular, t_max_yr: 4.3e6, n_output: 1001}

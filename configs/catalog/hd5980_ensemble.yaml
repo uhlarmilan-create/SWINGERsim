@@ -1,0 +1,51 @@
+# HD 5980 (SMC): the most massive known eclipsing binary with a Wolf-Rayet / LBV component
+# (A, erupted 1994; B, WN4; 19.27 d) and a third star C, itself a 96.56-d binary (C + unseen D).
+# If (A+B) and (C+D) are bound, this is a 2+2 quadruple of very massive stars.
+# Sources: Koenigsberger G. et al. 2014, AJ 148, 62 (doi:10.1088/0004-6256/148/4/62): masses
+#   A 61, B 66 Msun, C+D orbit P = 96.56 d, e = 0.82, K_C = 81 km/s; Kolaczek-Szymanski P. et al.
+#   2021, A&A 647, A12 (doi:10.1051/0004-6361/202039553), Table A.1: A+B P = 19.2656 d, e = 0.27,
+#   omega = 134 (of star A; relative orbit +180 = 314), i = 86 (adopted from Perrier et al.
+#   2009); heartbeat brightening at periastron. Radii/Teff (A 24 Rsun 45 kK, B 22 Rsun 45 kK,
+#   C 24 Rsun 34 kK, M_C = 34 Msun) from the Wikipedia compilation - to be checked in Hillier D. J.
+#   et al. 2019, MNRAS 486 (doi:10.1093/mnras/stz808). SMC metallicity [Fe/H] ~ -0.75.
+# ASSUMED: M_D = 15 Msun (the mass function f = 1.04 Msun with M_C = 34 gives M_D sin i >= 13.3);
+#   R_D from the ZAMS model. UNKNOWN and drawn: the C+D inclination, node and periastron, the
+#   whole outer orbit (P_out 5-200 yr log-uniform, e 0-0.6, isotropic), all phases.
+#   k2 and rg2 (I/MR^2) from Claret (2004/2023) at the log g of the given mass and radius, as for
+#   QZ Car (the polytrope of the default model overestimates k2 of massive and evolved stars).
+# Why: the quartet of a WR/LBV binary and an O-supergiant binary with periods in a near 5:1 ratio
+#   (Koenigsberger et al.): which outer orbits are dynamically allowed, and does the 5:1 ratio
+#   matter? N-body because the hierarchy can be mild.
+# Validation: fraction of stable members (require stable_v22 rejects only the obviously unstable
+#   draws); apsidal motion of A+B for comparison with the light-curve history.
+#   swingersim ensemble configs/catalog/hd5980_ensemble.yaml -o output/catalog/hd5980_ens -j 0
+topology: "2+2"
+masses: {m1: 61.0, m2: 66.0, m3: 34.0, m4: 15.0}
+orbits:
+  A:   {P: 19.2656, e: 0.27, i: 86.0, omega: 314.0}
+  B:   {P: 96.56, e: 0.815, i: 60.0}
+  out: {P: 7300.0, e: 0.3, i: 60.0}
+stars:
+  m1: {R: 24.0, Teff: 45000, apsidal_k2: 0.00111, rg2: 0.0246}
+  m2: {R: 22.0, Teff: 45000, apsidal_k2: 0.00162, rg2: 0.0298}
+  m3: {R: 24.0, Teff: 34000, apsidal_k2: 0.00100, rg2: 0.0203}
+physics: {gr: true, tides: true}
+run: {t_max_yr: 300, n_output: 1001}
+ensemble:
+  n: 1000
+  seed: 5980
+  directions: [forward]
+  require: [stable_v22]
+  vary:
+    orbits.A.Omega: angle
+    orbits.A.M0: angle
+    orbits.B.i: isotropic
+    orbits.B.Omega: angle
+    orbits.B.omega: angle
+    orbits.B.M0: angle
+    orbits.out.P: {loguniform: [1826.0, 73050.0]}
+    orbits.out.e: {uniform: [0.0, 0.6]}
+    orbits.out.i: isotropic
+    orbits.out.Omega: angle
+    orbits.out.omega: angle
+    orbits.out.M0: angle

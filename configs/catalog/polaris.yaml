@@ -1,0 +1,34 @@
+# Polaris (alpha UMi): the nearest Cepheid (Aa, F7 Ib-II, first-overtone pulsator, 3.97 d) with a
+# F6 V companion (Ab) on a 29.4-yr orbit and the distant F3 V star Polaris B (18 arcsec,
+# ~2400 AU projected). Hierarchy ((Aa+Ab)+B).
+# Source: Evans N. R. et al. 2024, ApJ 971, 190 (doi:10.3847/1538-4357/ad5e7a), Table 5:
+#   P = 29.416 yr, T = 2016.831, e = 0.6354, omega_Aa = 304.54 (relative orbit +180 = 124.54),
+#   Omega = 201.28, i = 127.57, a = 129.55 mas; masses Aa 5.13, Ab 1.316 Msun; R_Aa = 46.27 Rsun
+#   (CHARA). Distance 136.9 pc. Teff Aa ~6015 K, Ab ~1.04 Rsun, B 1.39 Msun 1.38 Rsun 6900 K from
+#   the Wikipedia compilation (to be checked).
+# ASSUMED: the orbit of B (unknown): a = 3000 AU, e = 0.3, i = 60, Omega = 0; Teff of Ab 6400 K;
+#   pulsation amplitude 0.03 mag. t = 0 at the periastron 2016.831.
+# Why: a Cepheid is a pulsating supergiant crossing the instability strip; the period SWINGERsim
+#   predicts from its mass, radius and Teff (Bono et al. 2000, first overtone) can be compared
+#   with the observed 3.97 d, and the 29-yr orbit delays its pulses by ~a_Aa sin i / c.
+# Validation (0.27): the observed pulsation period 3.9696 d is given (period_d); SWINGERsim
+#   pulsation still reports the Bono et al. (2000) first-overtone period for comparison (3.62 d:
+#   the relation has no mass term, the 9 % come from its calibration and the adopted Teff).
+#   a_Aa sin i / c = K P sqrt(1 - e^2) / (2 pi c) = 2.869 AU = 1431 s; the semi-amplitude of the
+#   light-time curve is smaller by sqrt(1 - e^2 cos^2 omega) = 0.933: 1335 s (Irwin 1952).
+#   swingersim run configs/catalog/polaris.yaml -o output/catalog/polaris.h5
+topology: custom
+hierarchy: {out: [A, m3], A: [m1, m2]}
+masses: {m1: 5.13, m2: 1.316, m3: 1.39}
+orbits:
+  A:   {P: 10744.0, e: 0.6354, i: 127.57, Omega: 201.28, omega: 124.54, M0: 0.0}
+  out: {a: 3000.0, e: 0.3, i: 60.0, Omega: 0.0}
+stars:
+  m1:
+    R: 46.27
+    Teff: 6015
+    pulsation: {type: cepheid, mode: 1O, period_d: 3.9696, amplitude_mag: 0.03}
+  m2: {R: 1.04, Teff: 6400}
+  m3: {R: 1.38, Teff: 6900}
+physics: {gr: true}
+run: {t_max_yr: 300, n_output: 3001}

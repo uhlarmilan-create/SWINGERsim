@@ -1,0 +1,24 @@
+# BU CMi: a compact, flat 2+2 quadruple of four A stars - two eccentric eclipsing binaries
+# (2.94 d and 3.26 d) on a 121.8-d mutual orbit, both with fast apsidal motion.
+# Source: MNRAS 524, 4220 (2023), doi:10.1093/mnras/stad2015 (authors to be added from the
+#   paper), Table 7: A P = 2.937533 d, e = 0.2191, i = 83.35, omega = 101.41, U = 28.7 yr;
+#   B P = 3.255815 d, e = 0.2257, i = 83.92, omega = 257.52, U = 25.1 yr; outer P = 121.793 d,
+#   e = 0.2728, i = 83.79, omega = 141.0, a = 220.9 Rsun; masses 2.536/2.384/2.521/2.320 Msun,
+#   Teff ~10000-10600 K, log age 8.42; mutual inclinations < 1 deg. (An older outer period of
+#   6.6 yr is wrong.)
+# ASSUMED: equal nodes (flat); the omega convention (relative orbit or primary) is to be checked;
+#   radii from the MIST models at 263 Myr; phases.
+# Why: the most compact known 2+2 (P_out/P_in ~ 40): both apsidal motions are dominated by the
+#   other binary - the test of SWINGERsim's 2+2 dynamics with tides and GR.
+# Validation: apsidal periods of A and B (summary, measured with the other stars) vs. 28.7 and
+#   25.1 yr.
+#   swingersim run configs/catalog/bu_cmi.yaml -o output/catalog/bu_cmi.h5
+topology: "2+2"
+masses: {m1: 2.536, m2: 2.384, m3: 2.521, m4: 2.320}
+orbits:
+  A:   {P: 2.937533, e: 0.2191, i: 83.35, omega: 101.41}
+  B:   {P: 3.255815, e: 0.2257, i: 83.92, omega: 257.52, M0: 90.0}
+  out: {P: 121.793, e: 0.2728, i: 83.79, omega: 141.0, M0: 45.0}
+stellar_model: {kind: mist, age_myr: 263.0, feh: 0.0, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 100, n_output: 4001, extremes_every_orbits: 20}

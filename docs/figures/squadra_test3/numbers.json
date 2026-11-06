@@ -1,0 +1,1070 @@
+{
+ "v907_sco": {
+  "system": {
+   "published": {
+    "i_mut": 26.199814492781844,
+    "triples": [
+     {
+      "label": "inner in out (+m3)",
+      "inner": "inner",
+      "outer": "out",
+      "a_ratio": 0.08381627377460339,
+      "i_mut_deg": 26.199814492781844,
+      "ma01": 1.6700608378088473,
+      "v22": 2.2031055539644386,
+      "stable": true
+     }
+    ],
+    "pairs": [
+     {
+      "orbit": "inner",
+      "stars": [
+       "m1",
+       "m2"
+      ],
+      "i_deg": 76.61,
+      "i_limit_deg": 72.84940452871186,
+      "impact": 0.7853187604361808,
+      "eclipsing": true,
+      "fill": [
+       0.38125790261762493,
+       0.39151596917193365
+      ]
+     }
+    ]
+   },
+   "fit": {
+    "i_mut": 27.366278972771113,
+    "triples": [
+     {
+      "label": "inner in out (+m3)",
+      "inner": "inner",
+      "outer": "out",
+      "a_ratio": 0.08414108357897808,
+      "i_mut_deg": 27.366278972771113,
+      "ma01": 1.6853927967445583,
+      "v22": 2.2170905708623994,
+      "stable": true
+     }
+    ],
+    "pairs": [
+     {
+      "orbit": "inner",
+      "stars": [
+       "m1",
+       "m2"
+      ],
+      "i_deg": 76.57542206058847,
+      "i_limit_deg": 72.78927208890686,
+      "impact": 0.7846415745414936,
+      "eclipsing": true,
+      "fill": [
+       0.38126505443943987,
+       0.3915233134195675
+      ]
+     }
+    ],
+    "orbits": [
+     {
+      "name": "out",
+      "P_d": 142.10408547892425,
+      "a_au": 0.9831311902090455,
+      "e": 0.4647067512759643,
+      "i_deg": 74.84082440121351
+     },
+     {
+      "name": "inner",
+      "P_d": 3.774764436191481,
+      "a_au": 0.0827217236444795,
+      "e": 0.011066712846443876,
+      "i_deg": 76.57542206058847
+     }
+    ]
+   }
+  },
+  "eclipse_changes": {
+   "published": [
+    1893.0,
+    1923.5,
+    1956.5,
+    1986.5,
+    2019.5,
+    2050.0
+   ],
+   "fit": [
+    1922.5,
+    1952.0,
+    1989.5,
+    2019.5,
+    2056.5
+   ]
+  },
+  "eclipse_changes_posterior": {
+   "off_1920s": [
+    1921.7375,
+    1923.5,
+    1925.5
+   ],
+   "on_1950s": [
+    1952.0,
+    1954.0,
+    1955.5
+   ],
+   "off_1980s": [
+    1988.0,
+    1989.0,
+    1990.0
+   ],
+   "on_2010s": [
+    2019.5,
+    2019.5,
+    2019.5
+   ],
+   "end": [
+    2052.5,
+    2054.5,
+    2056.7625
+   ]
+  },
+  "nodal_period_posterior_yr": [
+   64.00434162667322,
+   64.55024793216187,
+   65.5035544327196,
+   66.41968453912116,
+   67.18240058264301
+  ],
+  "posterior_n": 100,
+  "chi2_inclination": {
+   "published": 6.044139508306323,
+   "fit": 13.66848332790817
+  },
+  "nodal_period_fit_yr": 67.21045641605855,
+  "nodal_period_published_yr": 63.185372852323155,
+  "ltte_semi_amplitude_min": 1.1139586476683618,
+  "oc_parts_ptp_min": {
+   "total": 8.715549856424332,
+   "dynamical": 10.832990929484367,
+   "light_time": 2.219148427248001
+  },
+  "minima": {
+   "n": 58,
+   "rms_min": 2.5719667534519313,
+   "mean_p": -0.025064516129032287,
+   "mean_s": -0.498937037037037
+  },
+  "lc_prediction": {
+   "S39": {
+    "depth_obs": 0.05471539999999997,
+    "depth_model": 0.05320286433355126
+   },
+   "S66": {
+    "depth_obs": 0.15000965000000005,
+    "depth_model": 0.14315195007062975
+   }
+  },
+  "lc_prediction_rms_ppt": {
+   "S39": 1.544616198328345,
+   "S66": 2.6545577310471233
+  },
+  "lc_rms_ppt": {
+   "S39": 0.7850001316191395,
+   "S66": 0.5024774966417077
+  },
+  "third_light_model_tess": 0.017058653488465466,
+  "rv_rms": {
+   "CHIRON2022": 0.7709264406693267,
+   "Lacy1999": 6.552394104447625
+  },
+  "params_fit": {
+   "orbits.inner.P": [
+    3.7747644361914787,
+    5.38072e-05
+   ],
+   "orbits.inner.M0": [
+    232.25486824513158,
+    2.20035
+   ],
+   "orbits.inner.ecosw": [
+    0.004557383196738937,
+    0.000192057
+   ],
+   "orbits.inner.esinw": [
+    -0.010084760365210771,
+    0.000667108
+   ],
+   "orbits.inner.i": [
+    76.57542206058847,
+    0.0457762
+   ],
+   "orbits.out.P": [
+    142.10408547892425,
+    0.0358252
+   ],
+   "orbits.out.M0": [
+    37.713069868864224,
+    1.33704
+   ],
+   "orbits.out.e": [
+    0.46470675127596434,
+    0.0106529
+   ],
+   "orbits.out.omega": [
+    24.452545280942157,
+    1.1222
+   ],
+   "orbits.out.i": [
+    74.84082440121351,
+    1.02188
+   ],
+   "orbits.out.Omega": [
+    349.0674456578767,
+    0.857699
+   ],
+   "masses.m3": [
+    0.9779542877666441,
+    0.0324164
+   ],
+   "rv.gamma": [
+    -17.118284838365955,
+    0.218442
+   ],
+   "rv.offset.Lacy1999": [
+    -1.8483089380489903,
+    1.10668
+   ]
+  },
+  "params_fit_lc": {
+   "orbits.inner.P": [
+    3.7732792070261034,
+    0.000177029
+   ],
+   "orbits.inner.M0": [
+    114.6217350938114,
+    0.520278
+   ],
+   "orbits.inner.ecosw": [
+    0.004441489540880355,
+    4.54211e-05
+   ],
+   "orbits.inner.esinw": [
+    -0.010024646774713281,
+    0.000209154
+   ],
+   "orbits.inner.i": [
+    76.89804574663994,
+    0.0115077
+   ],
+   "orbits.out.P": [
+    142.11973018515974,
+    0.0333644
+   ],
+   "orbits.out.M0": [
+    348.45481725963236,
+    0.824122
+   ],
+   "orbits.out.e": [
+    0.38685505465198855,
+    0.00559997
+   ],
+   "orbits.out.omega": [
+    20.48244892581345,
+    1.07338
+   ],
+   "orbits.out.i": [
+    73.25015681944465,
+    0.625339
+   ],
+   "orbits.out.Omega": [
+    351.49094802475975,
+    0.281636
+   ],
+   "masses.m3": [
+    1.2622732438259383,
+    0.0195631
+   ],
+   "stars.m1.R": [
+    2.5181438171940123,
+    0.0151186
+   ],
+   "stars.m2.R": [
+    2.508579006484469,
+    0.0151194
+   ],
+   "rv.gamma": [
+    -18.86191978425491,
+    0.141541
+   ],
+   "rv.offset.Lacy1999": [
+    -0.4724800944433794,
+    1.18923
+   ]
+  },
+  "fit_p99": "quadsim fit, stage 2 - joint dynamical model (N-body) of all eclipsing pairs\n  t = 0 of the configuration: BJD 2459383.9\n  58 minima, 172 radial velocities, 0 priors, 14 free parameters, 3322 model evaluations, 6273 s\n  chi^2 1837.05 -> 214.696 (reduced 0.9335 for 230 degrees of freedom); errors of all data scaled by sqrt(max(chi^2_red, 1)) = 1\n  (chi^2_red: chi^2 of the data without the priors / (kept data rows - satisfied one-sided inclination rows - free parameters))\n  optimiser: The maximum number of function evaluations is exceeded.\n  quadsim 0.36.0; times BJD_TDB, t = 0 at BJD_TDB 2459383.9; loss linear; errors per_source (jitter)\n  sampler none (linear errors of the covariance matrix)\n  errors (per_source), jitter added in quadrature to the quoted errors: TESS S39 2.11 min; TESS S66 0.196 min; TESS S91 8.42 min; TESS S92 0.941 min; TESS S93 1.06 min; rv:CHIRON2022 7.39 km/s; rv:Lacy1999 5.77 km/s\n  fits in a row: 1: 58 minima, chi^2_red 73.89; 2: 58 minima, chi^2_red 0.818; 3: 58 minima, chi^2_red 0.9175; 4: 58 minima, chi^2_red 0.9335\n  warning: the errors / outliers still changed after 4 fits (fit.stage2.refits); the last fit used the factors listed\n  rms of the residuals [min], start -> fitted:\n    inner      58 minima       5.102 ->    3.708\n  primary vs secondary minima, mean residual [min] (+- error of the mean), fitted:\n    inner    primary    -1.44 +- 0.64 (31), secondary    -1.49 +- 0.65 (27): difference +0.05 min (+0.1 sigma)\n  inclinations Zasche2023 (pair inner), 14 epochs: chi^2 723.2 -> 11.0\n    BJD 2415207.0  i    86.00 +- 7.30  model  83.99  (+0.3 sigma)  DASCH\n    BJD 2416835.5  i    86.60 +- 2.90  model  87.60  (-0.3 sigma)  DASCH\n    BJD 2418312.0  i    88.00 +- 1.80  model  88.62  (-0.3 sigma)  DASCH\n    BJD 2419787.5  i    87.30 +- 1.60  model  87.20  (+0.1 sigma)  DASCH\n    BJD 2420910.0  i    83.70 +- 3.40  model  84.49  (-0.2 sigma)  DASCH\n    BJD 2421793.0  i    81.20 +- 3.70  model  81.78  (-0.2 sigma)  DASCH\n    BJD 2438420.5  i    86.23 +- 1.85  model  84.43  (+1.0 sigma)  APPLAUSE\n    BJD 2458675.0  i    73.37 +- 0.25  model  73.68  (-1.2 sigma)  TESS S13\n    BJD 2459365.3  i    76.57 +- 0.10  model  76.49  (+0.8 sigma)  TESS S39a\n    BJD 2459383.9  i    76.61 +- 0.10  model  76.72  (-1.1 sigma)  TESS S39b\n    BJD 2459673.8  i    77.78 +- 0.10  model  77.81  (-0.3 sigma)  FRAM\n    BJD 2459771.0  i    78.11 +- 0.10  model  78.24  (-1.3 sigma)  FRAM\n    BJD 2459794.7  i    78.45 +- 0.10  model  78.24  (+2.1 sigma)  FRAM\n    BJD 2459812.0  i    78.55 +- 0.10  model  78.53  (+0.2 sigma)  FRAM\n  radial velocities, rms of the residuals [km/s], start -> fitted:\n    m1         87 velocities    13.33 ->     7.11\n    m2         85 velocities    13.91 ->     7.14\n    mean residual per source [km/s]: CHIRON2022 +0.02; Lacy1999 -0.02\n  parameters (start -> fitted +- 1 sigma; linear errors of the covariance matrix):\n    orbits.inner.P         3.777508479 -> 3.776158423 +- 0.00135 d\n    orbits.inner.M0        232.4803809 -> 244.9998629 +- 2.44 deg\n    orbits.inner.ecosw     0.004576117768 -> 0.003614609437 +- 0.000515 \n    orbits.inner.esinw     -0.01008644496 -> -0.01714537496 +- 0.00172 \n    orbits.inner.i         76.57587326 -> 76.71946697 +- 0.0564 deg\n    orbits.out.P           99.3 -> 105.904807 +- 0.448 d\n    orbits.out.M0          0 -> 0.6034033149 +- 3.04 deg\n    orbits.out.e           0.3 -> 0.4856965677 +- 0.0123 \n    orbits.out.omega       24.4 -> 33.25143278 +- 7.29 deg\n    orbits.out.i           74.83179949 -> 68.62571262 +- 1.65 deg\n    orbits.out.Omega       349.0492543 -> 336.6916818 +- 1.18 deg\n    masses.m3              0.9778446746 -> 0.3725390014 +- 0.0201 Msun\n    rv.gamma               -17.1153 -> -13.01031183 +- 0.674 km/s\n    rv.offset.Lacy1999     0 -> -2.604962239 +- 1.27 km/s\n  strongly correlated parameters (|r| > 0.95): orbits.inner.P / orbits.out.P -0.960\n  -> their errors assume a straight valley of chi^2 (linear model); fit.stage2.sampler: emcee checks them\n",
+  "params_fit_p99": {
+   "orbits.inner.P": [
+    3.776158422601428,
+    0.00135304
+   ],
+   "orbits.inner.M0": [
+    244.99986288708263,
+    2.4445
+   ],
+   "orbits.inner.ecosw": [
+    0.003614609437119773,
+    0.00051504
+   ],
+   "orbits.inner.esinw": [
+    -0.017145374958753214,
+    0.00171599
+   ],
+   "orbits.inner.i": [
+    76.71946697215718,
+    0.0564337
+   ],
+   "orbits.out.P": [
+    105.9048070191079,
+    0.447975
+   ],
+   "orbits.out.M0": [
+    0.6034033148814983,
+    3.04414
+   ],
+   "orbits.out.e": [
+    0.4856965677208862,
+    0.0122509
+   ],
+   "orbits.out.omega": [
+    33.25143277922403,
+    7.29393
+   ],
+   "orbits.out.i": [
+    68.62571261546688,
+    1.6458
+   ],
+   "orbits.out.Omega": [
+    336.69168175280714,
+    1.18092
+   ],
+   "masses.m3": [
+    0.3725390013651107,
+    0.0200605
+   ],
+   "rv.gamma": [
+    -13.010311827363482,
+    0.674021
+   ],
+   "rv.offset.Lacy1999": [
+    -2.60496223890071,
+    1.27187
+   ]
+  },
+  "fit_v2_mcmc": "quadsim fit, stage 2 - joint dynamical model (N-body) of all eclipsing pairs\n  t = 0 of the configuration: BJD 2459383.9\n  58 minima, 172 radial velocities, 1 priors, 14 free parameters, 49548 model evaluations, 69435 s\n  chi^2 226.103 -> 222.741 (reduced 0.9684 for 230 degrees of freedom; priors 0.01104); errors of all data scaled by sqrt(max(chi^2_red, 1)) = 1\n  (chi^2_red: chi^2 of the data without the priors / (kept data rows - satisfied one-sided inclination rows - free parameters))\n  optimiser: `ftol` termination condition is satisfied.; emcee acceptance 0.21\n  quadsim 0.36.0; times BJD_TDB, t = 0 at BJD_TDB 2459383.9; loss linear; errors per_source (jitter)\n  sampler emcee: 48 walkers x 1000 steps, first 500 discarded, seed 1, autocorrelation time tau max 53.9 steps (steps / tau 18.6)\n  warning: emcee: the chain after burn-in (500 steps) is shorter than 10 autocorrelation times (tau max 53.9 steps) - the errors are not converged; increase fit.stage2.mcmc_steps or set fit.stage2.mcmc_tau_target: 50\n  priors (mean +- sigma -> fitted value, deviation in sigma):\n    orbits.out.e           0.47 +- 0.05 -> 0.46474725   (-0.11)\n  errors (per_source), jitter added in quadrature to the quoted errors: TESS S39 2.33 min; TESS S66 0 min; TESS S91 5.07 min; TESS S92 1.06 min; TESS S93 1.43 min; rv:CHIRON2022 0.363 km/s; rv:Lacy1999 5.66 km/s\n  fits in a row: 1: 58 minima, chi^2_red 3.938; 2: 58 minima, chi^2_red 0.9128; 3: 58 minima, chi^2_red 0.965; 4: 58 minima, chi^2_red 0.9684\n  rms of the residuals [min], start -> fitted:\n    inner      58 minima       2.558 ->    2.573\n  primary vs secondary minima, mean residual [min] (+- error of the mean), fitted:\n    inner    primary    -0.03 +- 0.44 (31), secondary    -0.50 +- 0.53 (27): difference +0.47 min (+0.7 sigma)\n  inclinations Zasche2023 (pair inner), 14 epochs: chi^2 13.7 -> 13.7\n    BJD 2415207.0  i    86.00 +- 7.30  model  87.47  (-0.2 sigma)  DASCH\n    BJD 2416835.5  i    86.60 +- 2.90  model  86.82  (-0.1 sigma)  DASCH\n    BJD 2418312.0  i    88.00 +- 1.80  model  88.96  (-0.5 sigma)  DASCH\n    BJD 2419787.5  i    87.30 +- 1.60  model  87.01  (+0.2 sigma)  DASCH\n    BJD 2420910.0  i    83.70 +- 3.40  model  82.73  (+0.3 sigma)  DASCH\n    BJD 2421793.0  i    81.20 +- 3.70  model  79.00  (+0.6 sigma)  DASCH\n    BJD 2438420.5  i    86.23 +- 1.85  model  89.91  (-2.0 sigma)  APPLAUSE\n    BJD 2458675.0  i    73.37 +- 0.25  model  73.30  (+0.3 sigma)  TESS S13\n    BJD 2459365.3  i    76.57 +- 0.10  model  76.30  (+2.7 sigma)  TESS S39a\n    BJD 2459383.9  i    76.61 +- 0.10  model  76.58  (+0.3 sigma)  TESS S39b\n    BJD 2459673.8  i    77.78 +- 0.10  model  77.89  (-1.1 sigma)  FRAM\n    BJD 2459771.0  i    78.11 +- 0.10  model  78.07  (+0.4 sigma)  FRAM\n    BJD 2459794.7  i    78.45 +- 0.10  model  78.42  (+0.3 sigma)  FRAM\n    BJD 2459812.0  i    78.55 +- 0.10  model  78.52  (+0.3 sigma)  FRAM\n  radial velocities, rms of the residuals [km/s], start -> fitted:\n    m1         87 velocities     3.22 ->     3.11\n    m2         85 velocities     3.63 ->     3.50\n    mean residual per source [km/s]: CHIRON2022 -0.03; Lacy1999 -0.00\n  parameters (start -> fitted +- 1 sigma; errors: half the 16-84 % range of the emcee samples, in brackets the linear error of the covariance matrix):\n    orbits.inner.P         3.774764155 -> 3.774764433 +- 5.97e-05 d (linear 5.38e-05)\n    orbits.inner.M0        232.1701611 -> 232.2535724 +- 1.32 deg (linear 2.2)\n    orbits.inner.ecosw     0.004576117768 -> 0.004557472539 +- 0.000159  (linear 0.000192)\n    orbits.inner.esinw     -0.01008644496 -> -0.01008419421 +- 0.000344  (linear 0.000667)\n    orbits.inner.i         76.57587326 -> 76.57546253 +- 0.0488 deg (linear 0.0458)\n    orbits.out.P           142.1031809 -> 142.104188 +- 0.0392 d (linear 0.0358)\n    orbits.out.M0          37.71072246 -> 37.70668754 +- 1.86 deg (linear 1.34)\n    orbits.out.e           0.4650008161 -> 0.4647472452 +- 0.0115  (linear 0.0107)\n    orbits.out.omega       24.41907189 -> 24.",
+  "params_fit_v2_mcmc": {
+   "orbits.inner.P": [
+    3.774764432912273,
+    5.96854e-05
+   ],
+   "orbits.inner.M0": [
+    232.25357241404168,
+    1.32383
+   ],
+   "orbits.inner.ecosw": [
+    0.004557472538840684,
+    0.000158941
+   ],
+   "orbits.inner.esinw": [
+    -0.010084194214296686,
+    0.000343996
+   ],
+   "orbits.inner.i": [
+    76.5754625334942,
+    0.0487764
+   ],
+   "orbits.out.P": [
+    142.10418796015094,
+    0.0391517
+   ],
+   "orbits.out.M0": [
+    37.706687538347985,
+    1.85945
+   ],
+   "orbits.out.e": [
+    0.4647472451679719,
+    0.0114988
+   ],
+   "orbits.out.omega": [
+    24.45611505219088,
+    1.15874
+   ],
+   "orbits.out.i": [
+    74.84509050995236,
+    1.07897
+   ],
+   "orbits.out.Omega": [
+    349.0657466569997,
+    1.0282
+   ],
+   "masses.m3": [
+    0.977788744341337,
+    0.0415085
+   ],
+   "rv.gamma": [
+    -17.11757055242051,
+    0.252049
+   ],
+   "rv.offset.Lacy1999": [
+    -1.8490951602027075,
+    1.0463
+   ]
+  }
+ },
+ "qx_cas": {
+  "nodal_period_fit_yr": 136.72213282619973,
+  "system": {
+   "triples": [
+    {
+     "label": "inner in out (+m3)",
+     "inner": "inner",
+     "outer": "out",
+     "a_ratio": 0.0680059834506182,
+     "i_mut_deg": 19.28133390122445,
+     "ma01": 3.38980453317475,
+     "v22": 3.6573135684594615,
+     "stable": true
+    }
+   ],
+   "i_mut": 19.28133390122445,
+   "pairs": [
+    {
+     "orbit": "inner",
+     "stars": [
+      "m1",
+      "m2"
+     ],
+     "i_deg": 81.73757443740462,
+     "i_limit_deg": 70.67080962395266,
+     "impact": 0.43416716390555765,
+     "eclipsing": true,
+     "fill": [
+      0.30173642221324465,
+      0.4073657067646551
+     ]
+    }
+   ],
+   "orbits": [
+    {
+     "name": "out",
+     "P_d": 287.757793346597,
+     "a_au": 2.175857628747453,
+     "e": 0.19999999999999968,
+     "i_deg": 66.56468057003738
+    },
+    {
+     "name": "inner",
+     "P_d": 6.001698916177072,
+     "a_au": 0.14797133789150063,
+     "e": 0.2348643284614287,
+     "i_deg": 81.73757443740462
+    }
+   ]
+  },
+  "eclipse_changes": [
+   1933.0,
+   1999.0,
+   2071.0
+  ],
+  "depth": {
+   "detectable_inclination_deg": {
+    "photographic_l3_0.0": {
+     "omega_fit": 78.0,
+     "range": [
+      74.5,
+      78.0
+     ]
+    },
+    "photographic_l3_0.2": {
+     "omega_fit": 79.0,
+     "range": [
+      75.5,
+      79.0
+     ]
+    },
+    "photoelectric_l3_0.0": {
+     "omega_fit": 73.5,
+     "range": [
+      71.5,
+      75.0
+     ]
+    },
+    "photoelectric_l3_0.2": {
+     "omega_fit": 74.0,
+     "range": [
+      71.5,
+      75.5
+     ]
+    }
+   },
+   "third_light_needed": {
+    "1960": {
+     "model_mag": [
+      0.4985602330755611,
+      0.32737294859511157
+     ],
+     "observed_mag": [
+      0.32,
+      0.28
+     ],
+     "l3_needed": [
+      0.30672384705745503,
+      0.1267296261329438
+     ]
+    },
+    "1980": {
+     "model_mag": [
+      0.24092369074105613,
+      0.22193547602362665
+     ],
+     "observed_mag": [
+      0.12,
+      null
+     ],
+     "l3_needed": [
+      0.4742045109535832,
+      null
+     ]
+    }
+   },
+   "fit": {
+    "geometric_switches": [
+     1933.0,
+     1999.0,
+     2071.0
+    ],
+    "detectable_switches": {
+     "photographic_l3_0.00": [
+      1943.0,
+      1987.5,
+      2078.5
+     ],
+     "photoelectric_l3_0.00": [
+      1937.0,
+      1994.5,
+      2072.0
+     ],
+     "photographic_l3_0.10": [
+      1944.0,
+      1987.0,
+      2079.5
+     ],
+     "photoelectric_l3_0.10": [
+      1937.0,
+      1994.5,
+      2072.0
+     ],
+     "photographic_l3_0.20": [
+      1945.0,
+      1986.0,
+      2080.5
+     ],
+     "photoelectric_l3_0.20": [
+      1937.5,
+      1994.0,
+      2072.5
+     ],
+     "photographic_l3_0.37": [
+      1947.0,
+      1983.5,
+      2083.0
+     ],
+     "photoelectric_l3_0.37": [
+      1938.0,
+      1993.0,
+      2073.0
+     ]
+    },
+    "depth_B_1933": {
+     "0.00": 0.0006135089345325733,
+     "0.10": 0.0005521424385351731,
+     "0.20": 0.0004907794108148548,
+     "0.37": 0.0003864702222768226
+    }
+   },
+   "ensemble": {
+    "members_integrated": 1654,
+    "weight_share_integrated": 1.0,
+    "weights_i0_and_rate_1980": {
+     "effective_members": 186.7393704696928,
+     "eclipsing_1933": 0.9144301244928286,
+     "end_before_2025_16_50_84": [
+      1997.0,
+      2011.5,
+      2021.5
+     ],
+     "share_with_end_1900_2025": 0.151779507771373,
+     "return_after_2025_16_50_84": [
+      2045.617097058748,
+      2057.875681024383,
+      2086.0
+     ],
+     "share_returning_by_2100": 0.12322741081097356
+    },
+    "weights_also_inclination_limits": {
+     "effective_members": 1.9173489687199539,
+     "eclipsing_1933": 1.0,
+     "end_before_2025_16_50_84": [
+      2002.5,
+      2002.5,
+      2005.0
+     ],
+     "share_with_end_1900_2025": 1.0,
+     "return_after_2025_16_50_84": [
+      2066.495891741808,
+      2078.77296318314,
+      2079.2673482186046
+     ],
+     "share_returning_by_2100": 0.0003727535891356866
+    },
+    "weights_also_inclination_limits_v3": {
+     "effective_members": 1.0319636903557285,
+     "eclipsing_1933": 0.9999998209425714,
+     "end_before_2025_16_50_84": [
+      2002.0739428483378,
+      2002.2466514369105,
+      2002.4193600254835
+     ],
+     "share_with_end_1900_2025": 1.0,
+     "return_after_2025_16_50_84": [
+      2078.6506816333253,
+      2078.99445335317,
+      2079.338225073014
+     ],
+     "share_returning_by_2100": 0.012030862014865093
+    }
+   }
+  },
+  "ensemble": {
+   "n": 2000,
+   "n_eff": 186.7393704696928,
+   "P3_d": [
+    192.76915859536996,
+    414.2608410812817,
+    1027.9090803109648
+   ],
+   "m3": [
+    0.4646980133555672,
+    1.3343138453665464,
+    3.8738977085781467
+   ],
+   "J": [
+    43.90576342878659,
+    84.74100638599595,
+    134.61426000377443
+   ],
+   "frac_P3_100_1000": 0.7977879321914044,
+   "collisions_all": 0.1315
+  },
+  "binary_period_model_d": 6.00508027334646,
+  "tess": {
+   "removed_periods_d": [
+    1.717112455568975,
+    1.042783815725442,
+    6.432231735730928,
+    5.629797136262128,
+    5.35252940966564,
+    3.176331699259902
+   ],
+   "noise_99_ppt": 0.4682043624058286,
+   "noise_median_ppt": 0.2046817509746477,
+   "harmonics": [
+    {
+     "k": 1,
+     "P_d": 6.00508027334646,
+     "data_ppt": 0.5464946860970028,
+     "err_ppt": 0.14025600350373413,
+     "model_ppt": 0.9828951170883805
+    },
+    {
+     "k": 2,
+     "P_d": 3.00254013667323,
+     "data_ppt": 1.218883568162882,
+     "err_ppt": 0.0902593978386776,
+     "model_ppt": 0.8393565353925789
+    },
+    {
+     "k": 3,
+     "P_d": 2.00169342444882,
+     "data_ppt": 0.8075527393936346,
+     "err_ppt": 0.08869517469041784,
+     "model_ppt": 0.7200998733404985
+    },
+    {
+     "k": 4,
+     "P_d": 1.501270068336615,
+     "data_ppt": 0.17166376781309176,
+     "err_ppt": 0.06453801912449306,
+     "model_ppt": 0.5265841684977101
+    }
+   ],
+   "points": 8209,
+   "sectors": 8
+  },
+  "minima_rms_by_class": {
+   "photoelectric": 44.666706624621426,
+   "photographic": 98.27046466247107,
+   "visual": 106.71062555913123
+  },
+  "params_fit": {
+   "orbits.inner.P": [
+    6.0016989161770855,
+    0.000172323
+   ],
+   "orbits.inner.M0": [
+    23.229403249364655,
+    7.71116
+   ],
+   "orbits.inner.ecosw": [
+    0.17460912066647755,
+    0.0262491
+   ],
+   "orbits.inner.esinw": [
+    0.15707612092141057,
+    0.0247387
+   ],
+   "orbits.inner.i": [
+    81.73757443740462,
+    1.48194
+   ],
+   "orbits.out.P": [
+    287.75779334659734,
+    0.898314
+   ],
+   "orbits.out.i": [
+    66.56468057003738,
+    2.76991
+   ],
+   "orbits.out.Omega": [
+    3.8748607068578957,
+    2.45862
+   ],
+   "masses.m3": [
+    4.597171823870353,
+    0.584457
+   ]
+  }
+ },
+ "ah_cep": {
+  "system": {
+   "triples": [
+    {
+     "label": "inner in out (+m3)",
+     "inner": "inner",
+     "outer": "out",
+     "a_ratio": 0.001578446796924838,
+     "i_mut_deg": 25.69616909232774,
+     "ma01": 54.214203655206745,
+     "v22": 75.11494812436149,
+     "stable": true
+    }
+   ],
+   "i_mut": 25.69616909232774,
+   "pairs": [
+    {
+     "orbit": "inner",
+     "stars": [
+      "m1",
+      "m2"
+     ],
+     "i_deg": 69.80534519429251,
+     "i_limit_deg": 50.375617964432365,
+     "impact": 0.5412930746703637,
+     "eclipsing": true,
+     "fill": [
+      0.8703956460996197,
+      0.8101774231821057
+     ]
+    }
+   ],
+   "orbits": [
+    {
+     "name": "out",
+     "P_d": 25466.1252449244,
+     "a_au": 56.129505153099934,
+     "e": 0.6296497309320127,
+     "i_deg": 70.94356544862671
+    },
+    {
+     "name": "inner",
+     "P_d": 1.7765001498786241,
+     "a_au": 0.08859743762188678,
+     "e": 1.2396523791875943e-14,
+     "i_deg": 69.80534519429251
+    }
+   ]
+  },
+  "i_range_1900_2300": [
+   69.79363040586225,
+   69.8111248526763
+  ],
+  "minima_rms_by_class": {
+   "CCD": 8.456821340301905,
+   "TESS": 5.0471242962967064,
+   "photoelectric": 6.593064186950044,
+   "photographic": 58.03191906119425,
+   "visual": 30.973719523020065
+  },
+  "minima_n_by_class": {
+   "CCD": 56,
+   "TESS": 216,
+   "photoelectric": 37,
+   "photographic": 2,
+   "visual": 14
+  },
+  "params_fit": {
+   "orbits.inner.P": [
+    1.776500149878687,
+    3.48686e-05
+   ],
+   "orbits.inner.M0": [
+    15.995483186517603,
+    0.746172
+   ],
+   "orbits.inner.i": [
+    69.80534519429224,
+    0.61171
+   ],
+   "orbits.inner.Omega": [
+    342.71550214161107,
+    5129.22
+   ],
+   "orbits.out.P": [
+    25466.12524492441,
+    345.071
+   ],
+   "orbits.out.M0": [
+    194.15776440114797,
+    4.24972
+   ],
+   "orbits.out.e": [
+    0.6296497309320129,
+    0.0307677
+   ],
+   "orbits.out.omega": [
+    257.35177209443805,
+    5.16274
+   ],
+   "orbits.out.i": [
+    70.94356544862671,
+    4630.54
+   ],
+   "masses.m1": [
+    15.851472887615733,
+    0.190663
+   ],
+   "masses.m2": [
+    13.547343211083481,
+    0.193916
+   ],
+   "masses.m3": [
+    6.979680965060844,
+    223.448
+   ]
+  },
+  "fit_lc_derived": {
+   "i": 72.49578230441482,
+   "i_err": 0.205871,
+   "R1": 6.2493431553469225,
+   "R1_err": 0.050074,
+   "R2": 5.884949230188348,
+   "R2_err": 0.0474111,
+   "T2": 28427.271753548768,
+   "T2_err": 118.381,
+   "scale_a": [
+    1.029,
+    1.033,
+    1.028
+   ],
+   "l3_model": 0.07946864061260617,
+   "l3_eff": [
+    0.052773231190371805,
+    0.04909110575282227,
+    0.053693762549759105
+   ],
+   "l3_eff_mean": 0.051852699830984395,
+   "l3_eff_spread": 0.0023013283984684163,
+   "light_ratio_B": 0.7800216900492145,
+   "light_ratio_B_published": 0.6749336055659497,
+   "masses_scaled_to_i": [
+    15.383390232570067,
+    13.048241157613642
+   ],
+   "mass_factor": 0.9531220714107848
+  },
+  "third_light_scan": [
+   {
+    "i": 69.8,
+    "s77": {
+     "l3": -0.12769784416232338,
+     "rms_ppt": 4.162286524933713
+    },
+    "s78": {
+     "l3": -0.13051304254224558,
+     "rms_ppt": 6.404685541261105
+    },
+    "s18": {
+     "l3": -0.10975584162276823,
+     "rms_ppt": 6.854168849492717
+    }
+   },
+   {
+    "i": 71.0,
+    "s77": {
+     "l3": -0.04480349582090987,
+     "rms_ppt": 3.7691475179901084
+    },
+    "s78": {
+     "l3": -0.04763097476643286,
+     "rms_ppt": 6.154571773841044
+    },
+    "s18": {
+     "l3": -0.02890028602218046,
+     "rms_ppt": 6.574797087668576
+    }
+   },
+   {
+    "i": 72.0,
+    "s77": {
+     "l3": 0.016818173917521263,
+     "rms_ppt": 3.6183279008579294
+    },
+    "s78": {
+     "l3": 0.014200723485385505,
+     "rms_ppt": 6.084227733388072
+    },
+    "s18": {
+     "l3": 0.03087921800993789,
+     "rms_ppt": 6.245971835407882
+    }
+   },
+   {
+    "i": 73.0,
+    "s77": {
+     "l3": 0.07252041754972681,
+     "rms_ppt": 3.5547668601928377
+    },
+    "s78": {
+     "l3": 0.0699588723282986,
+     "rms_ppt": 6.077102448700764
+    },
+    "s18": {
+     "l3": 0.08560357091121179,
+     "rms_ppt": 6.185864255017268
+    }
+   },
+   {
+    "i": 74.0,
+    "s77": {
+     "l3": 0.12311539238800465,
+     "rms_ppt": 3.601506244299418
+    },
+    "s78": {
+     "l3": 0.12057216440467046,
+     "rms_ppt": 6.097728263159392
+    },
+    "s18": {
+     "l3": 0.1351773720051403,
+     "rms_ppt": 6.2643305263683295
+    }
+   },
+   {
+    "i": 75.0,
+    "s77": {
+     "l3": 0.16915300959269933,
+     "rms_ppt": 3.717431557824098
+    },
+    "s78": {
+     "l3": 0.1665588827975747,
+     "rms_ppt": 6.10982544387682
+    },
+    "s18": {
+     "l3": 0.18064399119556143,
+     "rms_ppt": 6.3968429414114585
+    }
+   },
+   {
+    "i": 76.0,
+    "s77": {
+     "l3": 0.21081316368984157,
+     "rms_ppt": 3.8905930191294718
+    },
+    "s78": {
+     "l3": 0.208117223273912,
+     "rms_ppt": 6.160867422339546
+    },
+    "s18": {
+     "l3": 0.22275376393624904,
+     "rms_ppt": 6.613425514914669
+    }
+   }
+  ],
+  "tess_constancy": {
+   "slope_l3_per_deg": 0.04846225715876157,
+   "delta_l3_s18_minus_s77s78": 0.013333593608802735,
+   "delta_i_deg": 0.27513356559357316,
+   "years": 4.395529361969466,
+   "rate_deg_yr": 0.06259395466085489
+  },
+  "third_light_expected": {
+   "one_7Msun": 0.07915596525782088,
+   "one_6.6Msun": 0.07009892498329051,
+   "two_3.5_3.3Msun": 0.03189926900449445
+  },
+  "fourth_body": {
+   "n_stable": 1500,
+   "P_range_d": [
+    100.19168571973067,
+    1033.6936495501477
+   ],
+   "m4_range": [
+    0.3001830727957789,
+    7.99287413679662
+   ],
+   "hidden": 859,
+   "hidden_fraction": 0.5726666666666667,
+   "hidden_fraction_m4_gt3": 0.1570796460176991,
+   "hidden_fraction_m4_lt1": 0.8936567164179104,
+   "max_amp_hidden_min": 3.002445579852404,
+   "rate_limit_deg_yr": 0.06,
+   "hidden_fast": 150,
+   "hidden_slow": 709,
+   "hidden_fast_fraction_of_hidden": 0.17462165308498254,
+   "max_rate_hidden_deg_yr": 1.5443688946685732
+  },
+  "fit_lc": "quadsim fit, stage 2 - joint dynamical model (N-body) of all eclipsing pairs\n  t = 0 of the configuration: BJD 2458000.0\n  216 minima, 5107 light-curve points, 0 priors, 6 free parameters, 800 model evaluations, 4573 s\n  chi^2 1839.56 -> 1286.46 (reduced 0.2424 for 5308 degrees of freedom); errors of all data scaled by sqrt(max(chi^2_red, 1)) = 1\n  (chi^2_red: chi^2 of the data without the priors / (kept data rows - satisfied one-sided inclination rows - free parameters))\n  optimiser: `ftol` termination condition is satisfied.\n  quadsim 0.36.0; times BJD_TDB, t = 0 at BJD_TDB 2458000.0; loss linear; errors per_source (jitter)\n  sampler none (linear errors of the covariance matrix)\n  mapped meshes: chi^2 and the light-curve models at the solution are those of the accurate meshes; the linear errors (covariance) come from the Jacobian of the last pass (coarse mesh + difference)\n  errors (per_source), jitter added in quadrature to the quoted errors: TESS S17 3.92 min; TESS S18 0.467 min; TESS S24 2.92 min; TESS S57 3.3 min; TESS S58 1.03 min; TESS S77 0.198 min; TESS S78 0.161 min; TESS S84 1.73 min; TESS S85 2.14 min; lc:TESS:S77a 2.93 ppt; lc:TESS:S77b 3.56 ppt; lc:TESS:S78a 7.11 ppt\n  light curves, red-noise factor beta (errors multiplied by it): lc:TESS:S77a 2.14; lc:TESS:S77b 2.16; lc:TESS:S78a 2.21\n  fits in a row: 1: 216 minima, chi^2_red 455.5; 2: 216 minima, chi^2_red 0.2244; 3: 216 minima, chi^2_red 0.2427; 4: 216 minima, chi^2_red 0.2421; 5: 216 minima, chi^2_red 0.2424; 6: 216 minima, chi^2_red 0.2424; 7: 216 minima, chi^2_red 0.2424\n  rms of the residuals [min], start -> fitted:\n    inner     216 minima       5.041 ->    5.043\n  primary vs secondary minima, mean residual [min] (+- error of the mean), fitted:\n    inner    primary    +1.22 +- 0.52 (108), secondary    +0.60 +- 0.43 (108): difference +0.62 min (+0.9 sigma)\n  star shapes: TESS: inner: fill 0.87, 0.81 >= 0.5 - Roche surfaces\n  mapped meshes (coarse + accurate - coarse), passes: 1: chi^2_red 0.2421, difference changed by 4.42 sigma; 2: chi^2_red 0.2424, difference changed by 1.09 sigma; 3: chi^2_red 0.2424, difference changed by 0.69 sigma; 4: chi^2_red 0.2424, difference changed by 0.01 sigma\n  light curves, rms of measured - calibrated model [ppt], start -> fitted, scale a:\n    TESS:S77a    1653 points     4.10 ->    2.98   a = 1.029\n    TESS:S77b     919 points     4.53 ->    3.62   a = 1.033\n    TESS:S78a    2535 points     7.91 ->    7.12   a = 1.028\n    3 outlying light-curve points left out (status outlier in stage2_lc.csv)\n  parameters (start -> fitted +- 1 sigma; linear errors of the covariance matrix):\n    orbits.inner.P         1.776506291 -> 1.776484684 +- 8.63e-06 d\n    orbits.inner.M0        15.94724397 -> 15.91648396 +- 0.0351 deg\n    orbits.inner.i         69.80495514 -> 72.4957823 +- 0.206 deg\n    stars.m1.R             6.51 -> 6.249343155 +- 0.0501 Rsun\n    stars.m2.R             5.64 -> 5.88494923 +- 0.0474 Rsun\n    stars.m2.Teff          28800 -> 28427.27175 +- 118 K\n  strongly correlated parameters (|r| > 0.95): stars.m1.R / stars.m2.R -0.972\n  -> their errors assume a straight valley of chi^2 (linear model); fit.stage2.sampler: emcee checks them\n",
+  "params_fit_lc": {
+   "orbits.inner.P": [
+    1.7764846835314032,
+    8.6338e-06
+   ],
+   "orbits.inner.M0": [
+    15.916483955713298,
+    0.0350799
+   ],
+   "orbits.inner.i": [
+    72.49578230441482,
+    0.205871
+   ],
+   "stars.m1.R": [
+    6.2493431553469225,
+    0.050074
+   ],
+   "stars.m2.R": [
+    5.884949230188348,
+    0.0474111
+   ],
+   "stars.m2.Teff": [
+    28427.271753548768,
+    118.381
+   ]
+  }
+ }
+}

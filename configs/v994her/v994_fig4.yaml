@@ -1,0 +1,12 @@
+# V994 Her-like system, Vokrouhlicky (2016) Fig. 4: larger tilts (Omega_A = 35, Omega_B = 40 deg),
+# J_A ~ 35 deg, J_B ~ 40 deg, i.e. B just above the ZLK limit.
+# Published: e_B oscillates above 0.6, J_AB spans 0 to more than 70 deg; N-body and secular
+# solutions diverge after ~5 kyr.
+topology: "2+2"
+masses: {m1: 3.01, m2: 2.58, m3: 1.84, m4: 1.93}
+orbits:
+  A:   {P: 2.08327,   e: 0.031, i: 84.0, Omega: 35.0, omega: 10.0}
+  B:   {P: 1.42004,   e: 0.125, i: 85.0, Omega: 40.0, omega: 301.0}
+  out: {P: 1062.8775, e: 0.76,  i: 90.0, Omega: 0.0,  omega: 236.0}
+physics: {gr: false}
+run: {t_max_yr: 10000, n_output: 2000}

@@ -1,0 +1,11 @@
+# V994 Her-like system, Vokrouhlicky (2016) Fig. 3: observed eccentricities of the
+# eclipsing binaries (Zasche & Uhlar 2016), otherwise as Fig. 2.
+# Published: e_A, e_B show only small oscillations; J_AB between ~1 and ~6 deg.
+topology: "2+2"
+masses: {m1: 3.01, m2: 2.58, m3: 1.84, m4: 1.93}
+orbits:
+  A:   {P: 2.08327,   e: 0.031, i: 84.0, Omega: 10.0, omega: 10.0}
+  B:   {P: 1.42004,   e: 0.125, i: 85.0, Omega: 15.0, omega: 301.0}
+  out: {P: 1062.8775, e: 0.76,  i: 90.0, Omega: 0.0,  omega: 236.0}
+physics: {gr: false}
+run: {t_max_yr: 20000, n_output: 2000}

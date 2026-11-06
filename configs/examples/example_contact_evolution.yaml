@@ -1,0 +1,20 @@
+# Example: evolution into a contact binary. A 1.0 + 0.5 Msun binary with P = 0.30 d
+# at 1 Gyr: the primary fills its lobe (Algol-like transfer, mass-ratio reversal), the binary
+# comes into contact and, with physics.mass_transfer.contact, shares a common envelope (Lucy 1968):
+# the less massive star feeds the primary, the magnetised wind of the envelope removes angular
+# momentum (Gazeas & Stepien 2008), the orbit shrinks until the binary overfills its outer critical
+# surface (L2) or reaches the Darwin instability (q < 0.09) and merges.
+# Cloud test (2026-10-12): transfer from 1.31 Gyr after the start, contact at 2.14 Gyr, merger
+# through L2 at 2.23 Gyr with 0.84 + 0.66 Msun.
+#   swingersim run configs/examples/example_contact_evolution.yaml -o output/examples/contact_evolution.h5
+topology: custom
+hierarchy: {A: [m1, m2]}
+masses: {m1: 1.0, m2: 0.5}
+orbits:
+  A: {P: 0.30, i: 80.0}
+stellar_model: {kind: mist, age_myr: 1000.0, feh: 0.0, vvcrit: 0.0}
+physics:
+  gr: false
+  evolution: true
+  mass_transfer: {contact: {braking: true, q_min: 0.09}}
+run: {backend: secular, t_max_yr: 5.0e9, n_output: 2001}

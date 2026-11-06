@@ -1,0 +1,27 @@
+# Example: tertiary mass transfer. A 2.0 Msun giant on a 1200-d orbit around a
+# main-sequence binary (1.3 + 1.1 Msun, P = 5 d) fills its Roche lobe on the thermally pulsing
+# AGB at every pulse; with the adiabatic stability of a condensed polytrope (stability: zeta,
+# Soberman et al. 1997) the transfer is stable and comes in short episodes at the pulse maxima;
+# the stream forms a circumbinary disc (a_in < a_c, Leigh et al. 2020), so 90 % of the mass is
+# accreted by the inner pair (Hamers et al. 2022), the rest is ejected at the cost of inner
+# orbital energy (de Vries et al. 2014, alpha lambda = 5). With the default stability (bse,
+# q_crit = 0.64 for giants) the same system ends in a triple common envelope at the first
+# overflow (q = 0.83).
+#   swingersim run configs/examples/example_tertiary_transfer.yaml -o output/examples/tertiary_transfer.h5
+topology: custom
+hierarchy: {out: [A, m3], A: [m1, m2]}
+masses: {m1: 1.3, m2: 1.1, m3: 2.0}
+orbits:
+  A:   {P: 5.0, e: 0.05, i: 88.0}
+  out: {P: 1200.0, e: 0.1, i: 60.0, Omega: 20.0}
+stellar_model: {kind: mist, age_myr: 1200.0, feh: 0.0, vvcrit: 0.0}
+physics:
+  gr: true
+  tides: true
+  tidal_lag: hurley2002
+  evolution: true
+  mass_loss: {source: track}
+  mass_transfer:
+    stability: zeta
+    tertiary: {inner_orbit: energy, alpha_lambda: 5.0}
+run: {backend: secular, t_max_yr: 2.0e8, n_output: 1001}

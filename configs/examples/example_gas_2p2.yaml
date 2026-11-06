@@ -1,0 +1,21 @@
+# A young 2+2 quadruple still embedded in gas: the outer orbit is wide, eccentric and
+# inclined to the disc; the gas shrinks it, circularises it and aligns it with the disc.
+# Afterwards the gas disperses and the secular (ZLK, precession) evolution takes over.
+#   swingersim run configs/examples/example_gas_2p2.yaml -o output/example_gas_2p2.h5
+topology: "2+2"
+masses: {m1: 1.0, m2: 0.8, m3: 0.9, m4: 0.7}
+orbits:
+  A:   {P: 20.0, e: 0.05, i: 30.0, Omega: 0.0,  omega: 10.0}
+  B:   {P: 30.0, e: 0.05, i: 50.0, Omega: 60.0, omega: 70.0}
+  out: {a: 300.0, e: 0.6, i: 40.0, Omega: 20.0, omega: 0.0}
+physics:
+  gr: true
+  gas:
+    t_end_yr: 2.0e5
+    t_decay_yr: 5.0e4
+    plane: {i: 0.0, Omega: 0.0}
+    orbits:
+      out: {tau_a_yr: 2.0e5, tau_e_yr: 1.0e5, tau_i_yr: 1.0e5}
+      A:   {tau_i_yr: 3.0e5}
+      B:   {tau_i_yr: 3.0e5}
+run: {backend: secular, t_max_yr: 1.0e6, n_output: 2000}

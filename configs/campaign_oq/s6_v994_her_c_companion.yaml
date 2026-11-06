@@ -1,0 +1,38 @@
+# Campaign "open questions", study S6: V994 Her - a hidden close companion of pair C?
+# Part II: the published apsidal rate of C (Zasche et al. 2023, Table 3: U = 214 (188-250) yr, 1.68 +- 0.24 deg/yr)
+# is 2.8 sigma faster than stellar structure gives (SWINGERsim: 355 yr - 0.78 tidal + 0.10 rotational + 0.14
+# relativistic deg/yr); k2 of both stars would have to be 1.76 times the models. A third star close to C would add a
+# dynamical apsidal advance ~ (3/4) (m3 / M) n_7^2 / n_C (e.g. 0.5 Msun on a ~200-d orbit; light-time effect ~1 min).
+# Here C is modelled alone with an unknown companion m3: C (m1 + m2 = 1.810 + 1.077 Msun,
+# the stars m5 and m6 of Part II, P 1.9601064 d, e 0.1893, the published
+# elements) inside an orbit 'out' around m3. A and B and the 3000-yr orbit of C around them (Part II) are left out:
+# they add < 0.01 deg/yr to C. Drawn: m3 0.1-2 Msun (the MIST grid), P_out 8-3000 d, e_out 0-0.6, all orientations; dynamically
+# stable members only. Weight: the measured apsidal period of C, 214 +- 31 yr. The weighted members give the allowed
+# masses and periods of the companion and, from them, its light-time amplitude in the eclipse times of C (the test
+# with the TESS and ground minima) and its share of the light.
+topology: custom
+hierarchy: {out: [C, m3], C: [m1, m2]}
+masses: {m1: 1.810, m2: 1.077, m3: 0.5}
+orbits:
+  C:   {P: 1.9601064, e: 0.1893, i: 80.42, Omega: 0.0, omega: 314.0, M0: 127.46}
+  out: {P: 200.0, e: 0.2, i: 80.0, Omega: 0.0, omega: 0.0, M0: 0.0}
+stars:
+  m1: {R: 1.544, Teff: 8514}
+  m2: {R: 0.961, Teff: 5893}
+stellar_model: {kind: mist, age_myr: 83.0, feh: 0.073, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 30, n_output: 3001, extremes_every_orbits: 20}
+ensemble:
+  n: 3000
+  seed: 6
+  vary:
+    masses.m3: {loguniform: [0.1, 2.0]}
+    orbits.out.P: {loguniform: [8.0, 3000.0]}
+    orbits.out.e: {uniform: [0.0, 0.6]}
+    orbits.out.i: {isotropic: [0.0, 180.0]}
+    orbits.out.Omega: {uniform: [0.0, 360.0]}
+    orbits.out.omega: {uniform: [0.0, 360.0]}
+    orbits.out.M0: {uniform: [0.0, 360.0]}
+  require: [stable_ma01]
+  observed:
+    C_U_measured_yr: {value: 214.0, sigma: 31.0}

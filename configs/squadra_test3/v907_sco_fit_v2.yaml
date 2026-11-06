@@ -1,0 +1,48 @@
+# V907 Sco - second pass of path 2 (after job sq4_5, 2026-10-17). Changes against v907_sco_fit.yaml:
+#  * start from its fitted solution (stage2_fitted.yaml of output/squadra_test3/v907_sco/fit);
+#  * the node of the pair is FIXED (Omega_inner = 17.27): only the difference of the nodes is measurable without
+#    astrometry - in sq4_5 both nodes ran away together (correlation +1.000);
+#  * eccentricity of the pair restarted at e = 0.010, omega = 301.7 (e cos w = +0.0053): sq4_5 drove e to 0.0003 and left
+#    a systematic split of the TESS minima (primaries +7..+15 min, secondaries -10..-18 min) that the per-source jitter
+#    (10-19 min) absorbed; the measured split needs e cos w ~ +0.005 in the SWINGERsim convention (a local minimum).
+#  * check 2026-10-17: anchoring this start alone gives rms 2.6 min (primaries -0.5, secondaries -0.8 min mean) against
+#    12.8 min (+11.2 / -13.6 min) of sq4_5 - the split is the apsidal motion of the pair, not noise.
+topology: custom
+hierarchy:
+  out: [inner, m3]
+  inner: [m1, m2]
+masses: {m1: 2.56, m2: 2.74, m3: 1.0158847582688262}
+orbits:
+  inner: {P: 3.7747181744467873, e: 0.01, i: 76.6566091828182, Omega: 17.27, omega: 301.7, M0: 44.6152455779333}
+  out: {P: 142.07217885942708, e: 0.4714037915617643, i: 70.24047794245305, Omega: 351.7530611325251, omega: 23.324329985980164, M0: 38.4348551880475}
+stars:
+  m1: {R: 2.53, Teff: 10004}
+  m2: {R: 2.68, Teff: 10000}
+  m3: {R: 1.0, Teff: 5900}
+stellar_model: {kind: mist, age_myr: 400.0, feh: 0.0, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 30, n_output: 3001, extremes_every_orbits: 20}
+fit:
+  minima: ../../data/observed/v907_sco/minima_tess.csv
+  time_system: BJD_TDB
+  inclination:
+  - {file: ../../data/observed/v907_sco/inclination_zasche2023.csv, pair: inner, label: Zasche2023, min_sigma_deg: 0.1}
+  rv:
+    file: ../../data/observed/v907_sco/rv_all.csv
+    gamma: -17.33
+    offsets: {Lacy1999: 0.0}
+  stage2:
+    bjd_t0: 2459383.9
+    anchor: true
+    free: [orbits.inner.P, orbits.inner.M0, orbits.inner.ecosw, orbits.inner.esinw, orbits.inner.i, orbits.out.P, orbits.out.M0, orbits.out.e,
+      orbits.out.omega, orbits.out.i, orbits.out.Omega, masses.m3, rv.gamma, rv.offset.Lacy1999]
+    error_scale: per_source
+    error_model: jitter
+    clip_sigma: 5.0
+    priors:
+      orbits.out.e: [0.47, 0.05]
+    max_iterations: 40
+    processes: 0
+  output:
+    dir: ../../output/squadra_test3/v907_sco/fit_v2
+    predict: {years: 30, samples: 100}

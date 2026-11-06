@@ -1,0 +1,199 @@
+# Literatura {#references}
+
+Literatura citovaná v tomto svazku. Položky uvádějí autory, rok, název, časopis, ročník a první
+stranu, s odkazem DOI nebo arXiv, je-li k dispozici. Software a soubory dat, které SWINGERsim používá,
+jsou uvedeny s články, které je popisují; jejich úlohu uvádí oddíl *Implementace* každé kapitoly.
+
+- Alcock C. et al. (1997). The MACHO Project LMC variable star inventory IV: multimode RR Lyrae stars, distance to the LMC and age of the oldest stars. *ApJ* 482, 89. [arXiv:astro-ph/9608036](https://arxiv.org/abs/astro-ph/9608036)
+- Anderson R. I., Saio H., Ekström S., Georgy C., Meynet G. (2016). On the effect of rotation on populations of classical Cepheids II. Pulsation analysis for metallicities 0.014, 0.006, and 0.002. *A&A* 591, A8. [doi:10.1051/0004-6361/201528031](https://doi.org/10.1051/0004-6361/201528031)
+- Antognini J. M. O. (2015). Timescales of Kozai–Lidov oscillations at quadrupole and octupole order in the test particle limit. *MNRAS* 452, 3610. [doi:10.1093/mnras/stv1552](https://doi.org/10.1093/mnras/stv1552)
+- Antognini J. M. O., Thompson T. A. (2016). Dynamical formation and scattering of hierarchical triples: cross-sections, Kozai–Lidov oscillations, and collisions. *MNRAS* 456, 4219. [doi:10.1093/mnras/stv2938](https://doi.org/10.1093/mnras/stv2938)
+- Applegate J. H. (1992). A mechanism for orbital period modulation in close binaries. *ApJ* 385, 621. [ADS](https://ui.adsabs.harvard.edu/abs/1992ApJ...385..621A)
+- Barker A. J. (2020). Tidal dissipation in evolving low-mass and solar-type stars with predictions for planetary orbital decay. *MNRAS* 498, 2270. [arXiv:2008.03262](https://arxiv.org/abs/2008.03262)
+- Barker A. J. (2022). Tidal dissipation due to inertial waves can explain the circularization periods of solar-type binaries. *ApJL* 927, L36. [doi:10.3847/2041-8213/ac5b63](https://doi.org/10.3847/2041-8213/ac5b63)
+- Bessell M. S. (1990). UBVRI passbands. *PASP* 102, 1181. [doi:10.1086/132749](https://doi.org/10.1086/132749)
+- Blaauw A. (1961). On the origin of the O- and B-type stars with high velocities (the "run-away" stars), and some related problems. *BAN* 15, 265. [ADS](https://ui.adsabs.harvard.edu/abs/1961BAN....15..265B)
+- Blöcker T. (1995). Stellar evolution of low and intermediate-mass stars. I. Mass loss on the AGB and its consequences for stellar evolution. *A&A* 297, 727. [ADS](https://ui.adsabs.harvard.edu/abs/1995A&A...297..727B)
+- Bono G., Caputo F., Castellani V., Marconi M. (1996). Nonlinear investigation of the pulsational properties of RR Lyrae variables. *A&AS* (1997), [doi:10.1051/aas:1997289](https://doi.org/10.1051/aas:1997289); [arXiv:astro-ph/9606030](https://arxiv.org/abs/astro-ph/9606030) (pulsation equation as quoted by Alcock et al. 1997).
+- Bono G., Castellani V., Marconi M. (2000). Classical Cepheid pulsation models. III. The predictable scenario. *ApJ* 529, 293. [arXiv:astro-ph/9908014](https://arxiv.org/abs/astro-ph/9908014)
+- Breger M. (1979). Delta Scuti and related stars. *PASP* 91, 5. [doi:10.1086/130433](https://doi.org/10.1086/130433)
+- Breiter S., Vokrouhlický D. (2018). Resonant dynamics of gravitationally bound pair of binaries: the case of 1:1 resonance. *MNRAS* 475, 5215. [doi:10.1093/mnras/sty132](https://doi.org/10.1093/mnras/sty132)
+- Breivik K. et al. (2020). COSMIC variance in binary population synthesis. *ApJ* 898, 71. [doi:10.3847/1538-4357/ab9d85](https://doi.org/10.3847/1538-4357/ab9d85)
+- Brooker R. A., Olle T. W. (1955). Apsidal-motion constants for polytropic models. *MNRAS* 115, 101. [doi:10.1093/mnras/115.1.101](https://doi.org/10.1093/mnras/115.1.101)
+- Brož M., Conroy K., Prša A. (2025). Physics Of Eclipsing Binaries. VIII. Multiple systems. [arXiv:2506.20866](https://arxiv.org/abs/2506.20866)
+- Chiang E. I., Goldreich P. (1997). Spectral energy distributions of T Tauri stars with passive circumstellar disks. *ApJ* 490, 368. [doi:10.1086/304869](https://doi.org/10.1086/304869)
+- Choi J., Dotter A., Conroy C., Cantiello M., Paxton B., Johnson B. D. (2016). Mesa Isochrones and Stellar Tracks (MIST). I. Solar-scaled models. *ApJ* 823, 102. [doi:10.3847/0004-637X/823/2/102](https://doi.org/10.3847/0004-637X/823/2/102)
+- Christensen-Dalsgaard J., Gough D. O., Thompson M. J. (1991). The depth of the solar convection zone. *ApJ* 378, 413. [doi:10.1086/170441](https://doi.org/10.1086/170441)
+- Cincotta P. M., Simó C. (2000). Simple tools to study global dynamics in non-axisymmetric galactic potentials – I. *A&AS* 147, 205. [doi:10.1051/aas:2000108](https://doi.org/10.1051/aas:2000108)
+- Claret A. (1999). *A&A* 350, 56. [ADS](https://ui.adsabs.harvard.edu/abs/1999A%26A...350...56C)
+- Claret A. (2000). A new non-linear limb-darkening law for LTE stellar atmosphere models. *A&A* 363, 1081. [ADS](https://ui.adsabs.harvard.edu/abs/2000A&A...363.1081C)
+- Claret A. (2004). New grids of stellar models including tidal-evolution constants up to carbon burning. I. From 0.8 to 125 Msun at Z = 0.02. *A&A* 424, 919. [doi:10.1051/0004-6361:20040470](https://doi.org/10.1051/0004-6361:20040470)
+- Claret A. (2023). Theoretical tidal evolution constants for stellar models from the pre-main sequence to the white dwarf stage. Apsidal motion constants, moment of inertia, and gravitational potential energy. *A&A* 674, A67. [doi:10.1051/0004-6361/202346250](https://doi.org/10.1051/0004-6361/202346250)
+- Claret A., Bloemen S. (2011). Gravity and limb-darkening coefficients for the Kepler, CoRoT, Spitzer, uvby, UBVRIJHK, and Sloan photometric systems. *A&A* 529, A75. [doi:10.1051/0004-6361/201116451](https://doi.org/10.1051/0004-6361/201116451)
+- Claret A., Giménez A. (2010). The apsidal motion test of the internal stellar structure: comparison between theory and observations. *A&A* 519, A57. [doi:10.1051/0004-6361/201014008](https://doi.org/10.1051/0004-6361/201014008)
+- Conroy K. E. et al. (2020). Physics of Eclipsing Binaries. V. General framework for solving the inverse problem. *ApJS* 250, 34. [doi:10.3847/1538-4365/abb4e2](https://doi.org/10.3847/1538-4365/abb4e2)
+- Cranmer S. R., Saar S. H. (2011). Testing a predictive theoretical model for the mass loss rates of cool stars. *ApJ* 741, 54. [arXiv:1108.4369](https://arxiv.org/abs/1108.4369)
+- Dotter A. (2016). MESA Isochrones and Stellar Tracks (MIST) 0: methods for the construction of stellar isochrones. *ApJS* 222, 8. [doi:10.3847/0067-0049/222/1/8](https://doi.org/10.3847/0067-0049/222/1/8)
+- Douglas S. T. et al. (2017). Poking the Beehive from space: K2 rotation periods for Praesepe. *ApJ* 842, 83. [doi:10.3847/1538-4357/aa6e52](https://doi.org/10.3847/1538-4357/aa6e52)
+- Eastman J., Gaudi B. S., Agol E. (2013). EXOFAST: a fast exoplanetary fitting suite in IDL. *PASP* 125, 83
+- Eggleton P. P. (1983). Approximations to the radii of Roche lobes. *ApJ* 268, 368. [doi:10.1086/160960](https://doi.org/10.1086/160960)
+- Eggleton P. P., Kiseleva L. G., Hut P. (1998). The equilibrium tide model for tidal friction. *ApJ* 499, 853. [doi:10.1086/305670](https://doi.org/10.1086/305670)
+- Eggleton P. P., Kisseleva-Eggleton L. (2006). A mechanism for producing short-period binaries. *Ap&SS* 304, 75. [doi:10.1007/s10509-006-9078-z](https://doi.org/10.1007/s10509-006-9078-z)
+- Ekström S. et al. (2012). Grids of stellar models with rotation. I. Models from 0.8 to 120 Msun at solar metallicity (Z = 0.014). *A&A* 537, A146. [doi:10.1051/0004-6361/201117751](https://doi.org/10.1051/0004-6361/201117751)
+- Fabrycky D., Tremaine S. (2007). Shrinking binary and planetary orbits by Kozai cycles with tidal friction. *ApJ* 669, 1298. [arXiv:0705.4285](https://arxiv.org/abs/0705.4285)
+- Farago F., Laskar J. (2010). High-inclination orbits in the secular quadrupolar three-body problem. *MNRAS* 401, 1189. [doi:10.1111/j.1365-2966.2009.15711.x](https://doi.org/10.1111/j.1365-2966.2009.15711.x)
+- Feiden G. A., Chaboyer B. (2014). Magnetic inhibition of convection and the fundamental properties of low-mass stars. II. Fully convective main-sequence stars. *ApJ* 789, 53. [arXiv:1405.1767](https://arxiv.org/abs/1405.1767)
+- Ford E. B. (2006). Improving the efficiency of Markov chain Monte Carlo for analyzing the orbits of extrasolar planets. *ApJ* 642, 505
+- Foreman-Mackey D., Hogg D. W., Lang D., Goodman J. (2013). emcee: the MCMC hammer. *PASP* 125, 306
+- Fregeau J. M., Cheung P., Portegies Zwart S. F., Rasio F. A. (2004). Stellar collisions during binary–binary and binary–single star interactions. *MNRAS* 352, 1. (FEWBODY)
+- Gajdoš P., Parimucha Š. (2019). OCFit (software for fitting O−C diagrams). *Open Eur. J. Var. Stars* 197, 71.
+- Gazeas K., Stępień K. (2008). Angular momentum and mass evolution of contact binaries. *MNRAS* 390, 1577. [doi:10.1111/j.1365-2966.2008.13844.x](https://doi.org/10.1111/j.1365-2966.2008.13844.x)
+- Giménez A., Bastero M. (1995). An analytical formula for the times of minima of eccentric eclipsing binaries. *Ap&SS* 226, 99. [doi:10.1007/BF00626903](https://doi.org/10.1007/BF00626903)
+- Giménez A., Garcia-Pelayo J. M. (1983). A new method for the analysis of apsidal motion in eclipsing binaries. *Ap&SS* 92, 203. [doi:10.1007/BF00653601](https://doi.org/10.1007/BF00653601)
+- Glanz H., Perets H. B. (2021). Common envelope evolution of eccentric binaries. *MNRAS* 507, 2659. [arXiv:2105.02227](https://arxiv.org/abs/2105.02227)
+- Glebbeek E., Gaburov E., Portegies Zwart S., Pols O. R. (2013). Structure and evolution of high-mass stellar mergers. *MNRAS* 434, 3497
+- Glebbeek E., Pols O. R. (2008). Evolution of stellar collision products in open clusters. II. A grid of low-mass collisions. *A&A* 488, 1017
+- Goldreich P., Nicholson P. D. (1977). Turbulent viscosity and Jupiter's tidal Q. *Icarus* 30, 301. [doi:10.1016/0019-1035(77)90163-4](https://doi.org/10.1016/0019-1035(77)90163-4)
+- Goodman J., Weare J. (2010). Ensemble samplers with affine invariance. *Comm. Appl. Math. Comput. Sci.* 5, 65. [doi:10.2140/camcos.2010.5.65](https://doi.org/10.2140/camcos.2010.5.65)
+- Greenberg D. S., Nonnenmacher M., Macke J. H. (2019). Automatic posterior transformation for likelihood-free inference. *Proc. ICML*, PMLR 97, 2404.
+- Grishin E., Perets H. B. (2022). Chaotic dynamics of wide triples induced by galactic tides: a novel channel for producing compact binaries, mergers, and collisions. *MNRAS* 512, 4993. [doi:10.1093/mnras/stac706](https://doi.org/10.1093/mnras/stac706)
+- Hadjidemetriou J. D. (1963). Two-body problem with variable mass: a new approach. *Icarus* 2, 440. [ADS](https://ui.adsabs.harvard.edu/abs/1963Icar....2..440H)
+- Hamers A. S. et al. (2015). Secular dynamics of hierarchical quadruple systems: the case of a triple system orbited by a fourth body. *MNRAS* 449, 4221. [article](https://academic.oup.com/mnras/article/449/4/4221/1170834)
+- Hamers A. S. et al. (2021). Multiple Stellar Evolution (MSE). *MNRAS* 502, 4479. [doi:10.1093/mnras/stab287](https://doi.org/10.1093/mnras/stab287), [code](https://github.com/hamers/mse)
+- Hamers A. S., Glanz H., Neunteufel P. (2022). A statistical view of the stable and unstable Roche lobe overflow of a tertiary star onto the inner binary in triple systems. *ApJS* 259, 25. [doi:10.3847/1538-4365/ac49e7](https://doi.org/10.3847/1538-4365/ac49e7)
+- Hamers A. S., Lai D. (2017). Secular chaotic dynamics in hierarchical quadruple systems, with applications to hot Jupiters in stellar binaries and triples. *MNRAS* 470, 1657. [doi:10.1093/mnras/stx1319](https://doi.org/10.1093/mnras/stx1319)
+- Hamers A. S., Portegies Zwart S. F. (2016). Secular dynamics of hierarchical multiple systems composed of nested binaries (SecularMultiple). *MNRAS* 459, 2827. [article](https://academic.oup.com/mnras/article/459/3/2827/2595187)
+- Hamers A. S., Samsing J. (2019). Analytic computation of the secular effects of encounters on a binary: features arising from second-order perturbation theory. *MNRAS* 487, 5630. [arXiv:1904.09624](https://arxiv.org/abs/1904.09624)
+- Handler G. (2013). Asteroseismology. In *Planets, Stars and Stellar Systems*, Vol. 4, ed. T. D. Oswalt et al., Springer. [arXiv:1205.6407](https://arxiv.org/abs/1205.6407)
+- Hayashi T., Trani A. A., Suto Y. (2022). Dynamical disruption timescales and chaotic behavior of hierarchical triple systems. *ApJ* 939, 81. [doi:10.3847/1538-4357/ac8f48](https://doi.org/10.3847/1538-4357/ac8f48)
+- Hayashi T., Trani A. A., Suto Y. (2023). Lagrange versus Lyapunov stability of hierarchical triple systems: dependence on the mutual inclination between inner and outer orbits. *ApJ* 943, 58. [doi:10.3847/1538-4357/acac1e](https://doi.org/10.3847/1538-4357/acac1e)
+- Heisler J., Tremaine S. (1986). The influence of the Galactic tidal field on the Oort comet cloud. *Icarus* 65, 13. [ADS](https://ui.adsabs.harvard.edu/abs/1986Icar...65...13H)
+- Henyey L. G., Greenstein J. L. (1941). Diffuse radiation in the Galaxy. *ApJ* 93, 70. [doi:10.1086/144246](https://doi.org/10.1086/144246)
+- Hilditch R. W. (2001). *An Introduction to Close Binary Stars*. Cambridge University Press.
+- Hills J. G. (1983). The effects of sudden mass loss and a random kick velocity produced in a supernova explosion on the dynamics of a binary star of arbitrary orbital eccentricity. *ApJ* 267, 322. [ADS](https://ui.adsabs.harvard.edu/abs/1983ApJ...267..322H)
+- Hjellming M. S., Webbink R. F. (1987). Thresholds for rapid mass transfer in binary systems. I. Polytropic models. *ApJ* 318, 794. [doi:10.1086/165412](https://doi.org/10.1086/165412)
+- Horvat M. et al. (2018). Physics of Eclipsing Binaries. III. Spin–orbit misalignment. *ApJS* 237, 26. [doi:10.3847/1538-4365/aacd0f](https://doi.org/10.3847/1538-4365/aacd0f)
+- Hurley J. R., Pols O. R., Tout C. A. (2000). Comprehensive analytic formulae for stellar evolution as a function of mass and metallicity. *MNRAS* 315, 543. [doi:10.1046/j.1365-8711.2000.03426.x](https://doi.org/10.1046/j.1365-8711.2000.03426.x)
+- Hurley J. R., Tout C. A., Pols O. R. (2002). Evolution of binary stars and the effect of tides on binary populations. *MNRAS* 329, 897. [doi:10.1046/j.1365-8711.2002.05038.x](https://doi.org/10.1046/j.1365-8711.2002.05038.x)
+- Hut P. (1981). Tidal evolution in close binary systems. *A&A* 99, 126. [ADS](https://ui.adsabs.harvard.edu/abs/1981A&A....99..126H)
+- Hut P., Bahcall J. N. (1983). Binary–single star scattering. I. Numerical experiments for equal masses. *ApJ* 268, 319.
+- Irwin J. B. (1952). The determination of a light-time orbit. *ApJ* 116, 211. [doi:10.1086/145604](https://doi.org/10.1086/145604)
+- Jeans J. H. (1924). Cosmogonic problems associated with a secular decrease of mass. *MNRAS* 85, 2. [ADS](https://ui.adsabs.harvard.edu/abs/1924MNRAS..85....2J)
+- Jermyn A. S. et al. (2023). Modules for Experiments in Stellar Astrophysics (MESA): time-dependent convection, energy conservation, automatic differentiation, and infrastructure. *ApJS* 265, 15. [doi:10.3847/1538-4365/acae8d](https://doi.org/10.3847/1538-4365/acae8d)
+- Kaib N. A., Raymond S. N., Duncan M. (2013). Planetary system disruption by Galactic perturbations to wide binary stars. *Nature* 493, 381.
+- Kaplan D. L. (2010). Mass constraints from eclipse timing in double white dwarf binaries. *ApJ* 717, L108. [doi:10.1088/2041-8205/717/2/L108](https://doi.org/10.1088/2041-8205/717/2/L108)
+- Kish L. (1965). *Survey Sampling*. Wiley, New York (effective sample size).
+- Kolář J. et al. (2025). Period ratios and observation of noticeable resonance at 3:2 for 2+2 quadruple systems. *MNRAS* 538, 1160. [doi:10.1093/mnras/staf364](https://doi.org/10.1093/mnras/staf364)
+- Kolář J. et al. (2026). Study of doubly eclipsing quadruples – I. Methodology and results for 10 Northern sky systems. *MNRAS* 547, 1. [doi:10.1093/mnras/stag417](https://doi.org/10.1093/mnras/stag417)
+- Kopal Z. (1959). *Close Binary Systems*. Chapman & Hall, London.
+- Kozai Y. (1962). Secular perturbations of asteroids with high inclination and eccentricity. *AJ* 67, 591. [doi:10.1086/108790](https://doi.org/10.1086/108790)
+- Kreidberg L. (2015). batman: BAsic Transit Model cAlculatioN in Python. *PASP* 127, 1161. [doi:10.1086/683602](https://doi.org/10.1086/683602)
+- Kwee K. K. (1958). Investigations of variations in the period of sixteen bright short-periodic eclipsing binary stars. *BAN* 14, 131. [ADS](https://ui.adsabs.harvard.edu/abs/1958BAN....14..131K)
+- Lakshminarayanan B., Pritzel A., Blundell C. (2017). Simple and scalable predictive uncertainty estimation using deep ensembles. *Advances in Neural Information Processing Systems* 30.
+- Larwood J. D., Nelson R. P., Papaloizou J. C. B., Terquem C. (1996). The tidally induced warping, precession and truncation of accretion discs in binary systems: three-dimensional simulations. *MNRAS* 282, 597. [doi:10.1093/mnras/282.2.597](https://doi.org/10.1093/mnras/282.2.597)
+- Leconte J., Chabrier G., Baraffe I., Levrard B. (2010). Is tidal heating sufficient to explain bloated exoplanets? Consistent calculations accounting for finite initial eccentricity. *A&A* 516, A64. [doi:10.1051/0004-6361/201014337](https://doi.org/10.1051/0004-6361/201014337)
+- Leigh N. W. C., Toonen S., Portegies Zwart S. F., Perna R. (2020). Mergers of equal-mass binaries with compact object companions from mass transfer in triple star systems. *MNRAS* 496, 1819. [arXiv:2005.07536](https://arxiv.org/abs/2005.07536)
+- Lidov M. L. (1962). The evolution of orbits of artificial satellites of planets under the action of gravitational perturbations of external bodies. *Planet. Space Sci.* 9, 719. [doi:10.1016/0032-0633(62)90129-0](https://doi.org/10.1016/0032-0633(62)90129-0)
+- Liu B., Muñoz D. J., Lai D. (2015). Suppression of extreme orbital evolution in triple systems with short-range forces. *MNRAS* 447, 747.
+- Loeb A., Gaudi B. S. (2003). Periodic flux variability of stars due to the reflex Doppler effect induced by planetary companions. *ApJ* 588, L117. [doi:10.1086/375551](https://doi.org/10.1086/375551)
+- Lombardi J. C. et al. (2002). Stellar collisions and the interior structure of blue stragglers. *ApJ* 568, 939
+- Lu T., Rein H., Tamayo D., Hadden S., Mardling R., Millholland S. C., Laughlin G. (2023). Self-consistent spin, tidal, and dynamical equations of motion in the REBOUNDx framework. *ApJ* 948, 41. [arXiv:2303.00006](https://arxiv.org/abs/2303.00006)
+- Lucy L. B. (1968). The structure of contact binaries. *ApJ* 151, 1123. [doi:10.1086/149510](https://doi.org/10.1086/149510)
+- Lucy L. B., Sweeney M. A. (1971). Spectroscopic binaries with circular orbits. *AJ* 76, 544
+- Lucy L. B., Wilson R. E. (1979). Observational tests of theories of contact binaries. *ApJ* 231, 502
+- Luo L., Katz B., Dong S. (2016). Double-averaging can fail to characterize the long-term evolution of Lidov–Kozai cycles and derivation of an analytical correction. *MNRAS* 458, 3060.
+- Maeder A. (2009). *Physics, Formation and Evolution of Rotating Stars*. Springer, Berlin.
+- Mandel K., Agol E. (2002). Analytic light curves for planetary transit searches. *ApJ* 580, L171. [doi:10.1086/345520](https://doi.org/10.1086/345520)
+- Mardling R. A., Aarseth S. J. (2001). Tidal interactions in star cluster simulations. *MNRAS* 321, 398. [doi:10.1046/j.1365-8711.2001.03974.x](https://doi.org/10.1046/j.1365-8711.2001.03974.x)
+- Martin R. G., Lubow S. H. (2017). Polar alignment of a protoplanetary disk around an eccentric binary. *ApJL* 835, L28. [doi:10.3847/2041-8213/835/2/L28](https://doi.org/10.3847/2041-8213/835/2/L28)
+- Mathis S. (2015). Variation of tidal dissipation in the convective envelope of low-mass stars along their evolution. *A&A* 580, L3. [doi:10.1051/0004-6361/201526472](https://doi.org/10.1051/0004-6361/201526472)
+- Matt S. P. et al. (2015). The mass-dependence of angular momentum evolution in Sun-like stars. *ApJL* 799, L23. [arXiv:1412.4786](https://arxiv.org/abs/1412.4786)
+- Maxted P. F. L. (2016). ellc: a fast, flexible light curve model for detached eclipsing binary stars and transiting exoplanets. *A&A* 591, A111. [doi:10.1051/0004-6361/201628579](https://doi.org/10.1051/0004-6361/201628579)
+- McLaughlin D. B. (1924). Some results of a spectrographic study of the Algol system. *ApJ* 60, 22. [doi:10.1086/142826](https://doi.org/10.1086/142826)
+- McMillan S. L. W., McDermott P. N., Taam R. E. (1987). The formation and evolution of tidal binary systems. *ApJ* 318, 261.
+- Meibom S., Mathieu R. D. (2005). A robust measure of tidal circularization in coeval binary populations: the solar-type spectroscopic binary population in the open cluster M35. *ApJ* 620, 970. [doi:10.1086/427082](https://doi.org/10.1086/427082)
+- Mignard F. (1979). The evolution of the lunar orbit revisited, I. *Moon Planets* 20, 301.
+- Mikulášek Z. (2015). Phenomenological modelling of eclipsing system light curves. *A&A* 584, A8. [doi:10.1051/0004-6361/201425244](https://doi.org/10.1051/0004-6361/201425244)
+- de Mink S. E., Pols O. R., Hilditch R. W. (2007). Efficiency of mass transfer in massive close binaries. Tests from double-lined eclipsing binaries in the SMC. *A&A* 467, 1181
+- Morris S. L. (1985). The ellipsoidal variable stars. *ApJ* 295, 143. [doi:10.1086/163359](https://doi.org/10.1086/163359)
+- Morris S. L., Naftilan S. A. (1993). The equations of ellipsoidal star light curves. *ApJ* 419, 344. [doi:10.1086/173487](https://doi.org/10.1086/173487)
+- Murphy S. J., Bedding T. R., Shibahashi H., Kurtz D. W., Kjeldsen H. (2014). Finding binaries among Kepler pulsating stars from phase modulation of their pulsations. *MNRAS* 441, 2515. [arXiv:1404.5649](https://arxiv.org/abs/1404.5649)
+- Murray C. D., Dermott S. F. (1999). *Solar System Dynamics*. Cambridge University Press.
+- Mushkin J., Katz B. (2020). Random-walk model of the energy exchange and disruption of unstable hierarchical triples. *MNRAS* 498, 665 (cited after Hayashi et al. 2022).
+- Naoz S. (2016). The eccentric Kozai–Lidov effect and its applications. *ARA&A* 54, 441. [doi:10.1146/annurev-astro-081915-023315](https://doi.org/10.1146/annurev-astro-081915-023315)
+- Naoz S., Farr W. M., Lithwick Y., Rasio F. A., Teyssandier J. (2013). Secular dynamics in hierarchical three-body systems. *MNRAS* 431, 2155. [arXiv:1107.2414](https://arxiv.org/abs/1107.2414)
+- Nieuwenhuijzen H., de Jager C. (1990). Parametrization of stellar rates of mass loss as functions of the fundamental stellar parameters M, L, and R. *A&A* 231, 134.
+- Nugis T., Lamers H. J. G. L. M. (2000). Mass-loss rates of Wolf-Rayet stars as a function of stellar parameters. *A&A* 360, 227. [ADS](https://ui.adsabs.harvard.edu/abs/2000A&A...360..227N)
+- Ogilvie G. I. (2013). Tides in rotating barotropic fluid bodies: the contribution of inertial waves and the role of internal structure. *MNRAS* 429, 613. [doi:10.1093/mnras/sts362](https://doi.org/10.1093/mnras/sts362)
+- Papaloizou J. C. B., Larwood J. D. (2000). On the orbital evolution and growth of protoplanets embedded in a gaseous disc. *MNRAS* 315, 823. [doi:10.1046/j.1365-8711.2000.03466.x](https://doi.org/10.1046/j.1365-8711.2000.03466.x)
+- Papamakarios G., Murray I. (2016). Fast ε-free inference of simulation models with Bayesian conditional density estimation. *Advances in Neural Information Processing Systems* 29.
+- Paxton B. et al. (2011). Modules for Experiments in Stellar Astrophysics (MESA). *ApJS* 192, 3. [doi:10.1088/0067-0049/192/1/3](https://doi.org/10.1088/0067-0049/192/1/3)
+- Pejcha O., Cagaš P., Landri C., Fausnaugh M. M., De Rosa G., Prieto J. L., Henzl Z., Pešta M. (2022). The complex dynamical past and future of double eclipsing binary CzeV343: misaligned orbits and period resonance. *A&A* 667, A53. [doi:10.1051/0004-6361/202244335](https://doi.org/10.1051/0004-6361/202244335)
+- Pejcha O., Antognini J. M., Shappee B. J., Thompson T. A. (2013). Greatly enhanced eccentricity oscillations in quadruple systems composed of two binaries. *MNRAS* 435, 943. [doi:10.1093/mnras/stt1281](https://doi.org/10.1093/mnras/stt1281)
+- Perets H. B., Kratter K. M. (2012). The triple evolution dynamical instability: stellar collisions in the field and the formation of exotic binaries. *ApJ* 760, 99. [doi:10.1088/0004-637X/760/2/99](https://doi.org/10.1088/0004-637X/760/2/99)
+- Peters P. C. (1964). Gravitational radiation and the motion of two point masses. *Phys. Rev.* 136, B1224. [doi:10.1103/PhysRev.136.B1224](https://doi.org/10.1103/PhysRev.136.B1224)
+- Pols O. R., Schröder K.-P., Hurley J. R., Tout C. A., Eggleton P. P. (1998). Stellar evolution models for Z = 0.0001 to 0.03. *MNRAS* 298, 525. [doi:10.1046/j.1365-8711.1998.01658.x](https://doi.org/10.1046/j.1365-8711.1998.01658.x)
+- Pont F., Zucker S., Queloz D. (2006). The effect of red noise on planetary transit detection. *MNRAS* 373, 231
+- Poro A. et al. (2024). Updated period–luminosity relations of δ Scuti stars (2375 Galactic stars, Gaia DR3 and TESS). [arXiv:2401.01091](https://arxiv.org/abs/2401.01091)
+- Portegies Zwart S. F., Meinen A. T. (1993). Quick method for calculating energy dissipation in tidal interaction. *A&A* 280, 174.
+- Postnov K. A., Yungelson L. R. (2014). The evolution of compact binary star systems. *Living Rev. Relativ.* 17, 3. [arXiv:1403.4754](https://arxiv.org/abs/1403.4754)
+- Press W. H., Teukolsky S. A. (1977). On formation of close binaries by two-body tidal capture. *ApJ* 213, 183. [doi:10.1086/155143](https://doi.org/10.1086/155143)
+- Prša A. et al. (2016). Physics of Eclipsing Binaries. II. Toward the increased model fidelity. *ApJS* 227, 29. [doi:10.3847/0067-0049/227/2/29](https://doi.org/10.3847/0067-0049/227/2/29)
+- Quarles B., Satyal S., Kostov V., Kaib N., Haghighipour N. (2018). Stability limits of circumbinary planets: is there a pile-up in the Kepler CBPs? *ApJ* 856, 150. [grid](https://github.com/saturnaxis/CBP_stability)
+- Rasio F. A. (1995). The minimum mass ratio of W Ursae Majoris binaries. *ApJ* 444, L41. [doi:10.1086/187855](https://doi.org/10.1086/187855)
+- Rasio F. A., Tout C. A., Lubow S. H., Livio M. (1996). Tidal decay of close planetary orbits. *ApJ* 470, 1187. [doi:10.1086/177941](https://doi.org/10.1086/177941)
+- Reeve D. C., Howarth I. D. (2016). Non-LTE limb-darkening coefficients for hot stars. *MNRAS* 456, 1294. [ADS](https://ui.adsabs.harvard.edu/abs/2016MNRAS.456.1294R)
+- Reimers D. (1975). Circumstellar absorption lines and mass loss from red giants. *Mém. Soc. R. Sci. Liège* 8, 369.
+- Rein H., Liu S.-F. (2012). REBOUND: an open-source multi-purpose N-body code for collisional dynamics. *A&A* 537, A128. [doi:10.1051/0004-6361/201118085](https://doi.org/10.1051/0004-6361/201118085)
+- Rein H., Spiegel D. S. (2015). IAS15: a fast, adaptive, high-order integrator for gravitational dynamics. *MNRAS* 446, 1424. [doi:10.1093/mnras/stu2164](https://doi.org/10.1093/mnras/stu2164)
+- Ricker G. R. et al. (2015). Transiting Exoplanet Survey Satellite. *JATIS* 1, 014003. [doi:10.1117/1.JATIS.1.1.014003](https://doi.org/10.1117/1.JATIS.1.1.014003)
+- Riello M. et al. (2021). Gaia Early Data Release 3: photometric content and validation. *A&A* 649, A3. [doi:10.1051/0004-6361/202039587](https://doi.org/10.1051/0004-6361/202039587)
+- Rossiter R. A. (1924). On the detection of an effect of rotation during eclipse in the velocity of the brighter component of beta Lyrae, and on the constancy of velocity of this system. *ApJ* 60, 15. [doi:10.1086/142825](https://doi.org/10.1086/142825)
+- Rucinski S. M. (1969). The proximity effects in close binary systems. II. The bolometric reflection effect for stars with deep convective envelopes. *Acta Astron.* 19, 245. [ADS](https://ui.adsabs.harvard.edu/abs/1969AcA....19..245R)
+- Rucinski S. M. (1973). The W UMa-type systems as contact binaries. I. Two methods of geometrical elements determination. Degree of contact. *Acta Astron.* 23, 79
+- Schneider F. R. N., Podsiadlowski Ph., Langer N., Castro N., Fossati L. (2016). Rejuvenation of stellar mergers and the origin of magnetic fields in massive stars. *MNRAS* 457, 2355. [arXiv:1601.05084](https://arxiv.org/abs/1601.05084)
+- Schneider F. R. N. et al. (2019). Stellar mergers as the origin of magnetic massive stars. *Nature* 574, 211
+- Sepinsky J. F., Willems B., Kalogera V. (2007). Equipotential surfaces and Lagrangian points in nonsynchronous, eccentric binary and planetary systems. *ApJ* 660, 1624.
+- Skumanich A. (1972). Time scales for Ca II emission decay, rotational braking, and lithium depletion. *ApJ* 171, 565.
+- Soberman G. E., Phinney E. S., van den Heuvel E. P. J. (1997). Stability criteria for mass transfer in binary stellar evolution. *A&A* 327, 620. [arXiv:astro-ph/9703016](https://arxiv.org/abs/astro-ph/9703016)
+- Söderhjelm S. (1975). The three-body problem and eclipsing binaries. *A&A* 42, 229. [ADS](https://ui.adsabs.harvard.edu/abs/1975A&A....42..229S)
+- Sterne T. E. (1939). Apsidal motion in binary stars. *MNRAS* 99, 451. [doi:10.1093/mnras/99.5.451](https://doi.org/10.1093/mnras/99.5.451)
+- Stone N. C., Leigh N. W. C. (2019). A statistical solution to the chaotic, non-hierarchical three-body problem. *Nature* 576, 406. [doi:10.1038/s41586-019-1833-8](https://www.nature.com/articles/s41586-019-1833-8)
+- Talts S., Betancourt M., Simpson D., Vehtari A., Gelman A. (2018). Validating Bayesian inference algorithms with simulation-based calibration. arXiv:1804.06788.
+- Tamayo D., Rein H., Shi P., Hernandez D. M. (2020). REBOUNDx: a library for adding conservative and dissipative forces to otherwise symplectic N-body integrations. *MNRAS* 491, 2885. [article](https://academic.oup.com/mnras/article/491/2/2885/5594029); [effects](https://reboundx.readthedocs.io/en/latest/effects.html)
+- Tejero-Cantero A. et al. (2020). sbi: a toolkit for simulation-based inference. *J. Open Source Softw.* 5, 2505. [doi:10.21105/joss.02505](https://doi.org/10.21105/joss.02505)
+- Tian Y. P., Xiang F. Y., Tao X. (2009). *Ap&SS* 319, 119 (thin-shell model of the Applegate mechanism).
+- Tokovinin A. (2018). The updated Multiple Star Catalog. *ApJS* 235, 6. [doi:10.3847/1538-4365/aaa1a5](https://doi.org/10.3847/1538-4365/aaa1a5)
+- Tokovinin A., Moe M. (2020). Formation of close binaries by disc fragmentation and migration, and its statistical modelling. *MNRAS* 491, 5158.
+- Toonen S., Boekholt T. C. N., Portegies Zwart S. (2022). Stellar triples on the edge. Comprehensive overview of the evolution of destabilised triples leading to stellar and binary exotica. *A&A* 661, A61. [doi:10.1051/0004-6361/202141991](https://doi.org/10.1051/0004-6361/202141991)
+- Toonen S., Hamers A., Portegies Zwart S. (2016). The evolution of hierarchical triple star-systems. *Comput. Astrophys. Cosmol.* 3, 6. [doi:10.1186/s40668-016-0019-0](https://doi.org/10.1186/s40668-016-0019-0)
+- Tout C. A., Aarseth S. J., Pols O. R., Eggleton P. P. (1997). Rapid binary star evolution for N-body simulations and population synthesis. *MNRAS* 291, 732.
+- Tout C. A., Pols O. R., Eggleton P. P., Han Z. (1996). Zero-age main-sequence radii and luminosities as analytic functions of mass and metallicity. *MNRAS* 281, 257. [doi:10.1093/mnras/281.1.257](https://doi.org/10.1093/mnras/281.1.257)
+- Trabucchi M., Wood P. R., Mowlavi N., Pastorelli G., Marigo P., Rimoldini L., Eyer L. (2021). Modelling long-period variables – II. Fundamental mode pulsation in the non-linear regime. *MNRAS* 500, 1575. [doi:10.1093/mnras/staa3356](https://doi.org/10.1093/mnras/staa3356)
+- Veras D., Wyatt M. C., Mustill A. J., Bonsor A., Eldridge J. J. (2011). The great escape: how exoplanets and smaller bodies desert dying stars. *MNRAS* 417, 2104. [arXiv:1107.1239](https://arxiv.org/abs/1107.1239)
+- Vink J. S., de Koter A., Lamers H. J. G. L. M. (2001). Mass-loss predictions for O and B stars as a function of metallicity. *A&A* 369, 574. [arXiv:astro-ph/0101509](https://arxiv.org/abs/astro-ph/0101509)
+- Vokrouhlický D. (2016). Secular dynamics of gravitationally bound pair of binaries. *MNRAS* 461, 3964. [doi:10.1093/mnras/stw1596](https://doi.org/10.1093/mnras/stw1596)
+- Völschow M. et al. (2016). Eclipsing time variations in close binary systems: planetary hypothesis vs. Applegate mechanism. *A&A* 587, A34. [doi:10.1051/0004-6361/201527333](https://doi.org/10.1051/0004-6361/201527333)
+- de Vries N., Portegies Zwart S., Figueira J. (2014). The evolution of triples with a Roche lobe filling outer star. *MNRAS* 438, 1909. [arXiv:1309.1475](https://arxiv.org/abs/1309.1475)
+- Vynatheya P., Hamers A. S., Mardling R. A., Bellinger E. P. (2022). Algebraic and machine learning approach to hierarchical triple-star stability. *MNRAS* 516, 4146. [arXiv:2207.03151](https://arxiv.org/abs/2207.03151)
+- Vynatheya P., Mardling R. A., Hamers A. S. (2023). Quadruple-star systems are not always nested triples: a machine learning approach to dynamical stability. *MNRAS* 525, 2388. [arXiv:2301.09930](https://arxiv.org/abs/2301.09930)
+- Webbink R. F. (1984). Double white dwarfs as progenitors of R Coronae Borealis stars and type I supernovae. *ApJ* 277, 355. [doi:10.1086/161701](https://doi.org/10.1086/161701)
+- Weisberg J. M., Huang Y. (2016). Relativistic measurements from timing the binary pulsar PSR B1913+16. *ApJ* 829, 55. [doi:10.3847/0004-637X/829/1/55](https://doi.org/10.3847/0004-637X/829/1/55)
+- Wilson E. B. (1927). Probable inference, the law of succession, and statistical inference. *J. Am. Stat. Assoc.* 22, 209. [doi:10.1080/01621459.1927.10502953](https://doi.org/10.1080/01621459.1927.10502953)
+- Wilson R. E., Devinney E. J. (1971). Realization of accurate close-binary light curves: application to MR Cygni. *ApJ* 166, 605. [doi:10.1086/150986](https://doi.org/10.1086/150986)
+- Wilson R. E., Sofia S. (1976). Effects of tidal distortion on binary-star velocity curves and ellipsoidal variation. *ApJ* 203, 182. [doi:10.1086/154062](https://doi.org/10.1086/154062)
+- Winn J. N. et al. (2008). The Transit Light Curve Project. IX. Evidence for a smaller radius of the exoplanet XO-3b. *ApJ* 683, 1076
+- Wu T., Li Y., Deng Z.-M. (2018). A new C-D-like diagram for SPB stars: the variations of period spacing as a signature of evolutionary status. [arXiv:1809.02620](https://arxiv.org/abs/1809.02620)
+- Zahn J.-P. (1966). Les marées dans une étoile double serrée. *Ann. Astrophys.* 29, 313, 489, 565.
+- Zahn J.-P. (1975). The dynamical tide in close binaries. *A&A* 41, 329. [ADS](https://ui.adsabs.harvard.edu/abs/1975A&A....41..329Z)
+- Zahn J.-P. (1977). Tidal friction in close binary stars. *A&A* 57, 383. [ADS](https://ui.adsabs.harvard.edu/abs/1977A&A....57..383Z)
+- Zahn J.-P. (1989). Tidal evolution of close binary stars. I. Revisiting the theory of the equilibrium tide. *A&A* 220, 112. [ADS](https://ui.adsabs.harvard.edu/abs/1989A%26A...220..112Z)
+- Zahn J.-P., Bouchet L. (1989). Tidal evolution of close binary stars. II. Orbital circularization of late-type binaries. *A&A* 223, 112. [ADS](https://ui.adsabs.harvard.edu/abs/1989A&A...223..112Z)
+- Zanazzi J. J., Lai D. (2018). Inclination evolution of protoplanetary disks around eccentric binaries. *MNRAS* 473, 603. [doi:10.1093/mnras/stx2375](https://doi.org/10.1093/mnras/stx2375)
+- Zanazzi J. J., Wu Y. (2021). Tidal circularization of binaries by resonance locking I: the importance of the pre-main-sequence. *AJ* 161, 263. [arXiv:2102.05668](https://arxiv.org/abs/2102.05668)
+- Zasche P., Vokrouhlický D., Wolf M., Kučáková H., Kára J., Uhlař R., Mašek M., Henzl Z., Cagaš P. (2019). Doubly eclipsing systems. *A&A* 630, A128. [doi:10.1051/0004-6361/201936328](https://doi.org/10.1051/0004-6361/201936328)
+- Zasche P., Vokrouhlický D., Barlow B. N., Mašek M. (2023a). V907 Sco switched to the eclipsing mode again. *AJ* 165, 81. [doi:10.3847/1538-3881/acae95](https://doi.org/10.3847/1538-3881/acae95)
+- Zasche P., Henzl Z., Mašek M., Uhlař R., Kára J., Merc J., Kučáková H. (2023b). Detection of seven 2+2 doubly eclipsing quadruple systems. *A&A* 675, A113. [doi:10.1051/0004-6361/202346848](https://doi.org/10.1051/0004-6361/202346848)
+- Zasche P., Henzl Z., Merc J., Kára J., Kučáková H. (2024). Eight new 2+2 doubly eclipsing quadruple systems detected. *A&A* 687, A6. [doi:10.1051/0004-6361/202450400](https://doi.org/10.1051/0004-6361/202450400)
+- Zasche P., Henzl Z., Mašek M., et al. (2025). Three new 2+2 quadruple systems with changing inclination. *MNRAS* 539, 1015. [doi:10.1093/mnras/staf495](https://doi.org/10.1093/mnras/staf495)
+- von Zeipel H. (1924). The radiative equilibrium of a rotating system of gaseous masses. *MNRAS* 84, 665

@@ -1,0 +1,11 @@
+# Illustrative 2+2 quadruple (values are made up, not a real system).
+# Units: Msun, day, AU, deg, Rsun, yr. Elements are relative to the sky plane.
+topology: "2+2"
+masses: {m1: 1.2, m2: 1.0, m3: 0.9, m4: 0.8}
+orbits:
+  A:   {P: 6.74, e: 0.05, i: 85.0, Omega: 0.0,  omega: 90.0,  M0: 0.0}
+  B:   {P: 2.68, e: 0.02, i: 60.0, Omega: 40.0, omega: 10.0,  M0: 120.0}
+  out: {P: 500,  e: 0.3,  i: 70.0, Omega: 10.0, omega: 120.0, M0: 45.0}
+stars: {}            # radii default to a rough main-sequence relation
+physics: {gr: true}
+run: {t_max_yr: 200, n_output: 2000}

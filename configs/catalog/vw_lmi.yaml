@@ -1,0 +1,29 @@
+# VW LMi: 2+2 quadruple of F/G stars in which one pair is a W UMa contact binary (the two stars
+# share a common envelope, 0.478 d) and the other a detached, non-eclipsing pair (7.93 d), on a
+# 355-d mutual orbit. Hierarchy (1+2) + (3+4) = SWINGERsim preset 2+2.
+# Source: Pribulla T. et al. 2020, MNRAS 494, 178 (doi:10.1093/mnras/staa699), Table 2
+#   (MUSICOS column): contact pair P = 0.477551 d (i = 78.1 deg, Djurasevic et al. 2013);
+#   detached pair P = 7.9325 d, e = 0.035-0.040, omega_3 = 1.569 rad = 89.9 deg (relative orbit
+#   +180 = 269.9), i = 78.2, apsidal motion 0.0800 +- 0.0015 rad/yr (U = 78.6 +- 1.6 yr);
+#   outer P = 354.96 d, e = 0.087, omega_12 = 2.14 rad = 122.6 deg (relative orbit +180 =
+#   302.6), i = 71.5; masses adopted for their N-body runs 1.563/0.674/0.954/0.936 Msun; mutual
+#   inclination of the 34 and outer orbits < 10 deg. Radii of the contact pair 1.69/1.18 Rsun
+#   (Wikipedia compilation); Teff 6506 K.
+# ASSUMED: all nodes equal (nearly coplanar, as found by Pribulla et al.); radii of the detached
+#   pair from the ZAMS model; phases. The contact pair overfills its Roche lobes by
+#   construction: the roche_overflow event is expected and does not stop the run.
+# Why: the apsidal motion of the detached pair is driven mainly by the contact pair on the
+#   355-d orbit - a clean test of the third-body apsidal motion in a 2+2.
+# Validation: measured apsidal period of binary B in the summary vs. U = 78.6 +- 1.6 yr.
+#   swingersim run configs/catalog/vw_lmi.yaml -o output/catalog/vw_lmi.h5
+topology: "2+2"
+masses: {m1: 1.563, m2: 0.674, m3: 0.954, m4: 0.936}
+orbits:
+  A:   {P: 0.477551, e: 0.0, i: 78.1}
+  B:   {P: 7.9325, e: 0.037, i: 78.2, omega: 269.9}
+  out: {P: 354.96, e: 0.087, i: 71.5, omega: 302.6}
+stars:
+  m1: {R: 1.69, Teff: 6506}
+  m2: {R: 1.18}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 200, n_output: 4001, extremes_every_orbits: 50}

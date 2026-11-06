@@ -1,0 +1,35 @@
+# QX Cas - an eclipsing pair whose eclipses have disappeared (SQUADRA test, part III).
+# Path 1 "physics -> model -> light". Inner pair (B1.5 V + B3 IV, member of NGC 7790, 3.3 kpc): P = 6.00471 d (GCVS),
+#   e = 0.21, masses 5.5 and 6.5 Msun and fractional radii 0.11 / 0.16 as published (Bonaro et al. 2009 BAAS 41, 301;
+#   Guinan et al. 2012 JAAVSO 40, 467, Fig. 2; a = 31.8 Rsun -> R = 3.5 / 5.1 Rsun), Teff ~24000 / 18000 K (spectral
+#   types). omega is not published. The secondary minimum lies at phase 0.37 (Bonaro et al. 2009); the 33 secondary
+#   minima of 1939-1974 in minima_varastro.csv give 0.372 +- 0.002 (no significant drift: -0.008 +- 0.008 in 40 yr).
+#   To first order (i ~ 90 deg) e cos(omega_1) = (pi/2)(0.372 - 0.5) = -0.20, i.e. omega_1 ~ 160 or 200 deg in the usual
+#   convention, omega ~ 340 or 20 deg in the SWINGERsim one (omega + 180). The third body below turns the apsides by
+#   ~1.5 deg/yr, so omega is set at t = 0 such that the model's secondary phases at the epochs of the 1939-1974 minima
+#   fit them best: omega = 30 deg gives a mean of 0.380 (rms against the data 0.013, scatter of the data alone 0.011);
+#   340 deg gives 0.421 and is excluded. The sign of e sin(omega) is otherwise not constrained (no eclipse durations).
+#   The model phase changes by -0.008 over 1939-1974 (data: -0.008 +- 0.008). M0 = 0 is not anchored to the minima.
+# Inclination: 85.4 deg (~1960), 82 (~1980), ~75 (2003-2008, no eclipses); TESS 2019-2024: no eclipses (< 0.5 %).
+# The third body is NOT known. This configuration is a HYPOTHESIS that reproduces the three inclinations (chi^2 = 1.9:
+#   model 85.5, 82.0, 72.2 deg; eclipses, grazing ones included, absent 1996.2-2102.7):
+#   m3 = 3 Msun on a 300-d orbit (e = 0.2), mutual inclination J ~ 16.5 deg, invariable plane at i ~ 72 deg
+#   (found by a scan over P3 = 200-900 d; 300-430 d fit, 200 d and >= 600 d do not). Its light-time effect would be only
+#   ~0.003 d - invisible in the photographic minima (scatter ~0.1 d). See qx_cas_ensemble.yaml for the family of all
+#   third bodies compatible with the data and qx_cas_fit.yaml for the fit.
+# t = 0 = BJD 2444500 (1980.6).
+# Use: swingersim run qx_cas_published.yaml (150 yr: i(t), when eclipses return), swingersim run ... --t-max-yr -60,
+#      swingersim lightcurve ... --days 30 --cadence-min 10 --band V (no eclipses today).
+topology: custom
+hierarchy: {out: [inner, m3], inner: [m1, m2]}
+masses: {m1: 5.5, m2: 6.5, m3: 3.0}
+orbits:
+  inner: {P: 6.00471, e: 0.21, i: 82.0, Omega: -8.54, omega: 30.0, M0: 0.0}
+  out:   {P: 300.0,   e: 0.2,  i: 69.37, Omega: 2.44, omega: 0.0,   M0: 0.0}
+stars:
+  m1: {R: 3.5, Teff: 24000}
+  m2: {R: 5.1, Teff: 18000}
+  m3: {R: 2.0, Teff: 12000}
+stellar_model: {kind: mist, age_myr: 60.0, feh: 0.0, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 150, n_output: 3001, extremes_every_orbits: 20}

@@ -1,0 +1,63 @@
+# as tic120362137_fit_lc.yaml, but with Roche surfaces of the 3.28-d pair (shapes: auto).
+# tic120362137_fit_rv.yaml plus light curves (TESS third-body eclipses (Borkovits et al. 2026, Suppl. Data 1 cut to Suppl. Fig. 3)) in the same fit: minima, radial velocities
+# and the light curve together; inclinations and radii free as well. The light curve of each segment is
+# calibrated linearly (scale for extra light, zero point, trend).
+# tic120362137_fit_priors.yaml plus the measured radial velocities (Borkovits et al. (2026), Supplementary Data 7-9) fitted together with the
+# minima: the masses of the stars with velocities, gamma and the zero points of the
+# instruments are free as well.
+# tic120362137_fit.yaml with error correction per source (jitter), outlier rejection and Gaussian priors
+# from the published solution. The priors keep the orbits that the minima constrain
+# only weakly at the published values within their errors; periods of the eclipsing pairs get no
+# prior (the published osculating periods are not the mean periods of SWINGERsim, see the SQUADRA test).
+# TIC 120362137 (3+1, Borkovits et al. 2026): swingersim fit, stage 2 (joint N-body model of the times of minima).
+# Start values: tic120362137_anchored.yaml (the published solution with the inner periods and phases
+# anchored to the minima). Free: inner.P, inner.M0, inner.ecosw, inner.esinw, mid.P, mid.M0, mid.e, mid.omega, out.P, out.M0, out.e, out.omega.
+# Why these: the 147 TESS minima 2019-2024 of the 3.3-d pair carry the 51-d and 1046-d ETVs; only the inner pair eclipses, so the middle and outer orbits are seen through its timing alone; masses, inclinations and nodes stay at the published photodynamical solution.
+# Run: swingersim fit configs/squadra_test/tic120362137_fit.yaml   (results in output/squadra_test/tic120362137/fit/)
+# t = 0 of this configuration = BJD 2458683.3.
+topology: "3+1"
+masses: {m1: 1.748, m2: 1.361, m3: 1.483, m4: 1.008}
+orbits:
+  inner: {P: 3.2862153, e: 0.00735, i: 88.70, Omega: 0.0,  omega: 199.4,  M0: 306.386}
+  mid:   {P: 51.3111,  e: 0.22367, i: 89.05, Omega: 0.26, omega: 190.05, M0: 155.92}
+  out:   {P: 1045.5,   e: 0.274,   i: 90.3,  Omega: 0.10, omega: 289.0,  M0: 200.33}
+stars:
+  m1: {R: 2.996, Teff: 6612}
+  m2: {R: 1.507, Teff: 6724}
+  m3: {R: 1.768, Teff: 6937}
+  m4: {R: 0.927, Teff: 5772}
+stellar_model: {kind: mist, age_myr: 1545.0, feh: 0.036, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 100, n_output: 5001, extremes_every_orbits: 20}
+fit:
+  minima: ../../data/observed/tic120362137/minima_borkovits2026.csv
+  time_system: BJD_TDB
+  lc:
+    - file: ../../data/observed/tic120362137/lc_tess_tertiary_borkovits2026.csv
+      label: TESS
+      exposure_min: 30.0
+      n_sub: 3
+      baseline_degree: 1
+      shapes: auto      # the inner pair fills 0.55 of its Roche lobe -> Roche surfaces
+      fidelity: mapped  # coarse meshes 24x48 corrected by the fine 64x128 mesh
+  rv:
+    file: ../../data/observed/tic120362137/rv_borkovits2026.csv   # Borkovits et al. (2026), Supplementary Data 7-9
+    gamma: -22.1
+  stage2:
+    bjd_t0: 2458683.3
+    free: [orbits.inner.P, orbits.inner.M0, orbits.inner.ecosw, orbits.inner.esinw, orbits.mid.P, orbits.mid.M0, orbits.mid.e, orbits.mid.omega, orbits.out.P, orbits.out.M0, orbits.out.e, orbits.out.omega, masses.m1, masses.m2, masses.m3, masses.m4, rv.gamma, rv.offset.SPO, rv.offset.Konkoly-Rozhen, orbits.inner.i, orbits.mid.i, orbits.mid.Omega, stars.m1.R, stars.m2.R, stars.m3.R]
+    max_sigma_d: 0.01
+    error_scale: per_source   # own error floor of every source
+    error_model: jitter
+    clip_sigma: 5.0           # leave out minima beyond 5 robust sigma of their source
+    priors:                   # Borkovits et al. (2026), as tic120362137_ensemble.yaml
+      orbits.mid.e: [0.22367, 0.0007]
+      orbits.mid.omega: [190.05, 0.32]
+      orbits.out.P: [1045.5, 7.9]
+      orbits.out.e: [0.274, 0.013]
+      orbits.out.omega: [289.0, 4.8]
+      orbits.out.M0: [200.33, 3.8]
+    max_iterations: 30
+    processes: 0
+  output:
+    dir: ../../output/squadra_test/tic120362137/fit_lc

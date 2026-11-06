@@ -1,0 +1,12 @@
+# Group 4 (test campaign): a 2+2 quadruple whose binary A is driven to e ~ 0.998 by Kozai-Lidov
+# cycles (i = 88 deg): its stars collide (N-body collision search) and merge (physics.mergers),
+# the run continues as a 2+1 triple to t_max.
+topology: 2+2
+masses: {m1: 1.0, m2: 1.0, m3: 0.9, m4: 0.8}
+orbits:
+  A: {a: 0.2, e: 0.1}
+  B: {a: 0.3, e: 0.05, i: 10}
+  out: {a: 4.0, e: 0.1, i: 89.5}
+stellar_model: {kind: sse, age_myr: 100, z: 0.02}
+physics: {gr: true, mergers: {}}
+run: {t_max_yr: 3000, n_output: 601, backend: nbody, collisions: true}

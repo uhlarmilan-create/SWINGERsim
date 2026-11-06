@@ -1,0 +1,9 @@
+# Illustrative 3+1 quadruple: (m1, m2) inner binary, m3 tertiary, m4 distant companion.
+topology: "3+1"
+masses: {m1: 1.0, m2: 0.8, m3: 0.7, m4: 0.6}
+orbits:
+  inner: {P: 3.0,  e: 0.01, i: 80.0, Omega: 0.0,  omega: 30.0, M0: 0.0}
+  mid:   {P: 60.0, e: 0.2,  i: 40.0, Omega: 30.0, omega: 60.0, M0: 90.0}
+  out:   {P: 3000, e: 0.4,  i: 20.0, Omega: 70.0, omega: 0.0,  M0: 200.0}
+physics: {gr: true}
+run: {t_max_yr: 100, n_output: 1000}

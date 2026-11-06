@@ -1,0 +1,28 @@
+# CzeV343 - doubly eclipsing 2+2 quadruple near the 3:2 period resonance (Pejcha et al. 2022,
+# A&A 667, A53): A 1.2093 d (e = 0.114, apsidal period 33 yr), B 0.8069 d (circular), mutual
+# orbit 1454 d, e = 0.70, inclined ~12 deg to the sky while both pairs are near edge-on, so
+# both pairs are highly misaligned with the mutual orbit (A 76-104 deg, B 63-86 or 94-117 deg).
+# Fiducial isochrone solution (solar metallicity, Teff prior 7900 K): age ~630 Myr,
+# A1 1.27 + A2 1.76 Msun, B1 1.36 + B2 1.20 Msun (Table 2). Pejcha et al.: when a binary
+# expands by mass transfer (a_A up to 50-220 Rsun) the quadruple becomes dynamically unstable
+# beyond a ~ 50 Rsun (Mardling & Aarseth 2001) - "has not been explored so far in 2+2".
+# Special test: the future of the fiducial system - stellar evolution (MIST), tides, mass
+# transfer in both pairs; the run stops when the quadruple becomes dynamically unstable.
+# ASSUMED: the nodes (Omega_A = Omega_B = 90 deg against the mutual orbit's 0), which give
+# mutual inclinations of 87.5 and 74.7 deg; the ensemble varies them.
+topology: "2+2"
+masses: {m1: 1.76, m2: 1.27, m3: 1.36, m4: 1.20}
+orbits:
+  A:   {P: 1.209340820, e: 0.1144, i: 87.45, omega: 89.0, Omega: 90.0}
+  B:   {P: 0.806871019, e: 0.0017, i: 74.39, omega: 0.0, Omega: 90.0}
+  out: {P: 1453.9, e: 0.703, i: 11.8, omega: 12.9, Omega: 0.0}
+stellar_model: {kind: mist, age_myr: 630.0, feh: 0.0, vvcrit: 0.0}
+physics:
+  gr: true
+  tides: true
+  rotation: true
+  tidal_lag: hurley2002
+  evolution: true
+  mass_transfer: {common_envelope: {}}
+  mergers: {}
+run: {backend: secular, t_max_yr: 2.0e9, n_output: 4001}

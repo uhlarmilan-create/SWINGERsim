@@ -1,0 +1,9 @@
+* text=auto
+*.sh text eol=lf
+*.py text eol=lf
+*.yaml text eol=lf
+*.ps1 text eol=crlf
+*.pdf binary
+*.png binary
+*.npz binary
+*.h5 binary

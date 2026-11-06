@@ -1,0 +1,58 @@
+# v3 (2026-10-30): as qx_cas_fit_v2, but the photographic minima of 1933-1974 enter as i >= 76 deg (eclipses
+# deep enough for plates, >= 0.1 mag in B) instead of 'some eclipse' - v2 put 1933 exactly at the grazing limit
+# (model 70.58 deg, limit 70.59 deg; depth 0.01 mag). Data: inclination_limits_v3.csv.
+# QX Cas - second pass (after job sq5_6, 2026-10-18). Changes against qx_cas_fit.yaml:
+#  * inclination_limits.csv instead of inclination_lit.csv: the 2003-2008 value is an UPPER limit, and the absence of
+#    eclipses (FCAPT 2003-2008, TESS 2019-2024) and their presence in the 1930s enter as one-sided data (column limit:
+#    no_eclipse / eclipse against the model's own eclipse limit) - sq5_6 let the inclination turn around at 75 deg in
+#    2012, so that the pair would eclipse in TESS;
+#  * the node of the pair fixed (only the node difference is measurable; sq5_6: both nodes ran away, r = +1);
+#  * start from the sq5_6 solution for the pair (P 6.0037563, M0 328.51, e 0.2194, omega 94.4 = e cos w -0.017,
+#    e sin w 0.219) and the outer orbit (P 299.2 d, i 80.2, node difference +6.06 deg); m3 restarted at 3 Msun: the start
+#    values of qx_cas_fit.yaml had e cos w -0.095, which puts the secondary eclipses ~7 h off - anchoring then cannot
+#    match primaries and secondaries at once;
+#  * m3 bounded to 0.3-6 Msun (MIST at 60 Myr has no heavier main-sequence stars; sq5_6 stuck at 6.63 with a
+#    meaningless error of 3e-7).
+# Original header:
+# QX Cas - path 2 "data -> model": joint fit of the 96 minima 1933-1974 (VarAstro / O-C gateway: photographic, visual,
+# photoelectric; they carry the apsidal motion of the e = 0.21 pair and its period) and the three inclinations
+# 1960-2005 (inclination_lit.csv), starting from the hypothesis of qx_cas_published.yaml. The third body is unseen, so
+# its orbit is only partly determined: free P3, i3, Omega3 and m3 (e3, omega3, M0 fixed). Expect strong correlations
+# (m3 with P3: the precession rate goes as m3 / P3^2) - read the result together with qx_cas_ensemble.yaml.
+topology: custom
+hierarchy: {out: [inner, m3], inner: [m1, m2]}
+masses: {m1: 5.5, m2: 6.5, m3: 3.0}
+orbits:
+  inner: {P: 6.0037563, e: 0.2194, i: 81.91, Omega: -8.54, omega: 94.44, M0: 328.51}
+  out:   {P: 299.18,  e: 0.2,  i: 80.23, Omega: -2.48, omega: 0.0,   M0: 0.0}
+stars:
+  m1: {R: 3.5, Teff: 24000}
+  m2: {R: 5.1, Teff: 18000}
+  m3: {R: 2.0, Teff: 12000}
+stellar_model: {kind: mist, age_myr: 60.0, feh: 0.0, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 30, n_output: 3001, extremes_every_orbits: 20}
+
+fit:
+  minima: ../../data/observed/qx_cas/minima_varastro.csv
+  time_system: BJD_TDB
+  inclination:
+    - {file: ../../data/observed/qx_cas/inclination_limits_v3.csv, pair: inner, label: Bonaro2009+limits_v3}
+  stage2:
+    bjd_t0: 2444500.0
+    anchor: true
+    free: [orbits.inner.P, orbits.inner.M0, orbits.inner.ecosw, orbits.inner.esinw, orbits.inner.i,
+           orbits.out.P, orbits.out.i, orbits.out.Omega, masses.m3]
+    error_scale: per_source
+    error_model: jitter
+    clip_sigma: 4.0
+    priors:
+      masses.m3: [3.0, 2.0]          # unseen: a B/A star at most (no third light reported)
+      orbits.out.P: [400.0, 300.0]   # weak: a few hundred days follow from the precession rate
+    bounds:
+      masses.m3: [0.3, 6.0]
+    max_iterations: 40
+    processes: 0
+  output:
+    dir: ../../output/squadra_test3/qx_cas/fit_v3
+    predict: {years: 50, samples: 100}

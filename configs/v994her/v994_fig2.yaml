@@ -1,0 +1,12 @@
+# V994 Her-like 2+2 system, Vokrouhlicky (2016) MNRAS 461, 3964, Sect. 2.3 / Fig. 2.
+# Masses and periods of V994 Her (Zasche & Uhlar 2016). Circular inner orbits, point masses.
+# Published: J_A = 11.6 deg, J_B = 15.8 deg initially; J_AB oscillates between ~3.5 and ~5.2 deg
+# over 100 kyr (Fig. 2). Long run: 50 kyr takes about one hour.
+topology: "2+2"
+masses: {m1: 3.01, m2: 2.58, m3: 1.84, m4: 1.93}
+orbits:
+  A:   {P: 2.08327,   e: 0.0,  i: 84.0, Omega: 10.0}
+  B:   {P: 1.42004,   e: 0.0,  i: 85.0, Omega: 15.0}
+  out: {P: 1062.8775, e: 0.76, i: 90.0, Omega: 0.0, omega: 236.0}
+physics: {gr: false}
+run: {t_max_yr: 50000, n_output: 2500, extremes_every_orbits: 0}

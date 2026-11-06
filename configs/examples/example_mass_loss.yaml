@@ -1,0 +1,18 @@
+# Example: a hierarchical triple whose inner primary loses mass by a wind (illustrative values,
+# the masses of Perets & Kratter 2012). The inner orbit widens faster than the outer one
+# (a M = const for each orbit) until the triple crosses the Mardling & Aarseth (2001) limit
+# at ~5600 yr; afterwards the inner eccentricity grows (triple evolution dynamical instability).
+#   swingersim run configs/examples/example_mass_loss.yaml -o output/mass_loss.h5
+# With MIST tracks instead of constant rates:
+#   stellar_model: {kind: mist, age_myr: ...}
+#   physics: {evolution: true, mass_loss: {source: track}}
+topology: custom
+hierarchy: {out: [A, m3], A: [m1, m2]}
+masses: {m1: 5.0, m2: 2.0, m3: 2.25}
+orbits:
+  A:   {a: 1.0,   e: 0.0, i: 0.0}
+  out: {a: 4.244, e: 0.1, i: 0.5, M0: 90.0}
+physics:
+  gr: false
+  mass_loss: {source: rates, rates: {m1: -3.75e-4}}   # 3 Msun in 8000 yr
+run: {t_max_yr: 8000, n_output: 2001}

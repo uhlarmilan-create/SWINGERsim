@@ -1,0 +1,102 @@
+# V907 Sco - MCMC check of the final fit (fit_v2): the same data and free parameters, started at the fit_v2 solution
+# (no anchoring needed), followed by emcee (48 walkers x 1000 steps, first half discarded) around the solution -
+# errors of m3, the outer orbit and the mutual inclination that do not assume a straight chi^2 valley.
+# Gamma and the Lacy offset start at the fitted values (fit.rv gamma below). ~9 h on 12 cores.
+topology: custom
+hierarchy:
+  out:
+  - inner
+  - m3
+  inner:
+  - m1
+  - m2
+masses:
+  m1: 2.56
+  m2: 2.74
+  m3: 0.977844674587243
+orbits:
+  inner:
+    P: 3.7747641547758386
+    e: 0.011075975157379661
+    i: 76.5758732576139
+    Omega: 17.27
+    omega: 294.40331375010334
+    M0: 232.1701610912229
+  out:
+    P: 142.10318093290672
+    e: 0.46500081609908145
+    i: 74.83179948749148
+    Omega: 349.0492542784594
+    omega: 24.419071890474466
+    M0: 37.71072246025396
+stars:
+  m1:
+    R: 2.53
+    Teff: 10004
+  m2:
+    R: 2.68
+    Teff: 10000
+  m3:
+    R: 1.0
+    Teff: 5900
+stellar_model:
+  kind: mist
+  age_myr: 400.0
+  feh: 0.0
+  vvcrit: 0.0
+physics:
+  gr: true
+  tides: true
+  rotation: true
+run:
+  t_max_yr: 30
+  n_output: 3001
+  extremes_every_orbits: 20
+fit:
+  minima: ../../data/observed/v907_sco/minima_tess.csv
+  time_system: BJD_TDB
+  inclination:
+  - file: ../../data/observed/v907_sco/inclination_zasche2023.csv
+    pair: inner
+    label: Zasche2023
+    min_sigma_deg: 0.1
+  rv:
+    file: ../../data/observed/v907_sco/rv_all.csv
+    gamma: -17.1153
+    offsets:
+      Lacy1999: 0.0
+  stage2:
+    bjd_t0: 2459383.9
+    anchor: false
+    free:
+    - orbits.inner.P
+    - orbits.inner.M0
+    - orbits.inner.ecosw
+    - orbits.inner.esinw
+    - orbits.inner.i
+    - orbits.out.P
+    - orbits.out.M0
+    - orbits.out.e
+    - orbits.out.omega
+    - orbits.out.i
+    - orbits.out.Omega
+    - masses.m3
+    - rv.gamma
+    - rv.offset.Lacy1999
+    error_scale: per_source
+    error_model: jitter
+    clip_sigma: 5.0
+    priors:
+      orbits.out.e:
+      - 0.47
+      - 0.05
+    max_iterations: 40
+    processes: 0
+    sampler: emcee
+    walkers: 48   # as in the documented run on 12 cores (older versions rounded 32 up to a multiple of 2 x cores)
+    mcmc_steps: 1000
+  output:
+    dir: ../../output/squadra_test3/v907_sco/fit_v2_mcmc
+    predict:
+      years: 30
+      samples: 100

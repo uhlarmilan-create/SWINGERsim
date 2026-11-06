@@ -1,0 +1,29 @@
+# V994 Her, anchored to the measured minima: the published solution (Zasche et al. 2023, MNRAS
+# 520, 3127, Table 3; all values, conversions and assumptions as in v994_her_published.yaml) with
+# only the periods and phases of the binaries A and C adjusted so that SWINGERsim's eclipses follow
+# the published minima 2002-2022 (Tables A1-A4; data/observed/v994_her/minima_zasche2023.csv).
+# Why: with the published periods the minima of B are reproduced over 20 years (rms 8 min for the
+#   primaries) without any change, but those of A drift by 7 h back to 2002 (rms 2.2 h) and those
+#   of C by about an hour. A least-squares fit of P and M0 of A and C gives
+#   P_A 2.0832039 -> 2.0832985 d (+4.5e-5), M0_A +0.24 deg; P_C 1.9601064 -> 1.9600957 d
+#   (-5.4e-6), M0_C -4.9 deg; the rms residuals become 3.3 min (A) and 15 min (C, whose orbit
+#   around A+B is unknown and assumed) over 20 years.
+# t = 0 of this configuration = BJD 2459010.0.
+topology: "2+2+2"
+masses: {m1: 2.929, m2: 2.216, m3: 1.913, m4: 1.889, m5: 1.810, m6: 1.077}
+orbits:
+  A:   {P: 2.0832985, e: 0.0276, i: 84.66, Omega: 0.0, omega: 208.4, M0: 212.481}
+  B:   {P: 1.4200981, e: 0.1186, i: 89.19, Omega: 0.0, omega: 174.7, M0: 260.37}
+  AB:  {P: 1062.3,    e: 0.687,  i: 83.0,  Omega: 0.0, omega: 59.6,  M0: 285.75}
+  C:   {P: 1.9600957, e: 0.1893, i: 80.42, Omega: 0.0, omega: 314.0, M0: 122.553}
+  out: {P: 1095750.0, e: 0.3,    i: 83.0,  Omega: 0.0, omega: 0.0,   M0: 0.0}
+stars:
+  m1: {R: 2.118, Teff: 11890}
+  m2: {R: 1.721, Teff: 9915}
+  m3: {R: 1.572, Teff: 8832}
+  m4: {R: 1.579, Teff: 8895}
+  m5: {R: 1.544, Teff: 8514}
+  m6: {R: 0.961, Teff: 5893}
+stellar_model: {kind: mist, age_myr: 83.0, feh: 0.073, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 30, n_output: 3001, extremes_every_orbits: 20}

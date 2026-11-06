@@ -1,0 +1,49 @@
+# v907_sco_fit_lc.yaml started from the best known solution (output/squadra_test3/v907_sco/fit_lc of the code before
+# the code review, chi^2 14764.7 -> 2608.63 (reduced 1.029; priors 64.79); errors of the minima scaled by sqrt(max(chi^2_red, 1)) = 1.01): the fit from the published start values ends in another local
+# minimum (offset primary / secondary minima). Same data, free parameters and settings; anchor off.
+topology: custom
+hierarchy:
+  out: [inner, m3]
+  inner: [m1, m2]
+masses: {m1: 2.56, m2: 2.74, m3: 0.917173443010013}
+orbits:
+  inner: {P: 3.7711282352781534, e: 0.0016961336672883624, i: 76.48633009443014, Omega: 17.9224812993, omega: 122.3060124796,
+    M0: 286.3851421785}
+  out: {P: 142.96920221814594, e: 0.53099091517672, i: 76.00914292031912, Omega: 351.03, omega: 1.0144726765, M0: 345.892134496}
+stars:
+  m1: {R: 2.270307097910366, Teff: 10004}
+  m2: {R: 2.8639513558429557, Teff: 10000}
+  m3: {R: 1.0, Teff: 5900}
+stellar_model: {kind: mist, age_myr: 400.0, feh: 0.0, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 30, n_output: 3001, extremes_every_orbits: 20}
+fit:
+  minima: ../../data/observed/v907_sco/minima_tess.csv
+  time_system: BJD_TDB
+  inclination:
+  - {file: ../../data/observed/v907_sco/inclination_zasche2023.csv, pair: inner, label: Zasche2023, min_sigma_deg: 0.1}
+  rv:
+    file: ../../data/observed/v907_sco/rv_all.csv
+    gamma: -15.850860806959195
+    offsets: {Lacy1999: -1.793190308845943}
+  lc:
+  - {file: ../../data/observed/v907_sco/lc_tess_windows.csv, label: TESS, exposure_min: 10.0, n_sub: 3, baseline_degree: 1,
+    scale: false, shapes: auto}
+  stage2:
+    bjd_t0: 2459360.0
+    anchor: false
+    free: [orbits.inner.P, orbits.inner.M0, orbits.inner.ecosw, orbits.inner.esinw, orbits.inner.i, orbits.inner.Omega,
+      orbits.out.P, orbits.out.M0, orbits.out.e, orbits.out.omega, orbits.out.i, orbits.out.Omega, masses.m3, stars.m1.R,
+      stars.m2.R, rv.gamma, rv.offset.Lacy1999]
+    error_scale: per_source
+    error_model: jitter
+    clip_sigma: 5.0
+    priors:
+      orbits.out.e: [0.47, 0.05]
+      stars.m1.R: [2.53, 0.04]
+      stars.m2.R: [2.68, 0.04]
+    max_iterations: 40
+    processes: 0
+  output:
+    dir: ../../output/squadra_test3/v907_sco/fit_lc_best
+    predict: {years: 30, samples: 100}

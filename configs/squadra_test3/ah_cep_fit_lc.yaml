@@ -1,0 +1,88 @@
+# AH Cep - light-curve fit of the clean TESS sectors 77 and 78 (2024): is there third light?
+# The TESS eclipses are ~27 % deeper than the model of the published pair (Pavlovski et al. 2018: i = 69.8 deg) gives:
+# with the published radii, a scan of i shows that TESS wants i ~ 74-75 deg and a constant extra light of 7-12 % of the
+# pair - the light of the 6.6-7 Msun third star that the light-time orbit requires (MIST: 7-8 %), but the spectra
+# show no third component. This fit frees the inclination, both radii and the temperature of the secondary with the
+# depth scale of every segment free (scale: true: a = 1 - third light), Roche surfaces (fill 0.87 / 0.81) and the
+# red-noise errors; the 216 TESS minima keep the period and phase. The third star m3 of the model (3.23 Rsun,
+# 21050 K = MIST 7 Msun at 6 Myr) is part of the model light: scale a ~ 1 means "third light as a 7-Msun star",
+# a > 1 means less (or none), a < 1 more.
+topology: custom
+hierarchy:
+  out:
+  - inner
+  - m3
+  inner:
+  - m1
+  - m2
+masses:
+  m1: 15.81612935575014
+  m2: 13.549896634663387
+  m3: 7.022705280466244
+orbits:
+  inner:
+    P: 1.7765062029715555
+    e: 0.0
+    i: 69.80495513746772
+    Omega: 0.0
+    omega: 90.0
+    M0: 15.936697652535992
+  out:
+    P: 25357.06637623855
+    e: 0.6314225961544767
+    i: 71.46586037695036
+    Omega: 37.608533000000534
+    omega: 255.81458857649724
+    M0: 195.97153559942114
+stars:
+  m1:
+    R: 6.51
+    Teff: 30700
+  m2:
+    R: 5.64
+    Teff: 28800
+  m3:
+    R: 3.23
+    Teff: 21050
+stellar_model:
+  kind: mist
+  age_myr: 6.0
+  feh: 0.0
+  vvcrit: 0.0
+physics:
+  gr: true
+  tides: true
+  rotation: true
+run:
+  t_max_yr: 30
+  n_output: 3001
+  extremes_every_orbits: 20
+fit:
+  minima: ../../data/observed/ah_cep/minima_tess.csv
+  time_system: BJD_TDB
+  lc:
+  - file: ../../data/observed/ah_cep/lc_tess_s77_s78.csv
+    label: TESS
+    exposure_min: 10.0
+    n_sub: 3
+    baseline_degree: 1
+    scale: true
+    shapes: auto
+    red_noise: true
+  stage2:
+    bjd_t0: 2458000.0
+    anchor: true
+    free:
+    - orbits.inner.P
+    - orbits.inner.M0
+    - orbits.inner.i
+    - stars.m1.R
+    - stars.m2.R
+    - stars.m2.Teff
+    error_scale: per_source
+    error_model: jitter
+    clip_sigma: 5.0
+    max_iterations: 30
+    processes: 0
+  output:
+    dir: ../../output/squadra_test3/ah_cep/fit_lc

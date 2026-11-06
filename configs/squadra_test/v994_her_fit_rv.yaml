@@ -1,0 +1,52 @@
+# v994_her_fit_priors.yaml plus the measured radial velocities (Lee et al. (2008), Table 2) fitted together with the
+# minima: the masses of the stars with velocities, gamma and the zero points of the
+# instruments are free as well.
+# v994_her_fit.yaml with error correction per source (jitter), outlier rejection and Gaussian priors
+# from the published solution. The priors keep the orbits that the minima constrain
+# only weakly at the published values within their errors; periods of the eclipsing pairs get no
+# prior (the published osculating periods are not the mean periods of SWINGERsim, see the SQUADRA test).
+# V994 Her (2+2 + C, Zasche et al. 2023): swingersim fit, stage 2 (joint N-body model of the times of minima).
+# Start values: v994_her_anchored.yaml (the published solution with the inner periods and phases
+# anchored to the minima). Free: A.P, A.M0, A.ecosw, A.esinw, B.P, B.M0, B.e, B.omega, C.P, C.M0, C.e, C.omega, AB.P, AB.M0, AB.e, AB.omega.
+# Why these: the minima 2002-2022 of all three eclipsing pairs (timings with sigma > 0.01 d left out); the 2.9-yr A-B orbit is seen in the light-time effect of A and B; the orbit of C around A+B (assumed P 3000 yr) and all masses, inclinations and nodes stay fixed.
+# Run: swingersim fit configs/squadra_test/v994_her_fit.yaml   (results in output/squadra_test/v994_her/fit/)
+# t = 0 of this configuration = BJD 2459010.0.
+topology: "2+2+2"
+masses: {m1: 2.929, m2: 2.216, m3: 1.913, m4: 1.889, m5: 1.810, m6: 1.077}
+orbits:
+  A:   {P: 2.0832985, e: 0.0276, i: 84.66, Omega: 0.0, omega: 208.4, M0: 212.481}
+  B:   {P: 1.4200981, e: 0.1186, i: 89.19, Omega: 0.0, omega: 174.7, M0: 260.37}
+  AB:  {P: 1062.3,    e: 0.687,  i: 83.0,  Omega: 0.0, omega: 59.6,  M0: 285.75}
+  C:   {P: 1.9600957, e: 0.1893, i: 80.42, Omega: 0.0, omega: 314.0, M0: 122.553}
+  out: {P: 1095750.0, e: 0.3,    i: 83.0,  Omega: 0.0, omega: 0.0,   M0: 0.0}
+stars:
+  m1: {R: 2.118, Teff: 11890}
+  m2: {R: 1.721, Teff: 9915}
+  m3: {R: 1.572, Teff: 8832}
+  m4: {R: 1.579, Teff: 8895}
+  m5: {R: 1.544, Teff: 8514}
+  m6: {R: 0.961, Teff: 5893}
+stellar_model: {kind: mist, age_myr: 83.0, feh: 0.073, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 30, n_output: 3001, extremes_every_orbits: 20}
+fit:
+  minima: ../../data/observed/v994_her/minima_zasche2023.csv
+  time_system: BJD_TDB
+  rv:
+    file: ../../data/observed/v994_her/rv_lee2008.csv   # Lee et al. (2008), Table 2
+    gamma: -37.0
+  stage2:
+    bjd_t0: 2459010.0
+    free: [orbits.A.P, orbits.A.M0, orbits.A.ecosw, orbits.A.esinw, orbits.B.P, orbits.B.M0, orbits.B.e, orbits.B.omega, orbits.C.P, orbits.C.M0, orbits.C.e, orbits.C.omega, orbits.AB.P, orbits.AB.M0, orbits.AB.e, orbits.AB.omega, masses.m1, masses.m2, masses.m3, masses.m4, rv.gamma]
+    max_sigma_d: 0.01
+    error_scale: per_source   # own error floor of every source
+    error_model: jitter
+    clip_sigma: 5.0           # leave out minima beyond 5 robust sigma of their source
+    priors:                   # Zasche et al. (2023), Table 3, as v994_her_ensemble.yaml
+      orbits.AB.P: [1062.3, 2.6]
+      orbits.AB.e: [0.687, 0.044]
+      orbits.AB.omega: [59.6, 3.8]
+    max_iterations: 60
+    processes: 0
+  output:
+    dir: ../../output/squadra_test/v994_her/fit_rv

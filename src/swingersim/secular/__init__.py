@@ -1,0 +1,1 @@
+"""Secular (orbit-averaged) theory."""

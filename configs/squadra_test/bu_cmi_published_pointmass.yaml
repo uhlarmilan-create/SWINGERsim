@@ -1,0 +1,19 @@
+# BU CMi: the published solution (Pribulla et al. 2023, Table 7; as bu_cmi_published.yaml) with point-mass stars:
+# tides and rotation off, relativity on. Pribulla et al. measured the apsidal periods 28.7, 25.1 and 145.3 yr
+# (A, B, A-B) from a numerical integration of this solution; SWINGERsim with tides and rotation gives 27.6, 24.7 and
+# 145.1 yr. This run shows how much of the difference is the tidal and rotational term of the stars.
+# Run: swingersim run configs/squadra_test/bu_cmi_published_pointmass.yaml (job sq1_14).
+topology: 2+2
+masses: {m1: 2.536, m2: 2.384, m3: 2.521, m4: 2.32}
+orbits:
+  A: {P: 2.937533, e: 0.2191, i: 83.35, Omega: 0.14, omega: 101.41, M0: 284.66}
+  B: {P: 3.255815, e: 0.2257, i: 83.92, Omega: 0.0, omega: 257.52, M0: 255.39}
+  out: {P: 121.793, e: 0.2728, i: 83.79, Omega: 0.09, omega: 141.0, M0: 294.71}
+stars:
+  m1: {R: 2.249, Teff: 10570}
+  m2: {R: 2.072, Teff: 10283}
+  m3: {R: 2.235, Teff: 10593}
+  m4: {R: 2.003, Teff: 10062}
+stellar_model: {kind: mist, age_myr: 263.0, feh: 0.02, vvcrit: 0.0}
+physics: {gr: true, tides: false, rotation: false}
+run: {t_max_yr: 100, n_output: 4001, extremes_every_orbits: 20}

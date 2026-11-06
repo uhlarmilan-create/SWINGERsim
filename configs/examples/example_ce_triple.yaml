@@ -1,0 +1,24 @@
+# A common envelope inside a triple (physics.mass_transfer.common_envelope).
+# A 1.8 + 0.5 Msun binary (P = 200 d) with a 1 Msun tertiary on a circular 10-year orbit.
+# The 1.8-Msun star climbs the giant branch and fills its Roche lobe; with q = 3.6 the
+# transfer is dynamically unstable and a common envelope forms (Hurley et al. 2002). With the
+# energy formalism (alpha_CE = 1, lambda = 0.5) the 0.43-Msun helium core and the 0.5-Msun
+# companion spiral in to 2 Rsun (P = 0.34 d) while 1.4 Msun of envelope leaves the system
+# within a year: for the tertiary that is an impulsive loss of 41 % of the total mass, and the
+# outer orbit widens from 6.9 to 24 AU and becomes eccentric (e = 0.72; Hadjidemetriou 1963).
+# Run with the N-body backend (the secular backends stop at the common envelope):
+#   swingersim run configs/examples/example_ce_triple.yaml -o output/example_ce_triple.h5
+# The run starts 3700 years before the common envelope (age 1652.75 Myr, SSE tracks).
+topology: custom
+hierarchy: {out: [A, m3], A: [m1, m2]}
+masses: {m1: 1.8, m2: 0.5, m3: 1.0}
+orbits:
+  A:   {P: 200.0}
+  out: {P: 3650.0, e: 0.0, i: 10.0}
+stellar_model: {kind: sse, age_myr: 1652.75, z: 0.02}
+physics:
+  gr: false
+  evolution: true
+  mass_transfer:
+    common_envelope: {alpha: 1.0, lam: 0.5, duration_yr: 1.0}
+run: {backend: nbody, t_max_yr: 4000, n_output: 401}

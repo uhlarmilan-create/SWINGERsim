@@ -1,0 +1,43 @@
+# TIC 168789840: the first sextuply eclipsing sextuple - three eclipsing binaries of F + K/M
+# stars; binaries A (1.57 d) and C (1.31 d) orbit each other in 3.7 yr, and binary B (8.22 d)
+# orbits the AC quadruple in ~2000 yr. Hierarchy ((A+C)+B) = 2+2+2.
+# Source: Powell B. P. et al. 2021, AJ 161, 162, Tables 7-8: P_A = 1.570, P_C = 1.306,
+#   P_B = 8.217 d; A-C P = 3.7 +- 0.6 yr, e = 0.28 +- 0.05, i ~ 42 deg; AC-B ~2000 yr;
+#   masses A 1.25/0.56, B 1.30/0.66, C 1.23/0.59 Msun; age 3.16 Gyr; d = 584 pc.
+# UNKNOWN and drawn: the AC-B orbit (P 1000-4000 yr, e 0-0.7), all nodes, A-C within its errors;
+#   ASSUMED: the three binaries circular and edge-on (they eclipse); radii from MIST at 3.16 Gyr.
+# Why: six stars in three eclipsing pairs - the largest hierarchy of the catalogue; secular
+#   evolution over 10 Myr: precession of the three binaries, their eclipse windows, stability.
+# Validation: all members must stay hierarchical (MA01/V22 for every nested triple); eclipse
+#   fractions of A, B and C (all three are observed to eclipse now).
+#   swingersim ensemble configs/catalog/tic168789840_ensemble.yaml -o output/catalog/tic168789840_ens -j 0
+topology: custom
+hierarchy: {out: [AC, B], AC: [A, C], A: [m1, m2], C: [m3, m4], B: [m5, m6]}
+masses: {m1: 1.25, m2: 0.56, m3: 1.23, m4: 0.59, m5: 1.30, m6: 0.66}
+orbits:
+  A:   {P: 1.570, e: 0.0, i: 88.0}
+  C:   {P: 1.306, e: 0.0, i: 88.0}
+  B:   {P: 8.217, e: 0.0, i: 88.0}
+  AC:  {P: 1351.0, e: 0.28, i: 42.0}
+  out: {P: 730500.0, e: 0.3, i: 60.0}
+stellar_model: {kind: mist, age_myr: 3160.0, feh: 0.0, vvcrit: 0.0}
+physics: {gr: true, tides: true}
+run: {backend: secular, t_max_yr: 1.0e7, n_output: 1001}
+ensemble:
+  n: 500
+  seed: 168789840
+  directions: [forward]
+  require: [stable_v22]
+  vary:
+    orbits.A.Omega: angle
+    orbits.C.Omega: angle
+    orbits.B.Omega: angle
+    orbits.AC.P: {normal: [1351.0, 219.0], min: 800.0}
+    orbits.AC.e: {normal: [0.28, 0.05], min: 0.0, max: 0.9}
+    orbits.AC.Omega: angle
+    orbits.AC.omega: angle
+    orbits.out.P: {loguniform: [365250.0, 1461000.0]}
+    orbits.out.e: {uniform: [0.0, 0.7]}
+    orbits.out.i: isotropic
+    orbits.out.Omega: angle
+    orbits.out.omega: angle

@@ -1,0 +1,41 @@
+# V994 Her - which data pull the A-B orbit away from the published one? Minima without the 23 early minima of S. Dallaporta
+# & U. Munari (2002-2004; they lie 17 min off every model) plus the radial velocities of Lee et al. (2008), WITHOUT priors on
+# the A-B orbit; A-B orbit and masses start at the published values (Zasche et al. 2023, Table 3), the pairs at fit_rv.
+# The velocities alone favour the published A-B orbit: the systemic velocities of A and B change by -11.8 km/s per 30 d
+# during the 60 days of Lee's spectra (2006), the published orbit gives -12.2, the timing-only fits 0 to -9.
+# Compare e_AB, omega_AB and the masses of A with fit_rv (0.59, 56 deg, 2.42 + 1.85 Msun). ~2.5 h on 12 cores.
+# Run: job sq3_14; results in output/squadra_test/v994_her/fit_rv_no_sdum/. t = 0 = BJD 2459010.0.
+topology: 2+2+2
+masses: {m1: 2.929, m2: 2.216, m3: 1.913, m4: 1.889, m5: 1.81, m6: 1.077}
+orbits:
+  A: {P: 2.083306961639836, e: 0.024684728134383643, i: 84.66, Omega: 0.0, omega: 193.9560304688207, M0: 226.5893151760343}
+  B: {P: 1.420087937172817, e: 0.11884178308831685, i: 89.19, Omega: 0.0, omega: 177.56443850114604, M0: 258.6230923649687}
+  AB: {P: 1062.3, e: 0.687, i: 83.0, Omega: 0.0, omega: 59.6, M0: 285.75}
+  C: {P: 1.9600977497872452, e: 0.2104544983644061, i: 80.42, Omega: 0.0, omega: 303.196814902708, M0: 131.8742753739364}
+  out: {P: 1095750.0, e: 0.3, i: 83.0, Omega: 0.0, omega: 0.0, M0: 0.0}
+stars:
+  m1: {R: 2.118, Teff: 11890}
+  m2: {R: 1.721, Teff: 9915}
+  m3: {R: 1.572, Teff: 8832}
+  m4: {R: 1.579, Teff: 8895}
+  m5: {R: 1.544, Teff: 8514}
+  m6: {R: 0.961, Teff: 5893}
+stellar_model: {kind: mist, age_myr: 83.0, feh: 0.073, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 30, n_output: 3001, extremes_every_orbits: 20}
+fit:
+  minima: ../../data/observed/v994_her/minima_zasche2023_no_sdum.csv
+  time_system: BJD_TDB
+  rv: {file: ../../data/observed/v994_her/rv_lee2008.csv, gamma: -38.7}
+  stage2:
+    bjd_t0: 2459010.0
+    anchor: false
+    max_sigma_d: 0.01
+    error_scale: per_source
+    error_model: jitter
+    clip_sigma: 5.0
+    processes: 0
+    free: [orbits.A.P, orbits.A.M0, orbits.A.ecosw, orbits.A.esinw, orbits.B.P, orbits.B.M0, orbits.B.e, orbits.B.omega, orbits.C.P, orbits.C.M0, orbits.C.e, orbits.C.omega, orbits.AB.P, orbits.AB.M0, orbits.AB.e,
+      orbits.AB.omega, masses.m1, masses.m2, masses.m3, masses.m4, rv.gamma]
+    max_iterations: 60
+  output: {dir: ../../output/squadra_test/v994_her/fit_rv_no_sdum}

@@ -1,0 +1,35 @@
+# xi Tau: compact 3+1 quadruple of B and F stars - an eclipsing pair of two B9 V stars (7.15 d),
+# a rapidly rotating B5 V star on a 145-d orbit around it, and an F5 V star on a 51.7-yr orbit.
+# Hierarchy (((Aa+Ab)+B)+C) = SWINGERsim preset 3+1 (inner = Aa+Ab, mid = +B, out = +C).
+# Source: Nemravova J. A. et al. 2016, A&A 594, A55 (doi:10.1051/0004-6361/201628860): N-body
+#   osculating elements at JD 2456224.7247 (their Table 15, as compiled by Wikipedia - to be
+#   checked in the paper): Aa-Ab P = 7.147156 d, e = 0.0014, i = 87.185, Omega = 328.368,
+#   omega = 116.317; A-B P = 145.785 d, e = 0.2075, i = 86.554, Omega = 328.349, omega = 341.108;
+#   AB-C P = 18877.1 d, e = 0.576, i = -23.031 (sic), Omega = 102.066, omega = 117.949;
+#   masses 2.250/2.154/3.782/1.344 Msun, radii 1.691/1.614/2.446/1.424 Rsun,
+#   Teff 11000/10602/14000/6487 K; v sin i of B 229 km/s (Table 12).
+# Conversions: the negative inclination of the outer orbit is the same plane and periastron as
+#   i = 23.031, Omega = 102.066 + 180, omega = 117.949 + 180 (both vectors checked).
+#   Mean anomalies at the epoch: A-B from T_p = RJD 55609.46 and P_anom = 145.579 d (81.5 deg),
+#   AB-C from T_p = RJD 54615 (31.1 deg), Aa-Ab at primary minimum ~ 90 - omega (approximate).
+#   P_rot of B = 2 pi R / v sin i (aligned spin ASSUMED); the other stars synchronous.
+#   k2 and rg2 (I/MR^2) from Claret (2004/2023) at the log g of the given mass and radius, as for
+#   QZ Car (the polytrope of the default model overestimates k2 of massive and evolved stars).
+# Why: the outer orbit is strongly inclined to the inner triple (~68 or ~105 deg, depending on
+#   the sign of i3): nodal precession must change the inclinations of the inner orbits.
+# Validation: apsidal motion of A-B, 2.90 +- 0.33 deg/yr (RV) or 2.02 +- 0.31 deg/yr
+#   (interferometry) -> U = 124-180 yr; cyclic inclination changes predicted by the paper.
+#   swingersim run configs/catalog/xi_tau.yaml -o output/catalog/xi_tau.h5
+topology: "3+1"
+masses: {m1: 2.250, m2: 2.154, m3: 3.782, m4: 1.344}
+orbits:
+  inner: {P: 7.147156, e: 0.0014, i: 87.185, Omega: 328.368, omega: 116.317, M0: 333.7}
+  mid:   {P: 145.785, e: 0.2075, i: 86.554, Omega: 328.349, omega: 341.108, M0: 81.48}
+  out:   {P: 18877.1, e: 0.576, i: 23.031, Omega: 282.066, omega: 297.949, M0: 31.11}
+stars:
+  m1: {R: 1.691, Teff: 11000, apsidal_k2: 0.00530, rg2: 0.0480}
+  m2: {R: 1.614, Teff: 10602, apsidal_k2: 0.00533, rg2: 0.0482}
+  m3: {R: 2.446, Teff: 14000, P_rot: 0.54, apsidal_k2: 0.00635, rg2: 0.0521}
+  m4: {R: 1.424, Teff: 6487, apsidal_k2: 0.00424, rg2: 0.0413}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 300, n_output: 3001, extremes_every_orbits: 20}

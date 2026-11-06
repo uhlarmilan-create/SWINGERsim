@@ -1,0 +1,117 @@
+# times of minima of AH Cep from VarAstro (var.astro.cz/en/Stars/11547, incl. the original O-C gateway; read 2026-10-16)
+# HJD (UTC) converted to BJD_TDB (RA 341.97058, Dec +65.06217); sigma - published error, else pg/vis 0.01, pe 0.002, CCD 0.001 d
+# (placeholders - use fit.stage2.error_scale per_source). Duplicate VarAstro records removed. Pair = inner (m1+m2).
+# + minima from the Nelson O-C database (AAVSO, Cep_AH.xlsx, update 2026-07-31) not in VarAstro (within 0.003 d); ref 'Nelson AAVSO - <source>'
+# pre-1960 times (UT, not UTC) converted with TT = UT + Delta T (Espenak & Meeus 2006; ocfit.delta_t_s), 2026-11-03
+binary,kind,bjd_tdb,sigma_d,cycle,ref
+inner,secondary,2415500.11000,0.01000,-10982,pg Zverev M S (I 2886)
+inner,primary,2424076.62129,0.01000,-6149,pg Moore (I 2886)
+inner,primary,2424078.32629,0.01000,-6148,vis Zverev M S (D Lich)
+inner,primary,2425388.08927,0.00200,-5410,pe Huffer C M (I 2886)
+inner,primary,2425835.34527,0.01000,-5158,vis Zverev M S (I 2886)
+inner,secondary,2425836.27027,0.01000,-5158,vis Zverev M S (D Lich)
+inner,primary,2426440.48728,0.01000,-4817,vis Zverev M S (I 2886)
+inner,primary,2426564.72828,0.01000,-4747,vis Zverev M S (I 2886)
+inner,primary,2426985.34028,0.01000,-4510,vis Zverev M S (I 2886)
+inner,primary,2434714.30936,0.01000,-155,vis Nekrasova S (I 2886)
+inner,secondary,2434981.42036,0.01000,-5,vis Guarnieri P (I 2886)
+inner,primary,2434989.40436,0.01000,0,vis Guarnieri P (I 2886; 0 GCVS)
+inner,secondary,2440873.61749,0.00100,3315,B Battistini P (I 0817; I 2886)
+inner,secondary,2440873.62249,0.00100,3315,V Battistini P (I 0817; I 2886)
+inner,secondary,2441196.63749,0.00200,3497,pe Mayer Pavel (I 2886)
+inner,primary,2442647.50753,0.00200,4315,pe Mayer Pavel (I 2886)
+inner,primary,2443779.81358,0.00200,4953,pe Hartigan P (I 2407; I 2886)
+inner,primary,2443815.31588,0.00200,4973,pe Hartigan P (I 2886)
+inner,primary,2444010.53259,0.00200,5083,pe Tremko J (I 2407; I 2886)
+inner,secondary,2444634.35061,0.01000,5434,vis Diethelm Roger (B 0052)
+inner,secondary,2445200.49964,0.00200,5753,pe Mayer Pavel (I 2407; I 2886)
+inner,secondary,2445223.57064,0.00200,5766,pe Mayer Pavel (I 2407; I 2886)
+inner,secondary,2445562.53865,0.00200,5957,pe Mayer Pavel (I 2407; I 2886)
+inner,primary,2445579.39865,0.00200,5967,pe Tremko J (I 2407; I 2886)
+inner,secondary,2445674.35475,0.00200,6020,pe Mayer Pavel (D Lich)
+inner,secondary,2445963.63294,0.00200,6183,pe Bell S A (D Lich)
+inner,primary,2446005.33054,0.00200,6207,pe Mayer Pavel (D Lich)
+inner,primary,2446264.44665,0.00200,6353,pe Diethelm Roger (B 0077)
+inner,secondary,2446343.41564,0.00200,6397,pe Mayer Pavel (I 2886)
+inner,primary,2446358.50124,0.00200,6406,pe Mayer Pavel (I 2886)
+inner,secondary,2446359.38934,0.00200,6406,pe Mayer Pavel (I 2886)
+inner,secondary,2446705.45554,0.00200,6601,pe Mayer Pavel (D Lich)
+inner,primary,2446706.34504,0.00200,6602,pe Mayer Pavel (D Lich)
+inner,primary,2446729.41414,0.00200,6615,pe Mayer Pavel ()
+inner,secondary,2446769.34494,0.00200,6637,pe Mayer Pavel ()
+inner,primary,2446917.53964,0.00200,6721,pe Diethelm Roger (B 0083)
+inner,secondary,2446957.46533,0.00200,6743,pe Mayer Pavel ()
+inner,secondary,2447099.44173,0.00200,6823,pe Mayer Pavel ()
+inner,secondary,2447438.41315,0.00200,7014,pe Mayer Pavel ()
+inner,primary,2447469.46945,0.00200,7032,pe Mayer Pavel ()
+inner,secondary,2447470.35265,0.00200,7032,pe Mayer Pavel ()
+inner,primary,2447549.34145,0.00200,7077,pe Mayer Pavel ()
+inner,secondary,2447713.49465,0.00200,7169,pe Mayer Pavel ()
+inner,secondary,2447729.46895,0.00200,7178,pe Mayer Pavel ()
+inner,primary,2447776.49815,0.00200,7205,pe Ells J (R 0015)
+inner,primary,2448163.38566,0.00200,7423,pe Diethelm Roger (B 0096)
+inner,primary,2448273.41958,0.00100,7485,V Agerer Franz (D 0059)
+inner,primary,2448273.42118,0.00100,7485,B Agerer Franz (D 0059)
+inner,primary,2448289.38778,0.00100,7494,V Agerer Franz (D 0059)
+inner,primary,2448289.38938,0.00100,7494,B Agerer Franz (D 0059)
+inner,primary,2448500.59068,0.00100,7613,V Hipparcos (0 Hipp)
+inner,primary,2448541.40368,0.00100,7636,B Agerer Franz (D 0060)
+inner,primary,2448541.40468,0.00100,7636,V Agerer Franz (D 0060)
+inner,primary,2448555.59668,0.00100,7644,B Agerer Franz (D 0060)
+inner,primary,2448555.59768,0.00100,7644,V Agerer Franz (D 0060)
+inner,secondary,2449644.39102,0.00100,8257,B Agerer Franz (D 0090; I 4382)
+inner,secondary,2449644.39152,0.00100,8257,V Agerer Franz (D 0090; I 4382)
+inner,secondary,2450464.30751,0.00100,8719,BV Agerer Franz (D 0102; I 4562)
+inner,primary,2451457.29972,0.01000,9279,vis Tikkanen Kari (B 0124)
+inner,primary,2453001.28555,0.00100,10149,V Petropoulou M (I 6153)
+inner,primary,2453993.35157,0.00100,10708,ccd Dreveny Radek (C home)
+inner,primary,2454339.42337,0.00120,10903,ccdR Dreveny R (C 0034; E 0074)
+inner,secondary,2454709.46032,0.00100,11111,I Dreveny Radek (E 0094; C 0035)
+inner,secondary,2454709.46232,0.00100,11111,R Dreveny Radek (E 0094; C 0035)
+inner,secondary,2455797.37510,0.00130,11724,R Honkova Katerina (C 0038; E 0160)
+inner,secondary,2455797.37610,0.00120,11724,V Honkova Katerina (C 0038; E 0160)
+inner,secondary,2455829.31602,0.00100,11742,R Uhlar Robert (I 6007)
+inner,primary,2456206.44367,0.00100,11955,-I Agerer Franz (D 0231; I 6070)
+inner,secondary,2457206.51460,0.00100,12518,-I Agerer Franz (D 0241; I 6157)
+inner,primary,2457214.49680,0.00100,12523,ccd Paschke Anton (E 0181)
+inner,secondary,2457923.50951,0.00100,12922,-Ir Agerer Franz (D 0247; I 6244)
+inner,secondary,2458381.40308,0.00059,13180,Clear Pokorný P. (C)
+inner,primary,2458396.48170,0.00077,13189,Clear Pokorný P. (C)
+inner,secondary,2458736.34119,0.00101,13380,Clear Ivan Sergey (C)
+inner,secondary,2458855.24628,0.00104,13447,R Urbaník M. (C)
+inner,secondary,2458855.24642,0.00111,13447,B Urbaník M. (C)
+inner,secondary,2458855.25212,0.00071,13447,V Urbaník M. (C)
+inner,secondary,2458855.25502,0.00089,13447,I Urbaník M. (C)
+inner,primary,2459058.45935,0.00089,13562,I Urbaník M. (C)
+inner,primary,2459058.46080,0.00096,13562,R Urbaník M. (C)
+inner,primary,2459058.46311,0.00135,13562,V Urbaník M. (C)
+inner,primary,2459152.51280,0.00100,13615,ccd Paschke Anton (D 0055)
+inner,primary,2459459.55979,0.00100,13788,-Ir Agerer Franz (D 0060; D 0254)
+inner,primary,2459775.46378,0.00100,13966,ccd Paschke Anton (D 0079)
+inner,secondary,2460005.29528,0.00274,14095,Clear Ivan Sergey (C)
+inner,secondary,2461061.25676,0.00053,14690,TG Ivan Sergey (C)
+inner,secondary,2446705.47294,0.00200,,Nelson AAVSO: UNP.
+inner,secondary,2447887.40835,0.00200,,Nelson AAVSO: Hipparcos
+inner,primary,2451462.60372,0.00200,,Nelson AAVSO: 2013JAVSO..41..122
+inner,secondary,2451506.07382,0.01000,,Nelson AAVSO: AJ 129;990 ff vis
+inner,secondary,2451522.04482,0.01000,,Nelson AAVSO: AJ 129;990 ff vis
+inner,secondary,2451569.96032,0.01000,,Nelson AAVSO: AJ 129;990 ff vis
+inner,primary,2460238.68738,0.00270,,Nelson AAVSO: JAAVSO 53 P61
+inner,secondary,2458649.38301,0.00420,,Nelson AAVSO: OEJV 0268
+inner,secondary,2458649.38501,0.01550,,Nelson AAVSO: OEJV 0268
+inner,primary,2458664.46461,0.00720,,Nelson AAVSO: OEJV 0268
+inner,secondary,2458931.56850,0.01850,,Nelson AAVSO: OEJV 0268
+inner,secondary,2458931.57630,0.01670,,Nelson AAVSO: OEJV 0268
+inner,primary,2458948.43710,0.01280,,Nelson AAVSO: OEJV 0268
+inner,secondary,2459034.50330,0.00930,,Nelson AAVSO: OEJV 0268
+inner,secondary,2459034.50380,0.01730,,Nelson AAVSO: OEJV 0268
+inner,primary,2459830.45848,0.00140,,Nelson AAVSO: OEJV 0268
+inner,primary,2459830.47298,0.00260,,Nelson AAVSO: OEJV 0268
+inner,secondary,2459831.36898,0.04650,,Nelson AAVSO: OEJV 0268
+inner,secondary,2459831.37218,0.01350,,Nelson AAVSO: OEJV 0268
+inner,secondary,2459870.40968,0.01940,,Nelson AAVSO: OEJV 0268
+inner,secondary,2459870.41098,0.03460,,Nelson AAVSO: OEJV 0268
+inner,primary,2460208.49748,0.01770,,Nelson AAVSO: OEJV 0268
+inner,primary,2460208.49968,0.00530,,Nelson AAVSO: OEJV 0268
+inner,primary,2460215.59538,0.01060,,Nelson AAVSO: OEJV 0268
+inner,primary,2461010.68659,0.00080,,Nelson AAVSO: JAAVSO 54 1  p120

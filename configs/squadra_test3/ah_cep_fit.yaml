@@ -1,0 +1,43 @@
+# AH Cep - path 2 "data -> model": joint N-body fit of 327 times of minima 1901-2026 (minima_all.csv: visual,
+# photographic, photoelectric and CCD minima of VarAstro and the Nelson/AAVSO database, 216 TESS minima 2019-2024 by
+# tools/tess_minima.py) and the published inclination (Pavlovski et al. 2018, early 1980s), starting from
+# ah_cep_published.yaml. Free: the pair (P, M0, i, Omega) and the third body (P, M0, e, omega, i, Omega, m3); m1, m2 with the priors of Pavlovski et al.
+# Questions: the mass and orbit of the third body from the light-time effect (+ dynamical delay), whether a fourth
+# body is needed (residuals), and how fast the inclination of the pair can change (fit.inclination + TESS depths
+# in ah_cep_fit_lc.yaml).
+topology: custom
+hierarchy: {out: [inner, m3], inner: [m1, m2]}
+masses: {m1: 16.14, m2: 13.69, m3: 7.5}
+orbits:
+  inner: {P: 1.774742, e: 0.0, i: 69.81, Omega: 0.0, omega: 90.0, M0: 0.0}
+  out:   {P: 24983.0,  e: 0.57, i: 75.0, Omega: 10.0, omega: 257.0, M0: 199.0}
+stars:
+  m1: {R: 6.51, Teff: 30700}
+  m2: {R: 5.64, Teff: 28800}
+  m3: {R: 3.5, Teff: 20000}
+stellar_model: {kind: mist, age_myr: 6.0, feh: 0.0, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 30, n_output: 3001, extremes_every_orbits: 20}
+
+fit:
+  minima: ../../data/observed/ah_cep/minima_all.csv
+  time_system: BJD_TDB
+  inclination:
+    - {file: ../../data/observed/ah_cep/inclination_lit.csv, pair: inner, label: Pavlovski2018}
+  stage2:
+    bjd_t0: 2458000.0
+    anchor: true
+    free: [orbits.inner.P, orbits.inner.M0, orbits.inner.i, orbits.inner.Omega,
+           orbits.out.P, orbits.out.M0, orbits.out.e, orbits.out.omega, orbits.out.i, orbits.out.Omega, masses.m1, masses.m2, masses.m3]
+    max_sigma_d: 0.03
+    error_scale: per_source   # visual, photographic, photoelectric, CCD, every TESS sector
+    error_model: jitter
+    clip_sigma: 5.0
+    priors:
+      masses.m1: [16.14, 0.26]
+      masses.m2: [13.69, 0.21]
+    max_iterations: 40
+    processes: 0
+  output:
+    dir: ../../output/squadra_test3/ah_cep/fit
+    predict: {years: 10, samples: 100}

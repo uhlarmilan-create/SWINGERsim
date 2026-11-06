@@ -1,0 +1,36 @@
+# KH 15D (V582 Mon): a young eccentric binary of two T Tauri stars (48.37 d) behind the edge of
+# a precessing circumbinary ring. Since the 1990s the ring has covered more and more of the
+# binary orbit: first star A disappeared except near apastron, both stars were hidden for years
+# (2010-2012), now star B re-emerges at the other edge (Winn J. N. et al. 2006, ApJ 644, 510;
+# Chiang E. I., Murray-Clay R. A. 2004, ApJ 607, 913; Smallwood J. L. et al. 2019, MNRAS 485,
+# 3608). Hierarchy (A + B), the ring centred on the binary.
+# Sources: P = 48.37 d, a ~ 0.26 AU, e 0.57-0.74 (Winn et al. 2006; Johnson et al. 2004,
+#   AJ 128, 1265), total mass ~1.3 Msun, K6/K7 + K1 (Smallwood et al. 2019); occultations -3.5 mag;
+#   edge speed ~6.5e-3 (1 + e) AU/yr.
+# ASSUMED (an illustrative model, not a fit): e = 0.6, masses 0.60 + 0.72, radii 1.3/1.4 Rsun,
+#   4100/4900 K, binary i = 87 deg; ring 3-5 AU, 0.2 AU thick, opaque, tilted 20 deg from the
+#   binary, precessing retrograde in 600 yr (chosen to give the observed edge speed; narrow-ring
+#   models give ~1000-3000 yr), tilt_node 84 deg (the edge reaches the binary at t ~ 0).
+# Validation: the sequence of phases - star A visible only near apastron, both hidden for
+#   years, then the binary re-emerging - over ~20 yr, with drops of several magnitudes.
+#   swingersim lightcurve configs/catalog/kh15d.yaml --days 21900 --cadence-min 2880 --band I -o output/catalog/kh15d/lc_i.csv
+topology: custom
+hierarchy: {A: [m1, m2]}
+masses: {m1: 0.60, m2: 0.72}
+orbits:
+  A: {P: 48.37, e: 0.6, i: 87.0}
+stars:
+  m1: {R: 1.3, Teff: 4100}
+  m2: {R: 1.4, Teff: 4900}
+discs:
+  ring:
+    host: A
+    r_in_au: 3.0
+    r_out_au: 5.0
+    thickness_au: 0.2
+    relative_to: A
+    tilt: 20.0
+    tilt_node: 84.0
+    precession_period_yr: -600.0
+physics: {gr: false}
+run: {t_max_yr: 60, n_output: 601}

@@ -1,0 +1,33 @@
+# TIC 120362137 (3+1, Borkovits et al. 2026): swingersim fit, stage 2 (joint N-body model of the times of minima), with emcee errors.
+# Start values: tic120362137_anchored.yaml (the published solution with the inner periods and phases
+# anchored to the minima). Free: inner.P, inner.M0, inner.ecosw, inner.esinw, mid.P, mid.M0, mid.e, mid.omega, out.P, out.M0, out.e, out.omega.
+# Why these: the 147 TESS minima 2019-2024 of the 3.3-d pair carry the 51-d and 1046-d ETVs; only the inner pair eclipses, so the middle and outer orbits are seen through its timing alone; masses, inclinations and nodes stay at the published photodynamical solution.
+# Run: swingersim fit configs/squadra_test/tic120362137_fit_mcmc.yaml   (results in output/squadra_test/tic120362137/fit_mcmc/)
+# t = 0 of this configuration = BJD 2458683.3.
+topology: "3+1"
+masses: {m1: 1.748, m2: 1.361, m3: 1.483, m4: 1.008}
+orbits:
+  inner: {P: 3.2862153, e: 0.00735, i: 88.70, Omega: 0.0,  omega: 199.4,  M0: 306.386}
+  mid:   {P: 51.3111,  e: 0.22367, i: 89.05, Omega: 0.26, omega: 190.05, M0: 155.92}
+  out:   {P: 1045.5,   e: 0.274,   i: 90.3,  Omega: 0.10, omega: 289.0,  M0: 200.33}
+stars:
+  m1: {R: 2.996, Teff: 6612}
+  m2: {R: 1.507, Teff: 6724}
+  m3: {R: 1.768, Teff: 6937}
+  m4: {R: 0.927, Teff: 5772}
+stellar_model: {kind: mist, age_myr: 1545.0, feh: 0.036, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 100, n_output: 5001, extremes_every_orbits: 20}
+fit:
+  minima: ../../data/observed/tic120362137/minima_borkovits2026.csv
+  time_system: BJD_TDB
+  stage2:
+    bjd_t0: 2458683.3
+    free: [orbits.inner.P, orbits.inner.M0, orbits.inner.ecosw, orbits.inner.esinw, orbits.mid.P, orbits.mid.M0, orbits.mid.e, orbits.mid.omega, orbits.out.P, orbits.out.M0, orbits.out.e, orbits.out.omega]
+    max_sigma_d: 0.01
+    max_iterations: 30
+    processes: 0
+    sampler: emcee
+    mcmc_steps: 300
+  output:
+    dir: ../../output/squadra_test/tic120362137/fit_mcmc

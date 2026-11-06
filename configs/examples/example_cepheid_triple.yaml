@@ -1,0 +1,20 @@
+# Example: a classical Cepheid with an eclipsing binary as its companion (illustrative values,
+# 2+1). A 6 Msun star on its core-helium-burning blue loop crosses the Cepheid instability strip
+# (Bono et al. 2000) at 73.1 Myr; the companion is a 2-d eclipsing pair of 3.0 + 2.5 Msun main-
+# sequence stars, coeval, in a 10-yr outer orbit. The Cepheid period follows from its MIST
+# L, Teff and mass (Bono et al. 2000, Table 6); its pulsation phases carry the light-travel time
+# of the outer orbit (a1 sin i / c ~ 0.04 d), as the O-C of Cepheids in binaries do.
+#   swingersim pulsation configs/examples/example_cepheid_triple.yaml
+#   swingersim lightcurve configs/examples/example_cepheid_triple.yaml --days 40 --band V -o output/cep.csv
+topology: custom
+hierarchy: {out: [m1, A], A: [m2, m3]}
+masses: {m1: 6.0, m2: 3.0, m3: 2.5}
+orbits:
+  A:   {P: 2.0, e: 0.0, i: 88.0}
+  out: {P: 3650.0, e: 0.3, i: 70.0, omega: 40.0}
+stars:
+  m1:
+    pulsation: {type: cepheid, mode: F, amplitude_mag: 0.35}
+stellar_model: {kind: mist, age_myr: 73.1, feh: 0.0, vvcrit: 0.4}
+physics: {gr: false}
+run: {t_max_yr: 1.0}

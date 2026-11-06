@@ -1,0 +1,14 @@
+# Compact eclipsing 2+2 system with stellar structure: tidal and rotational distortion of all
+# four stars (default stellar model: ZAMS radii, n = 3 polytropes), synchronous rotation,
+# no tidal dissipation. Shows apsidal motion of the eccentric binary B and how the
+# distortion competes with the perturbation by the other binary.
+topology: "2+2"
+masses: {m1: 1.6, m2: 1.4, m3: 1.3, m4: 1.1}
+orbits:
+  A:   {P: 1.8,   e: 0.05, i: 86.0, Omega: 0.0,  omega: 40.0}
+  B:   {P: 2.9,   e: 0.15, i: 88.0, Omega: 25.0, omega: 200.0, M0: 90.0}
+  out: {P: 600.0, e: 0.4,  i: 80.0, Omega: 10.0, omega: 120.0, M0: 30.0}
+stars:
+  m1: {R: 1.7}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 300, n_output: 1500}

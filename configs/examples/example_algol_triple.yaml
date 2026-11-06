@@ -1,0 +1,21 @@
+# Example: an Algol-type triple (illustrative values). The inner binary starts as the
+# progenitor of the BSE Algol example (Hurley et al. 2002, Sect. 3.1): 2.9 + 0.9 Msun in a
+# circular 2.7-d orbit; a 1.6 Msun tertiary orbits it in 680 d, as the third star of Algol does.
+# The 2.9 Msun star leaves the main sequence at ~393 Myr, fills its Roche lobe in the
+# Hertzsprung gap and transfers mass (physics.mass_transfer: rates, stability and accretion of
+# BSE): the mass ratio reverses - the Algol paradox, the less massive star is the more evolved -
+# the inner orbit widens to weeks, part of the mass leaves the system and the outer orbit widens
+# with it. The run ends when the donor is stripped to its helium core.
+#   swingersim run configs/examples/example_algol_triple.yaml -o output/algol_triple.h5
+topology: custom
+hierarchy: {out: [A, m3], A: [m1, m2]}
+masses: {m1: 2.9, m2: 0.9, m3: 1.6}
+orbits:
+  A:   {P: 2.7, e: 0.0, i: 82.0}
+  out: {P: 680.0, e: 0.23, i: 83.0, Omega: 40.0}
+stellar_model: {kind: mist, age_myr: 390.0, feh: 0.0, vvcrit: 0.0}
+physics:
+  gr: true
+  evolution: true
+  mass_transfer: {}
+run: {backend: secular, t_max_yr: 1.0e7, n_output: 401}

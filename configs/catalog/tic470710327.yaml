@@ -1,0 +1,23 @@
+# TIC 470710327: compact triple of hot young stars - an eclipsing pair of two ~6 Msun B stars
+# (1.10 d) orbited every 52 d by a 15 Msun O9.5-B0.5 V star. Hierarchy ((A+B)+C).
+# Source: Eisner N. L. et al. 2022, MNRAS 511, 4710 (doi:10.1093/mnras/stab3619), Table 2:
+#   P1 = 1.104686 d, e1 = 0 fixed, i1 >= 80 deg (total eclipses); P2 = 52.044 d, e2 = 0.30,
+#   omega2 = 295.7 (of the eclipsing pair around the system centre; relative orbit +180 =
+#   115.7), i2 ~ 59-74 deg, mutual inclination 16.8 (+4.2/-1.4) deg; masses A 6-7, B 5.5-6.3,
+#   C 14.5-16 Msun (midpoints used), age < 13 Myr.
+# ASSUMED: i1 = 82, i2 = 66, Omega1 - Omega2 = 5.3 deg, which gives the published mutual
+#   inclination of 16.8 deg; radii from the MIST models at 5 Myr; phases.
+# Why: a massive compact triple with P2/P1 = 47 and a moderately eccentric, inclined outer
+#   orbit: eccentric ZLK on 1800-5700 yr (Eisner et al.), strong tides in the 1.1-d pair.
+# Validation: ETV amplitude ~ +-6 min (light-time plus dynamical; swingersim timings), ZLK
+#   time scale in the summary vs. 1800-5700 yr, no collision.
+#   swingersim run configs/catalog/tic470710327.yaml -o output/catalog/tic470710327.h5
+topology: custom
+hierarchy: {out: [A, m3], A: [m1, m2]}
+masses: {m1: 6.5, m2: 6.0, m3: 15.2}
+orbits:
+  A:   {P: 1.104686, e: 0.0, i: 82.0, Omega: 5.3}
+  out: {P: 52.044, e: 0.30, i: 66.0, Omega: 0.0, omega: 115.7}
+stellar_model: {kind: mist, age_myr: 5.0, feh: 0.0, vvcrit: 0.4}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 2000, n_output: 4001, extremes_every_orbits: 20}

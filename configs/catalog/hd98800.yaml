@@ -1,0 +1,40 @@
+# HD 98800 (TWA 4): a young 2+2 quadruple of pre-main-sequence K/M stars (~10 Myr, TW Hya
+# association); the pair B is surrounded by a polar circumbinary gas and dust disc.
+# Hierarchy (Aa+Ab) + (Ba+Bb) = SWINGERsim preset 2+2.
+# Source: Zuniga-Fernandez S. et al. 2026, A&A 712, L2 (doi:10.1051/0004-6361/202661407),
+#   Tables 1-2 (building on Zuniga-Fernandez et al. 2021, A&A 655, A15): Aa-Ab P = 264.507 d,
+#   e = 0.48082, i = 135.59, omega_Aa = 68.70 (relative +180 = 248.70), Omega = 170.17,
+#   T = MJD 48742.46; Ba-Bb P = 314.87848 d, e = 0.7819, i = 65.43, omega_Ba = 104.86 (relative
+#   284.86), Omega = 344.02, T = MJD 48708.70; A-B (solution I) P = 212 yr, e = 0.437,
+#   i = 87.850, omega = 69.1, Omega = 184.47, T = 2024.11; masses 0.956/0.298/0.760/0.612 Msun.
+#   Polar disc: Kennedy G. M. et al. 2019, Nat. Astron. 3, 230 (doi:10.1038/s41550-018-0667-x).
+# Conversions: t = 0 at MJD 60000 (2023 Feb 25): M0 = 201.77 (A), 309.32 (B), 358.37 (out).
+#   Radii and structure of the pre-main-sequence stars from MIST at 10 Myr (published:
+#   Aa 1.75, Ba 1.09, Bb 0.85 Rsun).
+# Why: the mutual inclinations are 49 deg (A to the outer orbit) and 147 deg (B), both in the
+#   ZLK window, with a ZLK time ~1e5 yr << age: are the large eccentricities of A (0.48) and
+#   B (0.78) ZLK-driven, and does pre-main-sequence tidal friction stop it?
+#   The polar disc of B (Kennedy et al. 2019: a ring at 2.5-4.6 AU, inclined 26 deg to the sky,
+#   perpendicular to the B orbit) is given as an occulter: polar = its normal along the
+#   eccentricity vector of B (relative_to B, tilt 90, tilt_node = omega_B + 90 = 14.86 deg); it
+#   is then inclined 28.5 deg to the sky (benchmark hd98800-polar-disc, 26 deg observed) and does
+#   not occult the stars. Its gas and its torque on the orbits are not modelled. Thickness
+#   ASSUMED 0.2 AU.
+# Validation: the computed mutual inclinations (49, 147, 158 deg); e-oscillations of A and B on
+#   ~1e5 yr; the system must survive 10 Myr (its age).
+#   swingersim run configs/catalog/hd98800.yaml -o output/catalog/hd98800.h5
+topology: "2+2"
+masses: {m1: 0.956, m2: 0.298, m3: 0.760, m4: 0.612}
+orbits:
+  A:   {P: 264.507, e: 0.48082, i: 135.59, Omega: 170.17, omega: 248.70, M0: 201.77}
+  B:   {P: 314.87848, e: 0.7819, i: 65.43, Omega: 344.02, omega: 284.86, M0: 309.32}
+  out: {P: 77433.0, e: 0.437, i: 87.850, Omega: 184.47, omega: 69.1, M0: 358.37}
+stellar_model: {kind: mist, age_myr: 10.0, feh: 0.0, vvcrit: 0.0}
+physics:
+  gr: true
+  tides: true
+  tidal_lag: hurley2002
+  evolution: true
+discs:
+  polar: {host: B, r_in_au: 2.5, r_out_au: 4.6, thickness_au: 0.2, relative_to: B, tilt: 90.0, tilt_node: 14.86}
+run: {backend: secular, t_max_yr: 1.0e7, n_output: 4001}

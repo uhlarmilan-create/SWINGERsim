@@ -1,0 +1,52 @@
+# KIC 4150611 (HD 181469): a bright hierarchical multiple with a hybrid delta Scuti / gamma Dor
+# pulsator (Aa, F1 V) that is eclipsed every 94.2 d by an eclipsing pair of M dwarfs
+# (Ab1+Ab2, 1.52 d), and a second eclipsing pair of G dwarfs (Ba+Bb, 8.65 d) nearby.
+# Hierarchy (Ba+Bb) + ((Ab1+Ab2)+Aa) = SWINGERsim preset 2+(2+1): A = Ba+Bb, B = Ab1+Ab2, m5 = Aa.
+# Sources: Helminiak K. G. et al. 2017, A&A 602, A30 (doi:10.1051/0004-6361/201630379), Tables
+#   3-6 (Ba-Bb: P = 8.6530923 d, e = 0.2167, omega = 269.3, i = 82.2, masses 0.894/0.888 Msun,
+#   radii 0.802/0.856 Rsun; Ab1-Ab2: P = 1.522248 d, e = 0.0169, omega = 164, i = 87.4);
+#   Kemp A. et al. 2024, A&A 689, A164 (doi:10.1051/0004-6361/202450390), Table 2 (Aa-Ab:
+#   P = 94.29486 d, nearly edge-on, M_Aa/M_Ab = 3.61, M_Ab1/M_Ab2 = 1.113, radii of Aa/Ab1/Ab2
+#   1.64/0.42/0.38 Rsun); Kemp A. et al. 2025, A&A 693, A184 (asteroseismic M_Aa = 1.51 Msun,
+#   Teff 7280 K, [M/H] = -0.23, strongest delta Sct peak 20.243 c/d, gamma Dor 2.6064 c/d).
+# Conversions: omega of the relative orbits = published omega + 180 (Ba-Bb 89.3; Ab pair 344,
+#   convention to be checked). Masses of the Ab pair (0.27): M_Ab = 0.86 Msun from Kepler's law
+#   with the size ratio a_Aab / a_Ab = 21.81 and the period ratio 61.945 of Kemp et al. (2024)
+#   (M_tot / M_Ab = 2.70), consistent with the mass function f(m) = 0.12 Msun of the pulsation
+#   timing (Shibahashi & Kurtz 2012) and of the RVs (Helminiak 2017, K1 = 22.6 km/s), and with
+#   the radii 0.42 / 0.38 Rsun; split 1.113 : 1 -> 0.453 + 0.407. Kemp et al. say themselves that
+#   their absolute masses are not meaningful without RVs of Ab (Sect. 3.1.2); their mass ratio
+#   3.61 is inconsistent with their own a and P ratios (it gave M_Ab = 0.42 and a light time of
+#   55 s instead of 98 s before 0.27).
+# ASSUMED/UNKNOWN: the orbit of A around B (here a = 300 AU, e = 0.3, i = 60; the ensemble
+#   kic4150611_ensemble.yaml draws it); e(Aa-Ab) = 0 (< 0.17); nodes and phases; pulsation
+#   amplitudes (5 and 3 mmag).
+# Why: a real 2+(2+1) system with a pulsator: the pulsations carry the light-time effect of the
+#   94-d orbit (Shibahashi & Kurtz 2012 found that orbit from the frequency modulation).
+# Validation: light-time semi-amplitude of the pulsations a1 sin i / c = 0.196 AU = 98 s
+#   (Helminiak 2017, Table 4: a1 sin i = 0.196 +- 0.019 AU from the RVs of Aa; the same from the
+#   frequency modulation of Shibahashi & Kurtz 2012); eclipses of Aa by the Ab pair every 94.3 d.
+#   swingersim run configs/catalog/kic4150611.yaml -o output/catalog/kic4150611.h5
+topology: "2+(2+1)"
+masses: {m1: 0.894, m2: 0.888, m3: 0.453, m4: 0.407, m5: 1.51}
+orbits:
+  A:   {P: 8.6530923, e: 0.2167, i: 82.2, omega: 89.3}
+  B:   {P: 1.522248, e: 0.0169, i: 87.4, omega: 344.0}
+  Bt:  {P: 94.29486, e: 0.0, i: 89.6}
+  out: {a: 300.0, e: 0.3, i: 60.0}
+stars:
+  m1: {R: 0.802}
+  m2: {R: 0.856}
+  m3: {R: 0.42}
+  m4: {R: 0.38}
+  m5:
+    R: 1.64
+    Teff: 7280
+    pulsation:
+      type: delta_scuti
+      period_d: 0.049399
+      amplitude_mag: 0.005
+      extra_modes:
+        - {period_d: 0.383672, amplitude_mag: 0.003}
+physics: {gr: true, tides: true}
+run: {t_max_yr: 30, n_output: 3001}

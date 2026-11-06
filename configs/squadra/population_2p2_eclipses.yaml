@@ -1,0 +1,53 @@
+# Eclipse statistics of a synthetic population of 2+2 quadruples, to compare with the doubly
+# eclipsing 2+2 candidates of Kolar et al. 2025 (MNRAS 538, 1160; 781 candidates) and SQUADRA.
+# Eclipse criterion and isotropic orientation as in Vokrouhlicky (2016) MNRAS 461, 3964,
+# Sect. 3.3 (benchmarks vok16-eclipse-prob-A/B); here applied to a whole population and
+# followed in time with the secular backend.
+#
+# ASSUMED population (not from a paper; change and re-run to test the sensitivity):
+#   masses uniform 0.8-3 Msun (radii from the ZAMS relation of SWINGERsim), inner periods
+#   log-uniform 0.3-30 d (the range of TESS detections), inner e uniform 0-0.2, outer period
+#   log-uniform 100 d - 3000 yr (redrawn until stable), outer e uniform 0-0.8, all three orbits
+#   oriented isotropically (no alignment), observer along z.
+#
+# What to read from the summary (swingersim ensemble-report, or pandas):
+#   A_eclipsing0, B_eclipsing0   does the binary eclipse at a random epoch (t = 0)
+#   eclipse_fraction_both        fraction of the 3000 yr during which both binaries eclipse
+#   A/B_dtiltdt0_deg_yr          present rate of the eclipse depth change (fit over 5 yr)
+#   A/B_eclipse_change_yr        when the binary starts/stops eclipsing
+# -> P(both eclipse | A eclipses), fraction of eclipsing pairs with |rate| > 0.1 deg/yr,
+#    as a function of P_out; then compare with the catalogue (selection effects of TESS!).
+topology: "2+2"
+masses: {m1: 1.5, m2: 1.5, m3: 1.5, m4: 1.5}
+orbits:
+  A:   {P: 3.0,    e: 0.05, i: 90.0}
+  B:   {P: 3.0,    e: 0.05, i: 90.0}
+  out: {P: 3000.0, e: 0.3,  i: 90.0}
+physics: {gr: true}
+run: {t_max_yr: 3000, n_output: 1501, backend: secular, rate_window_yr: 5.0}
+ensemble:
+  n: 50000
+  seed: 2016
+  directions: [forward]
+  require: [stable_v22]
+  max_tries: 5000
+  vary:
+    masses.m1: {uniform: [0.8, 3.0]}
+    masses.m2: {uniform: [0.8, 3.0]}
+    masses.m3: {uniform: [0.8, 3.0]}
+    masses.m4: {uniform: [0.8, 3.0]}
+    orbits.A.P: {loguniform: [0.3, 30.0]}
+    orbits.B.P: {loguniform: [0.3, 30.0]}
+    orbits.A.e: {uniform: [0.0, 0.2]}
+    orbits.B.e: {uniform: [0.0, 0.2]}
+    orbits.out.P: {loguniform: [100.0, 1100000.0]}
+    orbits.out.e: {uniform: [0.0, 0.8]}
+    orbits.A.i: isotropic
+    orbits.A.Omega: angle
+    orbits.A.omega: angle
+    orbits.B.i: isotropic
+    orbits.B.Omega: angle
+    orbits.B.omega: angle
+    orbits.out.i: isotropic
+    orbits.out.Omega: angle
+    orbits.out.omega: angle

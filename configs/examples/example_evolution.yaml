@@ -1,0 +1,16 @@
+# Example 11: an evolving 2+2 quadruple (illustrative values, not a real system).
+# Four main-sequence stars of 1.1 Gyr; the 2 Msun primary of A leaves the main sequence at
+# 1.16 Gyr, expands and fills its Roche lobe. Stellar evolution after Hurley et al. (2000),
+# k2 and I/(MR^2) from Claret (2023),
+# tides with lags from the stellar structure (Hurley et al. 2002), secular backend.
+#   swingersim run configs/examples/example_evolution.yaml -o output/evolution.h5
+#   swingersim lightcurve configs/examples/example_evolution.yaml --days 30 -o output/lc.csv
+topology: "2+2"
+masses: {m1: 2.0, m2: 1.5, m3: 1.2, m4: 1.1}
+orbits:
+  A:   {P: 4.0,      e: 0.0,  i: 88.0, Omega: 0.0}
+  B:   {P: 5.0,      e: 0.05, i: 86.5, Omega: 1.0, omega: 30.0}
+  out: {P: 200000.0, e: 0.3,  i: 80.0, Omega: 5.0}
+stellar_model: {kind: sse, age_myr: 1100, z: 0.02}
+physics: {gr: true, tides: true, rotation: true, evolution: true, tidal_lag: hurley2002}
+run: {backend: secular, t_max_yr: 1.0e8, n_output: 401}

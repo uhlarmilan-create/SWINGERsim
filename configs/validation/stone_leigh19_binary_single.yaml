@@ -1,0 +1,13 @@
+# Binary-single scattering for comparison with the statistical escape theory of
+# Stone & Leigh (2019): resonant encounters (>= 2 phases with no bound pair) of a 1 + 0.6 Msun
+# binary and a 0.8 Msun star at 0.01 v_c. swingersim escape-theory --masses 1.0 0.6 0.8 --compare <dir>
+name: sl19-resonant
+scatter:
+  target: {masses: [1.0, 0.6], a_au: 1.0, e: 0.0}
+  projectile: {masses: [0.8]}
+  v_inf_vc: 0.01
+  b_max_au: 0.3
+  check_periods: 0.25
+  max_wall_s: 20
+  n: 4000
+  seed: 23

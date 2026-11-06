@@ -1,0 +1,35 @@
+# KIC 4150611 (sources in kic4150611.yaml): the orbit of the G-dwarf pair around the triple with
+# the pulsator is unknown. This ensemble draws it (a 100-3000 AU log-uniform, e 0-0.8, isotropic)
+# with all unknown nodes, and follows the secular evolution for 1 Myr: which outer orbits leave
+# the three inner orbits as they are observed (Ba-Bb e = 0.22, Ab pair circular, Aa-Ab nearly
+# edge-on), which drive ZLK cycles in the 94-d orbit?
+#   swingersim ensemble configs/catalog/kic4150611_ensemble.yaml -o output/catalog/kic4150611_ens -j 0
+topology: "2+(2+1)"
+masses: {m1: 0.894, m2: 0.888, m3: 0.453, m4: 0.407, m5: 1.51}
+orbits:
+  A:   {P: 8.6530923, e: 0.2167, i: 82.2, omega: 89.3}
+  B:   {P: 1.522248, e: 0.0169, i: 87.4, omega: 344.0}
+  Bt:  {P: 94.29486, e: 0.0, i: 89.6}
+  out: {a: 300.0, e: 0.3, i: 60.0}
+stars:
+  m1: {R: 0.802}
+  m2: {R: 0.856}
+  m3: {R: 0.42}
+  m4: {R: 0.38}
+  m5: {R: 1.64}
+physics: {gr: true, tides: true}
+run: {backend: secular, t_max_yr: 1.0e6, n_output: 1001}
+ensemble:
+  n: 500
+  seed: 4150611
+  directions: [forward]
+  require: [stable_v22]
+  vary:
+    orbits.A.Omega: angle
+    orbits.B.Omega: angle
+    orbits.Bt.Omega: angle
+    orbits.out.a: {loguniform: [100.0, 3000.0]}
+    orbits.out.e: {uniform: [0.0, 0.8]}
+    orbits.out.i: isotropic
+    orbits.out.Omega: angle
+    orbits.out.omega: angle

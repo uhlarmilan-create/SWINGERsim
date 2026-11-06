@@ -1,0 +1,25 @@
+# HD 5980 with its winds (sources in hd5980_ensemble.yaml): the LBV/WR star A loses
+# 4.5e-5 Msun/yr (Hillier D. J. et al. 2019, MNRAS 486, doi:10.1093/mnras/stz808, present low
+# state). ASSUMED: B (WN4) -2e-5, C (O supergiant) -2e-6 Msun/yr, D none; outer orbit 20 yr,
+# e = 0.3, coplanar (one illustrative member of hd5980_ensemble.yaml).
+#   k2 and rg2 (I/MR^2) from Claret (2004/2023) at the log g of the given mass and radius, as for
+#   QZ Car (the polytrope of the default model overestimates k2 of massive and evolved stars).
+# Why: Wolf-Rayet winds are the fastest way to change the orbits of a massive multiple; in
+# 1e5 yr A+B lose ~6.5 Msun. The orbits widen adiabatically (a M = const per orbit), the
+# inner one by ~5 %, the outer one by ~4 %.
+# Validation: a_final/a_initial = M_initial/M_final for each orbit (printed in the summary).
+#   swingersim run configs/catalog/hd5980_winds.yaml -o output/catalog/hd5980_winds.h5
+topology: "2+2"
+masses: {m1: 61.0, m2: 66.0, m3: 34.0, m4: 15.0}
+orbits:
+  A:   {P: 19.2656, e: 0.27, i: 86.0, omega: 314.0}
+  B:   {P: 96.56, e: 0.815, i: 86.0, Omega: 0.0}
+  out: {P: 7305.0, e: 0.3, i: 86.0}
+stars:
+  m1: {R: 24.0, Teff: 45000, apsidal_k2: 0.00111, rg2: 0.0246}
+  m2: {R: 22.0, Teff: 45000, apsidal_k2: 0.00162, rg2: 0.0298}
+  m3: {R: 24.0, Teff: 34000, apsidal_k2: 0.00100, rg2: 0.0203}
+physics:
+  gr: true
+  mass_loss: {source: rates, rates: {m1: -4.5e-5, m2: -2.0e-5, m3: -2.0e-6}}
+run: {backend: secular, t_max_yr: 1.0e5, n_output: 1001}

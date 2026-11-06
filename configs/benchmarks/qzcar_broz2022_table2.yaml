@@ -1,0 +1,21 @@
+# QZ Car = HD 93206: nominal N-body model of Brož et al. (2022), A&A 666, A24, Table 2.
+# Osculating elements at T0 = JD 2453738.819100 in the standard stellar reference frame
+# (Ac1+Ac2 at the centre); varpi = longitude of pericentre, lambda = true longitude.
+# Masses are present-day masses; (dagger) = derived from Teff (Harmanec 1988).
+# Raw transcription for the benchmark (not yet a SWINGERsim configuration).
+T0_jd: 2453738.819100
+masses: {Ac1: 25.5, Ac2: 33.2, Aa1: 69.8, Aa2: 8.85}      # sigma 2, 2, 5, 2 Msun
+orbits:
+  Ac1+Ac2: {P_d: 5.998599, log_e: -2.876, i: 93.0, Omega: 326.5, varpi: 343.4, lambda: 266.4}
+  Aa1+Aa2: {P_d: 20.734367, log_e: -0.382, i: 93.0, Omega: 326.0, varpi: 83.8, lambda: 306.3}
+  Ac+Aa:   {P_d: 14728.0, log_e: -0.268, i: 92.1, Omega: 326.7, varpi: 295.7, lambda: 53.3}
+stars:
+  Ac1: {Teff: 29687, log_g: 3.40, vrot: 121}
+  Ac2: {Teff: 32979, log_g: 3.80, vrot: 410}
+  Aa1: {Teff: 29564, log_g: 3.37, vrot: 109}
+  Aa2: {Teff: 23446, log_g: 4.10, vrot: 100}
+gamma_kms: -10.0
+distance_pc: 2836
+alternative_model:
+  masses: {Ac1: 31.4, Ac2: 34.8, Aa1: 55.2, Aa2: 10.3}
+  distance_pc: 2452

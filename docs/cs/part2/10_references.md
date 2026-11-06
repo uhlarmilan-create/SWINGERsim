@@ -1,0 +1,31 @@
+# Literatura {.unnumbered}
+
+- Borkovits T., Rappaport S., Kaye T., Isaacson H., Vanderburg A., Howard A. W., et al. (2019). Photodynamical analysis of the triply eclipsing hierarchical triple system EPIC 249432662. *MNRAS* 483, 1934. [arXiv:1809.04366](https://arxiv.org/abs/1809.04366)
+- Borkovits T., Rappaport S. A., Hajdu T., Maxted P. F. L., Pál A., Forgács-Dajka E., Klagyivik P., Mitnyan T. (2020). TICs 167692429 and 220397947: the first compact hierarchical triple stars discovered with TESS. *MNRAS* 493, 5005.
+- Borkovits T., et al. (2021). *MNRAS* 503, 3759.
+- Borkovits T., Rappaport S. A., Chen H.-L., Torres G., Mitnyan T., Kostov V. B., Powell B. P., Pribulla T., Zasche P., et al. (2026). Discovery of the most compact 3+1-type quadruple star system TIC 120362137. *Nat. Commun.* 17, 1859. [doi:10.1038/s41467-026-69223-4](https://doi.org/10.1038/s41467-026-69223-4)
+- Choi J., Dotter A., Conroy C., Cantiello M., Paxton B., Johnson B. D. (2016). Mesa Isochrones and Stellar Tracks (MIST). I. Solar-scaled models. *ApJ* 823, 102. [doi:10.3847/0004-637X/823/2/102](https://doi.org/10.3847/0004-637X/823/2/102)
+- Claret A. (2000). A new non-linear limb-darkening law for LTE stellar atmosphere models. *A&A* 363, 1081.
+- Claret A. (2023). Theoretical tidal evolution constants for stellar models from the pre-main sequence to the white dwarf stage. *A&A* 674, A67. [doi:10.1051/0004-6361/202346250](https://doi.org/10.1051/0004-6361/202346250)
+- Claret A., Bloemen S. (2011). Gravity and limb-darkening coefficients for the Kepler, CoRoT, Spitzer, uvby, UBVRIJHK, and Sloan photometric systems. *A&A* 529, A75. [doi:10.1051/0004-6361/201116451](https://doi.org/10.1051/0004-6361/201116451)
+- Dotter A. (2016). MESA Isochrones and Stellar Tracks (MIST) 0: methods for the construction of stellar isochrones. *ApJS* 222, 8. [doi:10.3847/0067-0049/222/1/8](https://doi.org/10.3847/0067-0049/222/1/8)
+- emcee documentation. Autocorrelation analysis & convergence (tutorial). [emcee.readthedocs.io/en/stable/tutorials/autocorr](https://emcee.readthedocs.io/en/stable/tutorials/autocorr/), accessed 2026 November.
+- Foreman-Mackey D., Hogg D. W., Lang D., Goodman J. (2013). emcee: the MCMC hammer. *PASP* 125, 306. [doi:10.1086/670067](https://doi.org/10.1086/670067)
+- Huang C. X., Vanderburg A., Pál A., et al. (2020). Photometry of 10 million stars from the first two years of TESS full frame images: Part I. *RNAAS* 4, 204. [doi:10.3847/2515-5172/abca2e](https://doi.org/10.3847/2515-5172/abca2e)
+- Irwin J. B. (1952). The determination of a light-time orbit. *ApJ* 116, 211. [doi:10.1086/145604](https://doi.org/10.1086/145604)
+- Jenkins J. M., Twicken J. D., McCauliff S., et al. (2016). The TESS science processing operations center. *Proc. SPIE* 9913, 99133E. [doi:10.1117/12.2233418](https://doi.org/10.1117/12.2233418)
+- Lee C.-U., Kim S.-L., Lee J. W., Kim C.-H., Jeon Y.-B., Kim H.-I., Yoon J.-N., Humphrey A. (2008). V994 Herculis: the multiple system with a quadruple-lined spectrum and a double eclipsing feature. *MNRAS* 389, 1630. [doi:10.1111/j.1365-2966.2008.13708.x](https://doi.org/10.1111/j.1365-2966.2008.13708.x)
+- Lightkurve Collaboration (2018). Lightkurve: Kepler and TESS time series analysis in Python. Astrophysics Source Code Library, ascl:1812.013.
+- Mardling R. A., Aarseth S. J. (2001). Tidal interactions in star cluster simulations. *MNRAS* 321, 398. [doi:10.1046/j.1365-8711.2001.03974.x](https://doi.org/10.1046/j.1365-8711.2001.03974.x)
+- Ogloza W., Niewiadomski W., Barnacka A., Biskup M., Malek K., Sokolowski M. (2008). *Inf. Bull. Var. Stars* 5843, 1.
+- Pont F., Zucker S., Queloz D. (2006). The effect of red noise on planetary transit detection. *MNRAS* 373, 231. [doi:10.1111/j.1365-2966.2006.11012.x](https://doi.org/10.1111/j.1365-2966.2006.11012.x)
+- Pribulla T., Borkovits T., Jayaraman R., Rappaport S., Mitnyan T., Zasche P., Komžík R., Pál A., Uhlař R., Mašek M., Henzl Z., et al. (2023). BU Canis Minoris – the most compact known flat doubly eclipsing quadruple system. *MNRAS* 524, 4220. [doi:10.1093/mnras/stad2015](https://doi.org/10.1093/mnras/stad2015)
+- Rein H., Liu S.-F. (2012). REBOUND: an open-source multi-purpose N-body code for collisional dynamics. *A&A* 537, A128. [doi:10.1051/0004-6361/201118085](https://doi.org/10.1051/0004-6361/201118085)
+- Rein H., Spiegel D. S. (2015). IAS15: a fast, adaptive, high-order integrator for gravitational dynamics. *MNRAS* 446, 1424. [doi:10.1093/mnras/stu2164](https://doi.org/10.1093/mnras/stu2164)
+- Ricker G. R., et al. (2015). Transiting Exoplanet Survey Satellite. *JATIS* 1, 014003. [doi:10.1117/1.JATIS.1.1.014003](https://doi.org/10.1117/1.JATIS.1.1.014003)
+- Tamayo D., Rein H., Shi P., Hernandez D. M. (2020). REBOUNDx: a library for adding conservative and dissipative forces to otherwise symplectic N-body integrations. *MNRAS* 491, 2885. [doi:10.1093/mnras/stz2870](https://doi.org/10.1093/mnras/stz2870)
+- Virtanen P., et al. (2020). SciPy 1.0: fundamental algorithms for scientific computing in Python. *Nat. Methods* 17, 261. [doi:10.1038/s41592-019-0686-2](https://doi.org/10.1038/s41592-019-0686-2)
+- Volkov I. M., Kravtsova A. S., Chochol D. (2021). *Astron. Rep.* 65, 826.
+- Vynatheya P., Hamers A. S., Mardling R. A., Bellinger E. P. (2022). Algebraic and machine learning approach to hierarchical triple-star stability. *MNRAS* 516, 4146. [arXiv:2207.03151](https://arxiv.org/abs/2207.03151)
+- Vynatheya P., Mardling R. A., Hamers A. S. (2023). Quadruple-star systems are not always nested triples: a machine learning approach to dynamical stability. *MNRAS* 525, 2388. [arXiv:2301.09930](https://arxiv.org/abs/2301.09930)
+- Zasche P., Borkovits T., Jayaraman R., Rappaport S. A., Brož M., Vokrouhlický D., Bíró I. B., Hegedüs T., Kiss Z. T., Uhlař R., et al. (2023). V994 Herculis: a unique triply eclipsing sextuple star system. *MNRAS* 520, 3127. [doi:10.1093/mnras/stad328](https://doi.org/10.1093/mnras/stad328)

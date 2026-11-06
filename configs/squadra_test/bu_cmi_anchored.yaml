@@ -1,0 +1,28 @@
+# BU CMi, anchored to the measured minima: the published solution (Pribulla et al. 2023, MNRAS
+# 524, 4220, Table 7; all values and conversions as in bu_cmi_published.yaml) with only the two
+# inner periods and phases adjusted so that SWINGERsim's eclipses follow the 183 published minima
+# 2005-2023 (Tables 3 and 4; data/observed/bu_cmi/minima_pribulla2023.csv).
+# Why: with the published osculating periods the eclipses of SWINGERsim drift by ~7 h in four years
+#   (rms 13-14 h over 2005-2023): SWINGERsim's mean eclipse periods come out 3e-4 and 4e-4 shorter
+#   than those of the photodynamical model of the paper (the mean periods of an inner pair depend
+#   on the definition of the osculating elements in a compact quadruple). A least-squares fit of
+#   P_A, P_B, M0_A, M0_B (4 parameters; everything else as published) gives
+#   P_A 2.937533 -> 2.9384888 d (+3.3e-4), P_B 3.255815 -> 3.2571254 d (+4.0e-4),
+#   M0 shifted by +0.13 and -0.16 deg, and leaves rms residuals of 10.9 min (A) and 12.8 min (B)
+#   over 18 years - the apsidal motion (+-0.2 d) and the 121.5-d ETV (30-40 min) are reproduced
+#   by the dynamics alone.
+# t = 0 of this configuration = BJD 2458491.5.
+topology: "2+2"
+masses: {m1: 2.536, m2: 2.384, m3: 2.521, m4: 2.320}
+orbits:
+  A:   {P: 2.9384888, e: 0.2191, i: 83.35, Omega: 0.14, omega: 101.41, M0: 282.944}
+  B:   {P: 3.2571254, e: 0.2257, i: 83.92, Omega: 0.0,  omega: 257.52, M0: 255.266}
+  out: {P: 121.793,  e: 0.2728, i: 83.79, Omega: 0.09, omega: 141.0,  M0: 294.71}
+stars:
+  m1: {R: 2.249, Teff: 10570}
+  m2: {R: 2.072, Teff: 10283}
+  m3: {R: 2.235, Teff: 10593}
+  m4: {R: 2.003, Teff: 10062}
+stellar_model: {kind: mist, age_myr: 263.0, feh: 0.02, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 100, n_output: 4001, extremes_every_orbits: 20}

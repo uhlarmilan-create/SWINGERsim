@@ -1,0 +1,14 @@
+# Group 5 (test campaign): magnetic braking (Matt et al. 2015) of a solar-type close binary
+# with a distant tertiary: the tides keep the spins synchronous, so the braking torque drains
+# the orbit and the period shrinks (compare g5_mb_triple_nobrake). Run also backwards in time
+# (--t-max-yr negative): the spins and the orbit are then spun up / widened into the past.
+topology: custom
+hierarchy: {out: [A, m3], A: [m1, m2]}
+masses: {m1: 1.0, m2: 0.9, m3: 0.8}
+orbits:
+  A: {P: 2.0, e: 0.0}
+  out: {P: 3650.0, e: 0.2, i: 30.0}
+stellar_model: {kind: sse, age_myr: 100.0, z: 0.02}
+physics: {gr: true, tides: true, rotation: true, tidal_lag: hurley2002, evolution: true,
+          magnetic_braking: {}}
+run: {backend: secular, t_max_yr: 1.0e9, n_output: 501}

@@ -1,0 +1,26 @@
+# TIC 120362137, anchored to the measured minima: the published solution (Borkovits et al. 2026,
+# Nat. Commun. 17, 1859, Tables 1 and 2; all values and conversions as in
+# tic120362137_published.yaml) with only the period and phase of the eclipsing 3.3-d pair
+# adjusted so that SWINGERsim's eclipses follow the 147 published minima 2019-2024 (Source Data of
+# Fig. 2; data/observed/tic120362137/minima_borkovits2026.csv).
+# Why: with the published osculating period the eclipses of SWINGERsim drift by 27 h in five years
+#   (rms 17 h): SWINGERsim's mean eclipse period comes out 6.2e-4 shorter than that of the paper's
+#   photodynamical model (see bu_cmi_anchored.yaml for the same effect in BU CMi). A
+#   least-squares fit of P and M0 of the inner pair (everything else as published) gives
+#   P 3.284187 -> 3.2862153 d and M0 +0.28 deg, and leaves an rms residual of 1.7 min over five
+#   years - the 51-d and 1046-d eclipse-timing variations are reproduced by the dynamics alone.
+# t = 0 of this configuration = BJD 2458683.3.
+topology: "3+1"
+masses: {m1: 1.748, m2: 1.361, m3: 1.483, m4: 1.008}
+orbits:
+  inner: {P: 3.2862153, e: 0.00735, i: 88.70, Omega: 0.0,  omega: 199.4,  M0: 306.386}
+  mid:   {P: 51.3111,  e: 0.22367, i: 89.05, Omega: 0.26, omega: 190.05, M0: 155.92}
+  out:   {P: 1045.5,   e: 0.274,   i: 90.3,  Omega: 0.10, omega: 289.0,  M0: 200.33}
+stars:
+  m1: {R: 2.996, Teff: 6612}
+  m2: {R: 1.507, Teff: 6724}
+  m3: {R: 1.768, Teff: 6937}
+  m4: {R: 0.927, Teff: 5772}
+stellar_model: {kind: mist, age_myr: 1545.0, feh: 0.036, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 100, n_output: 5001, extremes_every_orbits: 20}

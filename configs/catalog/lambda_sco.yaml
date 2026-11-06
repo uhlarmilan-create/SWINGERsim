@@ -1,0 +1,38 @@
+# lambda Sco (Shaula): a beta Cephei pulsator (Aa1, B1.5 IV) in an eclipsing 5.95-d orbit with a
+# pre-main-sequence companion (Aa2), and a B2 V star (Ab) on a 2.9-yr orbit. Hierarchy
+# ((Aa1+Aa2)+Ab): hot, young, a pulsator and a pre-main-sequence star in one system.
+# Sources: Uytterhoeven K. et al. 2004, A&A 427, 581 (doi:10.1051/0004-6361:20041223), Table 3
+#   (close orbit e = 0.26, omega = 65 of Aa1 -> relative orbit 245; wide orbit omega = 311 of A
+#   -> relative 131, a1 sin i = 2.39 AU) and Table 4 (Aa2 1.6-2.0 Msun, weak-lined T Tauri;
+#   Aa1 24-26 kK; Ab 20-22 kK); Handler G. & Schwarzenberg-Czerny A. 2013, A&A 557, A1 (close
+#   period 5.95189 d from the eclipse, masses ~30 % higher); Tango W. J. et al. 2006, MNRAS 370,
+#   884 (doi:10.1111/j.1365-2966.2006.10526.x): wide orbit P = 2.8825 yr, e = 0.121,
+#   i = 77.2 deg, masses Aa1 10.4, Ab 8.1 Msun (interferometry). Dominant pulsation
+#   f1 = 4.679410 c/d. Radii 8.8 / 1.5 / 4.7 Rsun (Wikipedia compilation, to be checked).
+# ASSUMED: i(close) = 85 deg (partial eclipse), equal nodes (Tango: i_wide consistent with
+#   i_close), so the mutual inclination is 7.8 deg; Omega = 0; Teff of Aa2 6000 K; pulsation amplitude 0.01 mag; e(wide) from
+#   Tango (Uytterhoeven: 0.23). Phases unknown.
+#   k2 and rg2 (I/MR^2) from Claret (2004/2023) at the log g of the given mass and radius, as for
+#   QZ Car (the polytrope of the default model overestimates k2 of massive and evolved stars).
+# Why: the pulsation is a clock carried around the 2.9-yr orbit: its phase delay must follow
+#   the light-time effect of semi-amplitude a1 sin i / c = 2.39 AU = 1193 s.
+# Validation: swingersim pulsation lists the beta Cep period; the light curve (job) shows the
+#   eclipses of the 5.95-d pair and the 0.2137-d pulsation whose phase drifts by +-20 min.
+#   swingersim run configs/catalog/lambda_sco.yaml -o output/catalog/lambda_sco.h5
+topology: custom
+hierarchy: {out: [A, m3], A: [m1, m2]}
+masses: {m1: 10.4, m2: 1.8, m3: 8.1}
+orbits:
+  A:   {P: 5.95189, e: 0.26, i: 85.0, omega: 245.0}
+  out: {P: 1052.8, e: 0.121, i: 77.2, omega: 131.0}
+stars:
+  m1:
+    R: 8.8
+    Teff: 25000
+    apsidal_k2: 0.00343
+    rg2: 0.0364
+    pulsation: {type: beta_cep, period_d: 0.213702, amplitude_mag: 0.01}
+  m2: {R: 1.5, Teff: 6000, apsidal_k2: 0.00476, rg2: 0.0455}
+  m3: {R: 4.7, Teff: 21000, apsidal_k2: 0.00656, rg2: 0.0533}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 50, n_output: 5001}

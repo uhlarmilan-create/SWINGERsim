@@ -1,0 +1,42 @@
+# Campaign "open questions", study S2: stability criteria near the boundary - Mardling & Aarseth (2001), Vynatheya et
+# al. (2022, nested triples), the Vynatheya et al. (2023) MLP classifier for 2+2 quadruples - against direct N-body.
+# Motivation: CzeV343 (Part IV) at the onset of instability: MA01 = 1.00, V22 = 1.19-1.24, and the N-body showed no
+# dynamical break-up in 1e4 yr. Which criterion to trust for a 2+2 with one widened binary?
+# System: CzeV343 after the mass transfer in A (tools/czev343_future.py, stage 1, fiducial draws at the onset): A = a
+# stripped donor (0.26 Msun helium core, R 14 Rsun) + its gainer (2.77 Msun, conservative transfer), circularised; B
+# unchanged (1.36 + 1.20 Msun) but with P_B = 4 d instead of 0.81 d (a_B / a_out = 0.014: B stays a point-like,
+# stable binary; 5x fewer integration steps); outer orbit of CzeV343 (1454 d).
+# Drawn: P_A 12-80 d (a_A ~ 35-110 Rsun, across the boundary), the orientations of A and B (isotropic: all mutual
+# inclinations), e_out 0.5-0.8; only draws with the smallest MA01 ratio in [0.6, 1.6] are kept.
+# Truth: Newtonian point masses, 800 yr = 200 outer orbits, as the criteria assume (no relativity, tides or rotation).
+# The radii are set tiny (0.05 Rsun): with the real 14-Rsun donor most inclined members collide through ZLK cycles
+# (Part IV), which is not what the criteria judge. Fate: intact / ejection / exchange (hierarchy change), MEGNO.
+topology: "2+2"
+masses: {m1: 2.77, m2: 0.26, m3: 1.36, m4: 1.20}
+orbits:
+  A:   {P: 31.0, e: 0.0, i: 87.45, omega: 0.0, Omega: 90.0}
+  B:   {P: 4.0, e: 0.0, i: 74.39, omega: 0.0, Omega: 90.0}
+  out: {P: 1453.9, e: 0.703, i: 11.8, omega: 12.9, Omega: 0.0}
+stars:
+  m1: {R: 0.05}
+  m2: {R: 0.05}
+  m3: {R: 0.05}
+  m4: {R: 0.05}
+physics: {gr: false, tides: false, rotation: false}
+run: {backend: nbody, t_max_yr: 800, n_output: 801, megno: true, stop_on_hierarchy_change: true}
+ensemble:
+  n: 1200
+  seed: 2
+  vary:
+    orbits.A.P: {loguniform: [12.0, 80.0]}
+    orbits.A.i: {isotropic: [0.0, 180.0]}
+    orbits.A.Omega: {uniform: [0.0, 360.0]}
+    orbits.B.i: {isotropic: [0.0, 180.0]}
+    orbits.B.Omega: {uniform: [0.0, 360.0]}
+    orbits.B.M0: {uniform: [0.0, 360.0]}
+    orbits.A.M0: {uniform: [0.0, 360.0]}
+    orbits.out.M0: {uniform: [0.0, 360.0]}
+    orbits.out.e: {uniform: [0.5, 0.8]}
+  ma01_window: [0.6, 1.6]
+  mlp: true
+  max_tries: 5000

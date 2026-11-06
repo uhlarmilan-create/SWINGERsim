@@ -1,0 +1,12 @@
+# Group 4 (test campaign): Kozai-Lidov cycles drive the primary of the inner binary over its
+# Roche lobe (N-body backend); physics.mass_transfer.dynamic_onset circularises the binary at
+# a (1 - e^2) and continues the run with the mass-transfer histories of the new binary.
+topology: custom
+hierarchy: {out: [A, m3], A: [m1, m2]}
+masses: {m1: 1.0, m2: 0.8, m3: 1.0}
+orbits:
+  A: {a: 0.1, e: 0.01}
+  out: {a: 1.5, e: 0.2, i: 87.0, omega: 30}
+stellar_model: {kind: sse, age_myr: 1000, z: 0.02}
+physics: {gr: true, evolution: true, mass_transfer: {dynamic_onset: angular_momentum}}
+run: {t_max_yr: 300, n_output: 301, backend: nbody}

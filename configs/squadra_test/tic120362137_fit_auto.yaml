@@ -1,0 +1,61 @@
+# tic120362137: the whole fit chain from the PUBLISHED elements: anchoring of the pairs to the
+# minima, the mini-fit with an error floor per source, outlier rejection and priors from the paper,
+# and predicted minima for the next three years. The orbits below are tic120362137_published.yaml.
+# TIC 120362137 - the most compact known 3+1 quadruple: an eclipsing pair of F stars (3.28 d),
+# a third F star on a 51.3-d orbit (third-body eclipses) and a G star on a 1046-d orbit, all
+# nearly coplanar. Hierarchy (((Aa+Ab)+B)+C) = SWINGERsim preset 3+1 (orbits inner, mid, out).
+# Source: Borkovits T., Rappaport S. A., Chen H.-L., Torres G., Mitnyan T., Kostov V. B.,
+#   Powell B. P., Pribulla T., Zasche P., ... Kolar J., ... Uhlar R. et al. (2026), "Discovery of
+#   the most compact 3+1-type quadruple star system TIC 120362137", Nat. Commun. 17, 1859,
+#   doi:10.1038/s41467-026-69223-4, Table 1 (osculating elements at t0 = BJD 2458683.3; omega
+#   of the secondary = relative orbit, the SWINGERsim convention) and Table 2 (stars).
+# t = 0 of this configuration = BJD 2458683.3 (the "BJD of model t = 0" in swingersim gui).
+# M0 = 360 (t0 - tau) / P: inner tau 2458683.790 -> 306.29 deg; mid tau 2458661.077 -> 155.92;
+#   out tau 2459147 (+-11) -> 200.33.
+# Published to compare with (Table 1): apsidal periods 34.79 yr (51-d orbit) and 896 yr (outer),
+#   nodal period 265.8 yr (outer planes around the invariable plane); dynamical apsidal and
+#   nodal periods of the 3.3-d pair 3.33 and 6.73 yr; mutual inclinations 0.47 (inner-mid) and
+#   5.7 deg (outer); conjunctions T0 = 2458684.4268 (inner), 2458701.8027 (mid).
+# Observed data for the comparison: data/observed/tic120362137/ (147 minima of the 3.3-d pair
+#   2019-2024 and the published ETV model, Source Data of Fig. 2; TESS sectors 14-54).
+#   Note: the TESS apertures contain extra light (Table 2: 0.51 of the flux in the TESS band).
+topology: "3+1"
+masses: {m1: 1.748, m2: 1.361, m3: 1.483, m4: 1.008}
+orbits:
+  inner: {P: 3.284187, e: 0.00735, i: 88.70, Omega: 0.0,  omega: 199.4,  M0: 306.29}
+  mid:   {P: 51.3111,  e: 0.22367, i: 89.05, Omega: 0.26, omega: 190.05, M0: 155.92}
+  out:   {P: 1045.5,   e: 0.274,   i: 90.3,  Omega: 0.10, omega: 289.0,  M0: 200.33}
+stars:
+  m1: {R: 2.996, Teff: 6612}
+  m2: {R: 1.507, Teff: 6724}
+  m3: {R: 1.768, Teff: 6937}
+  m4: {R: 0.927, Teff: 5772}
+stellar_model: {kind: mist, age_myr: 1545.0, feh: 0.036, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 100, n_output: 5001, extremes_every_orbits: 20}
+
+fit:
+  minima: ../../data/observed/tic120362137/minima_borkovits2026.csv
+  time_system: BJD_TDB
+  stage2:
+    anchor: true              # anchor P and M0 of the pairs to the minima first
+    bjd_t0: 2458683.3
+    free: [orbits.inner.P, orbits.inner.M0, orbits.inner.ecosw, orbits.inner.esinw, orbits.mid.P, orbits.mid.M0, orbits.mid.e, orbits.mid.omega, orbits.out.P, orbits.out.M0, orbits.out.e, orbits.out.omega]
+    max_sigma_d: 0.01
+    error_scale: per_source   # own error floor of every source
+    error_model: jitter
+    clip_sigma: 5.0           # leave out minima beyond 5 robust sigma of their source
+    priors:                   # Borkovits et al. (2026), as tic120362137_ensemble.yaml
+      orbits.mid.e: [0.22367, 0.0007]
+      orbits.mid.omega: [190.05, 0.32]
+      orbits.out.P: [1045.5, 7.9]
+      orbits.out.e: [0.274, 0.013]
+      orbits.out.omega: [289.0, 4.8]
+      orbits.out.M0: [200.33, 3.8]
+      orbits.inner.e: [0.00735, 0.00018]   # Borkovits et al. (2026), Table 1
+      orbits.inner.omega: [199.4, 1.5]
+    max_iterations: 30
+    processes: 0
+  output:
+    predict: {years: 3, samples: 100}   # minima of the next 3 years with 1-sigma
+    dir: ../../output/squadra_test/tic120362137/fit_auto

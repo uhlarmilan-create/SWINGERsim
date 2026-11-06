@@ -1,0 +1,30 @@
+# HD 150136: the youngest, most massive known O-star triple (O3 V + O5.5-6 V in 2.67 d, and an
+# O6.5-7 V star on an 8.6-yr orbit), in NGC 6193. Hierarchy ((P+S)+T).
+# Source: Mahy L. et al. 2018, A&A 616, A75 (doi:10.1051/0004-6361/201832810), Table 1 (inner:
+#   P = 2.674548 d, e = 0 fixed, i = 62.4 deg from the text; outer: P = 3144.7 d, e = 0.682,
+#   T0 = HJD 2451025.82, omega = 248.47, i = 106.18, Omega = 293.73) and Table 2 (masses
+#   42.81/29.51/15.54 Msun, Teff 46500/40000/36000 K, log L 5.65/5.17/4.86, BONNSAI ages
+#   0.6/1.7/2.3 Myr). Radii here from L and Teff: 10.3/8.0/6.9 Rsun.
+# UNKNOWN: Omega of the inner orbit (no interferometric orbit) - here ASSUMED equal to the
+#   outer one; the companion ensemble hd150136_ensemble.yaml draws it. The outer omega is taken
+#   as the omega of the relative orbit (whether the paper's value refers to P+S or to T must be
+#   checked; it changes only the orbital phase, not the dynamics).
+# Why: the present masses at an age of 1 Myr on the rotating MIST tracks; the O3 V primary
+#   (10 Rsun) sits in a 34-Rsun orbit and must fill its Roche lobe within ~1-2 Myr - the first
+#   mass transfer of a very massive young binary inside a triple, with strong winds.
+# Validation: Roche-lobe overflow of the primary first (event and time in the summary); outer
+#   orbit widened by the winds (a M = const); grazing eclipses at i = 62 deg.
+#   swingersim run configs/catalog/hd150136.yaml -o output/catalog/hd150136.h5
+topology: custom
+hierarchy: {out: [A, m3], A: [m1, m2]}
+masses: {m1: 42.81, m2: 29.51, m3: 15.54}
+orbits:
+  A:   {P: 2.674548, e: 0.0, i: 62.4, Omega: 293.73}
+  out: {P: 3144.7, e: 0.682, i: 106.18, Omega: 293.73, omega: 248.47}
+stellar_model: {kind: mist, age_myr: 1.0, feh: 0.0, vvcrit: 0.4}
+physics:
+  gr: true
+  tides: true
+  evolution: true
+  mass_loss: {source: track, masses: current}
+run: {backend: secular, t_max_yr: 4.0e6, n_output: 2001, stop_on_roche_overflow: true}

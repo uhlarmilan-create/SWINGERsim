@@ -1,0 +1,15 @@
+# Chaos-map benchmark: a test particle on a circular orbit around an equal-mass circular binary
+# (a = 1 AU). Quarles et al. (2018), ApJ 856, 150: the orbit is stable for every initial phase
+# beyond a_c = 2.27 a_bin (mu = 0.5, e_bin = 0; 1e5 binary orbits, published grid a_crit.txt).
+#   swingersim chaosmap configs/validation/quarles18_circumbinary.yaml -o output/chaosmap_q18 \
+#     --x orbits.out.a --x-range 2.0 2.7 --nx 15 --y orbits.out.M0 --y-range 0 315 --ny 8 \
+#     --t-max 7071 -j 0
+topology: custom
+hierarchy: {out: [inner, m3], inner: [m1, m2]}
+masses: {m1: 1.0, m2: 1.0, m3: 1.0e-9}
+orbits:
+  inner: {a: 1.0, e: 0.0}
+  out: {a: 3.0, e: 0.0}
+stars: {m1: {R: 0.001}, m2: {R: 0.001}, m3: {R: 0.001}}
+physics: {gr: false}
+run: {t_max_yr: 10, collisions: false}

@@ -1,0 +1,29 @@
+# 0.27: the same ensemble run to 50 kyr (~1320 t_K) - the length of Vokrouhlicky's population runs
+# in his Sect. 3.3; the published 31.0 / 48.1 % may refer to it rather than to 11 kyr (re-analysis
+# of October 2026). Read the fractions at 11, 25 and 50 kyr from A_t_1me_lt_1e-3_yr.
+#   swingersim ensemble configs/validation/vokrouhlicky16_pejcha_50kyr.yaml -o output/validation/vok16_pejcha_50kyr -j 0
+# Vokrouhlicky (2016) MNRAS 461, 3964, Sect. 4 and Fig. 11: his secular model applied to the
+# quadruple of Pejcha et al. (2013), Fig. 1 (bottom): four 1 Msun stars, a_A = 0.57 AU,
+# e_A = 0.3, a_B = 0.35 AU, e_B = 0.1, a_AB = 5 AU, e_AB = 0.3; cos J_A and cos J_B (inclinations
+# to the A-B orbit) spanning (-1, 1) uniformly, nodes and pericentres random, about 11 kyr
+# (~300 Kozai times, t_K = 37.8 yr). Published: 1 - e < 1e-3 in 31.0 % of the runs for A and
+# 48.1 % for B. SWINGERsim uses the same secular theory, so this checks the implementation.
+topology: "2+2"
+masses: {m1: 1.0, m2: 1.0, m3: 1.0, m4: 1.0}
+orbits:
+  A:   {a: 0.57, e: 0.3}
+  B:   {a: 0.35, e: 0.1}
+  out: {a: 5.0, e: 0.3}          # reference plane = A-B orbit (i = 0)
+physics: {gr: false}
+run: {t_max_yr: 50000, n_output: 2000, collisions: false, backend: secular}
+ensemble:
+  n: 400
+  seed: 16
+  vary:
+    orbits.A.i: isotropic
+    orbits.B.i: isotropic
+    orbits.A.Omega: angle
+    orbits.B.Omega: angle
+    orbits.A.omega: angle
+    orbits.B.omega: angle
+    orbits.out.omega: angle

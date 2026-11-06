@@ -1,0 +1,19 @@
+# Campaign "open questions", study S3: CzeV343 and the 3:2 commensurability of its two pairs.
+# CzeV343 (Pejcha et al. 2022, A&A 667, A53): P_A = 1.209341 d, P_B = 0.806871 d, P_A / P_B = 1.49880 - 8e-4 below 3:2.
+# The 3:2 Lindblad resonance of two binaries has the angle phi = 3 lambda_A - 2 lambda_B (+ a longitude of pericentre)
+# and a strength of order eps^5 of the binaries' Kepler energies, eps = a_A / a_out ~ 0.006 (Tremaine 2020, MNRAS 493,
+# 5583) - a resonance width of order 1e-5 in the period ratio. Question: is CzeV343 in (librating) or near (circulating)
+# the resonance, and does the commensurability change the dynamics? (Kolar et al. 2025: an excess of 2+2 systems near
+# 3:2.) Two parts:
+#  * this run: the present system, 400 yr, full physics, dense output for the angle phi from the osculating elements;
+#  * swingersim chaosmap over orbits.A.P across the exact 3:2 (P_A = 1.2103065 d) - MEGNO and the angle per point.
+# Pairs, outer orbit and masses of the fiducial solution as configs/special/czev343.yaml (nodes ASSUMED, as there).
+topology: "2+2"
+masses: {m1: 1.76, m2: 1.27, m3: 1.36, m4: 1.20}
+orbits:
+  A:   {P: 1.209340820, e: 0.1144, i: 87.45, omega: 89.0, Omega: 90.0}
+  B:   {P: 0.806871019, e: 0.0017, i: 74.39, omega: 0.0, Omega: 90.0}
+  out: {P: 1453.9, e: 0.703, i: 11.8, omega: 12.9, Omega: 0.0}
+stellar_model: {kind: mist, age_myr: 630.0, feh: 0.0, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {backend: nbody, t_max_yr: 400, n_output: 40001, extremes_every_orbits: 20}

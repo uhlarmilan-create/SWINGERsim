@@ -1,0 +1,44 @@
+# TIC 120362137: ensemble around the published solution (Borkovits et al. 2026, Nat. Commun. 17,
+# 1859, Tables 1 and 2; see tic120362137_published.yaml for the conversions). Every member draws
+# the parameters within the published 1-sigma errors and is integrated 100 yr forward and
+# backward (N-body, GR, tides, rotation). Question: do the systems compatible with the published
+# errors reproduce the 34.8-yr apsidal period of the 51-d orbit, keep the 3.3-d pair eclipsing and
+# stay intact in both directions? The outer orbit (P 1046 d) is the least constrained part.
+topology: "3+1"
+masses: {m1: 1.748, m2: 1.361, m3: 1.483, m4: 1.008}
+orbits:
+  inner: {P: 3.284187, e: 0.00735, i: 88.70, Omega: 0.0,  omega: 199.4,  M0: 306.29}
+  mid:   {P: 51.3111,  e: 0.22367, i: 89.05, Omega: 0.26, omega: 190.05, M0: 155.92}
+  out:   {P: 1045.5,   e: 0.274,   i: 90.3,  Omega: 0.10, omega: 289.0,  M0: 200.33}
+stars:
+  m1: {R: 2.996, Teff: 6612}
+  m2: {R: 1.507, Teff: 6724}
+  m3: {R: 1.768, Teff: 6937}
+  m4: {R: 0.927, Teff: 5772}
+stellar_model: {kind: mist, age_myr: 1545.0, feh: 0.036, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 100, n_output: 2001, extremes_every_orbits: 20}
+ensemble:
+  n: 400
+  seed: 2026
+  directions: [forward, backward]
+  vary:
+    masses.m1: {normal: [1.748, 0.017]}
+    masses.m2: {normal: [1.361, 0.013]}
+    masses.m3: {normal: [1.483, 0.03]}
+    masses.m4: {normal: [1.008, 0.03]}
+    orbits.mid.e: {normal: [0.22367, 0.0007]}
+    orbits.mid.omega: {normal: [190.05, 0.32]}
+    orbits.mid.i: {normal: [89.05, 0.09]}
+    orbits.mid.Omega: {normal: [0.26, 0.19]}
+    orbits.out.P: {normal: [1045.5, 7.9]}
+    orbits.out.e: {normal: [0.274, 0.013]}
+    orbits.out.omega: {normal: [289.0, 4.8]}
+    orbits.out.i: {normal: [90.3, 7.5]}
+    orbits.out.Omega: {normal: [0.10, 1.4]}
+    orbits.out.M0: {normal: [200.33, 3.8]}
+  observed:
+    mid_U_measured_yr: {value: 34.79, sigma: 1.0}
+    inner_eclipsing0: {min: 0.5}
+    "backward:fate": {equals: intact}
+    "forward:fate": {equals: intact}

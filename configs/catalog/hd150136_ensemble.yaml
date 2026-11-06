@@ -1,0 +1,29 @@
+# HD 150136 (see hd150136.yaml for the sources): the node of the inner orbit is unknown, so the
+# mutual inclination of the two orbits is unknown (anything from ~11 to ~169 deg). This ensemble
+# draws it, with the masses within their errors (Mahy et al. 2018, Table 2), and asks: which
+# fraction of the configurations is dynamically quiet, which would show ZLK cycles or changing
+# eclipse depths within a century? Point masses with the radii of hd150136.yaml, N-body.
+# Validation: Mahy et al. found the Lidov-Kozai effects negligible on observable time scales.
+#   swingersim ensemble configs/catalog/hd150136_ensemble.yaml -o output/catalog/hd150136_ens -j 0
+topology: custom
+hierarchy: {out: [A, m3], A: [m1, m2]}
+masses: {m1: 42.81, m2: 29.51, m3: 15.54}
+orbits:
+  A:   {P: 2.674548, e: 0.0, i: 62.4, Omega: 293.73}
+  out: {P: 3144.7, e: 0.682, i: 106.18, Omega: 293.73, omega: 248.47}
+stars:
+  m1: {R: 10.3}
+  m2: {R: 8.0}
+  m3: {R: 6.9}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 100, n_output: 1001}
+ensemble:
+  n: 500
+  seed: 150136
+  directions: [forward]
+  vary:
+    orbits.A.Omega: angle
+    orbits.A.i: {normal: [62.4, 1.3], mirror: true}
+    masses.m1: {normal: [42.81, 3.0]}
+    masses.m2: {normal: [29.51, 2.5]}
+    masses.m3: {normal: [15.54, 1.5]}

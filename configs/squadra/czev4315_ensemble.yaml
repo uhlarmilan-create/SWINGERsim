@@ -1,0 +1,51 @@
+# CzeV4315 (HD 228777), 2+2 candidate with a fast inclination change of pair B:
+# Zasche, Henzl, Masek, Kara, Kucakova, Merc & Uhlar (2025), "Three new 2+2 quadruple systems
+# with changing inclination", arXiv:2504.17298, Table 2 and Sect. on CzeV4315.
+#   pair A: P = 6.73907 d, e = 0.64, i = 87.44 +- 0.21 deg, q = 0.87, R/a = 0.070, 0.066
+#   pair B: P = 0.9193238 d, e = 0, i from < 57.4 to 63.42 +- 0.37 deg, q = 1.02, R/a = 0.275, 0.273
+#   pair B: di/dt ~ +1.4 deg/yr (eclipses deepen); a 119-d periodicity in the ETV of B;
+#   the mutual orbit is not known (2+2+1 or 2+1+2 left open by the authors).
+# ESTIMATES made here, not from the paper: masses from T1 = 10 000 K (B9 V) and the mass ratios,
+# radii from R/a with these masses, the uncertainty 0.2 deg/yr of the rate.
+# Unknown and drawn: mutual orbit (period 40-3000 d, eccentricity, orientation), node of B
+# on the sky, sense of revolution of B, argument of periastron of A.
+# The measured rate enters as an observation: members are weighted by how well their rate of
+# change of |i_B - 90 deg| matches -1.4 +- 0.2 deg/yr, and members whose stars filled their
+# Roche lobes in the past 300 yr are excluded (swingersim ensemble-report).
+# Not used (to be checked in the data): whether the inclination of A is constant; adding
+# A_dtiltdt0_deg_yr: {value: 0, sigma: 0.3} leaves very few members (see output README).
+topology: "2+2"
+masses: {m1: 2.4, m2: 2.09, m3: 2.3, m4: 2.35}
+orbits:
+  A:   {P: 6.73907,   e: 0.64, i: 87.44, Omega: 0.0}
+  B:   {P: 0.9193238, e: 0.0,  i: 63.4}
+  out: {P: 300.0,     e: 0.3,  i: 90.0}
+stars:
+  m1: {R: 1.73}
+  m2: {R: 1.63}
+  m3: {R: 1.83}
+  m4: {R: 1.81}
+physics: {gr: true, tides: true}
+run: {t_max_yr: 300, n_output: 1201, backend: secular}
+ensemble:
+  n: 1500
+  seed: 4315
+  directions: [forward, backward]
+  require: [stable_v22]
+  vary:
+    orbits.A.i: {normal: [87.44, 0.21], max: 90.0}
+    orbits.A.omega: angle
+    orbits.B.i: {normal: [63.4, 0.4], mirror: true}
+    orbits.B.Omega: angle
+    orbits.out.P: {loguniform: [40.0, 3000.0]}
+    orbits.out.e: {uniform: [0.0, 0.7]}
+    orbits.out.i: isotropic
+    orbits.out.Omega: angle
+    orbits.out.omega: angle
+  observed:
+    B_dtiltdt0_deg_yr: {value: -1.4, sigma: 0.2}
+    # detached binaries today: no Roche-lobe overflow in the past 300 yr
+    backward:m1_roche_fill_max: {max: 1.0}
+    backward:m2_roche_fill_max: {max: 1.0}
+    backward:m3_roche_fill_max: {max: 1.0}
+    backward:m4_roche_fill_max: {max: 1.0}

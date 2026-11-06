@@ -1,0 +1,44 @@
+# bu_cmi_fit.yaml with error correction per source (jitter), outlier rejection and Gaussian priors
+# from the published solution. The priors keep the orbits that the minima constrain
+# only weakly at the published values within their errors; periods of the eclipsing pairs get no
+# prior (the published osculating periods are not the mean periods of SWINGERsim, see the SQUADRA test).
+# BU CMi (2+2, Pribulla et al. 2023): swingersim fit, stage 2 (joint N-body model of the times of minima).
+# Start values: bu_cmi_anchored.yaml (the published solution with the inner periods and phases
+# anchored to the minima). Free: A.P, A.M0, A.e, A.omega, B.P, B.M0, B.e, B.omega, out.P, out.M0, out.e, out.omega.
+# Why these: the 183 minima 2005-2023 of both pairs constrain the two eccentric pairs (apsidal motion) and the 121.8-d outer orbit (light-time and dynamical ETV); masses, inclinations and nodes stay at the published light-curve / RV solution.
+# Run: swingersim fit configs/squadra_test/bu_cmi_fit.yaml   (results in output/squadra_test/bu_cmi/fit/)
+# t = 0 of this configuration = BJD 2458491.5.
+topology: "2+2"
+masses: {m1: 2.536, m2: 2.384, m3: 2.521, m4: 2.320}
+orbits:
+  A:   {P: 2.9384888, e: 0.2191, i: 83.35, Omega: 0.14, omega: 101.41, M0: 282.944}
+  B:   {P: 3.2571254, e: 0.2257, i: 83.92, Omega: 0.0,  omega: 257.52, M0: 255.266}
+  out: {P: 121.793,  e: 0.2728, i: 83.79, Omega: 0.09, omega: 141.0,  M0: 294.71}
+stars:
+  m1: {R: 2.249, Teff: 10570}
+  m2: {R: 2.072, Teff: 10283}
+  m3: {R: 2.235, Teff: 10593}
+  m4: {R: 2.003, Teff: 10062}
+stellar_model: {kind: mist, age_myr: 263.0, feh: 0.02, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 100, n_output: 4001, extremes_every_orbits: 20}
+fit:
+  minima: ../../data/observed/bu_cmi/minima_pribulla2023.csv
+  time_system: BJD_TDB
+  stage2:
+    bjd_t0: 2458491.5
+    free: [orbits.A.P, orbits.A.M0, orbits.A.e, orbits.A.omega, orbits.B.P, orbits.B.M0, orbits.B.e, orbits.B.omega, orbits.out.P, orbits.out.M0, orbits.out.e, orbits.out.omega]
+    max_sigma_d: 0.01
+    error_scale: per_source   # own error floor of every source
+    error_model: jitter
+    clip_sigma: 5.0           # leave out minima beyond 5 robust sigma of their source
+    priors:                   # Pribulla et al. (2023), as bu_cmi_ensemble.yaml
+      orbits.A.e: [0.2191, 0.0008]
+      orbits.B.e: [0.2257, 0.0009]
+      orbits.out.P: [121.793, 0.031]
+      orbits.out.e: [0.2728, 0.0037]
+      orbits.out.omega: [141.0, 3.6]
+    max_iterations: 60
+    processes: 0
+  output:
+    dir: ../../output/squadra_test/bu_cmi/fit_priors

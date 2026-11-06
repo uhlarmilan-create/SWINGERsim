@@ -1,0 +1,4 @@
+# Observation for the machine-learning chapter: the inclination of binary B of CzeV4315 turns
+# towards edge-on at 1.4 +- 0.2 deg/yr (rate of |i - 90 deg|). Used with swingersim sbi and
+# swingersim ensemble-report --observed on output/ml_example.
+B_dtiltdt0_deg_yr: {value: -1.4, sigma: 0.2}

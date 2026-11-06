@@ -1,0 +1,31 @@
+# Pejcha, Antognini, Shappee & Thompson (2013) MNRAS 435, 943, Table 1, entry F6:
+# four 1 Msun stars, a_A = 0.573 AU, e_A = 0.3, a_B = 0.351 AU, e_B = 0.1, a_AB = 6 AU,
+# e_AB = 0.3. Inclinations of A and B to the mutual orbit isotropic, nodes, pericentres and
+# mean anomalies random; integrated for 300 Kozai times of A (t_K = 64.9 yr, Vokrouhlicky 2016
+# eq. 40). Published: 35.8 % of A and 53.0 % of B reach 1 - e < 1e-3.
+# N-body variant (osculating elements, as in the paper): 100 members. A member stops once
+# both binaries reached 1 - e < 1e-3, after 1500 s of computing (the cap of the paper) or if
+# the relative energy error exceeds 1e-3 (close periastron passages of point masses).
+topology: "2+2"
+masses: {m1: 1.0, m2: 1.0, m3: 1.0, m4: 1.0}
+orbits:
+  A:   {a: 0.573, e: 0.3}
+  B:   {a: 0.351, e: 0.1}
+  out: {a: 6.0, e: 0.3}          # reference plane = mutual orbit (i = 0)
+physics: {gr: false}             # point masses, as in the paper
+run: {t_max_yr: 19470, n_output: 500, collisions: false, backend: nbody, extremes_every_orbits: 1.0,
+      stop_when_e_reached: {A: 0.999, B: 0.999}, max_energy_error: 1.0e-3, max_wall_s: 1500}
+ensemble:
+  n: 100
+  seed: 13
+  vary:
+    orbits.A.i: isotropic
+    orbits.B.i: isotropic
+    orbits.A.Omega: angle
+    orbits.B.Omega: angle
+    orbits.A.omega: angle
+    orbits.B.omega: angle
+    orbits.out.omega: angle
+    orbits.A.M0: angle
+    orbits.B.M0: angle
+    orbits.out.M0: angle

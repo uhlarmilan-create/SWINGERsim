@@ -1,0 +1,31 @@
+# HD 181068 with tertiary mass transfer: as hd181068_evolution.yaml, but the giant's
+# overflow onto the 0.9-d pair is followed (physics.mass_transfer.tertiary). With q = 3.0 / 1.785
+# = 1.7, far above q_crit of a giant donor (~0.64), the transfer is dynamically unstable: the run
+# is expected to end in a triple common envelope at the first overflow (Hamers et al. 2022: 36 %
+# of tertiary transfers do).
+# --- Original header ---
+# HD 181068 (sources in hd181068.yaml) in the future: the giant climbs the red-giant branch.
+# MIST (non-rotating, solar metallicity): a 3.0 Msun star has R = 12.45 Rsun and L = 89 Lsun
+# (published 12.46 Rsun, 93 Lsun) on the red-giant branch at 362.2 Myr - this age is used for
+# all three stars (the 0.9 Msun pair is then on the main sequence).
+# Why: the tertiary will fill its Roche lobe around the inner binary - mass transfer onto a
+# compact pair (Tokovinin & Moe 2020; de Vries et al. 2014). SWINGERsim stops at the overflow.
+# Validation: time and radius at the Roche-lobe overflow of A (Roche lobe of a 3.0 Msun star
+#   around 1.785 Msun at 90.3 Rsun: ~38 Rsun by Eggleton 1983); tidal circularisation and
+#   synchronisation from the giant's convective envelope (tidal_lag hurley2002).
+#   swingersim run configs/catalog/hd181068_evolution.yaml -o output/catalog/hd181068_evolution.h5
+topology: custom
+hierarchy: {out: [m1, B], B: [m2, m3]}
+masses: {m1: 3.0, m2: 0.915, m3: 0.870}
+orbits:
+  B:   {P: 0.9056768, e: 0.0, i: 86.7}
+  out: {P: 45.4711, e: 0.0, i: 87.5}
+stellar_model: {kind: mist, age_myr: 362.2, feh: 0.0, vvcrit: 0.0}
+physics:
+  gr: true
+  tides: true
+  tidal_lag: hurley2002
+  evolution: true
+  mass_loss: {source: track}
+  mass_transfer: {}
+run: {backend: secular, t_max_yr: 2.0e7, n_output: 2001, stop_on_roche_overflow: true}

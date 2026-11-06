@@ -1,0 +1,20 @@
+# Own MESA grid for SWINGERsim (F4): low-mass and solar-type stars from the pre-main sequence to
+# the end of the main sequence, for the tidal dissipation of inertial waves (Barker 2020,
+# 2022), apsidal constants and moments of inertia from the full structure.
+#   swingersim mesa-grid configs/mesa/lowmass_pms_ms.yaml --test   # one 1 Msun track first
+#   swingersim mesa-grid configs/mesa/lowmass_pms_ms.yaml           # all tracks (hours)
+#   swingersim mesa-reduce configs/mesa/lowmass_pms_ms.yaml         # -> mesa/lowmass_pms_ms/*.npz
+# Physics close to Barker (2022): Z = 0.02, MESA default helium, alpha_MLT 1.82, exponential
+# core overshooting 0.016 above 1.1 Msun, no diffusion, no rotation.
+name: lowmass_pms_ms
+masses: {from: 0.2, to: 1.6, step: 0.05}
+z: [0.02, 0.0142]
+alpha_mlt: 1.82
+stop: tams
+max_age_yr: 1.4e10
+profile_interval: 3
+max_num_profile_models: 1500
+threads_per_run: 2
+# MESA installation (used when MESA_DIR / MESASDK_ROOT are not set, e.g. in the worker)
+mesa_dir: /home/milan/mesa/mesa-26.04.1
+mesasdk_root: /home/milan/mesa/mesasdk

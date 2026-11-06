@@ -1,0 +1,23 @@
+# TIC 454140642: a flat 2+2 quadruple of four Sun-like F stars - two eclipsing binaries
+# (13.6 d and 10.4 d) on a 432-d mutual orbit, all three orbits within 0.5 deg.
+# Source: Kostov V. B. et al. 2021, ApJ 917, 93 (doi:10.3847/1538-4357/ac04ad), Table 8
+#   (photodynamical solution at t0 = 2458437.5): A P = 13.61594 d, e = 0.07449, omega = 161.21,
+#   i = 87.55; B P = 10.39063 d, e = 0.02700, omega = 190.89, i = 87.52; outer P = 432.1 d,
+#   e = 0.32285, omega = 325.77, i = 87.69; masses 1.195/1.146/1.146/1.105 Msun (Ab and Ba equal
+#   in the extraction - to be checked), Teff 6434/6303/6303/6188 K, age 1.945 Gyr,
+#   [Fe/H] = -0.039; mutual inclinations 0.25-0.47 deg.
+# ASSUMED: equal nodes; phases (in the paper); radii from MIST at 1945 Myr.
+# Why: Sun-like stars, slow, nearly coplanar evolution; P_A/P_B = 1.310 - near no low-order
+#   resonance; eclipses of both binaries visible to TESS.
+# Validation: eclipse-timing variations (swingersim timings) vs. the published ETVs; the system
+#   must stay flat (i_mut < 1 deg) and eclipsing.
+#   swingersim run configs/catalog/tic454140642.yaml -o output/catalog/tic454140642.h5
+topology: "2+2"
+masses: {m1: 1.195, m2: 1.146, m3: 1.146, m4: 1.105}
+orbits:
+  A:   {P: 13.61594, e: 0.07449, i: 87.55, omega: 161.21}
+  B:   {P: 10.39063, e: 0.02700, i: 87.52, omega: 190.89, M0: 120.0}
+  out: {P: 432.1, e: 0.32285, i: 87.69, omega: 325.77, M0: 60.0}
+stellar_model: {kind: mist, age_myr: 1945.0, feh: -0.039, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 100, n_output: 4001}

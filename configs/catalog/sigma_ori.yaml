@@ -1,0 +1,32 @@
+# sigma Ori Aa, Ab, B: young hierarchical triple of hot O/B main-sequence stars ((Aa+Ab)+B).
+# Catalogue of published systems for testing SWINGERsim (docs/en/validation.md, catalogue).
+# Orbits: Schaefer G. H. et al. 2016, AJ 152, 213 (doi:10.3847/0004-6256/152/6/213),
+#   Table 9 (Aa-Ab: P = 143.2002 d, e = 0.77896, i = 56.378, Omega = 6.878, omega_Aa = 199.83,
+#   T = HJD 2456597.638) and Table 10 (A-B: P = 58402 d, e = 0.024, i = 172.1, Omega = 301.6,
+#   omega_B = 187.4, T = JD 2451255); masses Table 11 (16.99, 12.81, 11.54 Msun).
+# Stars: Simon-Diaz S. et al. 2015, ApJ 799, 169 (via Schaefer 2016): Teff 35/31/29 kK,
+#   R 5.6/4.8/5.0 Rsun, v sin i 135/35/250 km/s; cluster age 3 +- 1 Myr.
+# Conversions: SWINGERsim orbits are relative orbits (second member around the first), so
+#   omega(A) = omega_Aa + 180 = 19.83 deg; for B the visual orbit already gives omega of B.
+#   t = 0 at the inner periastron HJD 2456597.638: M0(A) = 0, M0(out) = 32.93 deg.
+#   P_rot of Aa from v sin i (i = 56 deg is not used): ASSUMED synchronous for Ab and B.
+#   k2 and rg2 (I/MR^2) from Claret (2004/2023) at the log g of the given mass and radius, as for
+#   QZ Car (the polytrope of the default model overestimates k2 of massive and evolved stars).
+# Why: the mutual inclination is ~120 deg (retrograde, inside the ZLK window); the inner orbit
+#   is already very eccentric (periastron 0.37 AU = 79 Rsun). Does GR + tides quench the ZLK
+#   cycles, or should the inner pair have collided during the 3 Myr of its life?
+# Validation: the run must keep the hierarchy; the printed i_mut must be ~120 deg; compare the
+#   quadrupole ZLK time (~2e5 yr) with the GR and tidal apsidal periods in the summary.
+#   swingersim run configs/catalog/sigma_ori.yaml -o output/catalog/sigma_ori.h5
+topology: custom
+hierarchy: {out: [A, m3], A: [m1, m2]}
+masses: {m1: 16.99, m2: 12.81, m3: 11.54}
+orbits:
+  A:   {P: 143.2002, e: 0.77896, i: 56.378, Omega: 6.878, omega: 19.83, M0: 0.0}
+  out: {P: 58402.0, e: 0.024, i: 172.1, Omega: 301.6, omega: 187.4, M0: 32.93}
+stars:
+  m1: {R: 5.6, Teff: 35000, P_rot: 2.10, apsidal_k2: 0.0132, rg2: 0.0752}
+  m2: {R: 4.8, Teff: 31000, apsidal_k2: 0.0116, rg2: 0.0705}
+  m3: {R: 5.0, Teff: 29000, apsidal_k2: 0.0094, rg2: 0.0638}
+physics: {gr: true, tides: true, rotation: true}
+run: {backend: secular, t_max_yr: 3.0e6, n_output: 3001}

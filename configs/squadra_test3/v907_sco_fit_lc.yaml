@@ -1,0 +1,56 @@
+# V907 Sco - as v907_sco_fit.yaml plus the TESS light curves (S39 2021, S66 2023 - TESS-SPOC; the QLP sectors 91-93 have their own dilution; windows around the eclipses,
+# lc_tess_windows.csv): the eclipse depths 6 % -> 15 % measure the inclination of the pair directly, so here the
+# depths must come out of the model: scale: false (only zero point and trend per segment are free). Radii of the pair
+# free as well. t = 0 moved to BJD 2459360.0 (light curves are computed forward from t = 0; the angles of
+# v907_sco_fit.yaml, the outer M0 moved back by 23.9 d, the inner P and M0 anchored to the minima at the new epoch). Heavier: ~1 h per iteration on 8 cores.
+# NOTE: omega_inner = 122.6 deg is the paper's value without the 180-deg conversion (SWINGERsim: 302.6 deg, see
+#   v907_sco_published.yaml); e cos(omega) is free in the fit, so the start only sets where it begins.
+topology: custom
+hierarchy: {out: [inner, m3], inner: [m1, m2]}
+masses: {m1: 2.56, m2: 2.74, m3: 1.06}
+orbits:
+  inner: {P: 3.7720845, e: 0.008, i: 76.61, Omega: 17.27, omega: 122.6, M0: 286.08}
+  out:   {P: 142.01,    e: 0.467, i: 68.80, Omega: -8.97, omega: 22.7,  M0: 340.11}
+stars:
+  m1: {R: 2.53, Teff: 10004}
+  m2: {R: 2.68, Teff: 10000}
+  m3: {R: 1.00, Teff: 5900}
+stellar_model: {kind: mist, age_myr: 400.0, feh: 0.0, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 30, n_output: 3001, extremes_every_orbits: 20}
+
+fit:
+  minima: ../../data/observed/v907_sco/minima_tess.csv
+  time_system: BJD_TDB
+  inclination:
+    - {file: ../../data/observed/v907_sco/inclination_zasche2023.csv, pair: inner, label: Zasche2023, min_sigma_deg: 0.1}
+  rv:
+    file: ../../data/observed/v907_sco/rv_all.csv
+    gamma: -17.33
+    offsets: {Lacy1999: 0.0}
+  lc:
+    - file: ../../data/observed/v907_sco/lc_tess_windows.csv
+      label: TESS
+      exposure_min: 10.0
+      n_sub: 3
+      baseline_degree: 1
+      scale: false            # the depths carry the inclination - do not let a scale factor absorb them
+      shapes: auto            # fill ~0.33: spheres
+  stage2:
+    bjd_t0: 2459360.0
+    anchor: true
+    free: [orbits.inner.P, orbits.inner.M0, orbits.inner.ecosw, orbits.inner.esinw, orbits.inner.i, orbits.inner.Omega,
+           orbits.out.P, orbits.out.M0, orbits.out.e, orbits.out.omega, orbits.out.i, orbits.out.Omega,
+           masses.m3, stars.m1.R, stars.m2.R, rv.gamma, rv.offset.Lacy1999]
+    error_scale: per_source
+    error_model: jitter
+    clip_sigma: 5.0
+    priors:
+      orbits.out.e: [0.47, 0.05]
+      stars.m1.R: [2.53, 0.04]
+      stars.m2.R: [2.68, 0.04]
+    max_iterations: 40
+    processes: 0
+  output:
+    dir: ../../output/squadra_test3/v907_sco/fit_lc
+    predict: {years: 30, samples: 100}

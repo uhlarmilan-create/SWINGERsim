@@ -1,0 +1,8 @@
+# orbital inclination of the 6.0-d pair of QX Cas against time: PHOEBE light-curve solutions of Bonaro et al. 2009 (BAAS 41,
+# 301) as shown in Guinan et al. 2012 (JAAVSO 40, 467, Fig. 2): ~1960 UBV (Sandage & Tammann 1969) i = 85.4 deg, ~1980
+# UBVR (Moffett & Barnes 1983) i = 82 deg, 2003-2008 FCAPT (no eclipses) i ~ 75 deg. Errors not published: 1.0, 1.5, 2.0
+# deg assumed (the last one is in fact an upper limit; TESS 2019-2024 shows no eclipse deeper than ~0.5 %).
+mid_hjd,i_deg,sigma_deg,source
+2436800.0,85.4,1.0,Sandage-Tammann 1960 UBV
+2444500.0,82.0,1.5,Moffett-Barnes 1979-82 UBVR
+2453800.0,75.0,2.0,FCAPT 2003-2008

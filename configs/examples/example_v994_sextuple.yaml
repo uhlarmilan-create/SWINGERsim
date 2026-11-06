@@ -1,0 +1,29 @@
+# V994 Her as a sextuple (2+2+2): Zasche et al. (2023) MNRAS 520, 3127, Table 3.
+# Binaries A, B (the doubly eclipsing quadruple, mutual orbit 1062 d) and C (third eclipsing
+# binary on a wide, unknown orbit). ASSUMED here, not measured: all orbits coplanar (the authors
+# find the system plausibly close to coplanar), C on a 3000-yr orbit (median of their Monte
+# Carlo) with e = 0.3, the nodes on the sky. Observed apsidal advance: A 1.86, B 3.66,
+# C 1.68 deg/yr (Table 3).
+#   swingersim stability configs/examples/example_v994_sextuple.yaml --no-nbody
+#   swingersim run configs/examples/example_v994_sextuple.yaml -o output/v994_sextuple.h5
+#   swingersim timings configs/examples/example_v994_sextuple.yaml --years 3 \
+#       -o output/v994_sextuple_timings.csv --plot output/v994_sextuple_oc.png
+topology: "2+2+2"
+masses: {m1: 2.929, m2: 2.216, m3: 1.913, m4: 1.889, m5: 1.810, m6: 1.077}
+orbits:
+  A:   {P: 2.0832039, e: 0.0276, i: 84.66}
+  B:   {P: 1.4200981, e: 0.1186, i: 89.19}
+  AB:  {P: 1062.3, e: 0.687, i: 83.0}
+  C:   {P: 1.9601064, e: 0.1893, i: 80.42}
+  out: {P: 1095750.0, e: 0.3, i: 83.0}
+# apsidal constants: B measured, log k2 = -2.44 (Sect. 4.1); A and C the theoretical value the
+# paper gives for B, log k2 = -2.36 (ASSUMED); rotation synchronous (ASSUMED)
+stars:
+  m1: {R: 2.118, apsidal_k2: 0.00437, P_rot: sync}
+  m2: {R: 1.721, apsidal_k2: 0.00437, P_rot: sync}
+  m3: {R: 1.572, apsidal_k2: 0.00363, P_rot: sync}
+  m4: {R: 1.579, apsidal_k2: 0.00363, P_rot: sync}
+  m5: {R: 1.544, apsidal_k2: 0.00437, P_rot: sync}
+  m6: {R: 0.961, apsidal_k2: 0.00437, P_rot: sync}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 30, n_output: 3001}

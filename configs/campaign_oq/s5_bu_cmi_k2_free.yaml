@@ -1,0 +1,58 @@
+# Campaign "open questions", study S5: BU CMi - are the apsidal constants or the outer orbit behind the e_out tension?
+# Part II: with the classical apsidal advance that stellar models predict (Claret 2023 k2 = 0.0042-0.0044 for all four
+# stars, 0.56 and 0.33 deg/yr), the joint fit moves the outer eccentricity by 2.6 sigma from Pribulla et al. (2023);
+# without it the fit agrees with the paper. Here the fit of the final model (same data: 179 minima, 305 velocities,
+# TESS S34 and S61; same published priors on e_A, e_B, P_out, e_out, omega_out) also fits the apsidal constants.
+# Within a pair only the sum of the two stars' contributions to the apsidal rate is measured, so one k2 per pair is
+# free (m1 for A, m3 for B; m2 and m4 keep their model values): the fitted k2 / 0.0042 is the factor by which the
+# pair's tidal-rotational apsidal advance differs from the stellar models. If e_out returns to the published value
+# with k2 near the models, the outer orbit was the issue; if k2 moves far (< 0.5 or > 2x), the stars are.
+# Linear errors (sampler none); start: the final MCMC fit of Part II.
+topology: 2+2
+masses: {m1: 2.594169476340337, m2: 2.367398508934716, m3: 2.6047668489545583, m4: 2.3094967469134766}
+orbits:
+  A: {P: 2.9392585288075788, e: 0.21367537299968128, i: 83.34201376249995, Omega: 0.14, omega: 101.98436627980342, M0: 282.3703800677501}
+  B: {P: 3.257226032758137, e: 0.22255322382306386, i: 83.78660133757865, Omega: 0.0, omega: 257.2799539142959, M0: 255.5971908267872}
+  out: {P: 121.6609128768347, e: 0.26380698171329525, i: 83.79, Omega: 0.09, omega: 131.91196096403496, M0: 294.75263919617834}
+stars:
+  m1: {R: 2.3792215764614046, Teff: 10570, apsidal_k2: 0.00422}
+  m2: {R: 1.9598530977015693, Teff: 10283}
+  m3: {R: 2.3623433926759847, Teff: 10593, apsidal_k2: 0.00421}
+  m4: {R: 1.9010026683482453, Teff: 10062}
+stellar_model: {kind: mist, age_myr: 263.0, feh: 0.02, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 100, n_output: 4001, extremes_every_orbits: 20}
+fit:
+  minima: ../../data/observed/bu_cmi/minima_pribulla2023.csv
+  time_system: BJD_TDB
+  lc:
+  - {file: ../../data/observed/bu_cmi/lc_tess_s34_s61_windows.csv, label: TESS, exposure_min: 10.0, n_sub: 1, baseline_degree: 1, scale: true, red_noise: true}
+  rv:
+    file: ../../data/observed/bu_cmi/rv_pribulla2023.csv
+    gamma: 20.49
+    offsets: {CTIO: 3.858, Konkoly: 12.528}
+  stage2:
+    bjd_t0: 2458491.5
+    anchor: false
+    max_sigma_d: 0.01
+    error_scale: per_source
+    error_model: jitter
+    clip_sigma: 5.0
+    processes: 0
+    free: [orbits.A.P, orbits.A.M0, orbits.A.e, orbits.A.omega, orbits.B.P, orbits.B.M0, orbits.B.e, orbits.B.omega, orbits.out.P, orbits.out.M0, orbits.out.e, orbits.out.omega, masses.m1, masses.m2, masses.m3,
+      masses.m4, rv.gamma, rv.offset.CTIO, rv.offset.Konkoly, orbits.A.i, orbits.B.i, stars.m1.R, stars.m2.R, stars.m3.R, stars.m4.R,
+      stars.m1.apsidal_k2, stars.m3.apsidal_k2]
+    priors:
+      orbits.A.e: [0.2191, 0.0008]
+      orbits.B.e: [0.2257, 0.0009]
+      orbits.out.P: [121.793, 0.031]
+      orbits.out.e: [0.2728, 0.0037]
+      orbits.out.omega: [141.0, 3.6]
+    bounds:
+      stars.m1.apsidal_k2: [0.0003, 0.03]
+      stars.m3.apsidal_k2: [0.0003, 0.03]
+    max_iterations: 40
+    sampler: none
+  output:
+    dir: ../../output/campaign_oq/s5_bu_cmi_k2
+    predict: {years: 5, samples: 100}

@@ -1,0 +1,28 @@
+# Example: pulsating stars in a triple (illustrative values). A delta Scuti primary in a 3-d
+# eclipsing binary (1.8 + 1.5 Msun, main sequence) and a 2.4 Msun tertiary on the thermally
+# pulsing AGB that pulsates as a long-period variable; coeval stars of 877.70 Myr (the AGB radius changes with the thermal pulses: P = 335 d here), MIST tracks.
+# Periods come from the stellar models: the delta Scuti fundamental mode from Q = 0.033 d, the
+# LPV fundamental mode from Trabucchi et al. (2021). The pulsations are evaluated at each star's
+# emission time, so the delta Scuti phases are modulated by the light-travel time across the
+# 3-d orbit (Murphy et al. 2014) and the inner binary's motion in the outer orbit.
+#   swingersim pulsation configs/examples/example_pulsating_triple.yaml
+#   swingersim lightcurve configs/examples/example_pulsating_triple.yaml --days 30 -o output/puls.csv
+topology: custom
+hierarchy: {out: [A, m3], A: [m1, m2]}
+masses: {m1: 1.8, m2: 1.5, m3: 2.4}
+orbits:
+  A:   {P: 3.0, e: 0.0, i: 87.0}
+  out: {P: 26000.0, e: 0.2, i: 60.0, Omega: 20.0}
+stars:
+  m1:
+    pulsation:
+      type: delta_scuti
+      mode: F
+      amplitude_mag: 0.01
+      extra_modes:
+        - {frequency_ratio: 1.29, amplitude_mag: 0.004, phase: 0.3}  # first overtone (P1/P0 ~ 0.77)
+  m3:
+    pulsation: {type: lpv, amplitude_mag: 0.8}
+stellar_model: {kind: mist, age_myr: 877.70, feh: 0.0, vvcrit: 0.0}
+physics: {gr: false}
+run: {t_max_yr: 1.0}

@@ -1,0 +1,19 @@
+# orbital inclination i1 of the 3.776-d eclipsing pair of V907 Sco vs time, Zasche et al. 2023, AJ 165, 81, Table 2
+# (light-curve fits of separate data sets with PHOEBE; masses, radii, temperatures fixed). mid_hjd = reference epoch,
+# hjd_from/hjd_to = interval of the data; archival plates (DASCH, APPLAUSE) with large uncertainties.
+# NOTE: inclination is a model-derived quantity (sense of i vs 180-i not given); SWINGERsim compares |cos i|.
+mid_hjd,i_deg,sigma_deg,hjd_from,hjd_to,source
+2415207.0,86.0,7.3,2414018,2416396,DASCH
+2416835.5,86.6,2.9,2416178,2417494,DASCH
+2418312.0,88.0,1.8,2417685,2418939,DASCH
+2419787.5,87.3,1.6,2419149,2420426,DASCH
+2420910.0,83.7,3.4,2420304,2421516,DASCH
+2421793.0,81.2,3.7,2421006,2422580,DASCH
+2438420.5,86.23,1.85,2438196,2438645,APPLAUSE
+2458675.0,73.37,0.25,2458670,2458680,TESS S13
+2459365.3,76.57,0.02,2459362,2459369,TESS S39a
+2459383.9,76.61,0.02,2459380,2459387,TESS S39b
+2459673.8,77.78,0.10,2459673,2459674,FRAM
+2459771.0,78.11,0.08,2459762,2459780,FRAM
+2459794.7,78.45,0.04,2459794,2459795,FRAM
+2459812.0,78.55,0.04,2459811,2459813,FRAM

@@ -1,0 +1,32 @@
+# EE Cephei: a B5 III star eclipsed every 5.6 yr by a dark disc around an invisible companion.
+# The eclipses differ from cycle to cycle (0.5 to 2 mag, a few weeks to months): the disc
+# precesses with ~11-12 orbital periods (Galan C. et al. 2012, A&A 544, A53; Pienkowski D. et
+# al. 2020, A&A 639, A23). Hierarchy (B star + companion), the disc on the companion.
+# Sources: Pienkowski et al. 2020: P = 2049.78 d, B5 III primary ~8 Msun (14 300 K, 10 Rsun),
+#   a ~ 1360 Rsun (6.3 AU, total mass ~8 Msun), disc diameter of a few hundred Rsun, opaque inside
+#   and semi-transparent outside, precession period 11-12 P.
+# ASSUMED (an illustrative model, not a fit): masses 6.5 + 1.5 Msun (total 8), e = 0 (the paper
+#   only says "significantly eccentric"), i = 88 deg, companion 1 Rsun 4000 K (invisible), disc
+#   r_out 0.8 AU, thickness 0.05 AU, tau = 1, tilt 15 deg, precession -65 yr (11.6 P).
+# Validation: eclipse depths vary between ~0.2 and ~1.7 mag over one precession period
+#   (observed 0.5-2 mag), durations of weeks (observed 2.5-3.5 months in 2014: the disc is larger).
+#   swingersim lightcurve configs/catalog/ee_cep.yaml --days 25600 --cadence-min 1440 --band V -o output/catalog/ee_cep/lc_v.csv
+topology: custom
+hierarchy: {A: [m1, m2]}
+masses: {m1: 6.5, m2: 1.5}
+orbits:
+  A: {P: 2049.78, e: 0.0, i: 88.0}
+stars:
+  m1: {R: 10.0, Teff: 14300}
+  m2: {R: 1.0, Teff: 4000}
+discs:
+  disc:
+    host: m2
+    r_out_au: 0.8
+    thickness_au: 0.05
+    tau: 1.0
+    relative_to: A
+    tilt: 15.0
+    precession_period_yr: -65.0
+physics: {gr: false}
+run: {t_max_yr: 70, n_output: 701}

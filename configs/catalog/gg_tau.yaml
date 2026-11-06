@@ -1,0 +1,24 @@
+# GG Tau as a single system (sources and ASSUMED values in gg_tau_ensemble.yaml), with its
+# circumbinary dust ring: 180-260 AU around GG Tau A (Aa and the Ab pair = orbit Bt here),
+# coplanar with the Aa-Ab orbit (i = 37 deg on the sky, retrograde: 143 deg; Keppler M. et al.
+# 2020, A&A 639, A62; Dutrey A. et al. 2014, Nature 514, 600). Thickness ASSUMED 20 AU.
+# Validation: the ring is seen 37 deg from face-on and lies far outside the stars: it does not
+# occult them (no dips by the ring are observed; tests/test_discs.py checks the geometry).
+#   swingersim run configs/catalog/gg_tau.yaml -o output/catalog/gg_tau.h5
+topology: "2+(2+1)"
+masses: {m1: 0.12, m2: 0.04, m3: 0.30, m4: 0.20, m5: 0.65}
+orbits:
+  A:   {a: 210.0, e: 0.3, i: 60.0}
+  B:   {P: 5479.0, e: 0.2, i: 143.0, Omega: 277.0}
+  Bt:  {a: 35.0, e: 0.28, i: 143.0, Omega: 277.0, omega: 91.0}
+  out: {a: 1400.0, e: 0.3, i: 60.0}
+stars:
+  m1: {R: 0.6}
+  m2: {R: 0.4}
+  m3: {R: 1.2}
+  m4: {R: 1.0}
+  m5: {R: 1.63, Teff: 3700}
+discs:
+  ring: {host: Bt, r_in_au: 180.0, r_out_au: 260.0, thickness_au: 20.0, relative_to: Bt}
+physics: {gr: false}
+run: {t_max_yr: 20000, n_output: 2001}

@@ -1,0 +1,31 @@
+# alpha Centauri: two Sun-like stars (A, G2 V; B, K1 V; 79.8 yr) and the red dwarf Proxima on a
+# ~550-kyr orbit at ~8700 AU - the nearest triple, so wide that the Galaxy and passing stars
+# shape its outer orbit. Hierarchy ((A+B)+Proxima).
+# Sources: Akeson R. et al. 2021, AJ 162, 14 (2021AJ....162...14A): A-B P = 79.762 yr,
+#   a = 23.299 AU, e = 0.51947, i = 79.243, Omega = 205.073, omega = 231.519, T = 1875.66,
+#   masses 1.0788/0.9092 Msun; Kervella P., Thevenin F., Lovis C. 2017, A&A 598, L7
+#   (doi:10.1051/0004-6361/201629930), Table 3: Proxima a = 8700 AU, e = 0.50, i = 107.6,
+#   Omega = 126, omega = 72.3, next periastron in +283 kyr, M = 0.1221 Msun, R = 0.1542 Rsun;
+#   Table 1: R_A = 1.2234, R_B = 0.8632 Rsun. Teff 5804/5207/2992 K, age ~7 Gyr (compilation).
+# Conversions: t = 0 at J2000: M0(A-B) = 201.20 deg; M0(Proxima) = -360 x 283/547 = 173.7 deg.
+# Why: Sun-like stars, a red dwarf, and the Galactic environment: the tide of the disc and
+#   passing stars over 1 Gyr (secular backend); mutual inclination ~83 deg but the ZLK time
+#   (~1e11 yr) exceeds the age.
+# Validation: Proxima stays bound over the run (Kervella et al.: bound at 5.4 sigma); the inner
+#   orbit is untouched; alpha_cen_ensemble.yaml gives the probability of unbinding.
+#   swingersim run configs/catalog/alpha_cen.yaml -o output/catalog/alpha_cen.h5
+topology: custom
+hierarchy: {out: [A, m3], A: [m1, m2]}
+masses: {m1: 1.0788, m2: 0.9092, m3: 0.1221}
+orbits:
+  A:   {P: 29133.07, e: 0.51947, i: 79.243, Omega: 205.073, omega: 231.519, M0: 201.20}
+  out: {a: 8700.0, e: 0.50, i: 107.6, Omega: 126.0, omega: 72.3, M0: 173.7}
+stars:
+  m1: {R: 1.2234, Teff: 5804}
+  m2: {R: 0.8632, Teff: 5207}
+  m3: {R: 0.1542, Teff: 2992}
+physics:
+  gr: true
+  galactic_tide: {}
+  encounters: {n_star_pc3: 0.1, sigma_kms: 40, seed: 1}
+run: {backend: secular, t_max_yr: 1.0e9, n_output: 2001}

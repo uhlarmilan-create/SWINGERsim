@@ -1,0 +1,40 @@
+# example_algol_triple.yaml with tides (Hurley 2002 lags) and rotation: once the Algol has widened,
+# the tertiary drives Kozai-Lidov cycles of A unless tides damp them (test campaign group 3)
+hierarchy:
+  A:
+  - m1
+  - m2
+  out:
+  - A
+  - m3
+masses:
+  m1: 2.9
+  m2: 0.9
+  m3: 1.6
+orbits:
+  A:
+    P: 2.7
+    e: 0.0
+    i: 82.0
+  out:
+    Omega: 40.0
+    P: 680.0
+    e: 0.23
+    i: 83.0
+physics:
+  evolution: true
+  gr: true
+  mass_transfer: {}
+  rotation: true
+  tidal_lag: hurley2002
+  tides: true
+run:
+  backend: secular
+  n_output: 401
+  t_max_yr: 1.0e7
+stellar_model:
+  age_myr: 390.0
+  feh: 0.0
+  kind: mist
+  vvcrit: 0.0
+topology: custom

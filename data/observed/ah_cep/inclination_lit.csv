@@ -1,0 +1,7 @@
+# orbital inclination of the 1.775-d pair of AH Cep from published light-curve solutions (one epoch so far).
+# Pavlovski, Southworth & Tamajo 2018, MNRAS 481, 3129, Table 5: i = 69.81 +- 0.60 deg from the uvby light curves of
+# Bell, Hilditch & Adamson 1986 (MNRAS 223, 513), observed in the early 1980s (mid epoch ~HJD 2445300 assumed, +-1 yr
+# is irrelevant for slow changes). Drechsel, Lorenz & Mayer 1989 (A&A 221, 49) claimed a change of the amplitude
+# (inclination) - not confirmed by Pavlovski et al.; TESS 2019-2024 depths are constant to 2-4 % (fit.lc gives i today).
+mid_hjd,i_deg,sigma_deg,source
+2445300.0,69.81,0.60,Pavlovski2018/Bell1986

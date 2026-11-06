@@ -1,0 +1,43 @@
+# QX Cas - path 2 "data -> model": joint fit of the 96 minima 1933-1974 (VarAstro / O-C gateway: photographic, visual,
+# photoelectric; they carry the apsidal motion of the e = 0.21 pair and its period) and the three inclinations
+# 1960-2005 (inclination_lit.csv), starting from the hypothesis of qx_cas_published.yaml. The third body is unseen, so
+# its orbit is only partly determined: free P3, i3, Omega3 and m3 (e3, omega3, M0 fixed). Expect strong correlations
+# (m3 with P3: the precession rate goes as m3 / P3^2) - read the result together with qx_cas_ensemble.yaml.
+# NOTE: the start omega_inner = 117 deg (e cos w = -0.095) is the value of the first version of qx_cas_published.yaml;
+#   it puts the secondary minima at phase 0.56 instead of the observed 0.37 (see qx_cas_published.yaml, now 30 deg).
+#   Kept unchanged: it is the start of job sq5_6 (qx_cas_fit_best.yaml); e cos w and e sin w are free.
+topology: custom
+hierarchy: {out: [inner, m3], inner: [m1, m2]}
+masses: {m1: 5.5, m2: 6.5, m3: 3.0}
+orbits:
+  inner: {P: 6.00471, e: 0.21, i: 82.0, Omega: -8.54, omega: 117.0, M0: 0.0}
+  out:   {P: 300.0,   e: 0.2,  i: 69.37, Omega: 2.44, omega: 0.0,   M0: 0.0}
+stars:
+  m1: {R: 3.5, Teff: 24000}
+  m2: {R: 5.1, Teff: 18000}
+  m3: {R: 2.0, Teff: 12000}
+stellar_model: {kind: mist, age_myr: 60.0, feh: 0.0, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 30, n_output: 3001, extremes_every_orbits: 20}
+
+fit:
+  minima: ../../data/observed/qx_cas/minima_varastro.csv
+  time_system: BJD_TDB
+  inclination:
+    - {file: ../../data/observed/qx_cas/inclination_lit.csv, pair: inner, label: Bonaro2009}
+  stage2:
+    bjd_t0: 2444500.0
+    anchor: true
+    free: [orbits.inner.P, orbits.inner.M0, orbits.inner.ecosw, orbits.inner.esinw, orbits.inner.i, orbits.inner.Omega,
+           orbits.out.P, orbits.out.i, orbits.out.Omega, masses.m3]
+    error_scale: per_source
+    error_model: jitter
+    clip_sigma: 4.0
+    priors:
+      masses.m3: [3.0, 2.0]          # unseen: a B/A star at most (no third light reported)
+      orbits.out.P: [400.0, 300.0]   # weak: a few hundred days follow from the precession rate
+    max_iterations: 40
+    processes: 0
+  output:
+    dir: ../../output/squadra_test3/qx_cas/fit
+    predict: {years: 50, samples: 100}

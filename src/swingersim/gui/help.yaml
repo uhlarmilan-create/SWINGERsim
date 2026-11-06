@@ -1,0 +1,912 @@
+# Help texts of swingersim gui (English). One source for the help panel of every page.
+#
+# config.<path>     a section or a field of the configuration; <path> uses * for a name you choose
+#                   (orbits.*.P is the period of any orbit). Fields without an entry show the
+#                   description of the schema (config.py), so only what needs more than one line is here.
+# compute.<id>      an item of Configuration › What to compute
+# questions         Configuration › "What do I want to know?"
+# templates         Configuration › New from a template
+# tools.<command>   the Tools page
+# results.<kind>    the top of a result page ("What am I looking at")
+# charts.<key>      "How to read" under a chart of a result page
+# glossary.<term>   short explanations of terms used on the pages (hover)
+# warnings          a regular expression of a warning on a result page -> what it means, what to do
+#
+# Keys of an entry: title, what, when, affects, typical, example (YAML), refs, manual (page of the
+# manual in docs/en), needs, time, outputs, next.
+
+tabs:
+  config: >-
+    Describe the system here – the stars, their orbits and the physics to include – and choose
+    what to compute from it (right column). A configuration is a YAML file; the form and the
+    YAML text are two views of the same file. Every section and field has a ? that explains it.
+    Save the configuration as a draft (jobs/drafts/), then tick what to compute and press
+    Add and run. Long computations run as jobs in the background; their results appear on the
+    Outputs page.
+  jobs: >-
+    Every computation is a job: a small YAML file that names the command, the configuration and
+    the options. Drafts are your configurations; the inbox holds jobs waiting to run; the worker
+    takes queued jobs one after another (one-core jobs side by side) and moves them to Finished.
+    You can close the browser – the worker keeps running.
+  outputs: >-
+    Every finished job, grouped by configuration. A card shows the main facts of the result;
+    Open shows the result page with interactive figures (zoom with the mouse, double-click to
+    reset, click a legend entry to hide a curve). "Compute next" at the bottom of a result page
+    starts the usual next step with the same configuration.
+  tools: >-
+    Computations that do not need a configuration of a system: calculators (Applegate
+    mechanism, three-body break-up theory), the validation against published results and the
+    computation of own stellar models with MESA. Where a tool belongs to a situation, the
+    Configuration and Outputs pages also offer it there.
+
+# --------------------------------------------------------------------------- configuration
+config:
+  topology:
+    title: Topology
+    what: >-
+      How the stars are grouped into orbits. 2+2: two binaries (orbits A and B) orbiting each
+      other (orbit out). 3+1: a triple (binary inner in orbit mid with a third star) and a fourth
+      star far out (orbit out). Larger presets add stars the same way; custom lets you write the hierarchy
+      yourself (up to 10 stars).
+    when: Always. Choose it first, then "Add stars and orbits" fills in the names it needs.
+    affects: The names of the orbits and stars in every other section, and which pairs can eclipse.
+    typical: 2+2 for two eclipsing binaries in one system; custom for a binary with one third star.
+    manual: concepts.md
+
+  hierarchy:
+    title: Hierarchy (custom topology)
+    what: >-
+      Orbit name -> [child 1, child 2]. A child is a star (m1, m2, …) or another orbit. The orbit
+      that is nobody's child is the outermost one. Each orbit is a Keplerian two-body orbit of its
+      two children around their common centre of mass (Jacobi coordinates).
+    when: Only with topology custom.
+    affects: Everything; the orbits section needs one entry per orbit named here.
+    example: |
+      hierarchy:
+        out: [inner, m3]      # a binary (inner) and a third star
+        inner: [m1, m2]
+    manual: concepts.md
+
+  masses:
+    title: Masses
+    what: Star name -> mass in solar masses. Every star of the hierarchy needs one.
+    when: Always.
+    affects: >-
+      The dynamics (periods follow from masses and semi-major axes), the light-travel time,
+      and – through the stellar model – radii, temperatures and the structure constants of the
+      stars when you do not give them in stars.
+    typical: 0.1–100 M☉. Stellar models are valid for main-sequence stars of 0.1–300 M☉ (MIST).
+    example: |
+      masses: {m1: 2.56, m2: 2.74, m3: 1.0}
+
+  orbits:
+    title: Orbits
+    what: >-
+      Orbit name -> its Keplerian elements at t = 0 of the configuration: period P (or
+      semi-major axis a), eccentricity e, inclination i, node Omega, argument of pericentre omega
+      and mean anomaly M0. Angles in degrees; i is measured from the line of sight (z axis points
+      away from the observer): i = 90° is edge-on and needed for eclipses.
+    when: Always; one entry per orbit of the hierarchy.
+    affects: Everything. Only the difference of the nodes of two orbits is measurable without astrometry.
+    typical: >-
+      Inner binaries 1–100 d; outer orbits at least a few times longer (stability: Mardling–Aarseth
+      ratio above 1, see the quick check). Unknown angles: leave i = 90°, Omega = 0 for the eclipsing pair
+      and set the mutual inclination through i and Omega of the outer orbit.
+    example: |
+      orbits:
+        inner: {P: 3.7748, e: 0.01, i: 76.6, Omega: 0, omega: 302, M0: 230}
+        out: {P: 142.1, e: 0.47, i: 74.8, Omega: 349, omega: 24, M0: 38}
+  orbits.*.P:
+    what: Period of the orbit in days at t = 0 (osculating). Give P or a, not both.
+    typical: The eclipsing period of a binary is close to, but not exactly, the osculating P – the fit anchors it to the minima.
+  orbits.*.e:
+    what: Eccentricity, 0 (circle) to below 1. Close binaries are usually circular or nearly so.
+  orbits.*.i:
+    what: >-
+      Inclination of the orbit to the plane of the sky [deg]: 90° edge-on, 0° face-on. Values
+      above 90° are the same orbit seen with the opposite sense of revolution – this matters for
+      the mutual inclination of two orbits, not for the eclipses.
+  orbits.*.Omega:
+    what: Longitude of the ascending node [deg]. Alone not measurable; the difference between two orbits sets their mutual inclination.
+  orbits.*.omega:
+    what: Argument of pericentre [deg]. Matters only for eccentric orbits (secondary eclipse phase, apsidal motion).
+  orbits.*.M0:
+    what: "Mean anomaly at t = 0 [deg]: where on the orbit the bodies are when the computation starts. It sets the phase of the eclipses."
+  orbits.*.Pdot:
+    title: Period change of a binary (dP/dt)
+    what: >-
+      Secular change of the period of a two-star binary [days per year], as measured from a parabola in the
+      O − C diagram: O − C = ½ (dP/dt) P E². Semi-detached and contact binaries (Algols, W UMa) change their
+      period by mass transfer or by losing angular momentum. SWINGERsim imposes P(t) = P + Pdot · t inside the
+      N-body run, so the minima, radial velocities, light curves and the third body all see the same orbit.
+      Free in the stage-2 fit as orbits.<pair>.Pdot (unit d/yr; 1e-7 d/yr = 0.0086 s/yr).
+    when: >-
+      A binary of a multiple system whose O − C shows a parabola on top of the light-time effect. N-body only;
+      only orbits of two stars.
+    affects: All observables of the pair; the Outputs list Pdot with the fitted parameters.
+    refs: Kwee 1958; Hilditch 2001 (Sect. 4.7)
+    example: |
+      orbits:
+        A: {P: 0.3612, Pdot: 2.4e-7, Pdot_mode: angular_momentum}
+  orbits.*.Pdot_mode:
+    what: >-
+      What changes the period. angular_momentum: the masses stay (magnetic braking, loss through the outer
+      Lagrangian point). conservative: mass flows between the two stars at constant total mass and angular
+      momentum, dP/P = 3 dM1 (M1 − M2) / (M1 M2) – the masses change with the period (not for equal masses).
+
+  stars:
+    title: Stars
+    what: >-
+      Star name -> properties beyond the mass: radius R, temperature Teff, structure constants
+      (apsidal_k2, rg2), rotation, tidal lag, shape, pulsations. Anything left out comes from the
+      stellar model (stellar_model) at the age of the system.
+    when: >-
+      Give R and Teff when you know them from a light-curve solution; light curves, tides and
+      rotation use them. For pure orbital dynamics of point masses the section is not needed.
+    affects: Light curves (sizes and brightness), eclipse limits, tides and apsidal motion, rotation.
+    example: |
+      stars:
+        m1: {R: 2.53, Teff: 12000}
+        m2: {R: 2.68, Teff: 11500}
+  stars.*.R:
+    what: Radius in solar radii. Sets the eclipse geometry (depth, duration, whether a pair eclipses at all) and the strength of tides.
+  stars.*.Teff:
+    what: Effective temperature [K]. Sets the surface brightness in the band of a light curve, hence the depths of the eclipses.
+  stars.*.shape:
+    what: >-
+      sphere: a round star. rotating: oblate star of a rigid rotator. roche: tidally and rotationally
+      deformed star filling part of its Roche lobe – needed for close binaries (ellipsoidal variation,
+      correct eclipse depths). There is no automatic choice here; a fit of measured light curves can
+      choose itself with fit.lc[].shapes: auto (Roche surfaces for the stars that need them).
+  stars.*.P_rot:
+    what: Rotation period [d], or sync (rotates with its binary), or pseudosync (Hut 1981 for eccentric orbits).
+
+  discs:
+    title: Discs
+    what: >-
+      Dust discs or rings around a star or a binary that pass in front of stars (epsilon Aur,
+      EE Cep type eclipses). A disc has inner and outer radius, thickness, optical depth and
+      orientation; it can precess with a given period or as a rigid body in the field of the binary.
+    when: Only for light curves of systems with occulting discs.
+    affects: Light curves only.
+    manual: concepts_observer.md
+
+  stellar_model:
+    title: Stellar model
+    what: >-
+      Where radii, temperatures and structure constants come from when stars does not give them.
+      zams: zero-age main sequence (fast). sse: evolved stars of age age_myr (Hurley et al. 2000).
+      mist: MIST stellar tracks at age age_myr and metallicity feh (recommended for real systems).
+      table / python: your own values.
+    when: Whenever stars are not fully specified, and always with physics.evolution.
+    affects: Light curves, tides, apsidal motion, rotation, evolution and mass loss.
+    typical: "mist with the age of the system (e.g. age_myr: 100) and feh: 0."
+    example: |
+      stellar_model: {kind: mist, age_myr: 100, feh: 0.0}
+    refs: Choi et al. 2016 (MIST); Hurley et al. 2000 (SSE); Claret 2023 (structure constants)
+    manual: concepts_stars.md
+  stellar_model.structure:
+    what: >-
+      Source of the apsidal-motion constant k2 and the moment of inertia: claret2023 = MESA models
+      of Claret (2023) at the star's mass and age; polytrope = the classic n = 1.5/3 polytropes; auto
+      picks the best available.
+
+  physics:
+    title: Physics
+    what: >-
+      The physical effects included beyond Newtonian point masses. Each one costs computing time;
+      switch on what matters for your system. Open an effect for when it matters.
+    when: >-
+      Defaults are point masses. Close binaries (a/R below ~10–20) need tides and rotation for their
+      apsidal motion; compact or old systems need general relativity; long runs of evolving stars need
+      evolution and mass loss.
+    affects: The motion of the orbits and stars over time – everything computed from a run.
+    manual: physics.md
+  physics.gr:
+    title: General relativity
+    what: >-
+      Post-Newtonian corrections (1PN) of every pair of bodies: the relativistic apsidal motion,
+      significant for tight binaries (e.g. about 30 °/century for a 1-d binary of two solar-mass stars:
+      6πGM / (c² a (1 − e²)) per orbit).
+    when: Recommended for every binary shorter than ~10 d; cheap.
+    refs: Benitez & Gallardo 2008; Tamayo et al. 2020 (REBOUNDx)
+  physics.gw:
+    title: Gravitational waves
+    what: Energy and angular momentum lost to gravitational radiation (2.5PN, orbit-averaged, Peters 1964).
+    when: Only for compact binaries (white dwarfs, neutron stars) or very long runs; negligible for main-sequence binaries.
+  physics.tides:
+    title: Tides
+    what: >-
+      Tidal bulges raised by each star in its binary companion: the conservative part makes the
+      orbit precess (apsidal motion, from k2 and R⁵); with a tidal lag the dissipative part
+      circularises the orbit and synchronises the spins.
+    when: Close binaries (a/R below ~20). Without tides the apsidal motion of close binaries is badly underestimated.
+    affects: Apsidal motion, eccentricity, spins; needs radii and k2 (from stars or the stellar model).
+    refs: Eggleton et al. 1998; Hut 1981; Mignard 1979
+  physics.rotation:
+    title: Rotational flattening
+    what: >-
+      The spin of each star flattens it; the quadrupole precesses the orbit (apsidal and nodal
+      motion) and the orbit torques the spin back (spin-orbit coupling).
+    when: Together with tides for close binaries; needed for obliquity and spin evolution.
+  physics.evolution:
+    title: Stellar evolution
+    what: Radii, temperatures and masses of the stars follow their tracks (stellar_model) during the run.
+    when: Runs of millions of years or longer, giants, mass loss and mass transfer.
+    affects: Every star-dependent effect; slower.
+  physics.tidal_lag:
+    what: >-
+      fixed: the tidal time lag of each star from stars.<name>.lag_s; hurley2002: from the
+      envelope of the star (convective or radiative damping) – physical but uncertain by factors of a few.
+  physics.inertial_waves:
+    what: "Adds the dissipation of inertial waves in convective envelopes (Barker 2020): strongest in young, rapidly rotating low-mass stars."
+  physics.gas:
+    title: Gas phase
+    what: Damping of orbits by a gaseous environment early in the life of a system (secular backend), with a density decaying in time.
+    when: Formation scenarios only.
+  physics.mass_loss:
+    title: Mass loss
+    what: Stellar winds remove mass; the orbits widen adiabatically. Rates from the tracks or given per star.
+    when: Massive stars or giants over long runs.
+    refs: Reimers 1975; Hurley et al. 2000
+  physics.mass_transfer:
+    title: Mass transfer
+    what: >-
+      Roche-lobe overflow between the stars of a binary: stable transfer with the BSE prescriptions,
+      contact phases and common envelopes; also overflow of a third star onto a binary.
+    when: Interacting binaries over evolutionary times (needs physics.evolution).
+    refs: Hurley et al. 2002
+  physics.mass_transfer.q_crit_ms:
+    title: Critical mass ratio of main-sequence donors
+    what: >-
+      Mass ratio M_donor / M_accretor of a main-sequence (above 0.7 Msun) or core-helium-burning donor above
+      which the transfer runs away into a common envelope. 3.0 is the value of BSE (Hurley et al. 2002) and
+      of adiabatic mass-loss models (q_ad 2.6-4.6, Ge et al. 2015, 2020). binary_c uses 1.6 (de Mink et al.
+      2007): there the binary does not go unstable but comes into contact, which binary_c counts as a merger.
+    when: Keep 3.0; set 1.6 only to compare with binary_c. Contact phases are followed by mass_transfer.contact.
+    refs: Hurley et al. 2002; Ge et al. 2015, 2020; de Mink et al. 2007; Henneco et al. 2024
+  physics.mass_transfer.dynamic_onset:
+    title: Mass transfer started by the dynamics
+    what: >-
+      The mass-transfer histories are computed in advance for circular binaries of the configured size.
+      A third star can drive a binary much closer: Kozai-Lidov cycles raise its eccentricity until a star
+      touches its Roche lobe at periastron. With this option the run does not stop there: the binary is
+      circularised and the run continues, with the mass transfer computed from that moment – the binary can
+      become semi-detached, a contact (W UMa) binary, a common envelope or merge, while the third star keeps
+      orbiting it. angular_momentum: tides circularise at constant angular momentum, a → a (1 − e²) (the
+      binary is then detached and close, P of days); periastron: a → a (1 − e), the star stays at its lobe and
+      the transfer starts at once.
+    when: >-
+      Triples and quadruples with high mutual inclinations or eccentric outer orbits, over evolutionary
+      times. Without it a secular run ends at the overflow (N-body with run.stop_on_roche_overflow).
+    affects: >-
+      The Outputs show each onset as a "Mass transfer started by the dynamics" fact (time, orbit, e at the
+      contact, period before and after); the orbit plots show the jump of a and e at that moment, and the
+      rest of the run is that of the circularised system (mass transfer, contact or merger facts).
+    refs: Hut 1981; Eggleton & Kisseleva-Eggleton 2006; Fabrycky & Tremaine 2007; Toonen et al. 2016; Hamers et al. 2021
+    example: |
+      physics:
+        evolution: true
+        mass_transfer: {dynamic_onset: angular_momentum, contact: {}}
+        mergers: {}
+  physics.mergers:
+    title: Mergers
+    what: >-
+      What happens when two stars merge – they touch in the N-body run (collision), or a common envelope or a
+      contact binary ends in a merger. Without this section the run stops there. With it the two stars become
+      one star at their centre of mass, a few per cent of the mass is ejected (the outer orbits widen a little),
+      the new star is rejuvenated (it mixes fresh hydrogen into its core) and the run continues with the
+      merged system – a quadruple becomes a triple.
+    when: >-
+      Long runs of tight or eccentric systems, chaotic systems and ensembles, mass transfer with common
+      envelopes: anything that can bring two stars together. In ensembles the fate of such members is
+      'merger'.
+    affects: >-
+      Everything after the merger: the Outputs show it as a Merger fact (stars, new mass, ejected mass, age of
+      the product), as a change of the hierarchy, and the merged star in the Stars table.
+    refs: Glebbeek et al. 2013; Glebbeek & Pols 2008; Schneider et al. 2016, 2019; Lombardi et al. 2002
+    example: |
+      physics:
+        mergers: {}          # Glebbeek mass loss, Glebbeek rejuvenation
+        # mergers: {mass_loss: 0.05, rejuvenation: hurley, spin_fraction: 0.3}
+  physics.mergers.mass_loss:
+    what: >-
+      Fraction of M1 + M2 ejected by the merger. glebbeek2013: 0.3 q / (1 + q)², q = M2 / M1 (7.5 % for equal
+      masses, less for unequal ones); or a number. A common-envelope merger keeps the mass of the energy formalism.
+  physics.mergers.rejuvenation:
+    what: >-
+      How young the product is: its fraction of the main-sequence life = factor × the mass-weighted fractions
+      of the two stars. glebbeek: 0.81 for low-mass to 0.64 for massive products; hurley: 0.1 (BSE, very
+      strong rejuvenation); or a number. A giant keeps its evolutionary stage on the track of the new mass.
+  physics.mergers.spin_fraction:
+    what: >-
+      Rotation of the merged star as a fraction of break-up, about the orbit of the pair that merged
+      (with tides/rotation). Merger products are born near break-up but spin down quickly.
+  physics.galactic_tide:
+    title: Galactic tide
+    what: The tide of the Galactic disc on very wide orbits (above ~1000 AU) – changes their eccentricity over gigayears.
+    when: Wide outer orbits only.
+  physics.encounters:
+    title: Passing stars
+    what: Gravitational kicks from stars passing the system, drawn at random from a density and velocity dispersion.
+    when: Wide orbits in clusters or the field over long times.
+  physics.activity:
+    title: Magnetic activity cycle (Applegate)
+    what: >-
+      A magnetic cycle in a star changes its shape slightly; the binary's period then oscillates and its
+      eclipses shift by K sin(2π t / P_mod + phase). SWINGERsim adds this shift to the eclipse times and checks
+      whether the star has enough energy for it (thin-shell model of Tian et al. 2009).
+    when: To test whether an O − C wave could be magnetic instead of a third body.
+    affects: Eclipse times (timings, minima) only, not the dynamics.
+    refs: Applegate 1992; Tian et al. 2009; Völschow et al. 2016
+    example: |
+      physics:
+        activity:
+          m2: {p_mod_yr: 11.0, amplitude_s: 30, phase_deg: 0}
+  physics.magnetic_braking:
+    title: Magnetic braking
+    what: Spin-down of stars with convective envelopes by their magnetised winds (Matt et al. 2015).
+    when: Low-mass stars over long runs (needs evolution and rotation).
+
+  run:
+    title: Run settings
+    what: >-
+      How the motion is computed. backend nbody: full N-body integration (IAS15; exact, slower);
+      secular: orbit-averaged equations (fast, for long times and hierarchical systems, no eclipse
+      times). t_max_yr: length of the run (negative = into the past). n_output: number of saved snapshots.
+    when: Always (t_max_yr). The rest has reasonable defaults.
+    typical: N-body for decades to thousands of years; secular for millions of years.
+    manual: workflow.md
+  run.backend:
+    what: >-
+      nbody: every orbit integrated (IAS15 of REBOUND) – everything (eclipse times, light curves,
+      chaos) is available. secular: averaged over the inner orbits – thousands of times faster for
+      long runs, but no eclipse times and not valid for unstable or resonant systems.
+  run.t_max_yr:
+    what: Length of the run in years; a negative value integrates into the past (backward).
+
+  ensemble:
+    title: Ensemble
+    what: >-
+      Many systems drawn around this configuration: vary says which parameters are drawn and from
+      which distribution; every member is integrated forward and/or backward; observed weights the
+      members by measurements (for example the inclination of a pair and its rate of change).
+      The result is a distribution: what is possible, and what the data allow.
+    when: When parameters are unknown (an unseen companion, unknown mutual inclination) or to estimate the lifetime of a system.
+    affects: Only the ensemble computation (What to compute › Ensemble).
+    example: |
+      ensemble:
+        n: 2000
+        vary:
+          masses.m3: {loguniform: [0.3, 6]}
+          orbits.out.P: {loguniform: [30, 11000]}
+          orbits.out.i: isotropic
+        observed:
+          inner_i0: {value: 82, sigma: 1.5}
+          inner_didt0_deg_yr: {value: -0.23, sigma: 0.08}
+    manual: workflow.md
+  ensemble.observed:
+    what: >-
+      Summary column -> {value, sigma} (or min / max, or equals for a fate). Each member gets the
+      weight exp(-χ²/2): 1 if it reproduces all measurements exactly, 0.61 at 1σ, 0.14 at 2σ.
+
+  fit:
+    title: Fit of times of minima
+    what: >-
+      Fits measured data with the model. Stage 1: analytic O − C of each pair (light-time effect,
+      apsidal motion, quadratic term). Stage 2: the full N-body model of the whole system fitted to
+      all minima at once, optionally together with radial velocities (rv), light curves (lc) and
+      inclinations measured at different epochs (inclination, also one-sided limits).
+    when: When you have measured minima and want the model system that produced them.
+    affects: Only the fit computation; the fitted configuration (stage2_fitted.yaml) is a normal configuration you can run.
+  fit.stage2.mcmc_tau_target:
+    title: Run the MCMC until it has converged
+    what: >-
+      The MCMC errors are reliable only when the chain is much longer than its autocorrelation time τ (the
+      number of steps after which a walker has "forgotten" where it was). With 50 (the guidance of emcee) the
+      chain is extended after mcmc_steps until it is at least 50 τ long, or until mcmc_max_steps. The fit
+      page shows steps / τ: green from 20 (10 τ after the discarded first half).
+    when: For the final errors of a report; 0 keeps exactly mcmc_steps (quicker look).
+    refs: Foreman-Mackey et al. 2013; Goodman & Weare 2010
+  fit_epoch_bjd_tdb:
+    title: Epoch of the fitted model
+    what: >-
+      BJD_TDB of t = 0 of a fitted configuration, written by the stage-2 fit into stage2_fitted.yaml (it
+      equals fit.stage2.bjd_t0). Tools and predictions read the epoch from here, so a fitted configuration
+      can be run and compared with observations without the fit section.
+    when: Written by the fit; set it by hand only when you build a configuration from a fit made elsewhere.
+    affects: Nothing in the simulation itself - only the conversion of model times to BJD.
+    manual: workflow.md
+  fit.inclination:
+    what: >-
+      Inclinations of a pair at given epochs from light-curve solutions, as a CSV table. The column
+      limit makes a row one-sided: upper / lower (an inequality), no_eclipse (the model must stay below its
+      own eclipse limit then), eclipse (the pair did eclipse then).
+  fit.rv.centre:
+    title: Radial velocities of the centre of light
+    what: >-
+      mass: the measured velocity is that of the centre of mass of the star (fine for small, round stars).
+      light: the velocity of the light – the flux-weighted velocity of the visible surface, as a
+      cross-correlation of the spectrum measures it. Stars that fill their Roche lobes (semi-detached and
+      contact binaries) are pear-shaped and brighter on one side, so their light moves differently from their
+      mass (tens of km/s in a W UMa binary); during eclipses the Rossiter-McLaughlin effect adds to it.
+      Fitting such velocities with the centre of mass biases the masses by several per cent.
+    when: Contact and semi-detached binaries, and radial velocities measured during eclipses.
+    affects: The model velocities of the fit and the RV plots of the Outputs (slower, one surface per point).
+    refs: Wilson & Sofia 1976; Rossiter 1924; McLaughlin 1924; Prša et al. 2016 (PHOEBE 2)
+  fit.rv.band:
+    what: Passband of the flux weights of fit.rv.centre light (limb and gravity darkening), e.g. V.
+  fit.stage2.free:
+    what: >-
+      The free parameters: orbits.<orbit>.<P|M0|e|omega|Omega|i|ecosw|esinw|Pdot>, masses.<star>,
+      stars.<star>.<R|Teff>. Without astrometry fix the node of one orbit – only node differences are measurable.
+
+# --------------------------------------------------------------------------- what to compute
+compute:
+  run:
+    title: Run
+    what: >-
+      Integrates the configuration over run.t_max_yr and records the orbits (elements of every
+      orbit), the stars (radius, spin, mass) and events (collisions, escapes, Roche overflow,
+      changes of the hierarchy).
+    needs: masses and orbits.
+    time: seconds (secular) to hours (N-body over many thousand orbits of a tight binary)
+    outputs: >-
+      run.h5 with the time series and a summary. On the Outputs page: the system view, eclipses
+      over the run, orbital elements over time, stability ratios, energy error.
+    next: Light curve or Eclipse times of the same configuration; Stability check; Ensemble around it.
+  lc:
+    title: Light curve
+    what: >-
+      A synthetic light curve in a photometric band: the positions of all stars from the N-body
+      integration, the light of every star (surface brightness from Teff, limb darkening, shape),
+      eclipses of every star by every other star and by discs, light-travel time, optional noise.
+    needs: masses, orbits; radii and temperatures from stars or the stellar model.
+    time: about a minute for a TESS sector
+    outputs: lightcurve.csv (time, total flux and the flux of each star). On the Outputs page the total light, each binary, each star and the light curve folded per binary.
+    next: Eclipse times as an observer; compare with a measured light curve (load it on the result page).
+  oc_exact:
+    title: Eclipse times, exact
+    what: >-
+      The moments of every eclipse (conjunction of the two stars of a pair, with the light-travel
+      time) found directly in the integration, and their O − C against a linear ephemeris. No light
+      curve and no noise: the true O − C of the model.
+    needs: masses and orbits; radii for the eclipse limit.
+    time: seconds to minutes
+    outputs: timings.csv. On the Outputs page the O − C of every pair, which eclipses exist when, and a comparison with measured minima if the configuration's folder has them.
+    next: Compare with your minima; Fit (fit section) to adjust the model.
+  oc_observer:
+    title: Eclipse times, as an observer
+    what: >-
+      A synthetic light curve is computed and every minimum is measured on it with the phenomenological
+      model of Mikulášek, with its error – like real minima. Use it to see how precisely a survey would
+      measure the O − C, including the shift caused by changing eclipse shapes.
+    needs: as the light curve
+    time: minutes
+    outputs: minima.csv with errors (and eclipse shapes per season). On the Outputs page the measured O − C.
+  stab:
+    title: Stability check
+    what: >-
+      Is the hierarchy stable? Three criteria for every nested triple: Mardling & Aarseth (2001), the
+      fit of Vynatheya et al. (2022) and the N-body "ghost" test of Vynatheya et al. (2023), which
+      integrates the triple for a number of outer orbits.
+    needs: masses and orbits
+    time: about a minute
+    outputs: "The ratios to the stability limit (above 1: stable) and the verdict of each test."
+    next: A long Run to see how long it really survives; a Chaos map around it.
+  chaos:
+    title: Chaos map
+    what: >-
+      MEGNO, an indicator of chaos (2 for regular, larger for chaotic motion), over a grid of one or
+      two parameters of the configuration (for example the outer period and eccentricity). Shows where
+      the system sits relative to unstable regions and resonances.
+    needs: masses and orbits; choose the parameters and their ranges.
+    time: hours (one integration per grid point)
+    outputs: A map of MEGNO and of the fate of every grid point.
+  puls:
+    title: Pulsation periods
+    what: >-
+      Periods of the pulsating stars (stars › pulsation) at t = 0, from the stellar model of each
+      star (its radius and temperature; for evolving stars also the rate of change of the period).
+    needs: a star with a pulsation entry
+    outputs: >-
+      For every pulsating star its type and mode, the period P, its rate of change dP/dt (evolving
+      stars), the radius R and Teff.
+  ens:
+    title: Ensemble
+    what: >-
+      Draws many systems (ensemble.vary), integrates each forward and backward, summarises every
+      member (fate, stability, eclipses, rates of change) and weights them by the measurements
+      (ensemble.observed).
+    needs: an ensemble section
+    time: from minutes to days (members × run length); resumable
+    outputs: >-
+      summary.csv (one row per member and direction). On the Outputs page the drawn and the weighted
+      distributions, fates, stability, and the members with the largest weight – each can be opened
+      as an ordinary configuration.
+    next: More members; an emulator or simulation-based inference for large ensembles.
+  fit:
+    title: Fit the measurements
+    what: >-
+      Fits the model to what was measured: stage 1 the analytic O − C of every pair (light-time effect,
+      apsidal motion, quadratic term), stage 2 the full N-body model of the whole system to all minima at
+      once, optionally with radial velocities, light curves and inclinations of the fit section. Errors per
+      source and outliers are handled by the fit itself.
+    needs: a fit section with the table of minima (and stage2 with bjd_t0 and the free parameters)
+    time: minutes (stage 1) to hours (stage 2 with light curves)
+    outputs: >-
+      The fitted parameters with errors, residuals, predictions of future minima, an HTML report and
+      stage2_fitted.yaml – the fitted system as an ordinary configuration. On the Outputs page the model
+      system, the O − C with the model, residuals and everything else that was fitted.
+    next: Open the fitted configuration and compute a Run, Light curve or Eclipse times of the solution.
+  scat:
+    title: Scattering experiment
+    what: Encounters of two systems (e.g. a binary and a single star) from a range of impact parameters and velocities, and their outcomes (exchange, ionisation, flyby, merger).
+    needs: a scatter section
+    outputs: The outcome fractions and cross-sections; with escape theory for comparison.
+
+questions:
+  - id: stability
+    label: Is it stable, and for how long?
+    ticks: [stab, run]
+    text: The stability check gives the verdict of three criteria in a minute; a long Run shows what actually happens (set run.t_max_yr).
+  - id: eclipses
+    label: When will it eclipse?
+    ticks: [run, oc_exact]
+    text: Run shows when each pair is in eclipsing geometry; Eclipse times (exact) gives every eclipse and its O − C. Set run.t_max_yr to the span you need (negative for the past).
+  - id: photometry
+    label: What would a photometer see?
+    ticks: [lc, oc_observer]
+    text: A light curve in a band of your choice, and the eclipse times measured on it like real data.
+  - id: model
+    label: I have measurements – what system made them?
+    ticks: [fit]
+    section: fit
+    text: Add a fit section (times of minima; optionally radial velocities, light curves, inclinations). The fit runs as a job and writes the fitted configuration, which you can then run like any other.
+  - id: unseen
+    label: Something unseen perturbs it – what can it be?
+    ticks: [ens]
+    section: ensemble
+    text: Add an ensemble section that draws the unknown body (mass, orbit, orientation) and weights the members by what was measured. The result is the range of companions that fit.
+  - id: past
+    label: How did it look in the past?
+    ticks: [run]
+    text: Set run.t_max_yr to a negative number of years; the run integrates backward from t = 0.
+
+templates:
+  - id: eb_third
+    label: Eclipsing binary + third body
+    text: A close binary with a third star on a wider, inclined orbit – the classic case of eclipse timing variations and changing eclipse depths.
+    yaml: |
+      topology: custom
+      hierarchy:
+        out: [inner, m3]
+        inner: [m1, m2]
+      masses: {m1: 2.0, m2: 1.8, m3: 1.0}
+      orbits:
+        inner: {P: 3.5, e: 0.0, i: 88.0, Omega: 0.0}
+        out: {P: 150.0, e: 0.3, i: 70.0, Omega: 20.0}
+      stellar_model: {kind: mist, age_myr: 100, feh: 0.0}
+      physics: {gr: true, tides: true, rotation: true}
+      run: {t_max_yr: 100}
+  - id: q22
+    label: 2+2 quadruple
+    text: Two binaries orbiting each other, both possibly eclipsing.
+    yaml: |
+      topology: 2+2
+      masses: {m1: 1.2, m2: 1.0, m3: 1.1, m4: 0.9}
+      orbits:
+        A: {P: 3.0, i: 88.0}
+        B: {P: 5.0, i: 86.0, Omega: 10.0}
+        out: {P: 1000.0, e: 0.3, i: 80.0}
+      stellar_model: {kind: mist, age_myr: 500, feh: 0.0}
+      run: {t_max_yr: 1000}
+  - id: q31
+    label: 3+1 quadruple
+    text: A triple with a fourth star far out.
+    yaml: |
+      topology: 3+1
+      masses: {m1: 1.0, m2: 0.9, m3: 0.8, m4: 0.7}
+      orbits:
+        inner: {P: 5.0, i: 88.0}
+        mid: {P: 200.0, e: 0.2, i: 75.0}
+        out: {P: 20000.0, e: 0.4, i: 60.0}
+      run: {t_max_yr: 10000}
+  - id: unseen
+    label: Ensemble for an unseen companion
+    text: A binary whose inclination changes, with a third body drawn from broad ranges and weighted by the measured inclination and its rate of change.
+    yaml: |
+      topology: custom
+      hierarchy:
+        out: [inner, m3]
+        inner: [m1, m2]
+      masses: {m1: 5.5, m2: 6.5, m3: 1.0}
+      orbits:
+        inner: {P: 6.0, e: 0.2, i: 82.0}
+        out: {P: 400.0, e: 0.3}
+      stellar_model: {kind: mist, age_myr: 50, feh: 0.0}
+      run: {t_max_yr: 30}
+      ensemble:
+        n: 500
+        directions: [forward, backward]
+        vary:
+          masses.m3: {loguniform: [0.3, 6.0]}
+          orbits.out.P: {loguniform: [30.0, 11000.0]}
+          orbits.out.e: {uniform: [0.0, 0.6]}
+          orbits.out.i: isotropic
+          orbits.out.Omega: {uniform: [0.0, 360.0]}
+        observed:
+          inner_i0: {value: 82.0, sigma: 1.5}
+          inner_didt0_deg_yr: {value: -0.23, sigma: 0.08}
+  - id: fit
+    label: Fit of times of minima
+    text: A binary with a third body and a fit section; replace the table of minima by your own (CSV pair, type, time, sigma, source, method).
+    yaml: |
+      topology: custom
+      hierarchy:
+        out: [inner, m3]
+        inner: [m1, m2]
+      masses: {m1: 1.5, m2: 1.3, m3: 0.8}
+      orbits:
+        inner: {P: 2.5, i: 88.0, Omega: 0.0}
+        out: {P: 2000.0, e: 0.3, i: 88.0}
+      run: {t_max_yr: 20}
+      fit:
+        minima: minima.csv
+        time_system: BJD_TDB
+        stage2:
+          bjd_t0: 2459000.0
+          free: [orbits.inner.P, orbits.inner.M0, orbits.out.P, orbits.out.M0, orbits.out.e, orbits.out.omega, masses.m3]
+          error_scale: per_source
+
+# --------------------------------------------------------------------------- tools
+tools:
+  validate:
+    title: Validation
+    what: >-
+      Recomputes published results (benchmarks: apsidal motion of known binaries, Kozai–Lidov cycles,
+      published quadruples, …) and compares SWINGERsim with them. Run it after installing or changing
+      SWINGERsim.
+    outputs: A table of benchmarks with the published value, the SWINGERsim value and their agreement (Outputs › Benchmarks).
+    time: minutes to an hour, depending on the selection
+  view:
+    title: Interactive viewers of the runs
+    what: >-
+      Writes the interactive viewer (<run>_viewer.html) of every run in a folder that has none yet, or
+      an older one: the run animated in 3D and on the sky, every binary close up, the orbital elements
+      over time. One self-contained HTML file per run that opens in any web browser without SWINGERsim, to
+      send to colleagues. Every new run writes its viewer itself; this tool is for runs computed
+      before, or with --no-viewer. --force rebuilds them all.
+    when: Once for older results (output), or after updating SWINGERsim to refresh all viewers (--force).
+    outputs: <run>_viewer.html next to each run file; on the Outputs page of a run, Interactive viewer opens or saves it.
+    time: a few seconds per run
+  applegate:
+    title: Applegate mechanism
+    what: >-
+      Can magnetic activity of a star explain a periodic variation of the eclipse times? A magnetic
+      cycle changes the quadrupole moment of the star, so the binary's period oscillates. This needs
+      energy; the calculator gives the largest O − C amplitude the star can power over the modulation
+      period, and for an observed amplitude the ratio of the needed to the available energy (below 1:
+      possible).
+    when: >-
+      Before attributing an O − C wave to a third body in a binary with a late-type (convective)
+      star. Also offered in Configuration › physics › activity (with the star of the configuration)
+      and on the result pages of fits and eclipse times.
+    needs: mass, radius and Teff of the active star, separation and period of the binary, modulation period, observed semi-amplitude
+    refs: Applegate 1992; Tian et al. 2009 (thin-shell model); Völschow et al. 2016
+    outputs: printed result (Run now)
+  escape-theory:
+    title: Three-body break-up theory
+    what: >-
+      The statistical theory of Stone & Leigh (2019): when a binary and a single star interact
+      chaotically, which star escapes and with which energy and angular momentum. It predicts the
+      outcome distributions of a scattering experiment without integrating.
+    when: >-
+      To compare a Scattering experiment with the theory (offered on its result page with the masses
+      of the configuration), or alone for a quick estimate.
+    needs: the three masses, the binary (a, e), the velocity at infinity and the impact parameter (or the angular momentum)
+    refs: Stone & Leigh 2019, Nature 576, 406
+  mesa-grid:
+    title: Own stellar models (MESA), step 1
+    what: >-
+      Computes a grid of stellar evolution tracks with MESA (masses × metallicities), each from the
+      pre-main sequence, with structure profiles at regular intervals. Needs a local MESA installation
+      (MESA_DIR, MESASDK_ROOT). Takes hours to days; resumable, so run it as a job.
+    when: When the built-in models (MIST, Claret 2023) do not cover your stars – unusual metallicity, pre-main-sequence stars, a specific physics setup.
+    outputs: MESA run directories under mesa/<grid>/
+    next: Step 2, mesa-reduce.
+  mesa-reduce:
+    title: Own stellar models (MESA), step 2
+    what: >-
+      Reduces the MESA profiles of a grid to what SWINGERsim needs: radius, luminosity, Teff, the
+      convective envelope and its turnover time, the apsidal-motion constant k2, the moment of inertia
+      and the dissipation of inertial waves – one record per profile.
+    outputs: mesa/<grid>/<grid>.npz; the tables and plots of the grid in the stellar-model view.
+    next: "Use the grid in a configuration (stellar_model › structure: mesa:<grid>)."
+
+# --------------------------------------------------------------------------- results
+results:
+  run:
+    what: >-
+      The motion of the configuration over the run: what the system looks like, how the orbits change,
+      which pairs eclipse when, and whether the computation was accurate (energy error) and the
+      system stable (stability ratios).
+  ensemble:
+    what: >-
+      Many drawn systems at once. Top: which measurements weight the members and how many members
+      effectively count (n_eff). Then the drawn and the weighted distribution of every varied parameter,
+      the outcomes (fates, stability, eclipses), and the members that fit best. The answer is a range,
+      not one system: members with similar weights are equally good.
+  lightcurve:
+    what: >-
+      The synthetic light curve: the total light as a photometer would see it, and its parts – each
+      binary and each star – so you can see which star causes which feature. Folded curves show the
+      eclipses of each binary on its own period.
+  timings:
+    what: >-
+      Every eclipse of every pair from the dynamics, as O − C: how much earlier or later than a strict
+      clock each eclipse comes. Waves are light-travel time across an outer orbit, slopes and curves are
+      apsidal motion or period changes, gaps are times without eclipses.
+  minima:
+    what: Minima measured on a synthetic light curve, with errors, like real data – the O − C an observer would get.
+  fit:
+    what: >-
+      The model fitted to the measurements. Top: the model system (start and fitted). Then the fitted
+      parameters with errors, the O − C of the minima with the model, the residuals (primary and secondary
+      separately), radial velocities, light curves and inclinations if they were fitted, and the
+      predictions. Read the warnings first: they say what in the fit needs attention.
+  benchmarks:
+    what: SWINGERsim against published results; every row says how far SWINGERsim is from the published value, in its error.
+
+charts:
+  oc: >-
+    O − C: observed (or model) eclipse time minus a strict linear clock, in minutes. Points are measured
+    minima (filled primary, open secondary), lines the model. The lower panel is measured minus model; it
+    should scatter around zero within the error bars.
+  residuals_ps: >-
+    Mean residual of the primary and of the secondary minima. A difference of several σ means the model
+    puts one kind of eclipse at the wrong phase – usually a wrong eccentricity vector (e cos ω) of the pair.
+  inclination: >-
+    The inclination of the pair against time. Above the grey area the pair eclipses, inside it does not.
+    Points are measured inclinations, triangles limits, crosses times with or without eclipses.
+  rv: >-
+    Radial velocities against the phase of the binary. The model ticks are computed at the times of the
+    observations and include the motion around the third body, so they do not form one sine curve.
+  lc: >-
+    Measured light (points) and the model (line) in windows around the eclipses; below the residuals in
+    parts per thousand. Systematic wiggles in the residuals mean a wrong shape (radii, inclination, limb darkening).
+  hist: >-
+    Grey: the distribution the members were drawn from. Blue: the same, weighted by the measurements.
+    Where blue is narrower than grey, the measurements constrain the parameter.
+  fates: >-
+    What happened to the members in the run: intact, collision of two stars, merger (two stars merged
+    and the run continued with the merged system, physics.mergers), escape of a star, change of the
+    hierarchy. With 68 % intervals.
+  elements: Orbital elements of every orbit over the run (osculating, sampled at the output times).
+  model_system: >-
+    The configuration at t = 0. The tree shows the hierarchy: orbits as boxes (period, size, eccentricity,
+    inclination), stars as circles coloured by temperature. "On the sky" is what a telescope with unlimited
+    resolution would see; "from above" looks down on the system with the observer towards the bottom. The zoom
+    on each pair draws the stars to scale: an eclipse happens when the discs overlap on the sky. With a start and a
+    fitted configuration both are drawn (dashed: start).
+  eclipses_run: >-
+    When each binary eclipses during the run. A binary eclipses while its inclination is close enough to 90°
+    that the stars overlap on the sky: |cos i| below (R₁ + R₂)/a. Gaps mean the orbit has turned away.
+  secular: >-
+    Quadrupole theory against the full run for each inner orbit: largest eccentricity and precession period.
+    Agreement says the system behaves as the analytic theory predicts; large differences point to octupole,
+    resonant or non-hierarchical effects.
+  members: >-
+    The drawn systems that reproduce the measurements best. Weight 1 means an exact match, 0.61 a 1σ, 0.14 a
+    2σ deviation; members with similar weights are equally good – the answer is the range of the parameters
+    above, and any of these members is a good example to open and run.
+  observations: >-
+    The measurements that weight the members. Untick one and press Re-weight to see what it contributes
+    (nothing is integrated again). n_eff is how many members effectively carry the weight; below ~20 the
+    weighted distributions are noise.
+  params_fit: >-
+    Start and fitted value of every free parameter with its linear error. The prior column shows a Gaussian
+    prior and how many σ the fit moved away from it; a ⚠ marks an error that is suspiciously small (a parameter on
+    its bound) or huge (a parameter the data do not determine, e.g. a node).
+  predictions: >-
+    Times of the next minima predicted by the fitted model, with their uncertainty from the errors of the
+    parameters. Dates are in BJD_TDB and as calendar dates.
+  oc_model: >-
+    Every model eclipse as O − C against a linear ephemeris: how much earlier or later than a strict clock it
+    comes. A wave is the light-travel time across an outer orbit; diverging primary and secondary curves are
+    apsidal motion; a missing stretch means no eclipses then.
+  oc_minima: >-
+    Minima measured on the synthetic light curve with the Mikulášek model, with their errors – what an observer
+    would get. Compare with the exact O − C to see the measurement error and the shift caused by changing
+    eclipse shapes.
+  shapes: >-
+    The fitted shape of every eclipse (Mikulášek 2015): depth, width and kurtosis. A drifting depth or width
+    means the inclination of the pair changes.
+  lc_model: >-
+    The synthetic light curve. Drag to zoom; the parts below show which star or binary causes which feature.
+  folded: >-
+    The light curve folded on the period of a binary: all its eclipses on top of each other. Scatter around the
+    mean shape comes from the other stars and from changes of the orbit during the window.
+  mesa: >-
+    One line per initial mass of the grid against age (logarithmic). k2 falls as a star becomes more centrally
+    condensed on the main sequence; the turnover time and the inertial-wave dissipation belong to the convective
+    envelope and vanish for stars without one.
+
+glossary:
+  MA01: Mardling & Aarseth (2001) stability criterion – ratio of the outer periastron distance to the critical one; above 1 stable.
+  V22: Vynatheya et al. (2022) stability criterion, calibrated on N-body runs; above 1 stable.
+  ghost test: N-body test of Vynatheya et al. (2023) – the triple is integrated for many outer orbits and called unstable if it changes.
+  MEGNO: Mean Exponential Growth of Nearby Orbits – 2 for regular motion, growing for chaos.
+  n_eff: Effective number of ensemble members, (Σw)² / Σw² – how many members carry the weight.
+  weight: How well a member reproduces the measurements, exp(−χ²/2) – 1 exact, 0.61 at 1σ, 0.14 at 2σ.
+  "O − C": "Observed minus calculated – an eclipse time minus the prediction of a strict linear ephemeris."
+  LiTE: Light-travel-time effect – eclipses late when the binary is on the far side of its orbit around a third body.
+  χ²_red: Reduced chi-square, χ² per degree of freedom; about 1 when the model fits within the errors.
+  jitter: An error floor of a source added in quadrature to its quoted errors, found by the fit itself.
+  β: "Red-noise factor of a light curve (time-averaging test): errors are multiplied by it when the residuals are correlated."
+  apsidal motion: Rotation of the line of apsides of an eccentric orbit (tides, rotation, relativity, third body).
+  nodal period: Time in which an orbit's axis turns once around the total angular momentum; the inclination swings in this period.
+  eclipse limit: The smallest inclination at which a pair still eclipses, cos i = (R₁ + R₂)/r.
+  i_mut: Mutual inclination – the angle between two orbital planes.
+  mutual inclination: The angle between two orbital planes.
+  ΔE/E: Relative energy error of the integration – a measure of its accuracy (below 10⁻⁶ good).
+  Roche fill: Radius of a star divided by its Roche-lobe radius (Eggleton 1983); 1 = the star fills its lobe.
+  fill: Radius of a star divided by its Roche-lobe radius; 1 = it fills its lobe.
+  share: A member's part of the total weight of the ensemble.
+  fate: Outcome of a run – intact, collision, merger, escape, hierarchy change.
+  secular: Orbit-averaged equations of motion – fast for long times, no individual eclipses.
+  emulator: A neural network trained on an ensemble that predicts outcomes for new parameters instantly.
+  SBI: Simulation-based inference – the posterior of the drawn parameters given the observations, learned from the ensemble.
+
+warnings:
+  - match: errors / outliers still changed after
+    explain: The fit rescales the errors per source and removes outliers, then fits again; after the allowed number of rounds the errors were still changing.
+    fix: Usually harmless if the last rounds differ little. Otherwise raise fit.stage2.refits (e.g. 6) or check the source whose errors keep changing.
+  - match: strongly correlated parameters
+    explain: Two parameters can trade off against each other; their linear errors assume a straight valley of χ² and may be too small.
+    fix: "Use fit.stage2.sampler: emcee for reliable errors, fix one of the two, or add data that separates them (e.g. radial velocities)."
+  - match: primary.*secondary|primary vs secondary
+    explain: The primary and secondary minima are fitted with different mean residuals – the model puts one kind of eclipse at the wrong phase.
+    fix: Usually a wrong eccentricity vector of the pair. Restart from e cos ω of the opposite sign or free orbits.<pair>.ecosw and esinw.
+  - match: The maximum number of function evaluations
+    explain: The optimiser stopped at its iteration limit, not because it converged.
+    fix: Raise fit.stage2.max_iterations, or start from the fitted configuration (stage2_fitted.yaml) and fit again.
+  - match: on the bound|at the bound|ran to the
+    explain: A parameter ended on its bound; its error is meaningless and the solution is probably not the true minimum.
+    fix: Widen fit.stage2.bounds or add a prior; check whether the data constrain the parameter at all.
+  - match: energy
+    explain: The relative energy error measures how accurately the integration conserved energy.
+    fix: Above 10⁻⁶ check the run (shorter output interval, the N-body backend, or close encounters).
+  - match: n_eff
+    explain: Only few members of the ensemble carry the weight of the measurements, so the weighted distributions are noisy.
+    fix: Run more members, widen the drawn ranges, or untick an observation that no member reproduces.
+  - match: unstable|stability ratio
+    explain: At least one nested triple is below the stability limit of a criterion.
+    fix: Check with the Stability check (ghost test) and a long Run; the analytic criteria are approximate near 1.
+
+# why a job failed (Jobs page, Failed): a regular expression of its error -> what it means, what to do
+job_errors:
+  - match: No such file|FileNotFoundError|does not exist
+    explain: A file named in the configuration or the job was not found.
+    fix: Paths in a configuration are relative to the configuration file (e.g. fit.minima). Check the name and that the file was copied to this computer.
+  - match: validation error|ValidationError|Field required|Extra inputs are not permitted
+    explain: The configuration is not valid for this version of SWINGERsim.
+    fix: Open it on the Configuration page – the form marks the fields that are wrong.
+  - match: MemoryError|Killed|signal 9|out of memory
+    explain: The computer ran out of memory (the operating system stopped the job).
+    fix: Use fewer parallel processes (cores), fewer output points (run.n_output) or a shorter run.
+  - match: wall_time|max_wall_s
+    explain: The run hit its time limit (run.max_wall_s).
+    fix: Raise run.max_wall_s or shorten the run.
+  - match: energy error|max_energy_error
+    explain: The integration lost accuracy (the energy error exceeded run.max_energy_error) – usually a very close encounter or a collision.
+    fix: Check the system with the Stability check; switch on collisions (run.collisions) if stars can touch.
+  - match: MESA_DIR|MESASDK|mesa
+    explain: MESA was not found or a MESA run failed.
+    fix: Give mesa_dir and mesasdk_root in the grid definition (Tools › Own stellar models), or set MESA_DIR and MESASDK_ROOT for the worker.
+  - match: no eclipses|no eclipse
+    explain: The model has no eclipses where they are needed (e.g. for predictions or minima).
+    fix: Check the inclination against the eclipse limit (Configuration › Quick look) and the time span.
+  - match: Traceback|Error
+    explain: The job stopped with an error.
+    fix: The log (Results › Advanced › log) shows where; if it looks like a bug of SWINGERsim, keep the configuration and the log.

@@ -1,0 +1,22 @@
+# V994 Her-like system, Vokrouhlicky (2016) Fig. 7: the Fig. 4 setup plus the quadrupole
+# (tidal) distortion of the stars in A and B.  The paper uses one deformability per binary,
+# Q_A = 0.031 and Q_B = 0.014, tuned so that the periastra circulate with the observed periods
+# of about 116 yr (A) and 111 yr (B), and radii R ~ M^0.8 (2.4, 2.1, 1.6, 1.7 Rsun).
+# SWINGERsim uses the same radii and apsidal constants chosen so that the static-tide apsidal
+# period of each isolated binary (Sterne 1939) is 116 and 111 yr; no rotation, no dissipation,
+# no GR, as in the paper.
+# Published: order restored - only small oscillations of the inclinations and eccentricities,
+# J_AB stays bounded by the analytic limit of ~5.2 deg.
+topology: "2+2"
+masses: {m1: 3.01, m2: 2.58, m3: 1.84, m4: 1.93}
+orbits:
+  A:   {P: 2.08327,   e: 0.031, i: 84.0, Omega: 35.0, omega: 10.0}
+  B:   {P: 1.42004,   e: 0.125, i: 85.0, Omega: 40.0, omega: 301.0}
+  out: {P: 1062.8775, e: 0.76,  i: 90.0, Omega: 0.0,  omega: 236.0}
+stars:
+  m1: {R: 2.4, apsidal_k2: 0.007542}
+  m2: {R: 2.1, apsidal_k2: 0.007542}
+  m3: {R: 1.6, apsidal_k2: 0.003334}
+  m4: {R: 1.7, apsidal_k2: 0.003334}
+physics: {gr: false, tides: true, rotation: false}
+run: {t_max_yr: 10000, n_output: 2000}

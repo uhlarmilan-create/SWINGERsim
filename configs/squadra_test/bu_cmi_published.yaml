@@ -1,0 +1,31 @@
+# BU CMi - the most compact known 2+2 quadruple: two eccentric eclipsing binaries of A stars
+# (A: 2.94 d, B: 3.26 d) on a 121.8-d mutual orbit, all three orbits within 1 deg of each other.
+# Source: Pribulla T., Borkovits T., Jayaraman R., Rappaport S., Mitnyan T., Zasche P., Komzik R.,
+#   Pal A., Uhlar R., Masek M., Henzl Z. et al. (2023), "BU Canis Minoris - the most compact known
+#   flat doubly eclipsing quadruple system", MNRAS 524, 4220, doi:10.1093/mnras/stad2015,
+#   Table 7 (joint spectro-photodynamical solution, Lightcurvefactory): instantaneous osculating
+#   elements at t0 = BJD 2458491.5. omega is that of the secondary, i.e. of the relative orbit
+#   (the SWINGERsim convention, checked against the TESS minima of sector 7).
+# t = 0 of this configuration = BJD 2458491.5 (give this as "BJD of model t = 0" in swingersim gui).
+# M0 = 360 (t0 - tau) / P from the times of periastron tau of Table 7:
+#   A: tau 2458445.1142 -> 284.66 deg; B: tau 2458492.4461 -> 255.39; A-B: tau 2458513.59 -> 294.71
+# Stars: masses, radii, Teff of Table 7; [M/H] = 0.02, log age 8.42 (263 Myr).
+# Observed data for the comparison: data/observed/bu_cmi/ (183 minima 2005-2023 of Tables 3, 4;
+#   TESS sectors 7, 34, 61).
+# Published values to compare with: apsidal periods 28.7 yr (A), 25.1 yr (B), 145.3 yr (A-B);
+#   mean eclipse periods 2.93959 d (A), 3.26222 d (B); ETV of the 121.5-d orbit 30-40 min;
+#   mutual inclinations 0.61 (A-B), 0.45 (A-AB), 0.26 deg (B-AB).
+topology: "2+2"
+masses: {m1: 2.536, m2: 2.384, m3: 2.521, m4: 2.320}
+orbits:
+  A:   {P: 2.937533, e: 0.2191, i: 83.35, Omega: 0.14, omega: 101.41, M0: 284.66}
+  B:   {P: 3.255815, e: 0.2257, i: 83.92, Omega: 0.0,  omega: 257.52, M0: 255.39}
+  out: {P: 121.793,  e: 0.2728, i: 83.79, Omega: 0.09, omega: 141.0,  M0: 294.71}
+stars:
+  m1: {R: 2.249, Teff: 10570}
+  m2: {R: 2.072, Teff: 10283}
+  m3: {R: 2.235, Teff: 10593}
+  m4: {R: 2.003, Teff: 10062}
+stellar_model: {kind: mist, age_myr: 263.0, feh: 0.02, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 100, n_output: 4001, extremes_every_orbits: 20}

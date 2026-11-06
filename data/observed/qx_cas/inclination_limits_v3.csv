@@ -1,0 +1,20 @@
+# QX Cas, 6.0-d pair: inclinations AND one-sided constraints for fit.inclination (column limit).
+# measurements: ~1960 UBV (Sandage & Tammann) 85.4, ~1980 UBVR (Moffett & Barnes 1983) 82 - as in inclination_lit.csv
+#   (Bonaro et al. 2009 via Guinan et al. 2012, Fig. 2; errors assumed);
+# upper: FCAPT 2003-2008 "i ~ 75 deg" is an upper limit (no eclipses seen);
+# no_eclipse: FCAPT 2003-2008 and TESS 2019-2024 (S17-S85) show no eclipse deeper than ~0.5 % - the model must stay
+#   below its own eclipse limit arccos((R1+R2)/r_conj) at these epochs;
+# lower (v3): the photographic minima of 1933-1974 (VarAstro) need eclipses DEEPER than ~0.10 mag in B, not just
+#   grazing ones: with the fitted stars this needs i >= 77.5 deg (74.5-78.5 over the apsidal cycle and third light
+#   0-20 %; tools/qx_cas_extra.py, depth_vs_inclination.csv) - entered as i >= 76 +- 1.5 deg in 1933 and 1974
+#   (J. Kolar's review, 2026-10-29: a grazing 1930s eclipse cannot have been seen on plates).
+mid_hjd,i_deg,sigma_deg,limit,source
+2427000.0,76.0,1.5,lower,photographic minima 1932-1935 (depth >= 0.1 mag)
+2442100.0,76.0,1.5,lower,photographic minima until 1974 (depth >= 0.1 mag)
+2436800.0,85.4,1.0,,Sandage-Tammann 1960 UBV
+2444500.0,82.0,1.5,,Moffett-Barnes 1979-82 UBVR
+2453800.0,75.0,1.0,upper,FCAPT 2003-2008 (upper limit)
+2453800.0,,0.3,no_eclipse,FCAPT 2003-2008
+2458777.5,,0.3,no_eclipse,TESS S17 2019
+2459870.0,,0.3,no_eclipse,TESS S57 2022
+2460600.0,,0.3,no_eclipse,TESS S84 2024

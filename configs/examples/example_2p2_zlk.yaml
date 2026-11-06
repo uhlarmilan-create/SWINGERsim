@@ -1,0 +1,10 @@
+# Illustrative 2+2 quadruple showing ZLK cycles in binary B (values are made up).
+# B is inclined by 65 deg to the outer orbit, A by only ~5 deg.
+topology: "2+2"
+masses: {m1: 1.2, m2: 1.0, m3: 0.9, m4: 0.8}
+orbits:
+  A:   {P: 5.0,  e: 0.01, i: 25.0, Omega: 0.0, omega: 0.0,  M0: 0.0}
+  B:   {P: 10.0, e: 0.01, i: 85.0, Omega: 0.0, omega: 90.0, M0: 60.0}
+  out: {P: 200,  e: 0.3,  i: 20.0, Omega: 0.0, omega: 0.0,  M0: 0.0}
+physics: {gr: true}
+run: {t_max_yr: 100, n_output: 2000}

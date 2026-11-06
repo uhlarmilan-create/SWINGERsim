@@ -1,0 +1,31 @@
+# delta Ori A (Mintaka): eclipsing O supergiant + B dwarf (Aa1+Aa2, 5.73 d) with Ab on a
+# 152-yr orbit; hot, massive, before any mass transfer. Hierarchy ((Aa1+Aa2)+Ab).
+# Source: Oplistilova A. et al. 2023, A&A 672, A31 (doi:10.1051/0004-6361/202245272), three-body
+#   model of the same group as QZ Car (Broz et al.): Table 11 (osculating elements: P1 =
+#   5.733121 d, log e1 = -1.089, i1 = 79.124, Omega1 = 224.294, varpi1 = 43.451, lambda1 =
+#   72.695; P2 = 55453 d, log e2 = -0.248, i2 = 105.170, Omega2 = 122.735, varpi2 = 261.255,
+#   lambda2 = 133.391; Teff 31385/24515/27906 K; v_rot 114/184/279 km/s) and Table 12 (masses
+#   17.803/8.518/8.787 Msun, radii 13.119/4.168/12.045 Rsun).
+# Conversions as for QZ Car: omega = varpi - Omega, M0 = lambda - varpi; t = 0 is the
+#   osculating epoch of the paper (see its Table 11). P_rot = 2 pi R / v_rot (rotation
+#   axes ASSUMED aligned with the inner orbit).
+#   k2 and rg2 (I/MR^2) from Claret (2004/2023) at the log g of the given mass and radius, as for
+#   QZ Car (the polytrope of the default model overestimates k2 of massive and evolved stars).
+# Why: an O9.5 II supergiant (13 Rsun) in a 5.7-d orbit, mutual inclination ~104 deg to the
+#   outer orbit (ZLK window) - tides and GR must dominate.
+# Validation: apsidal motion of the inner orbit, 1.45 deg/yr (Pablo H. et al. 2015, ApJ 809,
+#   134; the unit per cycle/per year must be checked in the paper) - compare with the measured
+#   apsidal period of binary A in the summary (U = 360/1.45 = 248 yr if per year).
+#   swingersim run configs/catalog/delta_ori.yaml -o output/catalog/delta_ori.h5
+topology: custom
+hierarchy: {out: [A, m3], A: [m1, m2]}
+masses: {m1: 17.803, m2: 8.518, m3: 8.787}
+orbits:
+  A:   {P: 5.733121, e: 0.0815, i: 79.124, Omega: 224.294, omega: 179.157, M0: 29.244}
+  out: {P: 55453.0, e: 0.565, i: 105.170, Omega: 122.735, omega: 138.520, M0: 232.136}
+stars:
+  m1: {R: 13.119, Teff: 31385, P_rot: 5.82, apsidal_k2: 0.00268, rg2: 0.0324}
+  m2: {R: 4.168, Teff: 24515, P_rot: 1.15, apsidal_k2: 0.00850, rg2: 0.0610}
+  m3: {R: 12.045, Teff: 27906, P_rot: 2.18, apsidal_k2: 0.00207, rg2: 0.0258}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 300, n_output: 3001, extremes_every_orbits: 20}

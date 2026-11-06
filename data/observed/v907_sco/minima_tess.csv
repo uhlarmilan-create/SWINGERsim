@@ -1,0 +1,63 @@
+# times of minima of V907 Sco from TESS light curves (tools/tess_minima.py, symmetric template fit per sector and eclipse type,
+# local trend free); sigma = max(formal, robust scatter of the sector) - red noise/systematics dominate the formal errors;
+# minima beyond 4 robust sigma of their sector removed. BJD_TDB.
+# Sectors 39, 66 (TESS-SPOC), 91-93 (QLP); S13 (grazing, 0.6 %) not usable. Primary and secondary drift apart (e cos w changing).
+binary,kind,bjd_tdb,sigma_d,cycle,ref
+inner,primary,2459362.327101,0.001329,,TESS S39
+inner,primary,2459366.104941,0.001329,,TESS S39
+inner,secondary,2459367.984020,0.000460,,TESS S39
+inner,primary,2459369.882470,0.001329,,TESS S39
+inner,secondary,2459371.761120,0.000460,,TESS S39
+inner,primary,2459373.659571,0.001329,,TESS S39
+inner,primary,2459377.436511,0.001329,,TESS S39
+inner,secondary,2459379.314055,0.000460,,TESS S39
+inner,primary,2459381.212946,0.001329,,TESS S39
+inner,secondary,2459383.090242,0.000460,,TESS S39
+inner,primary,2459384.989057,0.001329,,TESS S39
+inner,secondary,2459386.866352,0.000460,,TESS S39
+inner,primary,2460098.699433,0.000473,,TESS S66
+inner,secondary,2460100.573231,0.000527,,TESS S66
+inner,primary,2460102.475648,0.000473,,TESS S66
+inner,secondary,2460104.349299,0.000527,,TESS S66
+inner,primary,2460106.251670,0.000473,,TESS S66
+inner,primary,2460110.027704,0.000473,,TESS S66
+inner,secondary,2460111.901490,0.000527,,TESS S66
+inner,primary,2460113.803629,0.000473,,TESS S66
+inner,secondary,2460115.677146,0.000527,,TESS S66
+inner,primary,2460117.579795,0.000473,,TESS S66
+inner,secondary,2460119.453201,0.000527,,TESS S66
+inner,primary,2460121.355607,0.000473,,TESS S66
+inner,secondary,2460776.511655,0.000426,,TESS S91
+inner,primary,2460778.416536,0.000730,,TESS S91
+inner,secondary,2460780.287799,0.000426,,TESS S91
+inner,primary,2460782.192675,0.000730,,TESS S91
+inner,primary,2460789.746070,0.000730,,TESS S91
+inner,secondary,2460791.616708,0.000426,,TESS S91
+inner,primary,2460793.522218,0.000730,,TESS S91
+inner,secondary,2460795.393200,0.000426,,TESS S91
+inner,primary,2460797.298592,0.000730,,TESS S91
+inner,secondary,2460799.169599,0.000426,,TESS S91
+inner,secondary,2460806.726021,0.000316,,TESS S92
+inner,primary,2460808.631369,0.000520,,TESS S92
+inner,secondary,2460810.503371,0.000316,,TESS S92
+inner,primary,2460812.408140,0.000520,,TESS S92
+inner,secondary,2460814.280002,0.000495,,TESS S92
+inner,primary,2460816.185076,0.000520,,TESS S92
+inner,secondary,2460818.056357,0.000316,,TESS S92
+inner,primary,2460819.961580,0.000520,,TESS S92
+inner,secondary,2460821.832060,0.000316,,TESS S92
+inner,primary,2460823.737565,0.000520,,TESS S92
+inner,secondary,2460825.608282,0.000316,,TESS S92
+inner,primary,2460827.513639,0.000520,,TESS S92
+inner,primary,2460831.289724,0.000640,,TESS S93
+inner,secondary,2460833.159950,0.000293,,TESS S93
+inner,primary,2460835.065619,0.000640,,TESS S93
+inner,secondary,2460836.936567,0.000240,,TESS S93
+inner,primary,2460838.841509,0.000640,,TESS S93
+inner,secondary,2460840.712204,0.000339,,TESS S93
+inner,secondary,2460844.488647,0.000295,,TESS S93
+inner,primary,2460846.393680,0.000640,,TESS S93
+inner,secondary,2460848.264016,0.000240,,TESS S93
+inner,primary,2460850.171919,0.000640,,TESS S93
+inner,secondary,2460852.040733,0.000455,,TESS S93
+inner,primary,2460853.944235,0.000787,,TESS S93

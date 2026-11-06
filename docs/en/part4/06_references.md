@@ -1,0 +1,25 @@
+# References {#references .unnumbered}
+
+- Choi J., Dotter A., Conroy C., Cantiello M., Paxton B., Johnson B. D. (2016). Mesa Isochrones and Stellar Tracks (MIST). I. Solar-scaled models. *ApJ* 823, 102.
+- Fabrycky D., Tremaine S. (2007). Shrinking binary and planetary orbits by Kozai cycles with tidal friction. *ApJ* 669, 1298.
+- Foreman-Mackey D., Hogg D. W., Lang D., Goodman J. (2013). emcee: the MCMC hammer. *PASP* 125, 306.
+- Gaia Collaboration, Vallenari A., Brown A. G. A., et al. (2023). Gaia Data Release 3: Summary of the content and survey properties. *A&A* 674, A1.
+- Holman M., Touma J., Tremaine S. (1997). Chaotic variations in the eccentricity of the planet orbiting 16 Cygni B. *Nature* 386, 254.
+- Hurley J. R., Pols O. R., Tout C. A. (2000). Comprehensive analytic formulae for stellar evolution as a function of mass and metallicity. *MNRAS* 315, 543.
+- Hurley J. R., Tout C. A., Pols O. R. (2002). Evolution of binary stars and the effect of tides on binary populations. *MNRAS* 329, 897.
+- Kolář J., et al. (2025). Period ratios and observation of noticeable resonance at 3:2 for 2+2 quadruple systems. *MNRAS* 538, 1160.
+- Kopal Z. (1959). *Close Binary Systems*. Chapman & Hall, London.
+- Lindegren L., et al. (2018). Re-normalising the astrometric chi-square in Gaia DR2. Gaia technical note GAIA-C3-TN-LU-LL-124.
+- Lu T., Rein H., Tamayo D., Hadden S., Mardling R., Millholland S. C., Laughlin G. (2023). Self-consistent spin, tidal, and dynamical equations of motion in the REBOUNDx framework. *ApJ* 948, 41.
+- Mardling R. A., Aarseth S. J. (2001). Tidal interactions in star cluster simulations. *MNRAS* 321, 398.
+- Maxted P. F. L., Serenelli A. M., Marsh T. R., Catalán S., Mahtani D. P., Dhillon V. S. (2014). WASP 1628+10 – an EL CVn-type binary with a very-low-mass stripped-red-giant star and multi-periodic pulsations. *MNRAS* 444, 208.
+- Nelson C. A., Eggleton P. P. (2001). A complete survey of case A binary evolution with comparison to observed Algol-type systems. *ApJ* 552, 664.
+- Pejcha O., Cagaš P., Landri C., Fausnaugh M. M., De Rosa G., Prieto J. L., Henzl Z., Pešta M. (2022). The complex dynamical past and future of double eclipsing binary CzeV343: misaligned orbits and period resonance. *A&A* 667, A53.
+- Rein H., Spiegel D. S. (2015). IAS15: a fast, adaptive, high-order integrator for gravitational dynamics. *MNRAS* 446, 1424.
+- Riley J., Agrawal P., Barrett J. W., et al. (2022). Rapid stellar and binary population synthesis with COMPAS. *ApJS* 258, 34.
+- Sokal A. (1997). Monte Carlo methods in statistical mechanics: foundations and new algorithms. In *Functional Integration: Basics and Applications*, eds. C. DeWitt-Morette, P. Cartier, A. Folacci. Plenum, New York, 131.
+- Tamayo D., Rein H., Shi P., Hernandez D. M. (2020). REBOUNDx: a library for adding conservative and dissipative forces to otherwise symplectic N-body integrations. *MNRAS* 491, 2885.
+- Tremaine S. (2020). Resonant capture in quadruple stellar systems. arXiv:2003.01141.
+- Vynatheya P., Hamers A. S., Mardling R. A., Bellinger E. P. (2022). Algebraic and machine learning approach to hierarchical triple-star stability. *MNRAS* 516, 4146.
+- Vynatheya P., Mardling R. A., Hamers A. S. (2023). Quadruple-star systems are not always nested triples: a machine learning approach to dynamical stability. *MNRAS* 525, 2388. [arXiv:2301.09930](https://arxiv.org/abs/2301.09930)
+- Zasche P., Henzl Z., Mašek M., et al. (2025). Three new 2+2 quadruple systems with changing inclination. *MNRAS* 539, 1015. [doi:10.1093/mnras/staf495](https://doi.org/10.1093/mnras/staf495)

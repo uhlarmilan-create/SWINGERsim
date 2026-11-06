@@ -1,0 +1,45 @@
+# v907_sco_fit.yaml started from the best known solution (output/squadra_test3/v907_sco/fit of the code before
+# the code review, chi^2 460.317 -> 189.312 (reduced 0.8231; priors 0.0007883); errors of the minima scaled by sqrt(max(chi^2_red, 1)) = 1): the fit from the published start values ends in another local
+# minimum (offset primary / secondary minima). Same data, free parameters and settings; anchor off.
+topology: custom
+hierarchy:
+  out: [inner, m3]
+  inner: [m1, m2]
+masses: {m1: 2.56, m2: 2.74, m3: 1.0158847582688262}
+orbits:
+  inner: {P: 3.7747181744467873, e: 0.00031125769750171037, i: 76.6566091828182, Omega: 16.5469388675, omega: 121.7362989728,
+    M0: 44.6152455779}
+  out: {P: 142.07217885942708, e: 0.4714037915617643, i: 70.24047794245305, Omega: 351.03, omega: 23.324329986,
+    M0: 38.434855188}
+stars:
+  m1: {R: 2.53, Teff: 10004}
+  m2: {R: 2.68, Teff: 10000}
+  m3: {R: 1.0, Teff: 5900}
+stellar_model: {kind: mist, age_myr: 400.0, feh: 0.0, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 30, n_output: 3001, extremes_every_orbits: 20}
+fit:
+  minima: ../../data/observed/v907_sco/minima_tess.csv
+  time_system: BJD_TDB
+  inclination:
+  - {file: ../../data/observed/v907_sco/inclination_zasche2023.csv, pair: inner, label: Zasche2023, min_sigma_deg: 0.1}
+  rv:
+    file: ../../data/observed/v907_sco/rv_all.csv
+    gamma: -17.112933612274606
+    offsets: {Lacy1999: -1.9838944734002613}
+  stage2:
+    bjd_t0: 2459383.9
+    anchor: false
+    free: [orbits.inner.P, orbits.inner.M0, orbits.inner.ecosw, orbits.inner.esinw, orbits.inner.i, orbits.inner.Omega,
+      orbits.out.P, orbits.out.M0, orbits.out.e, orbits.out.omega, orbits.out.i, orbits.out.Omega, masses.m3, rv.gamma,
+      rv.offset.Lacy1999]
+    error_scale: per_source
+    error_model: jitter
+    clip_sigma: 5.0
+    priors:
+      orbits.out.e: [0.47, 0.05]
+    max_iterations: 40
+    processes: 0
+  output:
+    dir: ../../output/squadra_test3/v907_sco/fit_best
+    predict: {years: 30, samples: 100}

@@ -1,0 +1,30 @@
+# PSR J0337+1715: a millisecond pulsar with two white dwarfs - an inner 1.63-d pair (pulsar +
+# 0.20 Msun He white dwarf) and an outer 0.41 Msun white dwarf on a 327-d orbit, coplanar to
+# 0.01 deg. The end state of a multiple system: two episodes of mass transfer left a neutron
+# star and two white dwarfs. Hierarchy ((PSR+WD_i)+WD_o).
+# Sources: Ransom S. M. et al. 2014, Nature 505, 520 (doi:10.1038/nature12917), Table 1;
+#   Archibald A. M. et al. 2018, Nature 559, 73 (doi:10.1038/s41586-018-0265-1); values as
+#   compiled by Wikipedia (to be checked): inner P = 1.6293932 d, e = 0.00069437, i = 39.263,
+#   omega = 97.5638 (of the pulsar; relative orbit +180 = 277.5638); outer P = 327.25685 d,
+#   e = 0.03535596, omega = 95.6212 (of the inner pair; relative 275.6212), mutual inclination
+#   0.0014 deg; masses 1.4378/0.19751/0.4101 Msun; WD_i R = 0.091 Rsun, WD_o R ~ 0.018 Rsun.
+#   Strong-equivalence-principle test: Voisin G. et al. 2020, A&A 638, A24.
+# ASSUMED: equal nodes (only their difference is measured, ~0); phases; pulsar radius 10 km.
+# Why: compact remnants in a hierarchical triple: GR (1PN) periastron advance and the
+#   Newtonian apsidal motion from the outer white dwarf, gravitational waves (negligible here).
+# Validation: the inner and outer orbits stay coplanar; the inner eccentricity oscillates
+#   with the outer period (forced eccentricity); the GR apsidal period of the inner pair in the
+#   summary (compare with 1PN: omega_dot = 3 G M n / (c^2 a (1 - e^2))).
+#   swingersim run configs/catalog/psr_j0337.yaml -o output/catalog/psr_j0337.h5
+topology: custom
+hierarchy: {out: [A, m3], A: [m1, m2]}
+masses: {m1: 1.4378, m2: 0.19751, m3: 0.4101}
+orbits:
+  A:   {P: 1.6293932, e: 0.00069437, i: 39.263, omega: 277.5638}
+  out: {P: 327.25685, e: 0.03535596, i: 39.263, omega: 275.6212, M0: 90.0}
+stars:
+  m1: {R: 1.44e-5, Teff: 10000}
+  m2: {R: 0.091, Teff: 14600}
+  m3: {R: 0.018, Teff: 15000}
+physics: {gr: true, gw: true}
+run: {t_max_yr: 30, n_output: 6001}

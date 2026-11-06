@@ -1,0 +1,46 @@
+# Training set for a 2+2 stability classifier following Vynatheya, Mardling & Hamers (2023),
+# MNRAS 525, 2388, Sect. 3.1: masses log-uniform over one order of magnitude, inner semi-major
+# axes uniform as ratios of the (fixed) outer one, eccentricities uniform 0-0.95, isotropic
+# angles, inner apocentres inside the outer pericentre, 70 % of the MA01-unstable draws
+# dropped; stability by the N-body ghost test over 100 outer orbits (ensemble.ghost_test).
+# The main run is a 1-yr placeholder (the ghost test is what is needed).
+#   swingersim ensemble configs/validation/vynatheya23_2p2_ghost.yaml -o output/validation/vyn23_2p2 -j 0
+topology: 2+2
+masses: {m1: 1.0, m2: 1.0, m3: 1.0, m4: 1.0}
+orbits:
+  A:   {a: 10.0}
+  B:   {a: 10.0}
+  out: {a: 100.0}
+stellar_model: {kind: zams}
+physics: {gr: false}
+run: {backend: nbody, t_max_yr: 1.0, n_output: 2, collisions: false}
+ensemble:
+  n: 10000
+  seed: 2023
+  require: [hierarchical]
+  ma01_unstable_keep: 0.3
+  ghost_test: true
+  ghost_orbits: 100
+  ghost_max_wall_s: 1800
+  vary:
+    masses.m1: {loguniform: [1.0, 10.0]}
+    masses.m2: {loguniform: [1.0, 10.0]}
+    masses.m3: {loguniform: [1.0, 10.0]}
+    masses.m4: {loguniform: [1.0, 10.0]}
+    orbits.A.a: {uniform: [1.0, 60.0]}
+    orbits.B.a: {uniform: [1.0, 60.0]}
+    orbits.A.e: {uniform: [0.0, 0.95]}
+    orbits.B.e: {uniform: [0.0, 0.95]}
+    orbits.out.e: {uniform: [0.0, 0.95]}
+    orbits.A.i: isotropic
+    orbits.B.i: isotropic
+    orbits.out.i: isotropic
+    orbits.A.Omega: angle
+    orbits.B.Omega: angle
+    orbits.out.Omega: angle
+    orbits.A.omega: angle
+    orbits.B.omega: angle
+    orbits.out.omega: angle
+    orbits.A.M0: angle
+    orbits.B.M0: angle
+    orbits.out.M0: angle

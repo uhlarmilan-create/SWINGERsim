@@ -1,0 +1,28 @@
+# epsilon Aurigae: an F supergiant eclipsed every 27.1 yr for ~2 years by a dark, opaque dust
+# disc that surrounds its companion (a B star hidden inside the disc). The longest known
+# eclipsing binary; last eclipse 2009-2011. Hierarchy (F + B), the disc on B.
+# Sources: orbit of Stefanik R. P. et al. 2010, AJ 139, 1254 (P = 9896.0 d, e = 0.227,
+#   omega = 39.2 deg of the F star -> relative orbit of B 219.2 deg, T = MJD 34723 = JD
+#   2434723.5); low-mass model of Hoard D. W. et al. 2010, ApJ 714, 549 (F 2.2 Msun, B 5.9 Msun,
+#   a = 18.1 AU, i ~ 89 deg, B: 3.9 Rsun, 15 000 K); F star 2.22 mas (Kloppenborg B. K. et al.
+#   2015, ApJS 220, 14) = 148 Rsun at the 625 pc of that model, Teff 7750 K; disc length 7.3 AU and
+#   thickness 0.6 AU (Kloppenborg 2012, quoted by Stencel R. E. 2013, arXiv:1303.7128), tilted
+#   1.33 deg from the orbit (Kloppenborg et al. 2015).
+# t = 0 is JD 2454466.5 (2008 Jan 1): M0 = 360 (t0 - T)/P mod 360 = 358.2 deg.
+# ASSUMED: the disc is opaque, uniform, tilted about the orbit's line of nodes (tilt_node 0);
+#   Omega = 0. Not modelled: the central hole and the light of B, the mid-eclipse brightening.
+# Validation (swingersim validate epsaur-*): mid-eclipse near JD 2455430 (contacts I 2009-08-16,
+#   IV 2011-08-26, Stencel 2013), duration I-IV ~740 d, depth ~0.75 mag in V.
+#   swingersim lightcurve configs/catalog/eps_aur.yaml --start-day 400 --days 1100 --cadence-min 1440 --band V -o output/catalog/eps_aur/lc_v.csv
+topology: custom
+hierarchy: {A: [m1, m2]}
+masses: {m1: 2.2, m2: 5.9}
+orbits:
+  A: {P: 9896.0, e: 0.227, i: 89.0, omega: 219.2, M0: 358.2}
+stars:
+  m1: {R: 148.0, Teff: 7750}
+  m2: {R: 3.9, Teff: 15000}
+discs:
+  disc: {host: m2, r_out_au: 3.65, thickness_au: 0.6, relative_to: A, tilt: 1.33}
+physics: {gr: false}
+run: {t_max_yr: 10, n_output: 1001}

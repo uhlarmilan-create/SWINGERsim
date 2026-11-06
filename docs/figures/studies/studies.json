@@ -1,0 +1,530 @@
+{
+  "pulsator_delays": {
+    "λ Sco (job 047)": {
+      "frequency_c_d": 4.679484941770885,
+      "semi_amplitude_s": 1067.2376944698,
+      "model_s": 1069.356262277382,
+      "scale": 0.9980188381717894,
+      "published_s": 1193.0
+    },
+    "Polaris (job 078)": {
+      "frequency_c_d": 0.25191521333166583,
+      "semi_amplitude_s": 1308.6760960008783,
+      "model_s": 1335.8278599791827,
+      "scale": 0.9796742044452288,
+      "published_s": 1335.0
+    },
+    "KIC 4150611 (job 077)": {
+      "frequency_c_d": 20.243288089344674,
+      "semi_amplitude_s": 97.12299161451493,
+      "model_s": 97.87837302228927,
+      "scale": 0.9922824482625767,
+      "published_s": 98.0
+    }
+  },
+  "example_pulsators": {
+    "δ Sct + LPV triple (jobs 019/020)": {
+      "n_minima": 730,
+      "scatter_s": 136.21196622667054,
+      "mean_offset_s": 8.598876376635616,
+      "oc_range_s": 17.050176
+    },
+    "Cepheid triple (jobs 021/022)": {
+      "n_minima": 3835,
+      "scatter_s": 136.6268090313645,
+      "mean_offset_s": 0.023606327405475497,
+      "oc_range_s": 5890.7519999999995
+    }
+  },
+  "catalogue_ensembles": {
+    "hd5980": {
+      "collision": 0.297,
+      "n": 1000,
+      "eB_max_median_collided": 0.9119943115812822,
+      "imut_cross90": 0.003
+    },
+    "gg_tau": {
+      "intact": 0.808,
+      "collision": 0.076,
+      "reconfiguration": 0.092,
+      "ejection": 0.024,
+      "ma01_stable": 0.348,
+      "intact_if_ma01_unstable": 0.7392638036809815
+    },
+    "tic168789840": {
+      "A": 0.3149230769230769,
+      "B": 0.9098441558441558,
+      "C": 0.3466113886113886,
+      "all_three": 0.11215184815184816
+    },
+    "kic4150611": {
+      "n": 500,
+      "keep_circular": 0.426,
+      "a_out_median_ok": 607.8176474055932,
+      "a_out_median_bad": 549.2784656937174
+    },
+    "alpha_cen": {
+      "n": 300,
+      "bound": 1.0,
+      "e_max_median": 0.9020945562474076,
+      "q_min_median_au": 849.3456118032425,
+      "q_min_min_au": 69.874645213049
+    },
+    "hd150136": {
+      "n": 500,
+      "dimut_max_deg": 0.03513694981737103,
+      "didt_max_deg_century": 0.5667661198982895,
+      "didt_median_deg_century": 0.2585492853359709,
+      "eclipsing_all": 1.0,
+      "U_median_yr": 15.61484754061262
+    }
+  },
+  "validation": {
+    "run": 215,
+    "pass": 201,
+    "explained": 14,
+    "fail": 0,
+    "skipped": 0,
+    "total_registered": 215,
+    "explained_ids": [
+      "eecep-disc-precession",
+      "mt-bse-algol-accretor",
+      "mt-bse-algol-period",
+      "qzcar-evolutionary-mass-aa1",
+      "qzcar-evolutionary-mass-ac2",
+      "tidal-capture-radius-n15",
+      "tidal-capture-radius-n3",
+      "tides-circularization-m67",
+      "tides-circularization-m67-final",
+      "tides-circularization-m67-iw",
+      "v994s-gr-C",
+      "vok16-pejcha-fA",
+      "vok16-pejcha-fB",
+      "vyn23-3p1-ma01-score"
+    ]
+  },
+  "stability": {
+    "2p2": {
+      "members": 10000,
+      "used": 10000,
+      "timeouts": 0,
+      "stable_ghost": 0.2815,
+      "stable_ma01": 0.3931,
+      "stable_v22": 0.3492,
+      "score_ma01": 0.869,
+      "score_v22": 0.8953,
+      "score_mlp": 0.9375
+    },
+    "3p1": {
+      "members": 10000,
+      "used": 10000,
+      "timeouts": 0,
+      "stable_ghost": 0.0952,
+      "stable_ma01": 0.2854,
+      "stable_v22": 0.2629,
+      "score_ma01": 0.7896,
+      "score_v22": 0.8125,
+      "score_mlp": 0.9195
+    }
+  },
+  "catalogue_checks": {
+    "BU CMi: apsidal period A": {
+      "quadsim": 27.758660986234087,
+      "published": 28.7,
+      "unit": "yr",
+      "ratio": 0.9672007312276686
+    },
+    "BU CMi: apsidal period B": {
+      "quadsim": 24.816876780685647,
+      "published": 25.1,
+      "unit": "yr",
+      "ratio": 0.9887201904655636
+    },
+    "VW LMi: apsidal period of the detached pair": {
+      "quadsim": 95.11986026712574,
+      "published": 95.5,
+      "unit": "yr",
+      "ratio": 0.9960194792369188
+    },
+    "ξ Tau: apsidal rate of the 145-d orbit": {
+      "quadsim": 2.1379844698645734,
+      "published": 2.02,
+      "unit": "°/yr",
+      "ratio": 1.0584081533983036
+    },
+    "TIC 120362137: apsidal period of the 51-d orbit": {
+      "quadsim": 32.39704940100091,
+      "published": 34.79,
+      "unit": "yr",
+      "ratio": 0.9312172866053726
+    },
+    "TIC 120362137: nodal period of the outer planes": {
+      "quadsim": 281.6947743334478,
+      "published": 265.8,
+      "unit": "yr",
+      "ratio": 1.0597997529475087
+    },
+    "TIC 454140642: apsidal period A": {
+      "quadsim": 69.6939361372376,
+      "published": 70.0,
+      "unit": "yr",
+      "ratio": 0.9956276591033942
+    },
+    "TIC 454140642: apsidal period B": {
+      "quadsim": 90.91787489099437,
+      "published": 97.0,
+      "unit": "yr",
+      "ratio": 0.9372976792886017
+    },
+    "δ Ori: apsidal rate of the 5.73-d orbit": {
+      "quadsim": 2.4204436423489226,
+      "published": 1.45,
+      "unit": "°/yr",
+      "ratio": 1.6692714774820157
+    }
+  },
+  "catalogue_precession": {
+    "xi_tau_di_dt_inner_deg_yr": 0.0009281136186627357
+  },
+  "zlk_systems": {
+    "sigma_ori_e": [
+      0.6925825530155925,
+      0.8996934409587267
+    ],
+    "hd98800_eA": [
+      0.2741369265107053,
+      0.6296934235730577
+    ],
+    "hd98800_eB": [
+      0.4155711551765039,
+      0.7991567075915194
+    ],
+    "alpha_cen_e_out_max": 0.9168068739041376,
+    "alpha_cen_q_out_min_au": 723.7801970340028
+  },
+  "growing_stars": {
+    "hd181068_overflow_myr": 2.1,
+    "hd181068_R_end": 38.24689847259539,
+    "hd181068_RL": 38.34998110667956,
+    "hd150136_overflow_myr": 2.462764940370489,
+    "hd150136_m1": [
+      42.81000021522165,
+      39.38834844901574
+    ],
+    "hd5980_aout_ratio": 1.0395747194329594,
+    "hd5980_mass_ratio": 1.0395747194329592
+  },
+  "life_examples": {
+    "giant_R_max": 415.6779682989251,
+    "giant_R_event": 456.200874853232,
+    "t_event_myr": 141.82823357948257,
+    "giant_R_max_job017": 312.5613713098775,
+    "giant_fill_max": 0.6572147085554034,
+    "giant_m_end": 1.4819524133309736,
+    "aout": [
+      7.6023381655004,
+      8.606455317578124
+    ],
+    "t_end_myr": 141.72552283732938,
+    "event": "roche_overflow",
+    "aM_dev": 3.9968028886505635e-15,
+    "algol_rerun_masses_end": [
+      1.0453208439369008,
+      2.5810983605183666
+    ]
+  },
+  "literature_overview": {
+    "BU CMi: apsidal period A": {
+      "quadsim": 27.76,
+      "published": 28.7,
+      "ratio": 0.967247386759582,
+      "status": "agrees"
+    },
+    "BU CMi: apsidal period B": {
+      "quadsim": 24.82,
+      "published": 25.1,
+      "ratio": 0.9888446215139441,
+      "status": "agrees"
+    },
+    "ξ Tau: apsidal rate, 145-d orbit": {
+      "quadsim": 2.14,
+      "published": 2.02,
+      "ratio": 1.0594059405940595,
+      "status": "agrees"
+    },
+    "TIC 120362137: apsidal period, 51-d orbit": {
+      "quadsim": 32.4,
+      "published": 34.79,
+      "ratio": 0.9313020983041104,
+      "status": "agrees"
+    },
+    "TIC 120362137: nodal period, outer planes": {
+      "quadsim": 281.7,
+      "published": 265.8,
+      "ratio": 1.0598194130925507,
+      "status": "agrees"
+    },
+    "TIC 454140642: apsidal period A": {
+      "quadsim": 69.7,
+      "published": 70.0,
+      "ratio": 0.9957142857142858,
+      "status": "agrees"
+    },
+    "TIC 454140642: apsidal period B": {
+      "quadsim": 90.9,
+      "published": 97.0,
+      "ratio": 0.9371134020618558,
+      "status": "agrees"
+    },
+    "HD 181068: nodal period": {
+      "quadsim": 12.8,
+      "published": 13.5,
+      "ratio": 0.9481481481481482,
+      "status": "agrees"
+    },
+    "VW LMi: apsidal period, detached pair": {
+      "quadsim": 95.1,
+      "published": 95.5,
+      "ratio": 0.9958115183246072,
+      "status": "agrees"
+    },
+    "δ Ori A: apsidal rate": {
+      "quadsim": 2.42,
+      "published": 1.45,
+      "ratio": 1.6689655172413793,
+      "status": "explained"
+    },
+    "TIC 470710327: ETV semi-amplitude": {
+      "quadsim": 5.0,
+      "published": 6.0,
+      "ratio": 0.8333333333333334,
+      "status": "agrees"
+    },
+    "λ Sco: light-time semi-amplitude": {
+      "quadsim": 1067,
+      "published": 1193,
+      "ratio": 0.8943839061190276,
+      "status": "explained"
+    },
+    "Polaris: light-time semi-amplitude": {
+      "quadsim": 1309,
+      "published": 1335,
+      "ratio": 0.9805243445692884,
+      "status": "agrees"
+    },
+    "KIC 4150611: light-time semi-amplitude": {
+      "quadsim": 97.1,
+      "published": 98,
+      "ratio": 0.9908163265306121,
+      "status": "agrees"
+    },
+    "Polaris: first-overtone period": {
+      "quadsim": 3.62,
+      "published": 3.97,
+      "ratio": 0.9118387909319899,
+      "status": "agrees"
+    },
+    "QZ Car Ac1: evolutionary mass": {
+      "quadsim": 27.0,
+      "published": 25.5,
+      "ratio": 1.0588235294117647,
+      "status": "agrees"
+    },
+    "QZ Car Ac2: evolutionary mass": {
+      "quadsim": 26.0,
+      "published": 33.2,
+      "ratio": 0.7831325301204819,
+      "status": "explained"
+    },
+    "QZ Car Aa1: evolutionary mass": {
+      "quadsim": 42.5,
+      "published": 69.8,
+      "ratio": 0.6088825214899714,
+      "status": "explained"
+    },
+    "AGB white-dwarf mass, 4 M☉": {
+      "quadsim": 0.835,
+      "published": 0.899,
+      "ratio": 0.92880978865406,
+      "status": "agrees"
+    },
+    "Algol (BSE): accretor mass": {
+      "quadsim": 2.51,
+      "published": 2.85,
+      "ratio": 0.8807017543859648,
+      "status": "explained"
+    },
+    "Algol (BSE): final period": {
+      "quadsim": 21.9,
+      "published": 30.0,
+      "ratio": 0.73,
+      "status": "explained"
+    },
+    "Algol (BSE): period after the giant phase": {
+      "quadsim": 30.36,
+      "published": 30.0,
+      "ratio": 1.012,
+      "status": "agrees"
+    },
+    "M67: circularisation period": {
+      "quadsim": 7.53,
+      "published": 12.1,
+      "ratio": 0.6223140495867769,
+      "status": "explained"
+    },
+    "ε Aur: eclipse ingress (I–II)": {
+      "quadsim": 141,
+      "published": 145,
+      "ratio": 0.9724137931034482,
+      "status": "agrees"
+    },
+    "ε Aur: eclipse duration (I–IV)": {
+      "quadsim": 829,
+      "published": 740,
+      "ratio": 1.1202702702702703,
+      "status": "agrees"
+    },
+    "ε Aur: eclipse depth": {
+      "quadsim": 0.83,
+      "published": 0.75,
+      "ratio": 1.1066666666666667,
+      "status": "agrees"
+    },
+    "HD 98800 B: polar disc inclination": {
+      "quadsim": 28.5,
+      "published": 26.0,
+      "ratio": 1.0961538461538463,
+      "status": "agrees"
+    },
+    "V994 Her A: share of dynamical apsidal motion": {
+      "quadsim": 0.0999,
+      "published": 0.12,
+      "ratio": 0.8325,
+      "status": "agrees"
+    },
+    "V994 Her C: share of GR apsidal motion": {
+      "quadsim": 0.0811,
+      "published": 0.06,
+      "ratio": 1.3516666666666668,
+      "status": "explained"
+    },
+    "Vokrouhlický 2016: J_AB max (analytic)": {
+      "quadsim": 5.201,
+      "published": 5.2,
+      "ratio": 1.0001923076923076,
+      "status": "agrees"
+    },
+    "Pejcha 2013 F6: fraction of A to 1−e<10⁻³": {
+      "quadsim": 0.24,
+      "published": 0.358,
+      "ratio": 0.6703910614525139,
+      "status": "explained"
+    },
+    "Pejcha 2013 F6: fraction of B to 1−e<10⁻³": {
+      "quadsim": 0.41,
+      "published": 0.53,
+      "ratio": 0.7735849056603773,
+      "status": "explained"
+    },
+    "Vynatheya 2023: MLP score 2+2": {
+      "quadsim": 0.9375,
+      "published": 0.94,
+      "ratio": 0.9973404255319149,
+      "status": "agrees"
+    },
+    "Vynatheya 2023: MLP score 3+1": {
+      "quadsim": 0.9195,
+      "published": 0.93,
+      "ratio": 0.9887096774193548,
+      "status": "agrees"
+    },
+    "Vynatheya 2023: MA01 score 2+2": {
+      "quadsim": 0.869,
+      "published": 0.83,
+      "ratio": 1.046987951807229,
+      "status": "agrees"
+    },
+    "Vynatheya 2023: MA01 score 3+1 (window set)": {
+      "quadsim": 0.509,
+      "published": 0.56,
+      "ratio": 0.9089285714285713,
+      "status": "agrees"
+    },
+    "QZ Car: semi-major axis a1 (Brož 2022)": {
+      "quadsim": 53.995,
+      "published": 54.032,
+      "ratio": 0.9993152206100089,
+      "status": "agrees"
+    },
+    "QZ Car: V light share of Aa1": {
+      "quadsim": 0.635,
+      "published": 0.635,
+      "ratio": 1.0,
+      "status": "agrees"
+    }
+  },
+  "catalogue_timings": {
+    "TIC 470710327 A": {
+      "semi_amplitude_min": 4.967549301044289,
+      "half_range_min": 6.8748869652551114
+    },
+    "ξ Tau inner": {
+      "semi_amplitude_min": 19.670080791881045,
+      "half_range_min": 22.741425872223786
+    },
+    "TIC 454140642 A": {
+      "semi_amplitude_min": 51.429600113677466,
+      "half_range_min": 64.07386213604924
+    },
+    "TIC 454140642 B": {
+      "semi_amplitude_min": 40.226563319127315,
+      "half_range_min": 43.55257163942419
+    },
+    "BU CMi A apsidal period from O-C": 27.782050440683008,
+    "BU CMi B apsidal period from O-C": 24.788413568892352
+  },
+  "job010_fates": {
+    "members": 5000,
+    "forward not intact %": 5.32,
+    "forward collision %": 2.5,
+    "backward not intact %": 5.66,
+    "backward collision %": 2.52,
+    "009 failures 60 yr %": [
+      6.16,
+      6.22
+    ],
+    "010 failures 60 yr %": [
+      3.2800000000000002,
+      3.56
+    ],
+    "collisions of 009 intact in 010": 223,
+    "B e_max median 009 / 010 of those": [
+      0.45292258995263557,
+      0.001479323532970096
+    ]
+  },
+  "v027_jobs": {
+    "eps_aur_2009_2012": {
+      "I_IV_d": 638.0,
+      "depth_mag": 0.8313310212161955
+    },
+    "eps_aur_v027": {
+      "I_IV_d": 829.0,
+      "depth_mag": 0.8299865376475278
+    },
+    "ee_cep_70yr": {
+      "depth_min_mag": 0.19233380758586258,
+      "depth_max_mag": 1.7273024765336562
+    },
+    "ee_cep_rigid": {
+      "depth_min_mag": 3.7144217002822906,
+      "depth_max_mag": 14.444922242224923
+    },
+    "pejcha": {
+      "A_300tK": 0.21,
+      "A_50kyr": 0.362,
+      "B_300tK": 0.4025,
+      "B_50kyr": 0.57
+    }
+  }
+}

@@ -1,0 +1,30 @@
+# alpha Centauri (sources in alpha_cen.yaml): 300 members with Proxima's orbit drawn within the
+# errors of Kervella et al. (2017, Table 3) and every member meeting its own random sequence of
+# passing stars (physics.encounters.seed + member index). How likely is Proxima to stay bound
+# for another 1 Gyr in the solar neighbourhood?
+#   swingersim ensemble configs/catalog/alpha_cen_ensemble.yaml -o output/catalog/alpha_cen_ens -j 0
+topology: custom
+hierarchy: {out: [A, m3], A: [m1, m2]}
+masses: {m1: 1.0788, m2: 0.9092, m3: 0.1221}
+orbits:
+  A:   {P: 29133.07, e: 0.51947, i: 79.243, Omega: 205.073, omega: 231.519, M0: 201.20}
+  out: {a: 8700.0, e: 0.50, i: 107.6, Omega: 126.0, omega: 72.3, M0: 173.7}
+stars:
+  m1: {R: 1.2234, Teff: 5804}
+  m2: {R: 0.8632, Teff: 5207}
+  m3: {R: 0.1542, Teff: 2992}
+physics:
+  gr: true
+  galactic_tide: {}
+  encounters: {n_star_pc3: 0.1, sigma_kms: 40, seed: 1}
+run: {backend: secular, t_max_yr: 1.0e9, n_output: 1001}
+ensemble:
+  n: 300
+  seed: 4370
+  directions: [forward]
+  vary:
+    orbits.out.a: {normal: [8700.0, 550.0]}
+    orbits.out.e: {normal: [0.50, 0.085], min: 0.2, max: 0.8}
+    orbits.out.i: {normal: [107.6, 1.9]}
+    orbits.out.Omega: {normal: [126.0, 5.0]}
+    orbits.out.omega: {normal: [72.3, 8.0]}

@@ -1,0 +1,28 @@
+# AH Cep - massive early-B eclipsing pair with a distant third body (SQUADRA test, part III).
+# Path 1 "physics -> model -> light". Inner pair from Pavlovski, Southworth & Tamajo 2018 (MNRAS 481, 3129, Tables 2, 3, 5):
+#   P = 1.7747420 d, e = 0, i = 69.81 +- 0.60 deg, M = 16.14 + 13.69 Msun, R = 6.51 + 5.64 Rsun, Teff 30700 / 28800 K,
+#   fractional radii 0.340 / 0.295 (fill of the Roche lobes ~0.8: Roche surfaces in the light curves, shapes: auto).
+# Third body: the light-time orbit of our O-C fit of 327 minima 1901-2026 (VarAstro + Nelson/AAVSO + TESS, 2026-10-16):
+#   P3 = 68.4 yr, e3 = 0.57, omega of the pair's orbit 77 deg (third star: 257), periastron BJD ~2419209, semi-amplitude
+#   A = 0.059 d -> a12 sin i3 = 10.3 au -> m3 >= ~7 Msun for i3 = 90 (Kim, Nha & Kreiner 2005, AJ 129, 1686: P3 ~ 68 yr
+#   and a possible fourth body). NOTE: a 7 Msun B star would give ~5-8 % third light, Pavlovski et al. found < 2 % in
+#   the spectra - a tension the model can test (a compact or binary third body?).
+# Inclination change: claimed by Drechsel, Lorenz & Mayer 1989 (A&A 221, 49), not confirmed (Pavlovski 2018); TESS
+#   2019-2024 depths constant to 2-4 %. With P3 = 68 yr the nodal precession of the 1.77-d pair takes ~10^4 yr, so the
+#   model predicts di/dt ~ 0.01 deg/yr or less unless the third body is much closer - swingersim run shows it directly.
+# t = 0 = BJD 2458000.0 (2017); inner M0 anchored to the minima (swingersim fit --anchor), outer M0 from the periastron.
+# Use: swingersim run ah_cep_published.yaml (300 yr: i(t), eclipses), swingersim timings ... --from-years -117 --years 20
+#      --bjd-t0 2458000 (O-C 1901-2037), swingersim lightcurve ... --days 27 --start-day 760 --cadence-min 2 (a TESS sector).
+topology: custom
+hierarchy: {out: [inner, m3], inner: [m1, m2]}
+masses: {m1: 16.14, m2: 13.69, m3: 7.5}
+orbits:
+  inner: {P: 1.774742, e: 0.0, i: 69.81, Omega: 0.0, omega: 90.0, M0: 0.0}
+  out:   {P: 24983.0,  e: 0.57, i: 75.0, Omega: 10.0, omega: 257.0, M0: 199.0}
+stars:
+  m1: {R: 6.51, Teff: 30700}
+  m2: {R: 5.64, Teff: 28800}
+  m3: {R: 3.5, Teff: 20000}
+stellar_model: {kind: mist, age_myr: 6.0, feh: 0.0, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 300, n_output: 3001, extremes_every_orbits: 20}

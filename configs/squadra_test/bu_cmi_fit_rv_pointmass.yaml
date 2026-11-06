@@ -1,0 +1,45 @@
+# BU CMi: as bu_cmi_fit_rv.yaml (minima + radial velocities + the published priors), but with point-mass stars
+# (tides and rotation off, relativity on), started at the solution of fit_rv. Question: is the 3-sigma tension of the
+# outer orbit (e_out 0.261-0.264 against 0.2728 +- 0.0037 published, and e_A -2.5 sigma) caused by the tidal apsidal
+# motion that SWINGERsim includes? With tides the pairs precess 0.5 deg/yr (A) and 0.3 deg/yr (B) faster, and the fit
+# can only slow the dynamical part by changing the outer orbit. ~40 min on 12 cores.
+# Run: job sq1_15; results in output/squadra_test/bu_cmi/fit_rv_pointmass/. t = 0 = BJD 2458491.5.
+topology: 2+2
+masses: {m1: 2.702783890618851, m2: 2.5659784509545682, m3: 2.7533171723683503, m4: 2.3837292401334214}
+orbits:
+  A: {P: 2.9387833143903466, e: 0.21708459631836866, i: 83.35, Omega: 0.14, omega: 101.54929023615483, M0: 282.7653243466582}
+  B: {P: 3.257056053892922, e: 0.22443009893020105, i: 83.92, Omega: 0.0, omega: 257.1841578376111, M0: 255.7190633703621}
+  out: {P: 121.76036760080086, e: 0.26273914772247947, i: 83.79, Omega: 0.09, omega: 136.1543096940733, M0: 295.3837147224438}
+stars:
+  m1: {R: 2.249, Teff: 10570}
+  m2: {R: 2.072, Teff: 10283}
+  m3: {R: 2.235, Teff: 10593}
+  m4: {R: 2.003, Teff: 10062}
+stellar_model: {kind: mist, age_myr: 263.0, feh: 0.02, vvcrit: 0.0}
+physics: {gr: true, tides: false, rotation: false}
+run: {t_max_yr: 100, n_output: 4001, extremes_every_orbits: 20}
+fit:
+  minima: ../../data/observed/bu_cmi/minima_pribulla2023.csv
+  time_system: BJD_TDB
+  rv:
+    file: ../../data/observed/bu_cmi/rv_pribulla2023.csv
+    gamma: 20.527
+    offsets: {CTIO: 3.598, Konkoly: 12.597}
+  stage2:
+    bjd_t0: 2458491.5
+    anchor: false
+    max_sigma_d: 0.01
+    error_scale: per_source
+    error_model: jitter
+    clip_sigma: 5.0
+    processes: 0
+    free: [orbits.A.P, orbits.A.M0, orbits.A.e, orbits.A.omega, orbits.B.P, orbits.B.M0, orbits.B.e, orbits.B.omega, orbits.out.P, orbits.out.M0, orbits.out.e, orbits.out.omega, masses.m1, masses.m2, masses.m3,
+      masses.m4, rv.gamma, rv.offset.CTIO, rv.offset.Konkoly]
+    priors:
+      orbits.A.e: [0.2191, 0.0008]
+      orbits.B.e: [0.2257, 0.0009]
+      orbits.out.P: [121.793, 0.031]
+      orbits.out.e: [0.2728, 0.0037]
+      orbits.out.omega: [141.0, 3.6]
+    max_iterations: 60
+  output: {dir: ../../output/squadra_test/bu_cmi/fit_rv_pointmass}

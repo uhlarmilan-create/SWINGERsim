@@ -1,0 +1,33 @@
+# Literatura {.unnumbered}
+
+- Bell S. A., Hilditch R. W., Adamson A. J. (1986). *MNRAS* 223, 513.
+- Bonaro M., Guinan E. F., Prša A., Zola S. (2009). *BAAS* 41, 301 (abstract).
+- Borkovits T. (2022). *Galaxies* 10, 9. [doi:10.3390/galaxies10010009](https://doi.org/10.3390/galaxies10010009)
+- Brandt T. D. (2021). The Hipparcos–Gaia Catalog of Accelerations: Gaia EDR3 Edition. *ApJS* 254, 42. [doi:10.3847/1538-4365/abf93c](https://doi.org/10.3847/1538-4365/abf93c)
+- Choi J., Dotter A., Conroy C., et al. (2016). *ApJ* 823, 102. [doi:10.3847/0004-637X/823/2/102](https://doi.org/10.3847/0004-637X/823/2/102)
+- Drechsel H., Lorenz R., Mayer P. (1989). *A&A* 221, 49.
+- emcee documentation. Autocorrelation analysis & convergence (tutorial). [emcee.readthedocs.io/en/stable/tutorials/autocorr](https://emcee.readthedocs.io/en/stable/tutorials/autocorr/), accessed 2026 November.
+- Foreman-Mackey D., Hogg D. W., Lang D., Goodman J. (2013). *PASP* 125, 306. [doi:10.1086/670067](https://doi.org/10.1086/670067)
+- Gaia EDR3 online documentation, Sect. 4.5.2: Properties of the astrometric data. [gea.esac.esa.int/archive/documentation/GEDR3](https://gea.esac.esa.int/archive/documentation/GEDR3/Data_processing/chap_cu3ast/sec_cu3ast_quality/ssec_cu3ast_quality_properties.html)
+- Gaia Collaboration, Vallenari A., et al. (2023). *A&A* 674, A1. [doi:10.1051/0004-6361/202243940](https://doi.org/10.1051/0004-6361/202243940)
+- Guinan E. F., Bonaro M., Engle S. G., Prša A. (2012b). Eclipsing binaries that don't eclipse anymore: the strange case of the once (and future?) eclipsing binary QX Cassiopeiae (abstract). *JAAVSO* 40, No. 1 (the page number is not given in the AAVSO online record). [app.aavso.org/jaavso/article/2802](https://app.aavso.org/jaavso/article/2802/)
+- Guinan E. F., Engle S. G., Devinney E. J. (2012a). *JAAVSO* 40, 467.
+- Henden A. (2020). Post in the thread "QX Cas" of the AAVSO forum, 2020 January 11. [archive.aavso.org/qx-cas](https://archive.aavso.org/qx-cas)
+- Kim C.-H., Nha I.-S., Kreiner J. M. (2003). A possible detection of a secondary light-time orbit of the massive early type eclipsing binary star AH Cephei (abstract). *Bull. Korean Space Sci. Soc.* 12(2), 75.
+- Kim C.-H., Nha I.-S., Kreiner J. M. (2005). *AJ* 129, 990. [doi:10.1086/426747](https://doi.org/10.1086/426747)
+- Lacy C. H. S., Helt B. E., Vaz L. P. R. (1999). *AJ* 117, 541. [doi:10.1086/300710](https://doi.org/10.1086/300710)
+- Lindegren L. (2018). Re-normalising the astrometric chi-square in Gaia DR2. Gaia technical note GAIA-C3-TN-LU-LL-124.
+- Lindegren L., Klioner S. A., Hernández J., et al. (2021). The astrometric solution. *A&A* 649, A2. [doi:10.1051/0004-6361/202039709](https://doi.org/10.1051/0004-6361/202039709)
+- Mardling R. A., Aarseth S. J. (2001). *MNRAS* 321, 398. [doi:10.1046/j.1365-8711.2001.03974.x](https://doi.org/10.1046/j.1365-8711.2001.03974.x)
+- Moffett T. J., Barnes T. G. (1983). *IBVS* 2413.
+- Pavlovski K., Southworth J., Tamajo E. (2018). *MNRAS* 481, 3129. [doi:10.1093/mnras/sty2516](https://doi.org/10.1093/mnras/sty2516)
+- Pont F., Zucker S., Queloz D. (2006). *MNRAS* 373, 231. [doi:10.1111/j.1365-2966.2006.11012.x](https://doi.org/10.1111/j.1365-2966.2006.11012.x)
+- Rein H., Liu S.-F. (2012). *A&A* 537, A128. [doi:10.1051/0004-6361/201118085](https://doi.org/10.1051/0004-6361/201118085)
+- Rein H., Spiegel D. S. (2015). *MNRAS* 446, 1424. [doi:10.1093/mnras/stu2164](https://doi.org/10.1093/mnras/stu2164)
+- Ricker G. R., et al. (2015). *JATIS* 1, 014003. [doi:10.1117/1.JATIS.1.1.014003](https://doi.org/10.1117/1.JATIS.1.1.014003)
+- Sandage A., Tammann G. A. (1969). *ApJ* 157, 683.
+- Strohmeier W., Knigge R., Ott H. (1964). *IBVS* 74.
+- Tamayo D., Rein H., Shi P., Hernandez D. M. (2020). *MNRAS* 491, 2885. [doi:10.1093/mnras/stz2870](https://doi.org/10.1093/mnras/stz2870)
+- Thompson S. E., et al. (2012). *ApJ* 753, 86. [doi:10.1088/0004-637X/753/1/86](https://doi.org/10.1088/0004-637X/753/1/86)
+- Vynatheya P., Hamers A. S., Mardling R. A., Bellinger E. P. (2022). *MNRAS* 516, 4146. [arXiv:2207.03151](https://arxiv.org/abs/2207.03151)
+- Zasche P., Vokrouhlický D., Barlow B. N., Mašek M. (2023). *AJ* 165, 81. [doi:10.3847/1538-3881/acae95](https://doi.org/10.3847/1538-3881/acae95)

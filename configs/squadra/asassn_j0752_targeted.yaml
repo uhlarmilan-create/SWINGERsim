@@ -1,0 +1,58 @@
+# ASASSN-V J075203.23-323102.7, TARGETED ensemble (follow-up of job 006).
+# Job 006 (broad prior) found no member that fits all three observations at once (best
+# chi^2 = 6.2 with central rates): the tilt rate of B, the constant inclination of A and the
+# fast apsidal motion of A. Physical reading: A must keep its inclination -> A nearly in the
+# plane of the outer orbit (small mutual inclination, slow nodal precession of A); A must
+# precess its periastron in ~3.5 yr -> a short outer period; B must tilt by ~1 deg/yr -> B
+# inclined to the outer orbit. This ensemble samples exactly that region.
+#
+# Observations: Zasche et al. (2025), arXiv:2504.17298 (see asassn_j0752_ensemble.yaml).
+# ESTIMATES made here, not from the paper: masses (now varied by 15 %), radii from R/a, the
+# errors of the rates and of the apsidal period, the observing window (rate_window_yr = 3 yr on
+# each side of t = 0, i.e. a ~6-yr baseline).
+# Sampling: the outer orbit is drawn close to the orbital plane of A (A has i = 80.74 deg,
+# Omega = 0): out.i ~ N(80.74, 3) deg, out.Omega ~ N(0, 3) deg -> mutual inclination A-out
+# mostly below ~8 deg (a test run showed that already 7 deg gives |di/dt| of A ~ 4 deg/yr at
+# these short outer periods, so only nearly exact coplanarity can keep A constant); P_out log-uniform 40-600 d (590 d = upper limit of the authors).
+topology: "2+2"
+masses: {m1: 1.2, m2: 1.2, m3: 1.2, m4: 1.2}
+orbits:
+  A:   {P: 8.8691638, e: 0.21,  i: 80.74, Omega: 0.0}
+  B:   {P: 2.6817062, e: 0.069, i: 73.0}
+  out: {P: 200.0,     e: 0.3,   i: 80.74}
+stars:
+  m1: {R: 3.0}
+  m2: {R: 3.2}
+  m3: {R: 1.48}
+  m4: {R: 1.98}
+physics: {gr: true, tides: true}
+run: {t_max_yr: 100, n_output: 2001, backend: secular, rate_window_yr: 3.0}
+ensemble:
+  n: 40000
+  seed: 7521
+  directions: [forward, backward]
+  require: [stable_v22]
+  max_tries: 5000
+  vary:
+    masses.m1: {normal: [1.2, 0.18], min: 0.8}
+    masses.m2: {normal: [1.2, 0.18], min: 0.8}
+    masses.m3: {normal: [1.2, 0.18], min: 0.8}
+    masses.m4: {normal: [1.2, 0.18], min: 0.8}
+    orbits.A.i: {normal: [80.74, 0.09], max: 90.0}
+    orbits.A.omega: angle
+    orbits.B.i: {normal: [73.0, 1.0], mirror: true}
+    orbits.B.Omega: angle
+    orbits.B.omega: angle
+    orbits.out.P: {loguniform: [40.0, 600.0]}
+    orbits.out.e: {uniform: [0.0, 0.5]}
+    orbits.out.i: {normal: [80.74, 3.0], min: 0.0, max: 180.0}
+    orbits.out.Omega: {normal: [0.0, 3.0]}
+    orbits.out.omega: angle
+  observed:
+    B_dtiltdt0_deg_yr: {value: 1.03, sigma: 0.2}
+    A_dtiltdt0_deg_yr: {value: 0.0, sigma: 0.3}
+    A_U_measured_yr: {value: 3.5, sigma: 1.5}
+    backward:m1_roche_fill_max: {max: 1.0}
+    backward:m2_roche_fill_max: {max: 1.0}
+    backward:m3_roche_fill_max: {max: 1.0}
+    backward:m4_roche_fill_max: {max: 1.0}

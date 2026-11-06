@@ -1,0 +1,66 @@
+# v994_her: the whole fit chain from the PUBLISHED elements: anchoring of the pairs to the
+# minima, the mini-fit with an error floor per source, outlier rejection and priors from the paper,
+# and predicted minima for the next three years. The orbits below are v994_her_published.yaml.
+# V994 Her - a (2+2)+2 sextuple with three eclipsing binaries: A (2.08 d) and B (1.42 d) orbit
+# each other in 1062 d; the third eclipsing binary C (1.96 d) is the visual companion 1.1" away.
+# Source: Zasche P., Borkovits T., Jayaraman R., Rappaport S. A., Broz M., Vokrouhlicky D.,
+#   Biro I. B., Hegedus T., Kiss Z. T., Uhlar R., ... (2023), "V994 Herculis: a unique triply
+#   eclipsing sextuple star system", MNRAS 520, 3127, doi:10.1093/mnras/stad328, Table 3; the
+#   earlier analysis of the quadruple: Zasche P., Uhlar R. (2016), A&A 588, A121.
+# t = 0 of this configuration = BJD 2459010.0 (TESS sector 26; "BJD of model t = 0" in the gui).
+# M0 = 360 (t0 - tau) / P from the times of periastron of Table 3: A tau 2459010.855 -> 212.25 deg;
+#   B 2459010.393 -> 260.37; C 2459009.306 -> 127.46; A-B 2458166.8 -> 285.75.
+# NOT measured, ASSUMED here: the nodes (Table 3 gives only the inclinations, from sin i): all
+#   Omega = 0 (the authors find the system plausibly close to coplanar); the orbit of C around
+#   A+B (projected separation ~300 AU): P = 3000 yr, e = 0.3, i = 83 deg (as configs/examples/
+#   example_v994_sextuple.yaml). The ensemble v994_her_ensemble.yaml varies the nodes.
+# Published to compare with (Table 3): apsidal advance 1.86 (A), 3.66 (B), 1.68 deg/yr (C)
+#   = apsidal periods 194, 98, 214 yr; conjunctions (primary eclipses) 2459011.1821 (A),
+#   2459010.7324 (B), 2459011.1246 (C).
+# Observed data: data/observed/v994_her/ (343 minima 2002-2022 of Tables A1-A4; TESS 26, 40, 53).
+topology: "2+2+2"
+masses: {m1: 2.929, m2: 2.216, m3: 1.913, m4: 1.889, m5: 1.810, m6: 1.077}
+orbits:
+  A:   {P: 2.0832039, e: 0.0276, i: 84.66, Omega: 0.0, omega: 208.4, M0: 212.25}
+  B:   {P: 1.4200981, e: 0.1186, i: 89.19, Omega: 0.0, omega: 174.7, M0: 260.37}
+  AB:  {P: 1062.3,    e: 0.687,  i: 83.0,  Omega: 0.0, omega: 59.6,  M0: 285.75}
+  C:   {P: 1.9601064, e: 0.1893, i: 80.42, Omega: 0.0, omega: 314.0, M0: 127.46}
+  out: {P: 1095750.0, e: 0.3,    i: 83.0,  Omega: 0.0, omega: 0.0,   M0: 0.0}
+stars:
+  m1: {R: 2.118, Teff: 11890}
+  m2: {R: 1.721, Teff: 9915}
+  m3: {R: 1.572, Teff: 8832}
+  m4: {R: 1.579, Teff: 8895}
+  m5: {R: 1.544, Teff: 8514}
+  m6: {R: 0.961, Teff: 5893}
+stellar_model: {kind: mist, age_myr: 83.0, feh: 0.073, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 30, n_output: 3001, extremes_every_orbits: 20}
+
+fit:
+  minima: ../../data/observed/v994_her/minima_zasche2023.csv
+  time_system: BJD_TDB
+  coordinates: {ra_deg: 276.941222, dec_deg: 24.697407}   # Zasche et al. (2023), Table 1 (Image 1, binaries A and B)
+  stage2:
+    anchor: true              # anchor P and M0 of the pairs to the minima first
+    bjd_t0: 2459010.0
+    free: [orbits.A.P, orbits.A.M0, orbits.A.ecosw, orbits.A.esinw, orbits.B.P, orbits.B.M0, orbits.B.e, orbits.B.omega, orbits.C.P, orbits.C.M0, orbits.C.e, orbits.C.omega, orbits.AB.P, orbits.AB.M0, orbits.AB.e, orbits.AB.omega]
+    max_sigma_d: 0.01
+    error_scale: per_source   # own error floor of every source
+    error_model: jitter
+    clip_sigma: 5.0           # leave out minima beyond 5 robust sigma of their source
+    priors:                   # Zasche et al. (2023), Table 3, as v994_her_ensemble.yaml
+      orbits.AB.P: [1062.3, 2.6]
+      orbits.AB.e: [0.687, 0.044]
+      orbits.AB.omega: [59.6, 3.8]
+      orbits.A.e: [0.0276, 0.0010]   # Zasche et al. (2023), Table 3
+      orbits.A.omega: [208.4, 3.9]
+      orbits.B.e: [0.1186, 0.0007]
+      orbits.B.omega: [174.7, 2.6]
+      orbits.C.e: [0.1893, 0.0049]
+      orbits.C.omega: [314.0, 2.9]
+    max_iterations: 60
+    processes: 0
+  output:
+    predict: {years: 3, samples: 100}   # minima of the next 3 years with 1-sigma
+    dir: ../../output/squadra_test/v994_her/fit_auto

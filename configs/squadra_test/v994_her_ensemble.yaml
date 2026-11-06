@@ -1,0 +1,53 @@
+# V994 Her: ensemble over what Zasche et al. (2023, MNRAS 520, 3127, Table 3) could not measure -
+# the nodes of A, B and C (only the inclinations follow from the eclipses) and the orbit of C
+# around A+B - with the measured quantities drawn within their errors; 30 yr forward and backward
+# (N-body, GR, tides, rotation). Question: which mutual inclinations keep A, B and C eclipsing
+# (A and B since 2002 in the minima, Tables A1-A4) and give the measured apsidal advance
+# (1.86, 3.66, 1.68 deg/yr = apsidal periods 194, 98, 214 yr)? See v994_her_published.yaml.
+topology: "2+2+2"
+masses: {m1: 2.929, m2: 2.216, m3: 1.913, m4: 1.889, m5: 1.810, m6: 1.077}
+orbits:
+  A:   {P: 2.0832039, e: 0.0276, i: 84.66, Omega: 0.0, omega: 208.4, M0: 212.25}
+  B:   {P: 1.4200981, e: 0.1186, i: 89.19, Omega: 0.0, omega: 174.7, M0: 260.37}
+  AB:  {P: 1062.3,    e: 0.687,  i: 83.0,  Omega: 0.0, omega: 59.6,  M0: 285.75}
+  C:   {P: 1.9601064, e: 0.1893, i: 80.42, Omega: 0.0, omega: 314.0, M0: 127.46}
+  out: {P: 1095750.0, e: 0.3,    i: 83.0,  Omega: 0.0, omega: 0.0,   M0: 0.0}
+stars:
+  m1: {R: 2.118, Teff: 11890}
+  m2: {R: 1.721, Teff: 9915}
+  m3: {R: 1.572, Teff: 8832}
+  m4: {R: 1.579, Teff: 8895}
+  m5: {R: 1.544, Teff: 8514}
+  m6: {R: 0.961, Teff: 5893}
+stellar_model: {kind: mist, age_myr: 83.0, feh: 0.073, vvcrit: 0.0}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 30, n_output: 3001, extremes_every_orbits: 20}
+ensemble:
+  n: 500
+  seed: 994
+  directions: [forward, backward]
+  vary:
+    masses.m1: {normal: [2.929, 0.11]}
+    masses.m2: {normal: [2.216, 0.09]}
+    masses.m3: {normal: [1.913, 0.045]}
+    masses.m4: {normal: [1.889, 0.052]}
+    orbits.A.Omega: {uniform: [-30.0, 30.0]}
+    orbits.B.Omega: {uniform: [-30.0, 30.0]}
+    orbits.C.Omega: {uniform: [-180.0, 180.0]}
+    orbits.AB.e: {normal: [0.687, 0.044]}
+    orbits.AB.omega: {normal: [59.6, 3.8]}
+    orbits.AB.P: {normal: [1062.3, 2.6]}
+    orbits.out.P: {loguniform: [182625.0, 7305000.0]}
+    orbits.out.e: {uniform: [0.0, 0.7]}
+    orbits.out.i: {uniform: [40.0, 140.0]}
+    orbits.out.Omega: angle
+  require: [stable_ma01]
+  observed:
+    A_U_measured_yr: {value: 194.0, sigma: 50.0}
+    B_U_measured_yr: {value: 98.4, sigma: 5.0}
+    C_U_measured_yr: {value: 214.0, sigma: 30.0}
+    A_eclipsing0: {min: 0.5}
+    B_eclipsing0: {min: 0.5}
+    C_eclipsing0: {min: 0.5}
+    "backward:fate": {equals: intact}
+    "forward:fate": {equals: intact}

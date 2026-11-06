@@ -1,0 +1,101 @@
+# V907 Sco - test of the outer period: the fit of fit_v2 (same data and free parameters) started from the 99.3-d outer
+# orbit of Lacy, Helt & Vaz (1999) instead of 142 d, without the prior on e2 (e2 start 0.3, M0 0). The outer period may
+# move freely between 60 and 200 d. If it returns to ~142 d (or stays at 99 d with a much worse chi^2), the 99-d orbit
+# is excluded by the data themselves, not by our start values. Compare chi^2 with fit_v2 (209.6 for 58 minima,
+# 172 velocities, 14 inclinations).
+hierarchy:
+  inner:
+  - m1
+  - m2
+  out:
+  - inner
+  - m3
+masses:
+  m1: 2.56
+  m2: 2.74
+  m3: 0.977844674587243
+orbits:
+  inner:
+    M0: 232.1701610912229
+    Omega: 17.27
+    P: 3.7747641547758386
+    e: 0.011075975157379661
+    i: 76.5758732576139
+    omega: 294.40331375010334
+  out:
+    M0: 0.0
+    Omega: 349.0492542784594
+    P: 99.3
+    e: 0.3
+    i: 74.83179948749148
+    omega: 24.4
+physics:
+  gr: true
+  rotation: true
+  tides: true
+run:
+  extremes_every_orbits: 20
+  n_output: 3001
+  t_max_yr: 30
+stars:
+  m1:
+    R: 2.53
+    Teff: 10004
+  m2:
+    R: 2.68
+    Teff: 10000
+  m3:
+    R: 1.0
+    Teff: 5900
+stellar_model:
+  age_myr: 400.0
+  feh: 0.0
+  kind: mist
+  vvcrit: 0.0
+topology: custom
+fit:
+  inclination:
+  - file: ../../data/observed/v907_sco/inclination_zasche2023.csv
+    label: Zasche2023
+    min_sigma_deg: 0.1
+    pair: inner
+  minima: ../../data/observed/v907_sco/minima_tess.csv
+  output:
+    dir: ../../output/squadra_test3/v907_sco/fit_p99
+    predict:
+      samples: 100
+      years: 30
+  rv:
+    file: ../../data/observed/v907_sco/rv_all.csv
+    gamma: -17.1153
+    offsets:
+      Lacy1999: 0.0
+  stage2:
+    anchor: true
+    bjd_t0: 2459383.9
+    clip_sigma: 5.0
+    error_model: jitter
+    error_scale: per_source
+    free:
+    - orbits.inner.P
+    - orbits.inner.M0
+    - orbits.inner.ecosw
+    - orbits.inner.esinw
+    - orbits.inner.i
+    - orbits.out.P
+    - orbits.out.M0
+    - orbits.out.e
+    - orbits.out.omega
+    - orbits.out.i
+    - orbits.out.Omega
+    - masses.m3
+    - rv.gamma
+    - rv.offset.Lacy1999
+    max_iterations: 40
+    priors: {}
+    processes: 0
+    bounds:
+      orbits.out.P:
+      - 60.0
+      - 200.0
+  time_system: BJD_TDB

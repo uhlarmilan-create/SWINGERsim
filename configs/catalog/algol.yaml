@@ -1,0 +1,38 @@
+# Algol (beta Per): the prototype semidetached binary - a B8 V primary and a K0 IV subgiant that
+# fills its Roche lobe (2.87 d) - with an Am star on a 680-d orbit, nearly perpendicular to the
+# inner one. Hierarchy ((Aa1+Aa2)+Ab).
+# Sources: Baron F. et al. 2012, ApJ 752, 20 (doi:10.1088/0004-637X/752/1/20, arXiv:1205.0754),
+#   CHARA interferometry, Tables 4-6: inner P = 2.867328 +- 0.00005 d, e = 0 (assumed),
+#   i = 98.70, Omega = 43.43, T0 = JD 2441771.353 (primary minimum); outer P = 680.168 d,
+#   e = 0.227, i = 83.66, Omega = 132.66, omega = 310.02, T = JD 2446927.22; masses
+#   3.17/0.70/1.76 Msun, radii 2.73/3.48/1.73 Rsun (parallax 34.7 mas). Teff 12550/4900/7550 K
+#   from Kolbas V. et al. 2015, MNRAS 451, 4150 (doi:10.1093/mnras/stv1261) (their masses
+#   3.39/0.770/1.58 Msun). The orbits' orientation was disambiguated by Zavala et al. (2010) and
+#   confirmed by Baron et al. (inner orbit retrograde, outer prograde); the mutual inclination of
+#   ~90 deg follows from the nodes.
+# Conversions: t = 0 at the outer periastron (M0 = 0). Inner P and M0 anchored (2026-11-03):
+#   with tides and rotation the stars' distortion turns the apsides of the 2.87-d orbit in 6.0 yr
+#   (the subgiant fills its Roche lobe), and the eclipse period comes out 1.15e-3 shorter than the
+#   osculating Keplerian period. P = 2.870666 d gives the eclipse period 2.867328 d of Baron et al.
+#   (model: 2.867328 d over 2 outer orbits from t = 0), and M0 = 321.07 deg puts the primary
+#   minima on their ephemeris T0 + 2.867328 E (mean O-C 0.0 min; the light-time effect of the
+#   outer orbit, semi-amplitude ~6 min, stays). With P = 2.867328 the model's eclipse period was
+#   2.864036 d; without tides and rotation P = 2.867328 gives 2.867392 d (only GR and the third star).
+# Why: a mass-transfer binary in a triple at ~90 deg mutual inclination - the ZLK window - with a
+#   Roche-lobe-filling subgiant: tides and rotation of the 2.87-d pair should quench any ZLK.
+# Validation: Roche-lobe filling of Aa2 ~ 1.0 (Eggleton: r_L = 3.45 Rsun for q = 0.22 at
+#   a = 13.3 Rsun; R = 3.48) - the summary prints it; light-time semi-amplitude of the inner
+#   pair ~0.0042 d; mutual inclination ~90 deg stays constant (no ZLK).
+#   swingersim run configs/catalog/algol.yaml -o output/catalog/algol.h5
+topology: custom
+hierarchy: {out: [A, m3], A: [m1, m2]}
+masses: {m1: 3.17, m2: 0.70, m3: 1.76}
+orbits:
+  A:   {P: 2.870666, e: 0.0, i: 98.70, Omega: 43.43, M0: 321.07}
+  out: {P: 680.168, e: 0.227, i: 83.66, Omega: 132.66, omega: 310.02, M0: 0.0}
+stars:
+  m1: {R: 2.73, Teff: 12550}
+  m2: {R: 3.48, Teff: 4900}
+  m3: {R: 1.73, Teff: 7550}
+physics: {gr: true, tides: true, rotation: true}
+run: {t_max_yr: 100, n_output: 4001}

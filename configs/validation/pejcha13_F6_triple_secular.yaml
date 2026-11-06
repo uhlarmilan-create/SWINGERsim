@@ -1,0 +1,22 @@
+# As pejcha13_F6_triple.yaml with the secular backend (2+2 only): binary B is shrunk to
+# a_B = 0.001 AU, so that it acts as a point mass. SWINGERsim: 2.0 +- 0.7 % (analytic quadrupole
+# limit about 3 %; the N-body triple gives 6 %, see the Validation page).
+topology: "2+2"
+masses: {m1: 1.0, m2: 1.0, m3: 1.0, m4: 1.0}
+orbits:
+  A:   {a: 0.573, e: 0.3}
+  B:   {a: 0.001, e: 0.1}
+  out: {a: 6.0, e: 0.3}
+physics: {gr: false}
+run: {t_max_yr: 19470, n_output: 500, collisions: false, backend: secular}
+ensemble:
+  n: 400
+  seed: 13
+  vary:
+    orbits.A.i: isotropic
+    orbits.B.i: isotropic
+    orbits.A.Omega: angle
+    orbits.B.Omega: angle
+    orbits.A.omega: angle
+    orbits.B.omega: angle
+    orbits.out.omega: angle

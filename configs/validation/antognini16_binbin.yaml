@@ -1,0 +1,14 @@
+name: at16-binary-binary
+description: Antognini & Thompson (2016) Table 3, equal masses, a1 = a2, circular, v_inf = v_crit
+# Reproduces the binary-binary cross-sections of Antognini & Thompson (2016) MNRAS 456, 4219,
+# Table 3 (benchmarks at16-binbin-*; swingersim validate --all). sigma/(pi a^2) = 49 x fraction.
+scatter:
+  target: {masses: [1.0, 1.0], a_au: 1.0, e: 0.0}
+  projectile: {masses: [1.0, 1.0], a_au: 1.0, e: 0.0}
+  v_inf_vc: 1.0
+  b_max_au: 7.0
+  r_start_factor: 46.0
+  b_distribution: area
+  n: 12000
+  seed: 2016
+  max_wall_s: 120

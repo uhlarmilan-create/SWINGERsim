@@ -1,0 +1,14 @@
+# Binary-binary scattering: can two binaries capture each other into a 2+2 quadruple, or
+# leave a stable triple and an escaping star?  Run with
+#   swingersim scatter configs/examples/example_scatter_2p2.yaml -o output/scatter_2p2 -j 0
+name: example-scatter-2p2
+description: a 1 AU binary meets a 0.5 AU binary at 1 km/s (a young cluster), solar masses
+scatter:
+  target: {masses: [1.0, 1.0], a_au: 1.0, e: 0.0, e_thermal: true, radii_rsun: [1.0, 1.0]}
+  projectile: {masses: [1.0, 1.0], a_au: 0.5, e_thermal: true, radii_rsun: [1.0, 1.0]}
+  v_inf_kms: 1.0
+  r_peri_max_au: 3.0      # b_max from gravitational focusing
+  r_start_factor: 50.0
+  max_wall_s: 60
+  n: 1000
+  seed: 7

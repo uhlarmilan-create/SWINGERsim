@@ -79,6 +79,11 @@ as Markdown in [`docs/en/`](docs/en) and [`docs/cs/`](docs/cs).
 | [Testing, Part IV](docs/pdf/SWINGERsim-part4-en.pdf) | special cases: the future of CzeV343, the hierarchy of CzeV4315, MCMC convergence |
 | [Open questions and outlook](docs/pdf/SWINGERsim-outlook-en.pdf) | what the tests left open and possible extensions |
 
+**Textbook (Czech).** *SWINGERsim: fyzika a numerické modelování vícenásobných hvězd* – the physics and numerical
+modelling of multiple stars, from the two-body problem to the full workflow on V907 Sco, with solved examples and
+exercises: [PDF](docs/pdf/SWINGERsim-skripta-cs.pdf), sources in [`docs/skripta/cs/`](docs/skripta/cs)
+(`python tools/build_skripta_pdf.py`).
+
 ## Tests
 
 ```bash
